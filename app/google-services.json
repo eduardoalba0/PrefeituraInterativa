@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "977874090377-b1ql9jmted8qfvr5ub4cc7pdcjqemfro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.ifpr.bsi.prefeiturainterativa",
+            "certificate_hash": "c56566a85a9e943c7810eed4774b5491a06c3220"
+          }
+        },
+        {
           "client_id": "977874090377-uimphtcjgmbdv1o7gubla24a6h11apc3.apps.googleusercontent.com",
           "client_type": 3
         }
