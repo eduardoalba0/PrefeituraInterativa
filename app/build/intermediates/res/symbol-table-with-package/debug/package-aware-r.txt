@@ -70,6 +70,7 @@ attr alertDialogTheme
 attr allowStacking
 attr alpha
 attr alphabeticModifiers
+attr ambientEnabled
 attr arrowHeadLength
 attr arrowShaftLength
 attr autoCompleteTextViewStyle
@@ -101,6 +102,13 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr cameraBearing
+attr cameraMaxZoomPreference
+attr cameraMinZoomPreference
+attr cameraTargetLat
+attr cameraTargetLng
+attr cameraTilt
+attr cameraZoom
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -206,6 +214,10 @@ attr isLightTheme
 attr itemPadding
 attr keylines
 attr lastBaselineToBottomHeight
+attr latLngBoundsNorthEastLatitude
+attr latLngBoundsNorthEastLongitude
+attr latLngBoundsSouthWestLatitude
+attr latLngBoundsSouthWestLongitude
 attr layout
 attr layout_anchor
 attr layout_anchorGravity
@@ -279,8 +291,10 @@ attr listPreferredItemPaddingEnd
 attr listPreferredItemPaddingLeft
 attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
+attr liteMode
 attr logo
 attr logoDescription
+attr mapType
 attr matProg_barColor
 attr matProg_barSpinCycleTime
 attr matProg_barWidth
@@ -406,6 +420,15 @@ attr track
 attr trackTint
 attr trackTintMode
 attr ttcIndex
+attr uiCompass
+attr uiMapToolbar
+attr uiRotateGestures
+attr uiScrollGestures
+attr uiScrollGesturesDuringRotateOrZoom
+attr uiTiltGestures
+attr uiZoomControls
+attr uiZoomGestures
+attr useViewLifecycle
 attr viewInflaterClass
 attr voiceIcon
 attr windowActionBar
@@ -418,6 +441,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -835,7 +859,9 @@ drawable googleg_standard_color_18
 drawable gray_button_background
 drawable green_button_background
 drawable ic_email
+drawable ic_google
 drawable ic_launcher_background
+drawable ic_proximo
 drawable ic_senha
 drawable image_placeholder
 drawable notification_action_background
@@ -852,11 +878,12 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable red_button_background
 drawable rounded_layout
+drawable shape_gradient_branco
 drawable shape_gradient_vermelho
-drawable shape_oval_branco
-drawable shape_oval_primary
-drawable shape_quadrado_arr
-drawable shape_quadrado_irregular
+drawable shape_quadrado_arr_branco
+drawable shape_quadrado_arr_vermelho
+drawable shape_quadrado_irregular_branco
+drawable shape_quadrado_irregular_vermelho
 drawable success_bow
 drawable success_circle
 drawable tooltip_frame_dark
@@ -948,6 +975,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id bt_google
 id button
 id buttonPanel
 id buttons_container
@@ -998,6 +1026,7 @@ id group_divider
 id groups
 id home
 id homeAsUp
+id hybrid
 id icon
 id icon_group
 id icon_only
@@ -1007,9 +1036,11 @@ id image_content_root
 id image_root
 id image_view
 id img_app
+id img_google
 id info
 id invisible
 id italic
+id l_login
 id left
 id light
 id line1
@@ -1053,6 +1084,7 @@ id radio
 id right
 id right_icon
 id right_side
+id satellite
 id screen
 id scrollIndicatorDown
 id scrollIndicatorUp
@@ -1069,7 +1101,6 @@ id search_src_text
 id search_voice_btn
 id secondary_button
 id select_dialog_listview
-id shape_branca
 id shortcut
 id showCustom
 id showHome
@@ -1097,6 +1128,7 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id terrain
 id text
 id text2
 id textSpacerNoButtons
@@ -1108,6 +1140,7 @@ id title_template
 id title_text
 id top
 id topPanel
+id tv_google
 id tx_app
 id unchecked
 id uniform
@@ -1261,12 +1294,15 @@ string default_web_client_id
 string dialog_cancel
 string dialog_default_title
 string dialog_ok
+string facebook_application_id
+string facebook_login_protocol_scheme
 string fcm_fallback_notification_channel_label
 string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
 string google_crash_reporting_api_key
+string google_maps_key
 string google_storage_bucket
 string hello_world
 string hint_email
@@ -1276,10 +1312,14 @@ string modal_inner_content_descriptor
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
-string str_app_intro
+string str_cadastrar
+string str_conta_google
 string str_emblema
+string str_entrar
 string str_esqueceu_senha
+string str_nao_cadastrado
 string str_vamos_comecar
+string title_activity_maps
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1692,6 +1732,7 @@ styleable LinearLayoutCompat android_gravity android_orientation android_baselin
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable MapAttrs ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialTextField mtf_animationDuration mtf_backgroundColor mtf_cardCollapsedHeight mtf_hasFocus mtf_image mtf_labelColor mtf_openKeyboardOnFocus
 styleable MenuGroup android_enabled android_id android_visible android_menuCategory android_orderInCategory android_checkableBehavior
 styleable MenuItem android_icon android_enabled android_id android_checked android_visible android_menuCategory android_orderInCategory android_title android_titleCondensed android_alphabeticShortcut android_numericShortcut android_checkable android_onClick actionLayout actionProviderClass actionViewClass alphabeticModifiers contentDescription iconTint iconTintMode numericModifiers showAsAction tooltipText

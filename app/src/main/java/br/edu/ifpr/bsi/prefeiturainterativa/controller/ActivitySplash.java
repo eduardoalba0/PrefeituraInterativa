@@ -1,6 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import java.util.ArrayList;
 import java.util.List;
