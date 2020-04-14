@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_vermelho"
+    tools:context=".controller.UsuarioLoginActivity">
+
+    <RelativeLayout
+        android:id="@+id/shape_branca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_quadrado_irregular"
+        android:orientation="vertical">
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/img_app"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:contentDescription="@string/str_emblema"
+        android:src="@mipmap/ic_maca"
+        android:tint="@color/colorTertiary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_app"
+        android:layout_margin="30dp"
+        android:background="@drawable/shape_quadrado_arr"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/str_vamos_comecar"
+            android:textAllCaps="true"
+            android:textColor="@color/grey"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:mtf_image="@drawable/ic_email"
+            app:mtf_labelColor="@color/colorPrimary">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/grey" />
+
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <com.github.florent37.materialtextfield.MaterialTextField
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:mtf_image="@drawable/ic_senha"
+            app:mtf_labelColor="@color/colorPrimary">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="@string/hint_senha"
+                android:inputType="textPassword"
+                android:textColor="@color/grey" />
+        </com.github.florent37.materialtextfield.MaterialTextField>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/str_esqueceu_senha"
+            android:textAllCaps="true"
+            android:textColor="@color/colorTertiary"
+            android:textSize="15sp" />
+    </LinearLayout>
+</RelativeLayout>

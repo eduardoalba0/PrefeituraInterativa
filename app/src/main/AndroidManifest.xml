@@ -18,14 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".controller.AdmAtendimentoActivity"/>
-        <activity android:name=".controller.RespostaActivity" />
-        <activity android:name=".controller.ListarSolicitacaoActivity" />
-        <activity android:name=".controller.CadastroSolicitacaoActivity" />
-        <activity android:name=".controller.CadastroActivity" />
-        <activity android:name=".controller.LoginActivity" />
-        <activity android:name=".controller.MainActivity" />
-        <activity android:name=".controller.SplashActivity">
+        <activity android:name=".controller.AdmAtendimentoListarActivity"></activity>
+        <activity android:name=".controller.BaseActivity" />
+        <activity android:name=".controller.AdmAtendimentoActivity" />
+        <activity android:name=".controller.SolicitacaoVisualizarActivity" />
+        <activity android:name=".controller.SolicitacaoListarActivity" />
+        <activity android:name=".controller.SolicitacaoCadastroActivity" />
+        <activity android:name=".controller.UsuarioCadastroActivity" />
+        <activity android:name=".controller.UsuarioLoginActivity" />
+        <activity android:name=".controller.ActivityMain" />
+        <activity android:name=".controller.ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

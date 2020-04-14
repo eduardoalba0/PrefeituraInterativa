@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Prefeitura Interativa</string>
+    <string name="str_emblema">Emblema do aplicativo em formato de maçã, fruta típica da cidade de Palmas PR</string>
+    <string name="str_app_intro">Palmas - Paraná</string>
+    <string name="hint_email">Insira seu e-mail</string>
+    <string name="hint_senha">Insira sua senha</string>
+    <string name="str_esqueceu_senha">Esqueceu sua senha?</string>
+    <string name="str_vamos_comecar">Vamos começar...</string>
 </resources>
