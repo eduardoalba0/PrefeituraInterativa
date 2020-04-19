@@ -1,15 +1,20 @@
 <resources>
-    <string name="app_name">Prefeitura Interativa</string>
-    <string name="str_emblema">Emblema do aplicativo em formato de maçã, fruta típica da cidade de Palmas PR</string>
-    <string name="hint_email">E-MAIL</string>
-    <string name="hint_senha">SENHA</string>
-    <string name="str_esqueceu_senha">Recuperar senha</string>
-    <string name="str_vamos_comecar">Vamos começar…</string>
-    <string name="str_entrar">Entrar</string>
-    <string name="str_cadastrar">Cadastre-se</string>
-    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="str_conta_google">Entre com o Google</string>
-    <string name="str_nao_cadastrado">Não possui cadastro?</string>
+    <string name="app_name" translatable="true">Prefeitura Interativa</string>
+    <string name="str_emblema" translatable="true">Emblema do aplicativo em formato de maçã</string>
+    <string name="hint_email" translatable="true">E-MAIL</string>
+    <string name="hint_senha" translatable="true">SENHA</string>
+    <string name="str_esqueceu_senha" translatable="true">Recuperar senha</string>
+    <string name="str_vamos_comecar" translatable="true">Vamos começar…</string>
+    <string name="str_entrar" translatable="true">Entrar</string>
+    <string name="str_cadastrar" translatable="true">Cadastre-se</string>
+    <string name="title_activity_maps" translatable="true">Map</string>
+    <string name="str_conta_google" translatable="true">Entre com o Google</string>
+    <string name="str_nao_cadastrado" translatable="true">Não possui uma conta?</string>
+    <string name="str_nome" translatable="true">NOME COMPLETO</string>
+    <string name="str_senha_confirm" translatable="true">CONFIRME SUA SENHA</string>
+    <string name="str_senha" translatable="true">ESCOLHA UMA SENHA</string>
+    <string name="str_email" translatable="true">INSIRA SEU E-MAIL</string>
+    <string name="str_cpf">INSIRA SEU CPF</string>
+    <string name="str_continuar">Continuar</string>
+    <string name="str_voltar">voltar</string>
 </resources>

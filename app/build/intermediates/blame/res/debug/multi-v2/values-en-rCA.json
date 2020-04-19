@@ -4,7 +4,7 @@
             "outputFile": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en-rCA\\values-en-rCA.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\559b0e0ef2f13dcf6a37d73aa8c099ad\\appcompat-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\53fcab5c86c6adad8ea8e42d5d28e37a\\core-1.1.0\\res\\values-en-rCA\\values-en-rCA.xml",
+                    "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\1c894efa247bcf2e4a06b1a000f71575\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

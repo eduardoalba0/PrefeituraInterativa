@@ -8,7 +8,7 @@
         <uses-library android:name="android.test.runner" />
     </application>
 
-    <instrumentation android:name="androidx.test.runner.AndroidJUnitRunner"
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
                      android:targetPackage="br.edu.ifpr.bsi.prefeiturainterativa"
                      android:handleProfiling="false"
                      android:functionalTest="false"

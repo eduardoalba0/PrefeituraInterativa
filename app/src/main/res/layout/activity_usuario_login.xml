@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_branco"
-    tools:context=".controller.ActivitySplash">
+    tools:context=".controller.UsuarioLoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_quadrado_irregular_vermelho"
-        android:orientation="vertical" />
+        android:background="@drawable/shape_quadrado_irregular_vermelho" />
 
     <ImageView
         android:id="@+id/img_app"
@@ -37,7 +36,7 @@
         android:elevation="1dp"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:padding="20dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,58 +47,81 @@
             android:textColor="@color/grey"
             android:textSize="20sp" />
 
-        <com.github.florent37.materialtextfield.MaterialTextField
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:mtf_image="@drawable/ic_email"
-            app:mtf_labelColor="@color/grey">
+            android:hint="@string/hint_email"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/hint_email"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/grey">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/hint_email"
                 android:inputType="textEmailAddress"
                 android:textAllCaps="true"
                 android:textColor="@color/grey" />
 
-        </com.github.florent37.materialtextfield.MaterialTextField>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.github.florent37.materialtextfield.MaterialTextField
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            app:mtf_labelColor="@color/grey"
-            app:mtf_image="@drawable/ic_senha"
-            app:mtf_openKeyboardOnFocus="false">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:hint="@string/hint_senha"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/hint_senha"
+            app:startIconDrawable="@drawable/ic_senha"
+            app:startIconTint="@color/grey">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_senha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:textAllCaps="true"
-                android:hint="@string/hint_senha"
                 android:inputType="textPassword"
                 android:textColor="@color/grey" />
-        </com.github.florent37.materialtextfield.MaterialTextField>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
+            android:id="@+id/bt_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/shape_quadrado_arr_vermelho"
-            android:elevation="2dp"
+            android:elevation="5dp"
+            android:padding="10dp"
             android:text="@string/str_entrar" />
 
-        <TextView
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_recuperar_senha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/str_esqueceu_senha"
             android:textAllCaps="true"
-            android:textColor="@color/colorSecondary" />
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:backgroundTint="@color/white"
+            android:elevation="5dp"
+            android:textColor="@color/colorSecondary"
+            app:strokeColor="@color/colorSecondary"
+            app:strokeWidth="1dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -109,54 +131,43 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/bt_google"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_login_google"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:background="@drawable/shape_quadrado_arr_branco"
+            android:backgroundTint="@color/white"
             android:elevation="5dp"
-            android:padding="1dp">
-
-            <ImageView
-                android:id="@+id/img_google"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:contentDescription="@string/str_conta_google"
-                android:padding="5dp"
-                app:srcCompat="@drawable/ic_google" />
-
-            <TextView
-                android:id="@+id/tv_google"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/img_google"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/str_conta_google"
-                android:textAllCaps="true"
-                android:textColor="@color/grey"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/str_nao_cadastrado"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/str_conta_google"
             android:textAllCaps="true"
             android:textColor="@color/grey"
-            android:textSize="12sp" />
+            app:cornerRadius="30dp"
+            app:icon="@drawable/ic_google"
+            app:iconTintMode="multiply" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:text="@string/str_nao_cadastrado"
+            android:textAllCaps="true"
+            android:layout_margin="5dp"
+            android:textColor="@color/grey"
+            android:textSize="13sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_cadastro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:text="@string/str_cadastrar"
             android:textAllCaps="true"
-            android:textColor="@color/colorSecondary" />
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/white"
+            android:elevation="5dp"
+            android:textColor="@color/colorSecondary"
+            app:strokeColor="@color/colorSecondary" />
     </LinearLayout>
 
 </RelativeLayout>

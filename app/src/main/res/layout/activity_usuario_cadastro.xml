@@ -1,9 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_vermelho"
     tools:context=".controller.UsuarioCadastroActivity">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/img_app"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape_quadrado_arr_branco"
+        android:contentDescription="@string/str_emblema"
+        android:src="@mipmap/ic_maca"
+        android:elevation="2dp"
+        android:tint="@color/colorPrimary" />
+
+    <LinearLayout
+        android:layout_marginTop="-50dp"
+        android:paddingTop="60dp"
+        android:id="@+id/l_cadastro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_app"
+        android:background="@drawable/shape_quadrado_arr_branco"
+        android:elevation="1dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_vamos_comecar"
+            android:textAllCaps="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/grey"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/str_nome"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/hint_email"
+            app:startIconDrawable="@drawable/ic_usuario"
+            app:startIconTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/str_cpf"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/grey"
+            app:counterEnabled="true"
+            app:counterMaxLength="11"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/str_cpf"
+            app:startIconDrawable="@drawable/ic_usuario"
+            app:startIconTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/str_email"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/grey"
+            app:endIconMode="clear_text"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/str_email"
+            app:startIconDrawable="@drawable/ic_email"
+            app:startIconTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/str_senha"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/grey"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/str_senha"
+            app:startIconDrawable="@drawable/ic_senha"
+            app:startIconTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_senha"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:hint="@string/str_senha_confirm"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/grey"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/str_senha_confirm"
+            app:startIconDrawable="@drawable/ic_senha"
+            app:startIconTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_senha_conf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:textAllCaps="true"
+                android:textColor="@color/grey" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_voltar"
+                android:layout_alignParentStart="true"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/str_voltar"
+                android:textAllCaps="true"
+                android:textColor="@color/colorSecondary"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_voltar"
+                app:iconGravity="start"
+                app:iconTint="@color/colorSecondary" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_avancar"
+                android:layout_alignParentEnd="true"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/str_continuar"
+                android:textAllCaps="true"
+                android:textColor="@color/colorSecondary"
+                app:cornerRadius="30dp"
+                app:icon="@drawable/ic_proximo"
+                app:iconGravity="end"
+                app:iconTint="@color/colorSecondary" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>
