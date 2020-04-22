@@ -1,0 +1,21 @@
+<resources>
+    <!-- espaçamentos-->
+    <dimen name="espaco_muito_pequeno">10dp</dimen>
+    <dimen name="espaco_pequeno">15dp</dimen>
+    <dimen name="espaco_medio">25dp</dimen>
+    <dimen name="espaco_grande">30dp</dimen>
+    <dimen name="espaco_muito_grande">35dp</dimen>
+    <dimen name="espaco_gigante">40dp</dimen>
+
+    <!-- fontes-->
+    <dimen name="texto_titulo">35sp</dimen>
+    <dimen name="texto_subtitulo">25sp</dimen>
+    <dimen name="texto_label">15sp</dimen>
+    <dimen name="texto_botao">20sp</dimen>
+
+    <!-- Circulos -->
+    <dimen name="raio_quadrado_grande">50dp</dimen>
+    <dimen name="raio_quadrado_medio">30dp</dimen>
+    <dimen name="raio_quadrado_pequeno">10dp</dimen>
+    <dimen name="tamanho_quadrado_irregular">500dp</dimen>
+</resources>

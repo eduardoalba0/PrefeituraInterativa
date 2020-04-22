@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Departamento implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String descricao;
     private String DepartamentoSuperior_ID;

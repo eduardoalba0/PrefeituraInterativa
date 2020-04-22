@@ -10,12 +10,12 @@ import java.util.Objects;
 
 public class Solicitacao implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String descricao;
     private double latitude;
     private double longitude;
     private boolean concluida;
+    private boolean anonima;
     private String imagem_url;
     private String anexos_url;
     private Double avaliacao_nota;
@@ -70,6 +70,14 @@ public class Solicitacao implements Serializable {
 
     public void setConcluida(boolean concluida) {
         this.concluida = concluida;
+    }
+
+    public boolean isAnonima() {
+        return anonima;
+    }
+
+    public void setAnonima(boolean anonima) {
+        this.anonima = anonima;
     }
 
     public String getImagem_url() {

@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class Usuario implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String nome;
     private String cpf;

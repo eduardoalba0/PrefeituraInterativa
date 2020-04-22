@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class TipoUsuario_Permissao implements Serializable {
 
-    @DocumentId
     private String _ID;
     private boolean concedida;
     private String tipoUsuario_ID;

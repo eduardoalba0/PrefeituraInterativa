@@ -1,56 +1,45 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.WindowManager;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Handler;
+import android.transition.Fade;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.core.app.ActivityOptionsCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.AtendimentoDAO;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Atendimento;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Funcionario;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
-import br.edu.ifpr.bsi.prefeiturainterativa.util.FabricaFirebase;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ActivitySplash extends AppCompatActivity {
-    Atendimento atendimento;
-    List<Atendimento> atendimentos = new ArrayList<>();
+
+    @BindView(R.id.img_app)
+    ImageView img_app;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario_login);
+        setContentView(R.layout.activity_splash);
+        ButterKnife.bind(this);
+
+        startAnimation();
     }
 
-    private void logar() {
-        new FabricaFirebase(this).logar("eduardoalba0@hotmail.com", "30091998");
+    public void startAnimation() {
+        Fade fade = new Fade();
+        fade.setDuration(1500);
+        getWindow().setEnterTransition(fade);
+        getWindow().setExitTransition(fade);
+
+        Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            Intent intent = new Intent(ActivitySplash.this, UsuarioLoginActivity.class);
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation(ActivitySplash.this, img_app, "splash_transition");
+            startActivity(intent, options.toBundle());
+        }, 500);
+
     }
 
-    private void inserir() {
-        atendimento = new Atendimento();
-        atendimento.setFuncionario_ID("1");
-        atendimento.setSolicitacao_ID("1");
-        atendimento.setResposta("Concluido.");
-
-        Funcionario funcionario = new Funcionario();
-        funcionario.set_ID("1");
-        funcionario.setNome("Eduardo");
-        atendimento.setFuncionario(funcionario);
-
-        Solicitacao solicitacao = new Solicitacao();
-        solicitacao.set_ID("1");
-        solicitacao.setDescricao("Test");
-        atendimento.setSolicitacao(solicitacao);
-
-        AtendimentoDAO dao = new AtendimentoDAO(this);
-        atendimento.set_ID(dao.inserir(atendimento));
-    }
-
-    private void listar() {
-        AtendimentoDAO dao = new AtendimentoDAO(this);
-        atendimentos = dao.listar();
-    }
 }

@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class Permissao implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String descricao;
 

@@ -1,6 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.ServerTimestamp;
 
@@ -10,7 +9,6 @@ import java.util.Objects;
 
 public class Atendimento implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String resposta;
     private String funcionario_ID;
@@ -25,12 +23,10 @@ public class Atendimento implements Serializable {
 
 //---------------------- Encapsulamento ----------------------
 
-    @DocumentId
     public String get_ID() {
         return _ID;
     }
 
-    @DocumentId
     public void set_ID(String _ID) {
         this._ID = _ID;
     }

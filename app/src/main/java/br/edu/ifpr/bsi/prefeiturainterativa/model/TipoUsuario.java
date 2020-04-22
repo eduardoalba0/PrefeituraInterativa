@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class TipoUsuario implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String descricao;
 

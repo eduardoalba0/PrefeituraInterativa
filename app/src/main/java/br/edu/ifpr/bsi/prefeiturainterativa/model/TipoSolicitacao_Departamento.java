@@ -8,7 +8,6 @@ import java.util.Objects;
 
 public class TipoSolicitacao_Departamento implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String tipoSolicitacao_ID;
     private String departamento_ID;

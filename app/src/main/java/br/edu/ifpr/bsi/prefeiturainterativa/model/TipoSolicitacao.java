@@ -7,7 +7,6 @@ import java.util.Objects;
 
 public class TipoSolicitacao implements Serializable {
 
-    @DocumentId
     private String _ID;
     private String descricao;
 
