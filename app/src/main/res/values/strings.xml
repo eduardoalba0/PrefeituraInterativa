@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name" translatable="true">Prefeitura Interativa</string>
     <string name="str_emblema" translatable="true">Emblema do aplicativo em formato de maçã</string>
-    <string name="hint_email" translatable="true">E-MAIL</string>
-    <string name="hint_senha" translatable="true">SENHA</string>
+    <string name="hint_senha" translatable="true">INSIRA SUA SENHA</string>
     <string name="str_esqueceu_senha" translatable="true">Esqueci minha senha</string>
     <string name="str_vamos_comecar" translatable="true">Vamos começar…</string>
     <string name="str_entrar" translatable="true">Entrar</string>

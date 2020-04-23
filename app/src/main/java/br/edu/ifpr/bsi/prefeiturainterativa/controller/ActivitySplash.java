@@ -14,15 +14,11 @@ import butterknife.ButterKnife;
 
 public class ActivitySplash extends AppCompatActivity {
 
-    @BindView(R.id.img_app)
-    ImageView img_app;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
-
         startAnimation();
     }
 
@@ -41,5 +37,8 @@ public class ActivitySplash extends AppCompatActivity {
         }, 500);
 
     }
+
+    @BindView(R.id.img_app)
+    ImageView img_app;
 
 }

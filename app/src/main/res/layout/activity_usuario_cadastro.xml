@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,215 +7,231 @@
     android:background="@drawable/shape_gradient_vermelho"
     tools:context=".controller.UsuarioCadastroActivity">
 
-    <ImageView
-        android:id="@+id/img_app"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/espaco_grande"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:contentDescription="@string/str_emblema"
-        android:src="@mipmap/ic_maca"
-        android:elevation="2dp"
-        android:tint="@color/colorPrimary" />
-
-    <LinearLayout
-        android:layout_marginTop="-50dp"
-        android:paddingTop="60dp"
-        android:id="@+id/l_cadastro"
-        android:transitionName="cadastro_transition"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/img_app"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:elevation="1dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:layout_marginTop="@dimen/espaco_gigante">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_vamos_comecar"
-            android:textAllCaps="true"
-            android:fontFamily="@font/luckiest"
-            android:textSize="@dimen/texto_subtitulo"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/grey"
-            android:textStyle="normal" />
+        <ImageView
+            android:id="@+id/img_app"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/shape_quadrado_arr_branco"
+            android:contentDescription="@string/str_emblema"
+            android:elevation="2dp"
+            android:src="@mipmap/ic_maca"
+            android:tint="@color/colorPrimary" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <LinearLayout
+            android:id="@+id/l_cadastro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_nome"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:counterMaxLength="40"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/hint_email"
-            app:startIconDrawable="@drawable/ic_usuario"
-            app:startIconTint="@color/grey">
+            android:layout_below="@id/img_app"
+            android:layout_marginTop="-50dp"
+            android:background="@drawable/shape_quadrado_arr_branco"
+            android:elevation="1dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:paddingTop="60dp"
+            android:transitionName="cadastro_transition">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_nome"
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/luckiest"
+                android:text="@string/str_vamos_comecar"
                 android:textAllCaps="true"
-                android:maxLength="40"
-                android:textSize="@dimen/texto_label"
-                android:textColor="@color/grey" />
+                android:textColor="@color/grey"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="normal" />
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_cpf"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterEnabled="true"
-            app:counterMaxLength="11"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_cpf"
-            app:startIconDrawable="@drawable/ic_cpf"
-            app:startIconTint="@color/grey">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_cpf"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_nome"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:textAllCaps="true"
-                android:maxLength="11"
-                android:textSize="@dimen/texto_label"
-                android:textColor="@color/grey" />
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_nome"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/grey"
+                app:counterMaxLength="40"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/grey"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/str_email"
+                app:startIconDrawable="@drawable/ic_usuario"
+                app:startIconTint="@color/grey">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="40"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_email"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:counterMaxLength="40"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_email"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/grey">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_email"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_cpf"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textAllCaps="true"
-                android:maxLength="40"
-                android:textSize="@dimen/texto_label"
-                android:textColor="@color/grey" />
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_cpf"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/grey"
+                app:counterEnabled="true"
+                app:counterMaxLength="11"
+                app:counterTextColor="@color/colorPrimary"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/grey"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/str_cpf"
+                app:startIconDrawable="@drawable/ic_cpf"
+                app:startIconTint="@color/grey">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_senha"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterEnabled="true"
-            app:counterMaxLength="10"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_senha"
-            app:startIconDrawable="@drawable/ic_senha"
-            app:startIconTint="@color/grey">
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_senha"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textAllCaps="true"
-                android:maxLength="10"
-                android:textSize="@dimen/texto_label"
-                android:textColor="@color/grey" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_email"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/grey"
+                app:counterMaxLength="40"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/grey"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/str_email"
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/grey">
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_senha_confirm"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterEnabled="true"
-            app:counterMaxLength="10"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_senha_confirm"
-            app:startIconDrawable="@drawable/ic_senha"
-            app:startIconTint="@color/grey">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="40"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_senha_conf"
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_senha"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:textAllCaps="true"
-                android:maxLength="10"
-                android:textSize="@dimen/texto_label"
-                android:textColor="@color/grey" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_senha"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/grey"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:counterTextColor="@color/colorPrimary"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/str_senha"
+                app:startIconDrawable="@drawable/ic_senha"
+                app:startIconTint="@color/grey">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLength="10"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/bt_cadastrar"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_senha_conf"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/espaco_pequeno"
-                android:background="@drawable/shape_quadrado_arr_vermelho"
-                android:elevation="5dp"
-                android:padding="@dimen/espaco_muito_pequeno"
-                android:text="@string/str_continuar"
-                android:textSize="@dimen/texto_botao" />
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_senha_confirm"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/grey"
+                app:counterEnabled="true"
+                app:counterMaxLength="10"
+                app:counterTextColor="@color/colorPrimary"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/str_senha_confirm"
+                app:startIconDrawable="@drawable/ic_senha"
+                app:startIconTint="@color/grey">
 
-        </RelativeLayout>
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_senha_conf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLength="10"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
+            </com.google.android.material.textfield.TextInputLayout>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center">
 
-</RelativeLayout>
+                <Button
+                    android:id="@+id/bt_cadastrar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/espaco_pequeno"
+                    android:background="@drawable/shape_quadrado_arr_vermelho"
+                    android:elevation="5dp"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:transitionName="base_transition"
+                    android:text="@string/str_continuar"
+                    android:textSize="@dimen/texto_botao" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

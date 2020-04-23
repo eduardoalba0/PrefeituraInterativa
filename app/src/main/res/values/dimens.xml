@@ -8,7 +8,7 @@
     <dimen name="espaco_gigante">40dp</dimen>
 
     <!-- fontes-->
-    <dimen name="texto_titulo">35sp</dimen>
+    <dimen name="texto_titulo">30sp</dimen>
     <dimen name="texto_subtitulo">25sp</dimen>
     <dimen name="texto_label">15sp</dimen>
     <dimen name="texto_botao">20sp</dimen>

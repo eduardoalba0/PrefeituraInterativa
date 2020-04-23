@@ -1,6 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
@@ -41,10 +40,12 @@ public class Departamento implements Serializable {
         DepartamentoSuperior_ID = departamentoSuperior_ID;
     }
 
+    @Exclude
     public Departamento getDepartamentoSuperior() {
         return departamentoSuperior;
     }
 
+    @Exclude
     public void setDepartamentoSuperior(Departamento departamentoSuperior) {
         this.departamentoSuperior = departamentoSuperior;
     }

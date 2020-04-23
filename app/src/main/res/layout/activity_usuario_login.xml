@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,164 +9,171 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/tamanho_quadrado_irregular"
-        android:background="@drawable/shape_quadrado_irregular_vermelho" />
+        android:layout_height="0dp">
 
-    <ImageView
-        android:id="@+id/img_app"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/espaco_grande"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:contentDescription="@string/str_emblema"
-        android:src="@mipmap/ic_maca"
-        android:tint="@color/colorPrimary"
-        android:transitionName="splash_transition" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/tamanho_quadrado_irregular"
+            android:background="@drawable/shape_quadrado_irregular_vermelho" />
 
-    <LinearLayout
-        android:layout_margin="@dimen/espaco_pequeno"
-        android:id="@+id/l_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_app"
-        android:elevation="5dp"
-        android:orientation="vertical"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:padding="@dimen/espaco_grande"
-        android:gravity="center"
-        android:transitionName="cadastro_transition">
+        <ImageView
+            android:id="@+id/img_app"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/espaco_gigante"
+            android:background="@drawable/shape_quadrado_arr_branco"
+            android:contentDescription="@string/str_emblema"
+            android:src="@mipmap/ic_maca"
+            android:tint="@color/colorPrimary"
+            android:transitionName="splash_transition" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_pequeno"
-            android:text="@string/str_vamos_comecar"
-            android:fontFamily="@font/luckiest"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/texto_subtitulo"
-            android:textStyle="normal" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edl_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <LinearLayout
+            android:id="@+id/l_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/hint_email"
-            app:boxStrokeColor="@color/grey"
-            app:endIconMode="clear_text"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/hint_email"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/grey">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:textSize="@dimen/texto_label"
-                android:textAllCaps="true"
-                android:textColor="@color/grey" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edl_senha"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:hint="@string/hint_senha"
-            app:boxStrokeColor="@color/grey"
-            app:endIconMode="password_toggle"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/hint_senha"
-            app:startIconDrawable="@drawable/ic_senha"
-            app:startIconTint="@color/grey">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_senha"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAllCaps="true"
-                android:textSize="@dimen/texto_label"
-                android:inputType="textPassword"
-                android:textColor="@color/grey" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_recuperar_senha"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/espaco_muito_pequeno"
-            android:backgroundTint="@color/white"
-            android:text="@string/str_esqueceu_senha"
-            android:textAllCaps="true"
-            android:textColor="@color/colorSecondary"
-            android:textSize="@dimen/texto_label" />
-
-        <Button
-            android:id="@+id/bt_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_pequeno"
-            android:padding="@dimen/espaco_muito_pequeno"
-            android:background="@drawable/shape_quadrado_arr_vermelho"
-            android:elevation="5dp"
-            android:textSize="@dimen/texto_botao"
-            android:transitionName="base_transition"
-            android:text="@string/str_entrar" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/l_login"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_login_google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            android:layout_below="@+id/img_app"
+            android:layout_margin="@dimen/espaco_medio"
+            android:background="@drawable/shape_quadrado_arr_branco"
             android:elevation="5dp"
             android:gravity="center"
-            android:layout_margin="@dimen/espaco_pequeno"
+            android:orientation="vertical"
             android:padding="@dimen/espaco_pequeno"
-            android:text="@string/str_conta_google"
-            android:textAllCaps="true"
-            android:textSize="@dimen/texto_label"
-            android:textColor="@color/grey"
-            app:cornerRadius="@dimen/raio_quadrado_medio"
-            app:icon="@drawable/ic_google"
-            app:iconTintMode="multiply" />
+            android:transitionName="cadastro_transition">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_cadastrar"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_pequeno"
+                android:fontFamily="@font/luckiest"
+                android:text="@string/str_vamos_comecar"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/texto_subtitulo"
+                android:textStyle="normal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_email"
+                app:boxStrokeColor="@color/grey"
+                app:endIconMode="clear_text"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/str_email"
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/grey"
+                app:endIconTint="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_senha"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/hint_senha"
+                app:boxStrokeColor="@color/grey"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/grey"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/grey"
+                app:startIconContentDescription="@string/hint_senha"
+                app:startIconDrawable="@drawable/ic_senha"
+                app:startIconTint="@color/grey">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_senha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:textAllCaps="true"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/texto_label" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_recuperar_senha"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/espaco_muito_pequeno"
+                android:backgroundTint="@color/white"
+                android:text="@string/str_esqueceu_senha"
+                android:textAllCaps="true"
+                android:textColor="@color/colorSecondary"
+                android:textSize="@dimen/texto_label" />
+
+            <Button
+                android:id="@+id/bt_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_pequeno"
+                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:elevation="5dp"
+                android:padding="@dimen/espaco_muito_pequeno"
+                android:text="@string/str_entrar"
+                android:textSize="@dimen/texto_botao"
+                android:transitionName="base_transition" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:text="@string/str_cadastrar"
-            android:textAllCaps="true"
-            android:backgroundTint="@color/white"
-            android:elevation="5dp"
-            android:layout_margin="@dimen/espaco_pequeno"
-            android:textSize="@dimen/texto_label"
-            android:textColor="@color/colorSecondary"
-            app:cornerRadius="@dimen/espaco_pequeno"
-            app:strokeColor="@color/colorSecondary" />
-    </LinearLayout>
+            android:layout_below="@id/l_login"
+            android:gravity="center"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_login_google"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:backgroundTint="@color/white"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:padding="@dimen/espaco_pequeno"
+                android:text="@string/str_conta_google"
+                android:textAllCaps="true"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/texto_label"
+                app:cornerRadius="@dimen/raio_quadrado_medio"
+                android:transitionName="base_transition"
+                app:icon="@drawable/ic_google"
+                app:iconTintMode="multiply" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_cadastrar"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_pequeno"
+                android:backgroundTint="@color/white"
+                android:elevation="5dp"
+                android:text="@string/str_cadastrar"
+                android:textAllCaps="true"
+                android:textColor="@color/colorSecondary"
+                android:textSize="@dimen/texto_label"
+                app:cornerRadius="@dimen/espaco_pequeno"
+                app:strokeColor="@color/colorSecondary" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>
