@@ -44,6 +44,8 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.1'
     implementation 'com.github.f0ris.sweetalert:library:1.5.6'
     implementation 'com.mobsandgeeks:android-saripaar:2.0.0'
+    implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    implementation 'me.yokeyword:fragmentationx:1.0.2'
 
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 }

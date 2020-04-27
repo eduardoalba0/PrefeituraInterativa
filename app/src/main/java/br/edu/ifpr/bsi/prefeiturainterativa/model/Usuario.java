@@ -1,6 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
@@ -12,9 +11,12 @@ public class Usuario implements Serializable {
     private String nome;
     private String cpf;
     private String email;
-    private String senha;
     private String tipoUsuario_ID;
 
+    @Exclude
+    private String urlFoto;
+    @Exclude
+    private String senha;
     @Exclude
     private TipoUsuario tipoUsuario;
 
@@ -36,6 +38,15 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
+    @Exclude
+    public String getUrlFoto() {
+        return urlFoto;
+    }
+
+    public void setUrlFoto(String urlFoto) {
+        this.urlFoto = urlFoto;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -52,6 +63,7 @@ public class Usuario implements Serializable {
         this.email = email;
     }
 
+    @Exclude
     public String getSenha() {
         return senha;
     }
@@ -68,6 +80,7 @@ public class Usuario implements Serializable {
         this.tipoUsuario_ID = tipoUsuario_ID;
     }
 
+    @Exclude
     public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }

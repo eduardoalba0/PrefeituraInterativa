@@ -1,15 +1,23 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
-import androidx.appcompat.app.AppCompatActivity;
-import br.edu.ifpr.bsi.prefeiturainterativa.R;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class SolicitacaoCadastroActivity extends AppCompatActivity {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import br.edu.ifpr.bsi.prefeiturainterativa.R;
+import butterknife.ButterKnife;
 
+public class SolicitacaoCadastroActivity extends Fragment {
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_solicitacao_cadastro);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_solicitacao_1, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
 }

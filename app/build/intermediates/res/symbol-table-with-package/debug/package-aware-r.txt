@@ -29,13 +29,23 @@ anim design_snackbar_in
 anim design_snackbar_out
 anim error_frame_in
 anim error_x_in
+anim h_fragment_enter
+anim h_fragment_exit
+anim h_fragment_pop_enter
+anim h_fragment_pop_exit
 anim modal_in
 anim modal_out
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
+anim no_anim
+anim pop_exit_no_anim
 anim success_bow_roate
 anim success_mask_layout
+anim v_fragment_enter
+anim v_fragment_exit
+anim v_fragment_pop_enter
+anim v_fragment_pop_exit
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -206,6 +216,20 @@ attr chipStrokeWidth
 attr chipStyle
 attr chipSurfaceColor
 attr circleCrop
+attr civ_border
+attr civ_border_color
+attr civ_border_color_direction
+attr civ_border_color_end
+attr civ_border_color_start
+attr civ_border_width
+attr civ_circle_color
+attr civ_circle_color_direction
+attr civ_circle_color_end
+attr civ_circle_color_start
+attr civ_shadow
+attr civ_shadow_color
+attr civ_shadow_gravity
+attr civ_shadow_radius
 attr closeIcon
 attr closeIconEnabled
 attr closeIconEndPadding
@@ -1025,6 +1049,8 @@ color tooltip_background_light
 color trans_success_stroke_color
 color warning_stroke_color
 color white
+color whiteEE
+color whiteFA
 dimen abc_action_bar_content_inset_material
 dimen abc_action_bar_content_inset_with_nav
 dimen abc_action_bar_default_height_material
@@ -1511,16 +1537,22 @@ drawable dialog_background
 drawable dialog_background_dark
 drawable error_center_x
 drawable error_circle
+drawable fragmentation_help
+drawable fragmentation_ic_expandable
+drawable fragmentation_ic_right
+drawable fragmentation_ic_stack
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gray_button_background
 drawable green_button_background
+drawable ic_adicionar_foto
 drawable ic_calendar_black_24dp
 drawable ic_clear_black_24dp
 drawable ic_cpf
 drawable ic_edit_black_24dp
 drawable ic_email
 drawable ic_google
+drawable ic_gravar
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
 drawable ic_launcher_background
@@ -1572,7 +1604,7 @@ drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable warning_circle
 drawable warning_sigh
-font luckiest
+font fredoka
 id ALT
 id BOTTOM_END
 id BOTTOM_START
@@ -1654,15 +1686,18 @@ id beginning
 id blocking
 id body_scroll
 id bottom
+id bottom_to_top
 id browser_actions_header_text
 id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id bt_atualizar
 id bt_cadastrar
 id bt_login
 id bt_login_google
 id bt_recuperar_senha
+id bt_redefinir
 id button
 id buttonPanel
 id buttons_container
@@ -1745,6 +1780,7 @@ id gone
 id group_divider
 id groups
 id hideable
+id hierarchy
 id home
 id homeAsUp
 id hybrid
@@ -1757,15 +1793,23 @@ id image_content_root
 id image_root
 id image_view
 id img_app
+id img_usuario
 id info
 id invisible
+id isexpand
 id italic
 id item_touch_helper_previous_elevation
 id l_cadastro
+id l_completar
+id l_content
+id l_footer
 id l_login
+id l_perfil
+id l_redefinicao
 id labeled
 id largeLabel
 id left
+id left_to_right
 id light
 id line1
 id line3
@@ -1830,7 +1874,6 @@ id parent_matrix
 id password_toggle
 id peekHeight
 id percent
-id pg_solicitacao
 id pin
 id primary_button
 id progressWheel
@@ -1841,6 +1884,7 @@ id radio
 id right
 id right_icon
 id right_side
+id right_to_left
 id rounded
 id satellite
 id save_non_transition_alpha
@@ -1865,6 +1909,7 @@ id search_voice_btn
 id secondary_button
 id select_dialog_listview
 id selected
+id shape_fundo
 id shortcut
 id showCustom
 id showHome
@@ -1921,12 +1966,14 @@ id title_template
 id title_text
 id top
 id topPanel
+id top_to_bottom
 id touch_outside
 id transition_current_scene
 id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_titulo
 id tx_app
 id unchecked
 id uniform
@@ -1934,6 +1981,7 @@ id unlabeled
 id up
 id useLogo
 id view_offset_helper
+id view_root
 id visible
 id warning_frame
 id wide
@@ -2004,16 +2052,17 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_adm_atendimento
-layout activity_adm_atendimento_listar
-layout activity_base
-layout activity_main
+layout activity_inicio
 layout activity_solicitacao_cadastro
 layout activity_solicitacao_listar
 layout activity_solicitacao_visualizar
 layout activity_splash
+layout activity_template
 layout activity_usuario_cadastro
+layout activity_usuario_completar_dados
 layout activity_usuario_login
+layout activity_usuario_perfil
+layout activity_usuario_redefinir_senha
 layout alert_dialog
 layout banner
 layout browser_actions_context_menu_page
@@ -2103,6 +2152,7 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 mipmap ic_launcher
+mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 mipmap ic_maca
 plurals mtrl_badge_content_description
@@ -2172,6 +2222,8 @@ string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string fcm_fallback_notification_channel_label
 string firebase_database_url
+string fragmentation_stack_help
+string fragmentation_stack_view
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -2226,7 +2278,10 @@ string path_password_strike_through
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
+string str_atualizar
 string str_cadastrar
+string str_cadastrar_titulo
+string str_completar_cadastro
 string str_conta_google
 string str_continuar
 string str_cpf
@@ -2235,6 +2290,9 @@ string str_emblema
 string str_entrar
 string str_esqueceu_senha
 string str_nome
+string str_ou
+string str_perfil
+string str_redefinir
 string str_senha
 string str_senha_confirm
 string str_tipo_problema
@@ -2249,6 +2307,7 @@ style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
 style AppTheme
+style AppTheme_FullScreen
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -2961,6 +3020,7 @@ styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection
+styleable CircularImageView civ_border civ_border_color civ_border_color_direction civ_border_color_end civ_border_color_start civ_border_width civ_circle_color civ_circle_color_direction civ_circle_color_end civ_circle_color_start civ_shadow civ_shadow_color civ_shadow_gravity civ_shadow_radius
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha
@@ -3032,6 +3092,10 @@ styleable View android_theme android_focusable paddingEnd paddingStart theme
 styleable ViewBackgroundHelper android_background backgroundTint backgroundTintMode
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
+transition changebounds
+transition explode
+transition fade
+transition slide
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end
 xml standalone_badge_gravity_bottom_start

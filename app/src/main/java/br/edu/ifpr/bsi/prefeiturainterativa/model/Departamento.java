@@ -45,7 +45,6 @@ public class Departamento implements Serializable {
         return departamentoSuperior;
     }
 
-    @Exclude
     public void setDepartamentoSuperior(Departamento departamentoSuperior) {
         this.departamentoSuperior = departamentoSuperior;
     }

@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_vermelho"
@@ -9,8 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/espaco_gigante">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/img_app"
@@ -18,11 +18,13 @@
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/espaco_gigante"
             android:background="@drawable/shape_quadrado_arr_branco"
             android:contentDescription="@string/str_emblema"
             android:elevation="2dp"
             android:src="@mipmap/ic_maca"
-            android:tint="@color/colorPrimary" />
+            android:tint="@color/colorPrimary"
+            android:transitionName="splash_transition" />
 
         <LinearLayout
             android:id="@+id/l_cadastro"
@@ -30,23 +32,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/img_app"
             android:layout_marginTop="-50dp"
+            android:layout_marginBottom="@dimen/espaco_medio"
             android:background="@drawable/shape_quadrado_arr_branco"
             android:elevation="1dp"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="20dp"
-            android:paddingTop="60dp"
-            android:transitionName="cadastro_transition">
+            android:padding="@dimen/espaco_medio">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="@dimen/espaco_muito_grande"
                 android:layout_marginBottom="10dp"
-                android:fontFamily="@font/luckiest"
-                android:text="@string/str_vamos_comecar"
+                android:text="@string/str_cadastrar_titulo"
                 android:textAllCaps="true"
-                android:textColor="@color/grey"
+                android:gravity="center"
+                android:textColor="@color/colorSecondary"
                 android:textSize="@dimen/texto_subtitulo"
                 android:textStyle="normal" />
 
@@ -74,7 +75,7 @@
                     android:id="@+id/edt_nome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
+                    android:inputType="textPersonName"
                     android:maxLength="40"
                     android:textAllCaps="true"
                     android:textColor="@color/grey"
@@ -214,24 +215,18 @@
                     android:textSize="@dimen/texto_label" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center">
 
-                <Button
-                    android:id="@+id/bt_cadastrar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/espaco_pequeno"
-                    android:background="@drawable/shape_quadrado_arr_vermelho"
-                    android:elevation="5dp"
-                    android:padding="@dimen/espaco_muito_pequeno"
-                    android:transitionName="base_transition"
-                    android:text="@string/str_continuar"
-                    android:textSize="@dimen/texto_botao" />
-            </RelativeLayout>
+            <Button
+                android:id="@+id/bt_cadastrar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_grande"
+                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:elevation="5dp"
+                android:padding="@dimen/espaco_muito_pequeno"
+                android:text="@string/str_continuar"
+                android:textSize="@dimen/texto_botao"
+                android:transitionName="base_transition" />
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>

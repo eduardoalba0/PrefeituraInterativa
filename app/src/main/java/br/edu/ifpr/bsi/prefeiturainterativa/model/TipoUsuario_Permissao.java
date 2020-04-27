@@ -1,6 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
@@ -52,6 +51,7 @@ public class TipoUsuario_Permissao implements Serializable {
         this.permissao_ID = permissao_ID;
     }
 
+    @Exclude
     public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
     }
@@ -60,6 +60,7 @@ public class TipoUsuario_Permissao implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
+    @Exclude
     public Permissao getPermissao() {
         return permissao;
     }

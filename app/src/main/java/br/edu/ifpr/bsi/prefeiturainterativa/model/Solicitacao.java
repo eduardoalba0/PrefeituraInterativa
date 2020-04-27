@@ -1,6 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import com.google.firebase.firestore.DocumentId;
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.ServerTimestamp;
 
@@ -136,6 +135,7 @@ public class Solicitacao implements Serializable {
         this.data = data;
     }
 
+    @Exclude
     public TipoSolicitacao getTipoSolicitacao() {
         return tipoSolicitacao;
     }
@@ -144,6 +144,7 @@ public class Solicitacao implements Serializable {
         this.tipoSolicitacao = tipoSolicitacao;
     }
 
+    @Exclude
     public Usuario getUsuario() {
         return usuario;
     }

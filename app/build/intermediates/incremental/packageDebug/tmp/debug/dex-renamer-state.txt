@@ -1,10 +1,13 @@
-#Wed Apr 22 21:24:58 BRT 2020
+#Sun Apr 26 22:47:43 BRT 2020
+path.3=classes3.dex
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex
+renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
+base.3=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
 base.2=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
-base.1=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
-base.0=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.1=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+base.0=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1

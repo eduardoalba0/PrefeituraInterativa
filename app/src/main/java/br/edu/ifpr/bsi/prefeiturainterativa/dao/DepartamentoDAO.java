@@ -1,35 +1,47 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.dao;
 
-import android.content.Context;
+import android.app.Activity;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.UUID;
 
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
-import br.edu.ifpr.bsi.prefeiturainterativa.util.DatabaseHelper;
 
 public class DepartamentoDAO {
+
+
     private DatabaseHelper helper;
     private CollectionReference reference;
 
-    public DepartamentoDAO(Context context) {
-        helper = new DatabaseHelper<Departamento>(context, Departamento.class);
+    public DepartamentoDAO(Activity context) {
+        helper = new DatabaseHelper(context);
         reference = helper.getDataBase().collection("Departamentos");
     }
 
-    public Departamento inserirAtualizar(Departamento departamento) {
-        if (departamento.get_ID() == null || departamento.get_ID().equals("")) {
+    public Task<Void> inserirAtualizar(Departamento departamento) {
+        if (departamento.get_ID() == null || departamento.get_ID().equals(""))
             departamento.set_ID(UUID.randomUUID().toString());
-            helper.inserir(reference.document(departamento.get_ID()), departamento);
-        } else
-            helper.alterar(reference.document(departamento.get_ID()), departamento);
-        return departamento;
+        return helper.inserirAtualizar(reference.document(departamento.get_ID()), departamento);
     }
 
-    public void remover(Departamento departamento) {
+    public Task<Void> remover(Departamento departamento) {
         if (departamento.get_ID() != null && !departamento.get_ID().equals(""))
-            helper.remover(reference.document(departamento.get_ID()));
+            return null;
+        return helper.remover(reference.document(departamento.get_ID()));
     }
 
+    public Task<DocumentSnapshot> get(Departamento departamento) {
+        if (departamento.get_ID() != null && !departamento.get_ID().equals(""))
+            return null;
+        return helper.get(reference.document(departamento.get_ID()));
+    }
+
+    public Task<QuerySnapshot> getAll() {
+        return helper.getAll(reference);
+    }
 }

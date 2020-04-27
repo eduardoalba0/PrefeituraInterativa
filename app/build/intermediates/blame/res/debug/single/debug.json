@@ -100,6 +100,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\layout\\design_navigation_item.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_no_anim.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\no_anim.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_design_ic_visibility_off.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable-xxhdpi-v4\\design_ic_visibility_off.png"
     },
@@ -126,6 +130,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21_mtrl_fast_out_slow_in.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\interpolator-v21\\mtrl_fast_out_slow_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_usuario_perfil.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_usuario_perfil.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_000.png.flat",
@@ -184,6 +192,10 @@
         "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\992244fed3081cb1c6712f5ba3e90b88\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
     },
@@ -194,10 +206,6 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim-v21_mtrl_bottom_sheet_slide_in.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\anim-v21\\mtrl_bottom_sheet_slide_in.xml"
-    },
-    {
-        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\color_design_icon_tint.xml.flat",
@@ -228,12 +236,20 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_v_fragment_pop_exit.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\v_fragment_pop_exit.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mtrl_tabs_default_indicator.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable\\mtrl_tabs_default_indicator.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-watch-v20_common_google_signin_btn_text_disabled.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\7ac28d13f722f76afbf79ca903bdfa48\\res\\drawable-watch-v20\\common_google_signin_btn_text_disabled.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_fragmentation_ic_stack.png.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\drawable-xxhdpi-v4\\fragmentation_ic_stack.png"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
@@ -288,6 +304,10 @@
         "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\drawable\\ic_voltar.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_template.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_template.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\992244fed3081cb1c6712f5ba3e90b88\\res\\drawable-xxhdpi-v4\\googleg_standard_color_18.png"
     },
@@ -326,6 +346,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_unchecked_icon_null_animation.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\anim\\btn_checkbox_to_unchecked_icon_null_animation.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_pop_exit_no_anim.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\pop_exit_no_anim.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v21_design_ic_visibility_off.xml.flat",
@@ -624,6 +648,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-mdpi-v4\\abc_text_select_handle_middle_mtrl_light.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\transition_changebounds.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\transition\\changebounds.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash.xml.flat",
         "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_splash.xml"
     },
@@ -744,12 +772,24 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable\\abc_btn_radio_material_anim.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_v_fragment_pop_enter.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\v_fragment_pop_enter.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_h_fragment_pop_enter.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\h_fragment_pop_enter.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_textfield_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-xxhdpi-v4\\abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_focused.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\992244fed3081cb1c6712f5ba3e90b88\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_fragmentation_ic_right.png.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\drawable-xxhdpi-v4\\fragmentation_ic_right.png"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
@@ -812,6 +852,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_gravar.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\drawable\\ic_gravar.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xxhdpi-v17_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-ldrtl-xxhdpi-v17\\abc_ic_menu_cut_mtrl_alpha.png"
     },
@@ -872,6 +916,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-xhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_inicio.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_inicio.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_bg.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\1c894efa247bcf2e4a06b1a000f71575\\res\\drawable\\notification_bg.xml"
     },
@@ -882,10 +930,6 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_googleg_disabled_color_18.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\992244fed3081cb1c6712f5ba3e90b88\\res\\drawable-mdpi-v4\\googleg_disabled_color_18.png"
-    },
-    {
-        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_base.xml.flat",
-        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_base.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_usuario_cadastro.xml.flat",
@@ -1042,6 +1086,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4_btn_clear.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\adc1566255b70c639e3a31d0e55a6a99\\res\\drawable-ldpi-v4\\btn_clear.png"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\transition_explode.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\transition\\explode.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
@@ -1304,10 +1352,6 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\animator\\mtrl_btn_state_list_anim.xml"
     },
     {
-        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_adm_atendimento_listar.xml.flat",
-        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_adm_atendimento_listar.xml"
-    },
-    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-mdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
@@ -1348,6 +1392,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable\\design_fab_background.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_h_fragment_enter.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\h_fragment_enter.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_modal_out.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6958a192340dac0ec93857178c5fe2f4\\res\\anim\\modal_out.xml"
     },
@@ -1372,6 +1420,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-xxxhdpi-v4\\abc_scrubber_control_to_pressed_mtrl_000.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_fragmentation_help.png.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\drawable-xxhdpi-v4\\fragmentation_help.png"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_text_select_handle_middle_mtrl_dark.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-xxhdpi-v4\\abc_text_select_handle_middle_mtrl_dark.png"
     },
@@ -1390,10 +1442,6 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-hdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
-    },
-    {
-        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\font_luckiest.ttf.flat",
-        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\font\\luckiest.ttf"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_light.9.png.flat",
@@ -1508,8 +1556,16 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_mtrl_calendar_month.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\layout\\mtrl_calendar_month.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\interpolator_btn_checkbox_unchecked_mtrl_animation_interpolator_1.xml.flat",
@@ -1550,6 +1606,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_navigation_empty_icon.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable\\navigation_empty_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_adicionar_foto.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\drawable\\ic_adicionar_foto.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_cascading_menu_item_layout.xml.flat",
@@ -1692,6 +1752,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_v_fragment_enter.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\v_fragment_enter.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_btn_bg_color_selector.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\color\\mtrl_btn_bg_color_selector.xml"
     },
@@ -1708,6 +1772,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\1c894efa247bcf2e4a06b1a000f71575\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\transition_fade.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\transition\\fade.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\xml_standalone_badge_gravity_bottom_end.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\xml\\standalone_badge_gravity_bottom_end.xml"
     },
@@ -1722,6 +1790,14 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_show_motion_spec.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\animator\\mtrl_fab_show_motion_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_h_fragment_exit.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\h_fragment_exit.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_usuario_completar_dados.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_usuario_completar_dados.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_avd_hide_password.xml.flat",
@@ -2004,10 +2080,6 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\992244fed3081cb1c6712f5ba3e90b88\\res\\drawable\\common_google_signin_btn_icon_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_adm_atendimento.xml.flat",
-        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_adm_atendimento.xml"
-    },
-    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_tint_switch_track.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\color\\abc_tint_switch_track.xml"
     },
@@ -2018,6 +2090,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_mtrl_card_lowers_interpolator.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\anim\\mtrl_card_lowers_interpolator.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_fragmentation_ic_expandable.png.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\drawable-xxhdpi-v4\\fragmentation_ic_expandable.png"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_red_button_background.xml.flat",
@@ -2034,6 +2110,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_test_custom_background.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable\\test_custom_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\color_material_on_surface_emphasis_medium.xml.flat",
@@ -2148,6 +2228,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\color\\material_on_surface_disabled.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_usuario_redefinir_senha.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_usuario_redefinir_senha.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_menu_arrow_up_black_24dp.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable\\ic_menu_arrow_up_black_24dp.xml"
     },
@@ -2172,6 +2256,10 @@
         "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-mdpi-v4\\abc_textfield_default_mtrl_alpha.9.png"
     },
@@ -2190,6 +2278,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mtrl_dropdown_arrow.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\drawable\\mtrl_dropdown_arrow.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_v_fragment_exit.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\v_fragment_exit.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_dark.png.flat",
@@ -2290,6 +2382,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_longpressed_holo.9.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-hdpi-v4\\abc_list_longpressed_holo.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_h_fragment_pop_exit.xml.flat",
+        "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\592d6757a757a39ba47f1495a5e9c378\\res\\anim\\h_fragment_pop_exit.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_dark_normal_background.9.png.flat",
@@ -2454,6 +2550,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_expand_spec.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\transition_slide.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\transition\\slide.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_extended_fab_state_list_animator.xml.flat",
@@ -2744,6 +2844,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-xhdpi-v4\\abc_ic_star_black_16dp.png"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_menu_share_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-hdpi-v4\\abc_ic_menu_share_mtrl_alpha.png"
     },
@@ -2814,6 +2918,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_notification_icon_background.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\1c894efa247bcf2e4a06b1a000f71575\\res\\drawable\\notification_icon_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\font_fredoka.ttf.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\font\\fredoka.ttf"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_mtrl_picker_header_fullscreen.xml.flat",
@@ -2890,6 +2998,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-xxhdpi-v4\\abc_list_pressed_holo_dark.9.png"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\color_material_on_primary_emphasis_high_type.xml.flat",

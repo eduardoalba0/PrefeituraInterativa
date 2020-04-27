@@ -36,6 +36,7 @@ public class Funcionario extends Usuario {
         this.departamento_ID = departamento_ID;
     }
 
+    @Exclude
     public Departamento getDepartamento() {
         return departamento;
     }

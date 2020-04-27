@@ -2,22 +2,23 @@ package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Fade;
+import android.transition.Transition;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
-import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
 
 import java.util.List;
@@ -26,25 +27,34 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.util.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class UsuarioLoginActivity extends AppCompatActivity implements View.OnClickListener, Validator.ValidationListener {
+public class UsuarioLoginActivity extends AppCompatActivity implements View.OnClickListener,
+        Validator.ValidationListener, OnSuccessListener<AuthResult> {
 
     private Validator validador;
     private FirebaseHelper helper;
+    private UsuarioDAO dao;
+    private Usuario usuario;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_login);
-        ButterKnife.bind(this);
+        ButterKnife.bind(this, this);
         startAnimation();
         helper = new FirebaseHelper(this);
         validador = new Validator(this);
         validador.setValidationListener(this);
+        usuario = new Usuario();
+        dao = new UsuarioDAO(this);
     }
 
     @OnClick({R.id.bt_login, R.id.bt_login_google, R.id.bt_recuperar_senha, R.id.bt_cadastrar})
@@ -58,9 +68,10 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
                 logarGoogle();
                 break;
             case R.id.bt_recuperar_senha:
+                chamarActivity(UsuarioRedefinirActivity.class);
                 break;
             case R.id.bt_cadastrar:
-                chamarActivity(UsuarioCadastroActivity.class, "cadastro_transition", l_login);
+                chamarActivity(UsuarioCadastroActivity.class);
                 break;
         }
     }
@@ -69,7 +80,35 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
     public void onValidationSucceeded() {
         edl_email.setError(null);
         edl_senha.setError(null);
-        helper.logar(edt_email.getText().toString(), edt_senha.getText().toString(), bt_login);
+        usuario = new Usuario();
+        usuario.setEmail(edt_email.getText().toString());
+        usuario.setSenha(edt_senha.getText().toString());
+        helper.logar(usuario).addOnSuccessListener(this, this);
+    }
+
+    @Override
+    public void onSuccess(AuthResult authResult) {
+        usuario.set_ID(authResult.getUser().getUid());
+        if (!authResult.getUser().isEmailVerified()) {
+            Task<Void> task = helper.verificarEmail();
+            if (task != null)
+                task.addOnSuccessListener(this, aVoid ->
+                        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                                .setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
+                                .show());
+            return;
+        }
+
+        Task<DocumentSnapshot> task = dao.get(usuario);
+        if (task != null)
+            task.addOnSuccessListener(this, documentSnapshot -> {
+                Usuario aux = documentSnapshot.toObject(Usuario.class);
+                if (aux == null || aux.getCpf() == null || aux.getCpf().isEmpty())
+                    chamarActivity(UsuarioCompletarCadastroActivity.class);
+                else
+                    chamarActivity(ActivityTemplate.class);
+
+            });
     }
 
     @Override
@@ -88,16 +127,32 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == helper.RC_GOOGLE_LOGIN) {
             try {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-                helper.logarGoogle(account, bt_login_google);
+                Task<AuthResult> auth = helper.logarGoogle(account);
+
+                if (auth != null)
+                    auth.addOnSuccessListener(this, this);
+
             } catch (ApiException ex) {
+                ex.printStackTrace();
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
+
+    public void startAnimation() {
+        Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
+        t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, shape_fundo, l_login, l_footer));
+        getWindow().setSharedElementEnterTransition(t);
     }
 
     public void logarGoogle() {
@@ -105,26 +160,17 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
         startActivityForResult(intent, helper.RC_GOOGLE_LOGIN);
     }
 
-    public void startAnimation() {
-        Fade fade = new Fade();
-        fade.setDuration(1500);
-        getWindow().setEnterTransition(fade);
-        getWindow().setExitTransition(fade);
-    }
-
-    public <T> void chamarActivity(Class<T> classe, String transicao, View componente) {
-        Intent intent = new Intent(UsuarioLoginActivity.this, classe);
+    public <T> void chamarActivity(Class<T> activity) {
+        Intent intent = new Intent(UsuarioLoginActivity.this, activity);
         ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(UsuarioLoginActivity.this, componente, transicao);
+                makeSceneTransitionAnimation(UsuarioLoginActivity.this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());
     }
 
-    @NotEmpty(message = "Campo obrigatório.", trim = true)
     @Email(message = "Seu e-mail está inválido.")
     @BindView(R.id.edt_email)
     TextInputEditText edt_email;
 
-    @NotEmpty(message = "Campo obrigatório.", trim = true)
     @Password(min = 6, message = "Sua senha precisa ter no mínimo 6 caracteres.")
     @BindView(R.id.edt_senha)
     TextInputEditText edt_senha;
@@ -134,9 +180,6 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
 
     @BindView(R.id.edl_senha)
     TextInputLayout edl_senha;
-
-    @BindView(R.id.l_login)
-    LinearLayout l_login;
 
     @BindView(R.id.bt_login)
     Button bt_login;
@@ -150,4 +193,18 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
     @BindView(R.id.bt_cadastrar)
     MaterialButton bt_cadastrar;
 
+    @BindView(R.id.view_root)
+    View view_root;
+
+    @BindView(R.id.img_app)
+    View img_app;
+
+    @BindView(R.id.shape_fundo)
+    View shape_fundo;
+
+    @BindView(R.id.l_login)
+    View l_login;
+
+    @BindView(R.id.l_footer)
+    View l_footer;
 }

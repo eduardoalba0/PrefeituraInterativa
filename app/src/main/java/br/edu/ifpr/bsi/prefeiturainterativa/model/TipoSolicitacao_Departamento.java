@@ -43,6 +43,7 @@ public class TipoSolicitacao_Departamento implements Serializable {
         this.departamento_ID = departamento_ID;
     }
 
+    @Exclude
     public TipoSolicitacao getTipoSolicitacao() {
         return tipoSolicitacao;
     }
@@ -51,6 +52,7 @@ public class TipoSolicitacao_Departamento implements Serializable {
         this.tipoSolicitacao = tipoSolicitacao;
     }
 
+    @Exclude
     public Departamento getDepartamento() {
         return departamento;
     }

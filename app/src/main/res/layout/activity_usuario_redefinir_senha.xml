@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/shape_gradient_vermelho"
+    tools:context=".controller.UsuarioRedefinirActivity">
+
+    <ImageView
+        android:id="@+id/img_app"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/espaco_gigante"
+        android:background="@drawable/shape_quadrado_arr_branco"
+        android:contentDescription="@string/str_emblema"
+        android:elevation="5dp"
+        android:src="@mipmap/ic_maca"
+        android:tint="@color/colorPrimary"
+        android:transitionName="splash_transition" />
+
+    <LinearLayout
+        android:id="@+id/l_redefinicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/img_app"
+        android:layout_margin="@dimen/espaco_grande"
+        android:background="@drawable/shape_quadrado_arr_branco"
+        android:elevation="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/espaco_pequeno">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espaco_grande"
+            android:gravity="center"
+            android:text="@string/str_esqueceu_senha"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/texto_subtitulo"
+            android:textStyle="normal" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edl_cpf"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espaco_muito_pequeno"
+            android:hint="@string/str_cpf"
+            app:boxBackgroundColor="@color/white"
+            app:boxStrokeColor="@color/grey"
+            app:counterEnabled="true"
+            app:counterMaxLength="11"
+            app:counterTextColor="@color/colorPrimary"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/grey"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/grey"
+            app:startIconContentDescription="@string/str_cpf"
+            app:startIconDrawable="@drawable/ic_cpf"
+            app:startIconTint="@color/grey">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_cpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="11"
+                android:textAllCaps="true"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/texto_label" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/bt_redefinir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/espaco_grande"
+            android:background="@drawable/shape_quadrado_arr_vermelho"
+            android:elevation="5dp"
+            android:padding="@dimen/espaco_muito_pequeno"
+            android:text="@string/str_redefinir"
+            android:textSize="@dimen/texto_botao" />
+    </LinearLayout>
+</RelativeLayout>

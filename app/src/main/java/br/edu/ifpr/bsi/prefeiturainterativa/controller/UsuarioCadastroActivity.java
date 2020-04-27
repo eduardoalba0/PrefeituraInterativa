@@ -1,49 +1,69 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.transition.Fade;
+import android.transition.Transition;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.ConfirmPassword;
 import com.mobsandgeeks.saripaar.annotation.Email;
-import com.mobsandgeeks.saripaar.annotation.Min;
+import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
 
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.util.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class UsuarioCadastroActivity extends AppCompatActivity implements View.OnClickListener, Validator.ValidationListener {
+public class UsuarioCadastroActivity extends AppCompatActivity implements View.OnClickListener,
+        Validator.ValidationListener, OnSuccessListener<AuthResult> {
 
-    private Validator validator;
+    private Validator validador;
     private FirebaseHelper helper;
+    private UsuarioDAO dao;
+    private Usuario usuario;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_cadastro);
+        ButterKnife.bind(this, this);
         startAnimation();
-        ButterKnife.bind(this);
         helper = new FirebaseHelper(this);
-        validator = new Validator(this);
-        validator.setValidationListener(this);
+        validador = new Validator(this);
+        validador.setValidationListener(this);
+        dao = new UsuarioDAO(this);
+        usuario = new Usuario();
     }
+
 
     @OnClick(R.id.bt_cadastrar)
     @Override
     public void onClick(View view) {
-        validator.validate();
+        switch (view.getId()) {
+            case R.id.bt_cadastrar:
+                validador.validate();
+                break;
+        }
     }
 
     @Override
@@ -53,7 +73,41 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
         edl_email.setError(null);
         edl_senha.setError(null);
         edl_senha_conf.setError(null);
-        helper.registrar(edt_email.getText().toString(), edt_senha.getText().toString(), bt_cadastrar);
+
+        usuario = new Usuario();
+        usuario.setEmail(edt_email.getText().toString());
+        usuario.setSenha(edt_senha.getText().toString());
+        usuario.setNome(edt_nome.getText().toString());
+        usuario.setCpf(edt_cpf.getText().toString());
+
+        Task<AuthResult> task = helper.registrar(usuario);
+
+        if (task != null)
+            task.addOnSuccessListener(this, this)
+                    .addOnFailureListener(this, e -> {
+                        if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
+                            edl_email.setError("Seu e-mail já está cadastrado.");
+                    });
+    }
+
+    @Override
+    public void onSuccess(AuthResult authResult) {
+        usuario.set_ID(authResult.getUser().getUid());
+
+        helper.atualizarPerfil(usuario).addOnSuccessListener(this, aVoid ->
+
+                dao.inserirAtualizar(usuario).addOnSuccessListener(this, task ->
+
+                        helper.verificarEmail().addOnSuccessListener(this, bVoid ->
+
+                                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                                        .setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
+                                        .setConfirmClickListener(sweetAlertDialog -> {
+                                            Intent intent = new Intent(UsuarioCadastroActivity.this, UsuarioLoginActivity.class);
+                                            ActivityOptionsCompat options = ActivityOptionsCompat.
+                                                    makeSceneTransitionAnimation(UsuarioCadastroActivity.this, img_app, "splash_transition");
+                                            startActivity(intent, options.toBundle());
+                                        }).show())));
     }
 
     @Override
@@ -81,19 +135,18 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
     }
 
     public void startAnimation() {
-        Fade fade = new Fade();
-        fade.setDuration(1500);
-        getWindow().setEnterTransition(fade);
-        getWindow().setExitTransition(fade);
+        Transition t = TransitionHelper.inflateChangeBoundsTransition(this, 0);
+        t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, l_cadastro));
+        getWindow().setSharedElementEnterTransition(t);
     }
 
     @NotEmpty(message = "Campo obrigatório.", trim = true)
-    @Min(value = 10, message = "Seu nome está inválido.")
+    @Length(min = 8, message = "Seu nome está inválido")
     @BindView(R.id.edt_nome)
     TextInputEditText edt_nome;
 
     @NotEmpty(message = "Campo obrigatório.", trim = true)
-    @Min(value = 11, message = "Seu CPF está inválido.")
+    @Length(max = 11, min = 11, message = "Seu CPF está inválido.")
     @BindView(R.id.edt_cpf)
     TextInputEditText edt_cpf;
 
@@ -103,7 +156,7 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
     TextInputEditText edt_email;
 
     @NotEmpty(message = "Campo obrigatório.", trim = true)
-    @Password(min = 6, message = "Sua senha precisa ter no mínimo 6 caracteres.")
+    @Password(message = "Sua senha precisa ter no mínimo 6 caracteres.")
     @BindView(R.id.edt_senha)
     TextInputEditText edt_senha;
 
@@ -129,5 +182,14 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
 
     @BindView(R.id.bt_cadastrar)
     Button bt_cadastrar;
+
+    @BindView(R.id.view_root)
+    View view_root;
+
+    @BindView(R.id.img_app)
+    View img_app;
+
+    @BindView(R.id.l_cadastro)
+    View l_cadastro;
 
 }
