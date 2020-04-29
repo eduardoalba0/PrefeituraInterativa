@@ -1,7 +1,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.dao;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;

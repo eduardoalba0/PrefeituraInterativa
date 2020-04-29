@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#D50000</color>
-    <color name="colorSecondary">#DD2C00</color>
-    <color name="colorTertiary">#FF1744</color>
+    <color name="colorSecondary">#FF6D00</color>
+    <color name="colorTertiary">#F50057</color>
     <color name="white">#FFFFFF</color>
     <color name="whiteFA">#FAFAFA</color>
     <color name="whiteEE">#EEEEEE</color>
-    <color name="black">#020202</color>
-    <color name="grey">#FF5E5E5E</color>
+    <color name="black">#070707</color>
+    <color name="dark_green">#00695C</color>
 </resources>

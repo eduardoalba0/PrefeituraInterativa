@@ -17,20 +17,16 @@ public class DatabaseHelper {
 
     private FirebaseFirestore dataBase;
     private Activity context;
-    private SweetAlertDialog dialogo;
 
     public DatabaseHelper(Activity context) {
         if (FirebaseApp.getApps(context).isEmpty())
             FirebaseApp.initializeApp(context);
         this.context = context;
         dataBase = FirebaseFirestore.getInstance();
-        dialogo = new SweetAlertDialog(context, SweetAlertDialog.PROGRESS_TYPE);
     }
 
     public <T> Task<Void> inserirAtualizar(DocumentReference reference, T objeto) {
-        dialogo.setTitleText("Gravando...").show();
         return reference.set(objeto).addOnCompleteListener(context, task -> {
-            dialogo.dismiss();
             if (!task.isSuccessful()) {
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
@@ -44,9 +40,7 @@ public class DatabaseHelper {
     }
 
     public Task<Void> remover(DocumentReference reference) {
-        dialogo.setTitleText("Removendo...").show();
         return reference.delete().addOnCompleteListener(context, task -> {
-            dialogo.dismiss();
             if (!task.isSuccessful()) {
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
@@ -62,7 +56,6 @@ public class DatabaseHelper {
 
     public Task<DocumentSnapshot> get(DocumentReference reference) {
         return reference.get().addOnCompleteListener(context, task -> {
-            dialogo.dismiss();
             if (!task.isSuccessful())
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
@@ -76,7 +69,6 @@ public class DatabaseHelper {
 
     public Task<QuerySnapshot> getAll(CollectionReference reference) {
         return reference.get().addOnCompleteListener(context, task -> {
-            dialogo.dismiss();
             if (!task.isSuccessful())
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
@@ -90,7 +82,6 @@ public class DatabaseHelper {
 
     public Task<QuerySnapshot> getQuery(Query query) {
         return query.get().addOnCompleteListener(context, task -> {
-            dialogo.dismiss();
             if (!task.isSuccessful())
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)

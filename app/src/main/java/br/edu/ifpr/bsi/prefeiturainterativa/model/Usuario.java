@@ -1,5 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
+import android.net.Uri;
+
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
@@ -13,6 +15,8 @@ public class Usuario implements Serializable {
     private String email;
     private String tipoUsuario_ID;
 
+    @Exclude
+    private Uri uriFoto;
     @Exclude
     private String urlFoto;
     @Exclude
@@ -36,6 +40,15 @@ public class Usuario implements Serializable {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    @Exclude
+    public Uri getUriFoto() {
+        return uriFoto;
+    }
+
+    public void setUriFoto(Uri urlFoto) {
+        this.uriFoto = urlFoto;
     }
 
     @Exclude

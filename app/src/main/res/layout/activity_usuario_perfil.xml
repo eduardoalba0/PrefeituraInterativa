@@ -3,182 +3,206 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_root"
     android:layout_width="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/l_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="@dimen/espaco_medio"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:elevation="1dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/espaco_medio">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/img_usuario"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:contentDescription="@string/str_emblema"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_adicionar_foto"
-            app:civ_border_color="@color/grey"
-            app:civ_shadow="true"
-            app:civ_shadow_radius="2dp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edl_nome"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <LinearLayout
+            android:id="@+id/l_header"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_nome"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterMaxLength="40"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/grey"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_email"
-            app:startIconDrawable="@drawable/ic_usuario"
-            app:startIconTint="@color/grey">
+            android:layout_height="@dimen/quadrado_irregular_medio"
+            android:background="@drawable/shape_quadrado_irregular_vermelho"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:maxLength="40"
-                android:textAllCaps="true"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/texto_label" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edl_cpf"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_cpf"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterEnabled="true"
-            app:counterMaxLength="11"
-            app:counterTextColor="@color/colorPrimary"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/grey"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_cpf"
-            app:startIconDrawable="@drawable/ic_cpf"
-            app:startIconTint="@color/grey">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_cpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:maxLength="11"
-                android:textAllCaps="true"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/texto_label" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edl_email"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_email"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterMaxLength="40"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/grey"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_email"
-            app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/grey">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="none"
-                android:maxLength="40"
-                android:textAllCaps="true"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/texto_label" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_atualizar"
-            style="@style/Widget.MaterialComponents.Button.Icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_pequeno"
-            android:padding="@dimen/espaco_muito_pequeno"
-            android:shadowDy="2"
-            android:text="@string/str_atualizar"
-            android:textColor="@color/white"
-            android:textSize="@dimen/texto_botao"
-            app:backgroundTint="@color/grey"
-            app:cornerRadius="5dp"
-            app:icon="@drawable/ic_gravar"
-            app:iconGravity="end"
-            app:iconTint="@color/white" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_centerInParent="true"
-                android:layout_margin="@dimen/espaco_pequeno"
-                android:background="@color/grey" />
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/img_usuario"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_margin="@dimen/espaco_medio"
+                android:contentDescription="@string/str_emblema"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_adicionar_foto"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="3dp" />
 
             <TextView
+                android:id="@+id/tv_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:background="@color/white"
-                android:padding="@dimen/espaco_muito_pequeno"
-                android:text="@string/str_ou"
-                android:textAllCaps="true"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/texto_label" />
-        </RelativeLayout>
+                android:layout_margin="@dimen/espaco_medio"
+                android:gravity="center"
+                android:textSize="@dimen/texto_subtitulo" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_redefinir"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            android:layout_width="wrap_content"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_sair"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espaco_pequeno"
+                android:paddingStart="@dimen/espaco_medio"
+                android:paddingEnd="@dimen/espaco_medio"
+                android:text="@string/str_sair"
+                android:textColor="@color/white"
+                android:textSize="@dimen/texto_botao_label"
+                app:icon="@drawable/ic_sair"
+                app:iconGravity="end"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_perfil"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_pequeno"
-            android:padding="@dimen/espaco_muito_pequeno"
-            android:text="@string/str_redefinir"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/texto_botao"
-            app:icon="@drawable/ic_senha"
-            app:iconGravity="end"
-            app:iconTint="@color/colorPrimary"
-            app:strokeColor="@color/grey" />
-    </LinearLayout>
+            android:layout_below="@id/l_header"
+            android:layout_marginTop="@dimen/espaco_medio"
+            android:layout_marginBottom="@dimen/espaco_medio"
+            android:elevation="3dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/espaco_medio"
+            android:paddingEnd="@dimen/espaco_medio">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_nome"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_nome"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/dark_green"
+                app:counterMaxLength="40"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/dark_green"
+                app:startIconContentDescription="@string/str_email"
+                app:startIconDrawable="@drawable/ic_usuario"
+                app:startIconTint="@color/dark_green">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:maxLength="40"
+                    android:textAllCaps="true"
+                    android:textColor="@color/dark_green"
+                    android:textColorHint="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_cpf"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_label_cpf"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/dark_green"
+                app:counterEnabled="false"
+                app:counterMaxLength="11"
+                app:counterTextColor="@color/colorPrimary"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/dark_green"
+                app:startIconContentDescription="@string/str_label_cpf"
+                app:startIconDrawable="@drawable/ic_cpf"
+                app:startIconTint="@color/dark_green">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:maxLength="11"
+                    android:textAllCaps="true"
+                    android:textColor="@color/dark_green"
+                    android:textColorHint="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_label_email"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/dark_green"
+                app:counterMaxLength="40"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/dark_green"
+                app:startIconContentDescription="@string/str_email"
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/dark_green">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:maxLength="40"
+                    android:textAllCaps="true"
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_redefinir"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/espaco_muito_pequeno"
+                android:text="@string/str_redefinir"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/texto_botao"
+                app:icon="@drawable/ic_senha"
+                app:iconGravity="end"
+                app:iconTint="@color/colorPrimary"
+                app:strokeColor="@color/dark_green" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/espaco_pequeno"
+                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:elevation="2dp"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_atualizar"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_atualizar"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/texto_botao"
+                    app:backgroundTint="@color/float_transparent"
+                    app:icon="@drawable/ic_gravar"
+                    app:iconGravity="end"
+                    app:iconTint="@color/white" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

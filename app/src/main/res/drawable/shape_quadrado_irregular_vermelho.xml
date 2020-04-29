@@ -9,6 +9,7 @@
             <gradient
                 android:angle="45"
                 android:endColor="@color/colorSecondary"
+                android:centerColor="@color/colorSecondary"
                 android:startColor="@color/colorTertiary" />
             <corners android:radius="170dp" />
             <size
@@ -16,4 +17,5 @@
                 android:height="1000dp" />
         </shape>
     </item>
+    rrrrrrrrrr
 </layer-list>

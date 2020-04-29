@@ -10,12 +10,13 @@
     <!-- fontes-->
     <dimen name="texto_titulo">30sp</dimen>
     <dimen name="texto_subtitulo">25sp</dimen>
-    <dimen name="texto_label">15sp</dimen>
-    <dimen name="texto_botao">20sp</dimen>
+    <dimen name="texto_botao">15sp</dimen>
+    <dimen name="texto_botao_label">20sp</dimen>
 
     <!-- Circulos -->
     <dimen name="raio_quadrado_grande">50dp</dimen>
     <dimen name="raio_quadrado_medio">30dp</dimen>
     <dimen name="raio_quadrado_pequeno">10dp</dimen>
-    <dimen name="tamanho_quadrado_irregular">500dp</dimen>
+    <dimen name="quadrado_irregular_grande">500dp</dimen>
+    <dimen name="quadrado_irregular_medio">350dp</dimen>
 </resources>

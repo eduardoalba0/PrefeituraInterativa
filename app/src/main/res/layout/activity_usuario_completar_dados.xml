@@ -1,93 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_vermelho"
+    android:fillViewport="true"
+    android:paddingTop="2dp"
+    android:paddingBottom="48dp"
     tools:context=".controller.UsuarioRedefinirActivity">
 
-    <ImageView
-        android:id="@+id/img_app"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/espaco_gigante"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:contentDescription="@string/str_emblema"
-        android:elevation="5dp"
-        android:src="@mipmap/ic_maca"
-        android:tint="@color/colorPrimary"
-        android:transitionName="splash_transition" />
-
-    <LinearLayout
-        android:id="@+id/l_completar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/img_app"
-        android:layout_margin="@dimen/espaco_grande"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:elevation="5dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/espaco_pequeno">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_grande"
-            android:gravity="center"
-            android:text="@string/str_completar_cadastro"
-            android:textAllCaps="true"
-            android:textColor="@color/colorSecondary"
-            android:textSize="@dimen/texto_subtitulo"
-            android:textStyle="normal" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edl_cpf"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        <View
+            android:id="@+id/shape_irregular"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:hint="@string/str_cpf"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/grey"
-            app:counterEnabled="true"
-            app:counterMaxLength="11"
-            app:counterTextColor="@color/colorPrimary"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/grey"
-            app:errorEnabled="true"
-            app:hintAnimationEnabled="true"
-            app:hintEnabled="true"
-            app:hintTextColor="@color/grey"
-            app:startIconContentDescription="@string/str_cpf"
-            app:startIconDrawable="@drawable/ic_cpf"
-            app:startIconTint="@color/grey">
+            android:layout_height="@dimen/quadrado_irregular_medio"
+            android:elevation="2dp"
+            android:background="@drawable/shape_quadrado_irregular_vermelho" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edt_cpf"
+        <LinearLayout
+            android:id="@+id/l_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quadrado_irregular_medio"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/img_app"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="@dimen/espaco_pequeno"
+                android:contentDescription="@string/str_emblema"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_maca"
+                android:transitionName="splash_transition"
+                app:civ_circle_color_end="@color/colorSecondary"
+                app:civ_circle_color_start="@color/colorTertiary" />
+
+            <TextView
+                android:id="@+id/tv_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_medio"
+                android:gravity="center"
+                android:textSize="@dimen/texto_subtitulo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_sair"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espaco_pequeno"
+                android:paddingStart="@dimen/espaco_medio"
+                android:paddingEnd="@dimen/espaco_medio"
+                android:text="@string/str_sair"
+                android:textColor="@color/white"
+                android:textSize="@dimen/texto_botao_label"
+                app:icon="@drawable/ic_sair"
+                app:iconGravity="end"
+                app:iconTint="@color/white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_completar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/quadrado_irregular_medio">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_medio"
+                android:gravity="center"
+                android:text="@string/str_completar_cadastro"
+                android:textAllCaps="true"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/texto_botao_label"
+                android:textStyle="normal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_cpf"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="11"
-                android:textAllCaps="true"
-                android:textColor="@color/grey"
-                android:textSize="@dimen/texto_label" />
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_cpf"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/dark_green"
+                app:counterEnabled="true"
+                app:counterMaxLength="11"
+                app:counterTextColor="@color/colorPrimary"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/dark_green"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/dark_green"
+                app:startIconContentDescription="@string/str_cpf"
+                app:startIconDrawable="@drawable/ic_cpf"
+                app:startIconTint="@color/dark_green">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textAllCaps="true"
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
 
-        <Button
-            android:id="@+id/bt_cadastrar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_grande"
-            android:background="@drawable/shape_quadrado_arr_vermelho"
-            android:elevation="5dp"
-            android:padding="@dimen/espaco_muito_pequeno"
-            android:text="@string/str_continuar"
-            android:textSize="@dimen/texto_botao" />
-    </LinearLayout>
-</RelativeLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_grande"
+                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:elevation="5dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_cadastrar"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/str_continuar"
+                    android:textSize="@dimen/texto_botao"
+                    app:icon="@drawable/ic_proximo"
+                    app:iconGravity="textEnd" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>

@@ -22,4 +22,9 @@
     <string name="str_cadastrar_titulo">Junte-se a nós</string>
     <string name="str_atualizar">Atualizar</string>
     <string name="str_ou">Ou</string>
+    <string name="str_label_cpf">CPF</string>
+    <string name="str_label_email">E-MAIL</string>
+    <string name="str_camera">Câmera</string>
+    <string name="str_galeria">Galeria</string>
+    <string name="str_sair">Sair</string>
 </resources>

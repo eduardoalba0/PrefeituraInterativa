@@ -1,7 +1,9 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.transition.Transition;
 import android.view.View;
 import android.widget.Button;
@@ -83,7 +85,9 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
         usuario = new Usuario();
         usuario.setEmail(edt_email.getText().toString());
         usuario.setSenha(edt_senha.getText().toString());
-        helper.logar(usuario).addOnSuccessListener(this, this);
+        Task<AuthResult> task = helper.logar(usuario);
+        if (task != null)
+            task.addOnSuccessListener(this, this);
     }
 
     @Override
@@ -103,10 +107,18 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
         if (task != null)
             task.addOnSuccessListener(this, documentSnapshot -> {
                 Usuario aux = documentSnapshot.toObject(Usuario.class);
-                if (aux == null || aux.getCpf() == null || aux.getCpf().isEmpty())
-                    chamarActivity(UsuarioCompletarCadastroActivity.class);
-                else
+                if (aux == null || aux.getCpf() == null || aux.getCpf().trim().equalsIgnoreCase(""))
+                    if (task.getResult().getMetadata().isFromCache()) {
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Erro!")
+                                .setTitleText("Você precisa se conectar com a internet para validar seu login.").show();
+                    } else
+                        chamarActivity(UsuarioCompletarCadastroActivity.class);
+                else {
+                    SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
+                    edit.putString(usuario.get_ID(), aux.getCpf());
+                    edit.apply();
                     chamarActivity(ActivityTemplate.class);
+                }
 
             });
     }
@@ -151,7 +163,7 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
 
     public void startAnimation() {
         Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
-        t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, shape_fundo, l_login, l_footer));
+        t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, l_login, l_footer));
         getWindow().setSharedElementEnterTransition(t);
     }
 
@@ -198,9 +210,6 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
 
     @BindView(R.id.img_app)
     View img_app;
-
-    @BindView(R.id.shape_fundo)
-    View shape_fundo;
 
     @BindView(R.id.l_login)
     View l_login;

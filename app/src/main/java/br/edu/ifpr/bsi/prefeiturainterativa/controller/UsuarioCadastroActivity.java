@@ -40,7 +40,9 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
     private Validator validador;
     private FirebaseHelper helper;
     private UsuarioDAO dao;
+
     private Usuario usuario;
+    private SweetAlertDialog dialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
         validador.setValidationListener(this);
         dao = new UsuarioDAO(this);
         usuario = new Usuario();
+        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
     }
 
 
@@ -81,7 +84,7 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
         usuario.setCpf(edt_cpf.getText().toString());
 
         Task<AuthResult> task = helper.registrar(usuario);
-
+        dialog.setTitleText("Cadastrando...").show();
         if (task != null)
             task.addOnSuccessListener(this, this)
                     .addOnFailureListener(this, e -> {
@@ -98,16 +101,17 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
 
                 dao.inserirAtualizar(usuario).addOnSuccessListener(this, task ->
 
-                        helper.verificarEmail().addOnSuccessListener(this, bVoid ->
-
-                                new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                        helper.verificarEmail().addOnSuccessListener(this, bVoid -> {
+                            dialog.dismiss();
+                            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                                         .setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
                                         .setConfirmClickListener(sweetAlertDialog -> {
                                             Intent intent = new Intent(UsuarioCadastroActivity.this, UsuarioLoginActivity.class);
                                             ActivityOptionsCompat options = ActivityOptionsCompat.
                                                     makeSceneTransitionAnimation(UsuarioCadastroActivity.this, img_app, "splash_transition");
                                             startActivity(intent, options.toBundle());
-                                        }).show())));
+                                        }).show();
+                        })));
     }
 
     @Override

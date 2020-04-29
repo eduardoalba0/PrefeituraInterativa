@@ -47,7 +47,7 @@
                 android:text="@string/str_cadastrar_titulo"
                 android:textAllCaps="true"
                 android:gravity="center"
-                android:textColor="@color/colorSecondary"
+                android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/texto_subtitulo"
                 android:textStyle="normal" />
 
@@ -59,17 +59,17 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_nome"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/grey"
+                app:boxStrokeColor="@color/dark_green"
                 app:counterMaxLength="40"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/grey"
+                app:endIconTint="@color/dark_green"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/grey"
+                app:hintTextColor="@color/dark_green"
                 app:startIconContentDescription="@string/str_email"
                 app:startIconDrawable="@drawable/ic_usuario"
-                app:startIconTint="@color/grey">
+                app:startIconTint="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_nome"
@@ -77,9 +77,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPersonName"
                     android:maxLength="40"
-                    android:textAllCaps="true"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/texto_label" />
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,19 +90,19 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_cpf"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/grey"
+                app:boxStrokeColor="@color/dark_green"
                 app:counterEnabled="true"
                 app:counterMaxLength="11"
                 app:counterTextColor="@color/colorPrimary"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/grey"
+                app:endIconTint="@color/dark_green"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/grey"
+                app:hintTextColor="@color/dark_green"
                 app:startIconContentDescription="@string/str_cpf"
                 app:startIconDrawable="@drawable/ic_cpf"
-                app:startIconTint="@color/grey">
+                app:startIconTint="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cpf"
@@ -112,8 +111,8 @@
                     android:inputType="number"
                     android:maxLength="11"
                     android:textAllCaps="true"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/texto_label" />
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -125,17 +124,17 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_email"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/grey"
+                app:boxStrokeColor="@color/dark_green"
                 app:counterMaxLength="40"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/grey"
+                app:endIconTint="@color/dark_green"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/grey"
+                app:hintTextColor="@color/dark_green"
                 app:startIconContentDescription="@string/str_email"
                 app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/grey">
+                app:startIconTint="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_email"
@@ -143,9 +142,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:maxLength="40"
-                    android:textAllCaps="true"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/texto_label" />
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,19 +155,19 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_senha"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/grey"
+                app:boxStrokeColor="@color/dark_green"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:counterTextColor="@color/colorPrimary"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/grey"
+                app:endIconTint="@color/dark_green"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/grey"
+                app:hintTextColor="@color/dark_green"
                 app:startIconContentDescription="@string/str_senha"
                 app:startIconDrawable="@drawable/ic_senha"
-                app:startIconTint="@color/grey">
+                app:startIconTint="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_senha"
@@ -177,9 +175,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:maxLength="10"
-                    android:textAllCaps="true"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/texto_label" />
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -190,19 +187,19 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_senha_confirm"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/grey"
+                app:boxStrokeColor="@color/dark_green"
                 app:counterEnabled="true"
                 app:counterMaxLength="10"
                 app:counterTextColor="@color/colorPrimary"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/grey"
+                app:endIconTint="@color/dark_green"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/grey"
+                app:hintTextColor="@color/dark_green"
                 app:startIconContentDescription="@string/str_senha_confirm"
                 app:startIconDrawable="@drawable/ic_senha"
-                app:startIconTint="@color/grey">
+                app:startIconTint="@color/dark_green">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_senha_conf"
@@ -210,23 +207,30 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:maxLength="10"
-                    android:textAllCaps="true"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/texto_label" />
+                    android:textColor="@color/dark_green"
+                    android:textSize="@dimen/texto_botao" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-            <Button
-                android:id="@+id/bt_cadastrar"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/espaco_grande"
+                android:layout_margin="@dimen/espaco_medio"
                 android:background="@drawable/shape_quadrado_arr_vermelho"
-                android:elevation="5dp"
-                android:padding="@dimen/espaco_muito_pequeno"
-                android:text="@string/str_continuar"
-                android:textSize="@dimen/texto_botao"
-                android:transitionName="base_transition" />
+                android:elevation="5dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_cadastrar"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/str_continuar"
+                    android:textSize="@dimen/texto_botao"
+                    app:icon="@drawable/ic_proximo"
+                    app:iconGravity="end" />
+            </RelativeLayout>
+
         </LinearLayout>
     </RelativeLayout>
 </ScrollView>
