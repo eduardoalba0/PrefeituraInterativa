@@ -25,8 +25,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
         android:theme="@style/AppTheme"
+        android:windowSoftInputMode="adjustPan|adjustResize"
         tools:ignore="GoogleAppIndexingWarning">
 
         <meta-data
@@ -48,9 +48,7 @@
         <activity android:name=".controller.UsuarioCompletarCadastroActivity" />
         <activity android:name=".controller.UsuarioCadastroActivity" />
         <activity android:name=".controller.UsuarioLoginActivity" />
-        <activity
-            android:name=".controller.SplashActivity"
-            android:theme="@style/AppTheme.FullScreen">
+        <activity android:name=".controller.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

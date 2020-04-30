@@ -1,21 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/view_root"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="splash_transition"
+    android:background="@drawable/shape_gradient_vermelho"
     tools:context=".controller.ActivityTemplate">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:transitionName="splash_transition">
+        android:layout_height="match_parent"
+        android:layout_above="@id/tb_footer"
+        android:fillViewport="true">
 
         <FrameLayout
+            android:id="@+id/l_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/l_content"/>
-    </LinearLayout>
-</ScrollView>
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_gradient_branco" />
+
+    </ScrollView>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tb_footer"
+        style="@style/Widget.MaterialComponents.TabLayout.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/float_transparent"
+        android:transitionName="splash_transition">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_inicio" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_adicionar_foto" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_solicitacoes" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_usuario" />
+    </com.google.android.material.tabs.TabLayout>
+</RelativeLayout>

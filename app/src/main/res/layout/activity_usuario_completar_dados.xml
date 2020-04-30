@@ -34,7 +34,6 @@
                 android:id="@+id/img_app"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="@dimen/espaco_pequeno"
                 android:contentDescription="@string/str_emblema"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_maca"
@@ -46,7 +45,7 @@
                 android:id="@+id/tv_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/espaco_medio"
+                android:layout_margin="@dimen/espaco_pequeno"
                 android:gravity="center"
                 android:textSize="@dimen/texto_subtitulo" />
 
@@ -55,7 +54,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espaco_pequeno"
+                android:layout_marginBottom="@dimen/espaco_muito_pequeno"
                 android:paddingStart="@dimen/espaco_medio"
                 android:paddingEnd="@dimen/espaco_medio"
                 android:text="@string/str_sair"
@@ -72,15 +71,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
-            android:gravity="center"
+            android:gravity="center_horizontal"
             android:orientation="vertical"
             android:paddingTop="@dimen/quadrado_irregular_medio">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/espaco_medio"
                 android:gravity="center"
+                android:layout_margin="@dimen/espaco_medio"
                 android:text="@string/str_completar_cadastro"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"

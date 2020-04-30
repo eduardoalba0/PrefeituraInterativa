@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.google.android.gms.tasks.Task;
@@ -29,6 +30,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         ButterKnife.bind(this, this);
         helper = new FirebaseHelper(this);
         dao = new UsuarioDAO(this);

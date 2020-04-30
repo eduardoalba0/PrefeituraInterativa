@@ -1020,6 +1020,7 @@ color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
+color semiTransparent
 color success_stroke_color
 color sweet_dialog_bg_color
 color sweet_dialog_bg_color_dark
@@ -1541,6 +1542,7 @@ drawable ic_edit_black_24dp
 drawable ic_email
 drawable ic_google
 drawable ic_gravar
+drawable ic_inicio
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
 drawable ic_launcher_background
@@ -1553,6 +1555,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_proximo
 drawable ic_sair
 drawable ic_senha
+drawable ic_solicitacoes
 drawable ic_usuario
 drawable ic_voltar
 drawable image_placeholder
@@ -1651,6 +1654,7 @@ id action_context_bar
 id action_divider
 id action_galeria
 id action_image
+id action_inicio
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
@@ -1937,6 +1941,7 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id tb_footer
 id terrain
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
@@ -2148,12 +2153,14 @@ layout text_view_with_line_height_from_layout
 layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
+menu menu_bottom_bar
 menu menu_imagens
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
 mipmap ic_maca
 plurals mtrl_badge_content_description
+string Inicio
 string LOADING
 string abc_action_bar_home_description
 string abc_action_bar_up_description
@@ -2308,7 +2315,6 @@ style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
 style AppTheme
-style AppTheme_FullScreen
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog

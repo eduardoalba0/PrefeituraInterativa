@@ -7,6 +7,7 @@ import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AnticipateInterpolator;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 
@@ -38,14 +39,14 @@ public class TransitionHelper {
                     int cx = (sharedElement.getLeft() + sharedElement.getRight()) / 2;
                     int cy = (sharedElement.getTop() + sharedElement.getBottom()) / 2;
                     int finalRadius = Math.max(view_root.getWidth(), view_root.getHeight());
-                    Animator anim = ViewAnimationUtils.createCircularReveal(view_root, cx, cy, sharedElement.getWidth(), finalRadius);
+                    Animator anim = ViewAnimationUtils.createCircularReveal(view_root, cx, cy, 0, finalRadius);
                     anim.setDuration(1000);
 
                     for (View reveal : reveals) {
                         reveal.setVisibility(View.VISIBLE);
                     }
 
-                    anim.setInterpolator(new AccelerateInterpolator());
+                    anim.setInterpolator(new AnticipateInterpolator());
                     anim.start();
                 } catch (IllegalStateException ex) {
                     onTransitionCancel(transition);

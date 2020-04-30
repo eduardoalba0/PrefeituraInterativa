@@ -18,7 +18,7 @@
     <string name="str_tipo_problema">Selecione uma demanda</string>
     <string name="str_perfil">Meu Perfil</string>
     <string name="str_redefinir">Redefinir Senha</string>
-    <string name="str_completar_cadastro">Finalize seu cadastro</string>
+    <string name="str_completar_cadastro">Complete seu cadastro</string>
     <string name="str_cadastrar_titulo">Junte-se a nós</string>
     <string name="str_atualizar">Atualizar</string>
     <string name="str_ou">Ou</string>
@@ -27,4 +27,5 @@
     <string name="str_camera">Câmera</string>
     <string name="str_galeria">Galeria</string>
     <string name="str_sair">Sair</string>
+    <string name="Inicio">str_inicio</string>
 </resources>

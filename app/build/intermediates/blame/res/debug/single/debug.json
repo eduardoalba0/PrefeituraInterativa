@@ -296,6 +296,10 @@
         "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\drawable\\ic_voltar.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_inicio.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\drawable\\ic_inicio.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_template.xml.flat",
         "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\activity_template.xml"
     },
@@ -418,6 +422,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\anim_btn_checkbox_to_checked_box_outer_merged_animation.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\anim\\btn_checkbox_to_checked_box_outer_merged_animation.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\menu_menu_bottom_bar.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\menu\\menu_bottom_bar.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_text_view_without_line_height.xml.flat",
@@ -2862,6 +2870,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_big_media_custom.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\91834c8cc9f1af57198ebfcc9bf16b77\\res\\layout\\notification_template_big_media_custom.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_solicitacoes.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\drawable\\ic_solicitacoes.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_mtrl_ic_cancel.xml.flat",

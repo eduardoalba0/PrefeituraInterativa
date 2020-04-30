@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/view_root"
+    android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_vermelho"
@@ -10,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp">
 
         <ImageView
             android:id="@+id/img_app"
@@ -18,7 +19,6 @@
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/espaco_gigante"
             android:background="@drawable/shape_quadrado_arr_branco"
             android:contentDescription="@string/str_emblema"
             android:elevation="2dp"
@@ -74,7 +74,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_nome"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="textPersonName"
                     android:maxLength="40"
                     android:textColor="@color/dark_green"
@@ -107,7 +107,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cpf"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="number"
                     android:maxLength="11"
                     android:textAllCaps="true"
@@ -139,7 +139,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_email"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="textEmailAddress"
                     android:maxLength="40"
                     android:textColor="@color/dark_green"
@@ -172,7 +172,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_senha"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="textPassword"
                     android:maxLength="10"
                     android:textColor="@color/dark_green"
@@ -204,7 +204,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_senha_conf"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:inputType="textPassword"
                     android:maxLength="10"
                     android:textColor="@color/dark_green"

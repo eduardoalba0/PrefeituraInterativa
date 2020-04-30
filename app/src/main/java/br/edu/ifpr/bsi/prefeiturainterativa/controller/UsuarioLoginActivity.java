@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.transition.Transition;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -50,6 +51,7 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_login);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ButterKnife.bind(this, this);
         startAnimation();
         helper = new FirebaseHelper(this);

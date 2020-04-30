@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,6 +38,7 @@ public class UsuarioRedefinirActivity extends AppCompatActivity implements View.
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_redefinir_senha);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ButterKnife.bind(this,this);
         startAnimation();
         helper = new FirebaseHelper(this);

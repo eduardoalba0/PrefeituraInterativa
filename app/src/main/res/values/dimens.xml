@@ -18,5 +18,5 @@
     <dimen name="raio_quadrado_medio">30dp</dimen>
     <dimen name="raio_quadrado_pequeno">10dp</dimen>
     <dimen name="quadrado_irregular_grande">500dp</dimen>
-    <dimen name="quadrado_irregular_medio">350dp</dimen>
+    <dimen name="quadrado_irregular_medio">300dp</dimen>
 </resources>

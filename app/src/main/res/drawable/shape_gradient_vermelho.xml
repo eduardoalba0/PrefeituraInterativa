@@ -3,5 +3,6 @@
     <gradient
         android:angle="45"
         android:endColor="@color/colorSecondary"
-        android:startColor="@color/colorTertiary"/>
+        android:centerColor="@color/colorTertiary"
+        android:startColor="@color/colorSecondary"/>
 </shape>

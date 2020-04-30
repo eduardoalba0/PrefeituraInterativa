@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:background="@color/white"
-    android:fillViewport="true"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
+    <LinearLayout
             android:id="@+id/l_header"
             android:layout_width="match_parent"
             android:layout_height="@dimen/quadrado_irregular_medio"
@@ -24,7 +19,6 @@
                 android:id="@+id/img_usuario"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:layout_margin="@dimen/espaco_medio"
                 android:contentDescription="@string/str_emblema"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ic_adicionar_foto"
@@ -35,7 +29,7 @@
                 android:id="@+id/tv_usuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/espaco_medio"
+                android:layout_margin="@dimen/espaco_pequeno"
                 android:gravity="center"
                 android:textSize="@dimen/texto_subtitulo" />
 
@@ -44,7 +38,7 @@
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/espaco_pequeno"
+                android:layout_marginBottom="@dimen/espaco_muito_pequeno"
                 android:paddingStart="@dimen/espaco_medio"
                 android:paddingEnd="@dimen/espaco_medio"
                 android:text="@string/str_sair"
@@ -181,9 +175,9 @@
                 app:strokeColor="@color/dark_green" />
 
             <RelativeLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/espaco_pequeno"
+                android:layout_margin="@dimen/espaco_pequeno"
                 android:background="@drawable/shape_quadrado_arr_vermelho"
                 android:elevation="2dp"
                 android:paddingStart="5dp"
@@ -191,8 +185,9 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/bt_atualizar"
+                    android:layout_centerInParent="true"
                     style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/espaco_muito_pequeno"
                     android:text="@string/str_atualizar"
@@ -204,5 +199,4 @@
                     app:iconTint="@color/white" />
             </RelativeLayout>
         </LinearLayout>
-    </RelativeLayout>
-</ScrollView>
+</RelativeLayout>
