@@ -39,7 +39,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class UsuarioLoginActivity extends AppCompatActivity implements View.OnClickListener,
+public class ActivityLogin extends AppCompatActivity implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<AuthResult> {
 
     private Validator validador;
@@ -50,7 +50,7 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario_login);
+        setContentView(R.layout.activity_login);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ButterKnife.bind(this, this);
         startAnimation();
@@ -72,10 +72,10 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
                 logarGoogle();
                 break;
             case R.id.bt_recuperar_senha:
-                chamarActivity(UsuarioRedefinirActivity.class);
+                chamarActivity(ActivityRedefinirSenha.class);
                 break;
             case R.id.bt_cadastrar:
-                chamarActivity(UsuarioCadastroActivity.class);
+                chamarActivity(ActivityCadastro.class);
                 break;
         }
     }
@@ -114,12 +114,12 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
                         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Erro!")
                                 .setTitleText("Você precisa se conectar com a internet para validar seu login.").show();
                     } else
-                        chamarActivity(UsuarioCompletarCadastroActivity.class);
+                        chamarActivity(ActivityCompletarCadastro.class);
                 else {
                     SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
                     edit.putString(usuario.get_ID(), aux.getCpf());
                     edit.apply();
-                    chamarActivity(ActivityTemplate.class);
+                    chamarActivity(ActivityOverview.class);
                 }
 
             });
@@ -175,9 +175,9 @@ public class UsuarioLoginActivity extends AppCompatActivity implements View.OnCl
     }
 
     public <T> void chamarActivity(Class<T> activity) {
-        Intent intent = new Intent(UsuarioLoginActivity.this, activity);
+        Intent intent = new Intent(ActivityLogin.this, activity);
         ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(UsuarioLoginActivity.this, img_app, "splash_transition");
+                makeSceneTransitionAnimation(ActivityLogin.this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());
     }
 

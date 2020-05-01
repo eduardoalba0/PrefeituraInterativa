@@ -43,12 +43,13 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".controller.ActivityTemplate" />
-        <activity android:name=".controller.UsuarioRedefinirActivity" />
-        <activity android:name=".controller.UsuarioCompletarCadastroActivity" />
-        <activity android:name=".controller.UsuarioCadastroActivity" />
-        <activity android:name=".controller.UsuarioLoginActivity" />
-        <activity android:name=".controller.SplashActivity">
+        <activity android:name=".controller.ActivitySolicitacao" />
+        <activity android:name=".controller.ActivityOverview" />
+        <activity android:name=".controller.ActivityRedefinirSenha" />
+        <activity android:name=".controller.ActivityCompletarCadastro" />
+        <activity android:name=".controller.ActivityCadastro" />
+        <activity android:name=".controller.ActivityLogin" />
+        <activity android:name=".controller.ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

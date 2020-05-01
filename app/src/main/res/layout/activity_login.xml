@@ -8,7 +8,7 @@
     android:background="@drawable/shape_gradient_vermelho"
     android:paddingTop="25dp"
     android:paddingBottom="50dp"
-    tools:context=".controller.UsuarioLoginActivity">
+    tools:context=".controller.ActivityLogin">
 
 
     <RelativeLayout
@@ -59,16 +59,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_email"
-                app:boxStrokeColor="@color/dark_green"
+                app:boxStrokeColor="@color/colorSecondaryDark"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/dark_green"
+                app:endIconTint="@color/colorSecondaryDark"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/dark_green"
+                app:hintTextColor="@color/colorSecondaryDark"
                 app:startIconContentDescription="@string/str_email"
                 app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/dark_green">
+                app:startIconTint="@color/colorSecondaryDark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_email"
@@ -76,8 +76,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:textAllCaps="true"
-                    android:textColor="@color/dark_green"
-                    android:textSize="@dimen/texto_botao" />
+                    android:textColor="@color/colorSecondaryDark"
+                    android:textSize="@dimen/texto_label" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,16 +88,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/hint_senha"
-                app:boxStrokeColor="@color/dark_green"
+                app:boxStrokeColor="@color/colorSecondaryDark"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/dark_green"
+                app:endIconTint="@color/colorSecondaryDark"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/dark_green"
+                app:hintTextColor="@color/colorSecondaryDark"
                 app:startIconContentDescription="@string/hint_senha"
                 app:startIconDrawable="@drawable/ic_senha"
-                app:startIconTint="@color/dark_green">
+                app:startIconTint="@color/colorSecondaryDark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_senha"
@@ -105,8 +105,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:textAllCaps="true"
-                    android:textColor="@color/dark_green"
-                    android:textSize="@dimen/texto_botao" />
+                    android:textColor="@color/colorSecondaryDark"
+                    android:textSize="@dimen/texto_label" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -118,7 +118,7 @@
                 android:backgroundTint="@color/white"
                 android:text="@string/str_esqueceu_senha"
                 android:textColor="@color/colorTertiary"
-                android:textSize="@dimen/texto_botao"
+                android:textSize="@dimen/texto_label"
                 app:icon="@drawable/ic_senha"
                 app:iconGravity="start"
                 app:iconTint="@color/colorTertiary" />
@@ -138,8 +138,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     app:icon="@drawable/ic_proximo"
+                    android:textColor="@color/white"
                     app:iconGravity="end"
                     android:text="@string/str_entrar"
+                    app:iconTint="@color/white"
                     android:textSize="@dimen/texto_botao" />
             </RelativeLayout>
 
@@ -153,7 +155,7 @@
                 android:text="@string/str_cadastrar"
                 android:textAllCaps="true"
                 android:textColor="@color/colorSecondary"
-                android:textSize="@dimen/texto_botao"
+                android:textSize="@dimen/texto_label"
                 android:textStyle="bold"
                 app:icon="@drawable/ic_usuario"
                 app:iconGravity="start"
@@ -179,8 +181,8 @@
                 android:padding="@dimen/espaco_pequeno"
                 android:text="@string/str_conta_google"
                 android:textAllCaps="true"
-                android:textColor="@color/colorTertiary"
-                android:textSize="@dimen/texto_botao"
+                android:textColor="@color/colorSecondaryDark"
+                android:textSize="@dimen/texto_label"
                 android:transitionName="base_transition"
                 app:cornerRadius="@dimen/raio_quadrado_medio"
                 app:icon="@drawable/ic_google"

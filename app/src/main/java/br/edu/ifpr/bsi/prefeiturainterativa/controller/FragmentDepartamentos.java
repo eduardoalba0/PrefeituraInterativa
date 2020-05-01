@@ -11,11 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class SolicitacaoListarActivity extends Fragment {
+public class FragmentDepartamentos extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_solicitacao_listar, container, false);
+        View view = inflater.inflate(R.layout.fragment_departamentos, container, false);
         ButterKnife.bind(this, view);
         return view;
     }

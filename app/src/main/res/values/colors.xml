@@ -7,6 +7,5 @@
     <color name="whiteFA">#FAFAFA</color>
     <color name="whiteEE">#EEEEEE</color>
     <color name="black">#070707</color>
-    <color name="semiTransparent">#69070707</color>
-    <color name="dark_green">#388E3C</color>
+    <color name="colorSecondaryDark">#BF360C</color>
 </resources>

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class UsuarioCadastroActivity extends AppCompatActivity implements View.OnClickListener,
+public class ActivityCadastro extends AppCompatActivity implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<AuthResult> {
 
     private Validator validador;
@@ -48,7 +47,7 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario_cadastro);
+        setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this, this);
         startAnimation();
         helper = new FirebaseHelper(this);
@@ -107,9 +106,9 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
                             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                                         .setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
                                         .setConfirmClickListener(sweetAlertDialog -> {
-                                            Intent intent = new Intent(UsuarioCadastroActivity.this, UsuarioLoginActivity.class);
+                                            Intent intent = new Intent(ActivityCadastro.this, ActivityLogin.class);
                                             ActivityOptionsCompat options = ActivityOptionsCompat.
-                                                    makeSceneTransitionAnimation(UsuarioCadastroActivity.this, img_app, "splash_transition");
+                                                    makeSceneTransitionAnimation(ActivityCadastro.this, img_app, "splash_transition");
                                             startActivity(intent, options.toBundle());
                                         }).show();
                         })));
@@ -137,6 +136,14 @@ public class UsuarioCadastroActivity extends AppCompatActivity implements View.O
                     break;
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ActivityCadastro.this, ActivityLogin.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(ActivityCadastro.this, img_app, "splash_transition");
+        startActivity(intent, options.toBundle());
     }
 
     public void startAnimation() {

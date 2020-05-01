@@ -35,7 +35,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class UsuarioCompletarCadastroActivity extends AppCompatActivity implements View.OnClickListener,
+public class ActivityCompletarCadastro extends AppCompatActivity implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<Void> {
 
     private Validator validador;
@@ -46,7 +46,7 @@ public class UsuarioCompletarCadastroActivity extends AppCompatActivity implemen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_usuario_completar_dados);
+        setContentView(R.layout.activity_completar_cadastro);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ButterKnife.bind(this, this);
         startAnimation();
@@ -67,9 +67,9 @@ public class UsuarioCompletarCadastroActivity extends AppCompatActivity implemen
                 break;
             case R.id.bt_sair:
                 helper.deslogar();
-                Intent intent = new Intent(UsuarioCompletarCadastroActivity.this, UsuarioLoginActivity.class);
+                Intent intent = new Intent(ActivityCompletarCadastro.this, ActivityLogin.class);
                 ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(UsuarioCompletarCadastroActivity.this, img_app, "splash_transition");
+                        makeSceneTransitionAnimation(ActivityCompletarCadastro.this, img_app, "splash_transition");
                 startActivity(intent, options.toBundle());
                 break;
         }
@@ -91,7 +91,7 @@ public class UsuarioCompletarCadastroActivity extends AppCompatActivity implemen
                 .setTitleText("Sucesso! ")
                 .setContentText("Cadastro completo.")
                 .setConfirmClickListener(sweetAlertDialog -> {
-                    Intent intent = new Intent(UsuarioCompletarCadastroActivity.this, ActivityTemplate.class);
+                    Intent intent = new Intent(ActivityCompletarCadastro.this, ActivityOverview.class);
                     ActivityOptionsCompat options = ActivityOptionsCompat.
                             makeSceneTransitionAnimation(this, img_app, "splash_transition");
                     startActivity(intent, options.toBundle());
@@ -113,7 +113,7 @@ public class UsuarioCompletarCadastroActivity extends AppCompatActivity implemen
     @Override
     public void onBackPressed() {
         helper.deslogar();
-        Intent intent = new Intent(UsuarioCompletarCadastroActivity.this, UsuarioLoginActivity.class);
+        Intent intent = new Intent(ActivityCompletarCadastro.this, ActivityLogin.class);
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());

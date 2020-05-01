@@ -2,36 +2,35 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_vermelho"
-    android:transitionName="base_transition"
-    tools:context=".controller.InicioActivity">
+    android:transitionName="base_transition">
 
     <RelativeLayout
         android:id="@+id/l_perfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/espaco_pequeno"
-        android:layout_marginTop="@dimen/espaco_grande"
-        android:layout_marginEnd="@dimen/espaco_pequeno"
+        android:layout_margin="@dimen/espaco_pequeno"
         android:background="@drawable/shape_quadrado_arr_branco"
         android:elevation="5dp"
-        android:padding="5dp">
+        android:padding="3dp">
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/img_usuario"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/espaco_pequeno"
             android:background="@drawable/shape_quadrado_arr_branco"
             android:contentDescription="@string/str_perfil"
             android:src="@drawable/ic_usuario"
             app:civ_border_width="1dp"
-            app:civ_border_color="@color/dark_green"/>
+            app:civ_border_color="@color/colorSecondaryDark"/>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_usuario"
             style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,12 +39,12 @@
             android:layout_marginStart="@dimen/espaco_pequeno"
             android:layout_toEndOf="@id/img_usuario"
             android:gravity="center_vertical"
-            android:textColor="@color/dark_green"
-            android:textSize="@dimen/texto_subtitulo"
+            android:textColor="@color/colorSecondaryDark"
+            android:textSize="@dimen/texto_label"
             app:icon="@drawable/ic_proximo"
             app:iconGravity="end"
-            app:iconSize="40dp"
-            app:iconTint="@color/dark_green"
+            app:iconSize="30dp"
+            app:iconTint="@color/colorSecondaryDark"
             app:textAllCaps="false" />
     </RelativeLayout>
 </ScrollView>

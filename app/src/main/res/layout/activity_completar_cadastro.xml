@@ -9,7 +9,7 @@
     android:fillViewport="true"
     android:paddingTop="2dp"
     android:paddingBottom="48dp"
-    tools:context=".controller.UsuarioRedefinirActivity">
+    tools:context=".controller.ActivityRedefinirSenha">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@
                 android:paddingEnd="@dimen/espaco_medio"
                 android:text="@string/str_sair"
                 android:textColor="@color/white"
-                android:textSize="@dimen/texto_botao_label"
+                android:textSize="@dimen/texto_botao"
                 app:icon="@drawable/ic_sair"
                 app:iconGravity="end"
                 app:iconTint="@color/white" />
@@ -83,7 +83,7 @@
                 android:text="@string/str_completar_cadastro"
                 android:textAllCaps="true"
                 android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/texto_botao_label"
+                android:textSize="@dimen/texto_botao"
                 android:textStyle="normal" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -94,19 +94,19 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_cpf"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/dark_green"
+                app:boxStrokeColor="@color/colorSecondaryDark"
                 app:counterEnabled="true"
                 app:counterMaxLength="11"
                 app:counterTextColor="@color/colorPrimary"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/dark_green"
+                app:endIconTint="@color/colorSecondaryDark"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/dark_green"
+                app:hintTextColor="@color/colorSecondaryDark"
                 app:startIconContentDescription="@string/str_cpf"
                 app:startIconDrawable="@drawable/ic_cpf"
-                app:startIconTint="@color/dark_green">
+                app:startIconTint="@color/colorSecondaryDark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cpf"
@@ -115,8 +115,8 @@
                     android:inputType="number"
                     android:maxLength="11"
                     android:textAllCaps="true"
-                    android:textColor="@color/dark_green"
-                    android:textSize="@dimen/texto_botao" />
+                    android:textColor="@color/colorSecondaryDark"
+                    android:textSize="@dimen/texto_label" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -29,11 +29,13 @@ anim design_snackbar_in
 anim design_snackbar_out
 anim error_frame_in
 anim error_x_in
+anim hide_bottom_sheet_animation
 anim modal_in
 anim modal_out
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
+anim show_bottom_sheet_animation
 anim success_bow_roate
 anim success_mask_layout
 animator design_appbar_state_list_animator
@@ -135,8 +137,15 @@ attr borderWidth
 attr borderlessButtonStyle
 attr bottomAppBarStyle
 attr bottomNavigationStyle
+attr bottomSheetBackground
 attr bottomSheetDialogTheme
+attr bottomSheetDimAmount
+attr bottomSheetDividerColor
+attr bottomSheetDragSensitivity
+attr bottomSheetItemColor
 attr bottomSheetStyle
+attr bottomSheetTheme
+attr bottomSheetTitleColor
 attr boxBackgroundColor
 attr boxBackgroundMode
 attr boxCollapsedPaddingTop
@@ -324,6 +333,7 @@ attr elevation
 attr elevationOverlayColor
 attr elevationOverlayEnabled
 attr emptyVisibility
+attr emulateParallelLight
 attr endIconCheckable
 attr endIconContentDescription
 attr endIconDrawable
@@ -409,6 +419,7 @@ attr imageAspectRatioAdjust
 attr imageButtonStyle
 attr indeterminateProgressStyle
 attr initialActivityCount
+attr insetDrawable
 attr insetForeground
 attr isLightTheme
 attr isMaterialTheme
@@ -567,6 +578,52 @@ attr maxWidthPct
 attr measureWithLargestChild
 attr menu
 attr minTouchTargetSize
+attr ms_activeStepColor
+attr ms_backButtonBackground
+attr ms_backButtonColor
+attr ms_backButtonText
+attr ms_backNavigationButtonStyle
+attr ms_bottomNavigationBackground
+attr ms_bottomNavigationStyle
+attr ms_colorableProgressBarStyle
+attr ms_completeButtonBackground
+attr ms_completeButtonColor
+attr ms_completeButtonText
+attr ms_completeNavigationButtonStyle
+attr ms_errorColor
+attr ms_inactiveStepColor
+attr ms_nextButtonBackground
+attr ms_nextButtonColor
+attr ms_nextButtonText
+attr ms_nextNavigationButtonStyle
+attr ms_showBackButtonOnFirstStep
+attr ms_showBottomNavigation
+attr ms_showErrorMessageEnabled
+attr ms_showErrorState
+attr ms_showErrorStateEnabled
+attr ms_showErrorStateOnBack
+attr ms_showErrorStateOnBackEnabled
+attr ms_stepPagerOverlayStyle
+attr ms_stepPagerProgressBarStyle
+attr ms_stepTabContainerStyle
+attr ms_stepTabDividerStyle
+attr ms_stepTabDoneIndicatorStyle
+attr ms_stepTabIconBackgroundStyle
+attr ms_stepTabNumberStyle
+attr ms_stepTabSubtitleStyle
+attr ms_stepTabTitleStyle
+attr ms_stepTabsInnerContainerStyle
+attr ms_stepTabsProgressMessageStyle
+attr ms_stepTabsScrollViewStyle
+attr ms_stepperFeedbackType
+attr ms_stepperFeedback_contentFadeAlpha
+attr ms_stepperFeedback_contentOverlayBackground
+attr ms_stepperLayoutTheme
+attr ms_stepperStyle
+attr ms_stepperType
+attr ms_tabNavigationEnabled
+attr ms_tabStepDividerWidth
+attr ms_tabsContainerStyle
 attr multiChoiceItemLayout
 attr navigationContentDescription
 attr navigationIcon
@@ -608,6 +665,7 @@ attr recyclerViewStyle
 attr reverseLayout
 attr rippleColor
 attr rollType
+attr scaledEdge
 attr scopeUris
 attr scrimAnimationDuration
 attr scrimBackground
@@ -618,6 +676,8 @@ attr searchViewStyle
 attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
+attr shadowElevation
+attr shadowOrientation
 attr shapeAppearance
 attr shapeAppearanceLargeComponent
 attr shapeAppearanceMediumComponent
@@ -652,6 +712,7 @@ attr state_collapsible
 attr state_dragged
 attr state_liftable
 attr state_lifted
+attr state_verification_failed
 attr statusBarBackground
 attr statusBarForeground
 attr statusBarScrim
@@ -789,6 +850,8 @@ attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
+bool elevation_shadow_view_emulate_parallel_light_default_value
+bool ms_rtlEnabled
 bool mtrl_btn_textappearance_all_caps
 color abc_background_cache_hint_selector_material_dark
 color abc_background_cache_hint_selector_material_light
@@ -843,6 +906,7 @@ color cardview_shadow_start_color
 color checkbox_themeable_attribute_color
 color colorPrimary
 color colorSecondary
+color colorSecondaryDark
 color colorTertiary
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
@@ -856,7 +920,6 @@ color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
 color custom_float_bg
-color dark_green
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -899,6 +962,8 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color divider_dark
+color divider_light
 color error_color_material_dark
 color error_color_material_light
 color error_stroke_color
@@ -949,6 +1014,20 @@ color material_on_surface_emphasis_high_type
 color material_on_surface_emphasis_medium
 color message_color
 color message_color_dark
+color ms_black
+color ms_black_38_opacity
+color ms_black_87_opacity
+color ms_bottomNavigationBackgroundColor
+color ms_bottomNavigationButtonTextColor
+color ms_defaultButtonBackgroundColor
+color ms_defaultContentOverlayColor
+color ms_errorColor
+color ms_material_blue_500
+color ms_material_grey_400
+color ms_selectedColor
+color ms_unselectedColor
+color ms_white
+color ms_white_54_opacity
 color mtrl_bottom_nav_colored_item_tint
 color mtrl_bottom_nav_colored_ripple_color
 color mtrl_bottom_nav_item_tint
@@ -1016,11 +1095,11 @@ color red_btn_bg_color
 color red_btn_bg_pressed_color
 color ripple_material_dark
 color ripple_material_light
+color scrim_insets_layout_insets_drawable_default_value
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
 color secondary_text_disabled_material_light
-color semiTransparent
 color success_stroke_color
 color sweet_dialog_bg_color
 color sweet_dialog_bg_color_dark
@@ -1125,6 +1204,25 @@ dimen alert_width
 dimen appcompat_dialog_background_inset
 dimen bannerContentWeight
 dimen bannerWeightSum
+dimen bottom_sheet_divider_height
+dimen bottom_sheet_divider_indent
+dimen bottom_sheet_divider_title_height
+dimen bottom_sheet_divider_title_horizontal_padding
+dimen bottom_sheet_drawable_padding
+dimen bottom_sheet_grid_item_horizontal_padding
+dimen bottom_sheet_grid_item_horizontal_spacing
+dimen bottom_sheet_grid_item_icon_size
+dimen bottom_sheet_grid_item_size
+dimen bottom_sheet_grid_item_vertical_spacing
+dimen bottom_sheet_grid_padding_bottom
+dimen bottom_sheet_grid_padding_top
+dimen bottom_sheet_grid_title_height
+dimen bottom_sheet_list_item_height
+dimen bottom_sheet_list_item_horizontal_padding
+dimen bottom_sheet_list_item_icon_size
+dimen bottom_sheet_list_padding_bottom
+dimen bottom_sheet_list_padding_top
+dimen bottom_sheet_title_height
 dimen browser_actions_context_menu_max_width
 dimen browser_actions_context_menu_min_padding
 dimen buttons_stroke_width
@@ -1141,6 +1239,7 @@ dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
 dimen custom_image_size
 dimen default_dimension
+dimen default_width
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_item_min_width
@@ -1191,6 +1290,7 @@ dimen dialogHeightPct
 dimen dialogWidthPct
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen elevation_shadow_view_shadow_elevation_default_value
 dimen espaco_gigante
 dimen espaco_grande
 dimen espaco_medio
@@ -1217,6 +1317,27 @@ dimen material_text_view_test_line_height
 dimen material_text_view_test_line_height_override
 dimen minImageHeight
 dimen minImageWidth
+dimen ms_bottom_navigation_bar_height
+dimen ms_dotted_progress_bar_dot_size
+dimen ms_material_button_corner_radius
+dimen ms_material_button_padding_horizontal
+dimen ms_material_button_padding_vertical
+dimen ms_nav_bar_button_margin
+dimen ms_navigation_button_text_size
+dimen ms_progress_bar_height
+dimen ms_progress_bar_width
+dimen ms_progress_message_font_size
+dimen ms_progress_message_lateral_padding
+dimen ms_progress_message_translation_when_hidden
+dimen ms_step_tab_circle_font_size
+dimen ms_step_tab_counter_size
+dimen ms_step_tab_divider_length
+dimen ms_step_tab_divider_thickness
+dimen ms_step_tab_height
+dimen ms_step_tab_subtitle_font_size
+dimen ms_step_tab_text_lateral_padding
+dimen ms_step_tab_title_font_size
+dimen ms_tabs_container_lateral_padding
 dimen mtrl_alert_dialog_background_inset_bottom
 dimen mtrl_alert_dialog_background_inset_end
 dimen mtrl_alert_dialog_background_inset_start
@@ -1381,6 +1502,7 @@ dimen paddingSmall
 dimen progress_circle_radius
 dimen quadrado_irregular_grande
 dimen quadrado_irregular_medio
+dimen quadrado_irregular_pequeno
 dimen raio_quadrado_grande
 dimen raio_quadrado_medio
 dimen raio_quadrado_pequeno
@@ -1390,7 +1512,7 @@ dimen subtitle_shadow_offset
 dimen subtitle_shadow_radius
 dimen test_mtrl_calendar_day_cornerSize
 dimen texto_botao
-dimen texto_botao_label
+dimen texto_label
 dimen texto_subtitulo
 dimen texto_titulo
 dimen tooltip_corner_radius
@@ -1533,11 +1655,13 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gray_button_background
 drawable green_button_background
+drawable ic_add
 drawable ic_adicionar_foto
 drawable ic_adicionar_galeria
 drawable ic_calendar_black_24dp
 drawable ic_clear_black_24dp
 drawable ic_cpf
+drawable ic_departamento
 drawable ic_edit_black_24dp
 drawable ic_email
 drawable ic_google
@@ -1559,6 +1683,20 @@ drawable ic_solicitacoes
 drawable ic_usuario
 drawable ic_voltar
 drawable image_placeholder
+drawable ms_animated_vector_circle_to_warning_24dp
+drawable ms_animated_vector_warning_to_circle_24dp
+drawable ms_circle
+drawable ms_colorable_progress_bar
+drawable ms_default_button_background
+drawable ms_ic_check
+drawable ms_ic_chevron_end
+drawable ms_ic_chevron_left
+drawable ms_ic_chevron_right
+drawable ms_ic_chevron_start
+drawable ms_tab_container_pre_lollipop_background
+drawable ms_vector_circle_24dp
+drawable ms_vector_warning_24dp
+drawable ms_vertical_tab_divider
 drawable mtrl_dialog_background
 drawable mtrl_dropdown_arrow
 drawable mtrl_ic_arrow_drop_down
@@ -1583,6 +1721,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable red_button_background
 drawable rounded_layout
+drawable shape_cursor
 drawable shape_gradient_branco
 drawable shape_gradient_vermelho
 drawable shape_quadrado_arr_branco
@@ -1648,11 +1787,9 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
-id action_camera
 id action_container
 id action_context_bar
 id action_divider
-id action_galeria
 id action_image
 id action_inicio
 id action_menu_divider
@@ -1681,6 +1818,9 @@ id beginning
 id blocking
 id body_scroll
 id bottom
+id bottom_left
+id bottom_right
+id bottom_sheet_grid_view
 id bottom_to_top
 id browser_actions_header_text
 id browser_actions_menu_item_icon
@@ -1689,11 +1829,13 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id bt_atualizar
 id bt_cadastrar
+id bt_foto
 id bt_login
 id bt_login_google
 id bt_recuperar_senha
 id bt_redefinir
 id bt_sair
+id bt_usuario
 id button
 id buttonPanel
 id buttons_container
@@ -1719,6 +1861,10 @@ id confirm_button
 id container
 id content
 id contentPanel
+id content_container
+id content_fade
+id content_overlay
+id content_progress
 id content_text
 id coordinator
 id custom
@@ -1739,6 +1885,9 @@ id dialog_button
 id dimensions
 id direct
 id disableHome
+id disabled_bottom_navigation
+id disabled_content_interaction
+id dots
 id dropdown_menu
 id edit_query
 id edl_cpf
@@ -1778,6 +1927,7 @@ id groups
 id hideable
 id home
 id homeAsUp
+id horizontal
 id hybrid
 id icon
 id icon_group
@@ -1787,6 +1937,9 @@ id image
 id image_content_root
 id image_root
 id image_view
+id img1
+id img2
+id img3
 id img_app
 id img_usuario
 id info
@@ -1804,11 +1957,11 @@ id l_redefinicao
 id labeled
 id largeLabel
 id left
+id left_divider
 id left_to_right
 id light
 id line1
 id line3
-id list
 id listMode
 id list_item
 id loading
@@ -1829,6 +1982,27 @@ id month_navigation_fragment_toggle
 id month_navigation_next
 id month_navigation_previous
 id month_title
+id ms_bottomNavigation
+id ms_iconContainer
+id ms_stepCompleteButton
+id ms_stepDivider
+id ms_stepDoneIndicator
+id ms_stepDottedProgressBar
+id ms_stepIconBackground
+id ms_stepNextButton
+id ms_stepNumber
+id ms_stepPager
+id ms_stepPagerOverlay
+id ms_stepPagerProgressBar
+id ms_stepPrevButton
+id ms_stepProgressBar
+id ms_stepSubtitle
+id ms_stepTabsContainer
+id ms_stepTabsInnerContainer
+id ms_stepTabsProgressMessage
+id ms_stepTabsScrollView
+id ms_stepTextContainer
+id ms_stepTitle
 id mtrl_calendar_day_selector_frame
 id mtrl_calendar_days_of_week
 id mtrl_calendar_frame
@@ -1873,11 +2047,13 @@ id percent
 id pin
 id primary_button
 id progressWheel
+id progress_bar
 id progress_circular
 id progress_dialog
 id progress_horizontal
 id radio
 id right
+id right_divider
 id right_icon
 id right_side
 id right_to_left
@@ -1927,12 +2103,14 @@ id src_over
 id standard
 id start
 id status_bar_latest_event_content
+id stepperLayout
 id stretch
 id submenuarrow
 id submit_area
 id success_frame
 id success_tick
 id tabMode
+id tabs
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
 id tag_accessibility_heading
@@ -1959,10 +2137,13 @@ id textinput_helper_text
 id time
 id title
 id titleDividerNoCustom
+id title_container
 id title_template
 id title_text
 id top
 id topPanel
+id top_left
+id top_right
 id top_to_bottom
 id touch_outside
 id transition_current_scene
@@ -1978,6 +2159,7 @@ id uniform
 id unlabeled
 id up
 id useLogo
+id vertical
 id view_offset_helper
 id view_root
 id visible
@@ -1991,14 +2173,18 @@ id y
 id z
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
+integer animation_duration
 integer app_bar_elevation_anim_duration
 integer bottom_sheet_slide_duration
 integer cancel_button_image_alpha
 integer config_tooltipAnimTime
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
+integer elevation_shadow_view_shadow_orientation_default_value
 integer google_play_services_version
 integer hide_password_duration
+integer ms_default_error_tab_animation_duration
+integer ms_warning_end_translate_y
 integer mtrl_badge_max_character_count
 integer mtrl_btn_anim_delay_ms
 integer mtrl_btn_anim_duration_ms
@@ -2050,19 +2236,18 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
-layout activity_inicio
-layout activity_solicitacao_cadastro
-layout activity_solicitacao_listar
-layout activity_solicitacao_visualizar
+layout activity_cadastro
+layout activity_completar_cadastro
+layout activity_login
+layout activity_overview
+layout activity_solicitacao
 layout activity_splash
-layout activity_template
-layout activity_usuario_cadastro
-layout activity_usuario_completar_dados
-layout activity_usuario_login
-layout activity_usuario_perfil
 layout activity_usuario_redefinir_senha
 layout alert_dialog
 layout banner
+layout bottom_sheet
+layout bottom_sheet_grid_view
+layout bottom_sheet_title
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout card
@@ -2084,16 +2269,26 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout divider
+layout fragment_departamentos
+layout fragment_inicio
+layout fragment_perfil
 layout fragment_solicitacao_1
 layout fragment_solicitacao_2
 layout fragment_solicitacao_3
+layout fragment_solicitacoes
+layout grid_item
+layout grid_placeholder
 layout image
-layout layout_item_modalbottomsheet
+layout list_item
+layout list_placeholder
 layout modal
-layout modal_bottom_sheet_dialog_fragment
-layout modal_bottom_sheet_dialog_fragment_header
-layout modal_bottom_sheet_dialog_fragment_item
 layout modal_portrait_inner
+layout ms_dot
+layout ms_step_tab
+layout ms_step_tab_container
+layout ms_stepper_layout
+layout ms_tabs_container
 layout mtrl_alert_dialog
 layout mtrl_alert_dialog_actions
 layout mtrl_alert_dialog_title
@@ -2154,7 +2349,6 @@ layout text_view_with_line_height_from_style
 layout text_view_with_theme_line_height
 layout text_view_without_line_height
 menu menu_bottom_bar
-menu menu_imagens
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
@@ -2218,6 +2412,7 @@ string common_signin_button_text
 string common_signin_button_text_long
 string default_progressbar
 string default_web_client_id
+string device_type
 string dialog_cancel
 string dialog_default_title
 string dialog_ok
@@ -2239,6 +2434,11 @@ string hint_senha
 string icon_content_description
 string modal_content_descriptor
 string modal_inner_content_descriptor
+string ms_back
+string ms_circle_path
+string ms_complete
+string ms_next
+string ms_warning_path
 string mtrl_badge_numberless_content_description
 string mtrl_chip_close_icon_content_description
 string mtrl_exceed_max_badge_number_suffix
@@ -2323,6 +2523,7 @@ style Base_Animation_AppCompat_Tooltip
 style Base_CardView
 style Base_DialogWindowTitle_AppCompat
 style Base_DialogWindowTitleBackground_AppCompat
+style Base_MSStepTabsContainer
 style Base_MaterialAlertDialog_MaterialComponents_Title_Icon
 style Base_MaterialAlertDialog_MaterialComponents_Title_Panel
 style Base_MaterialAlertDialog_MaterialComponents_Title_Text
@@ -2524,6 +2725,9 @@ style Base_Widget_MaterialComponents_PopupMenu_Overflow
 style Base_Widget_MaterialComponents_TextInputEditText
 style Base_Widget_MaterialComponents_TextInputLayout
 style Base_Widget_MaterialComponents_TextView
+style BottomSheet
+style BottomSheet_Light
+style BottomSheetAnimation
 style CardView
 style CardView_Dark
 style CardView_Light
@@ -2543,6 +2747,26 @@ style FiamUI_ModalImageView
 style FiamUI_ResizableImageView
 style FiamUI_Text_BannerTitle
 style FiamUI_Text_Title
+style MSBottomNavigation
+style MSColorableProgressBar
+style MSDefaultStepperLayoutTheme
+style MSNavBarButton
+style MSNavBarButton_Back
+style MSNavBarButton_Complete
+style MSNavBarButton_Next
+style MSStepPagerOverlayStyle
+style MSStepPagerProgressBarStyle
+style MSStepTabContainer
+style MSStepTabDivider
+style MSStepTabDoneIndicator
+style MSStepTabIconBackground
+style MSStepTabNumber
+style MSStepTabSubtitle
+style MSStepTabTitle
+style MSStepTabsContainer
+style MSStepTabsInnerContainer
+style MSStepTabsProgressMessage
+style MSStepTabsScrollView
 style MaterialAlertDialog_MaterialComponents
 style MaterialAlertDialog_MaterialComponents_Body_Text
 style MaterialAlertDialog_MaterialComponents_Picker_Date_Calendar
@@ -3038,6 +3262,7 @@ styleable ConstraintSet android_orientation android_id android_visibility androi
 styleable CoordinatorLayout keylines statusBarBackground
 styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
+styleable ElevationShadowView emulateParallelLight shadowElevation shadowOrientation
 styleable ExtendedFloatingActionButton elevation extendMotionSpec hideMotionSpec showMotionSpec shrinkMotionSpec
 styleable ExtendedFloatingActionButton_Behavior_Layout behavior_autoHide behavior_autoShrink
 styleable FloatingActionButton backgroundTint backgroundTintMode borderWidth elevation ensureMinTouchTargetSize fabCustomSize fabSize hideMotionSpec hoveredFocusedTranslationZ maxImageSize pressedTranslationZ rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec useCompatPadding
@@ -3076,8 +3301,10 @@ styleable PopupWindowBackgroundState state_above_anchor
 styleable ProgressWheel matProg_barColor matProg_barSpinCycleTime matProg_barWidth matProg_circleRadius matProg_fillRadius matProg_linearProgress matProg_progressIndeterminate matProg_rimColor matProg_rimWidth matProg_spinSpeed
 styleable RecycleListView paddingBottomNoButtons paddingTopNoTitle
 styleable RecyclerView android_orientation android_clipToPadding android_descendantFocusability fastScrollEnabled fastScrollHorizontalThumbDrawable fastScrollHorizontalTrackDrawable fastScrollVerticalThumbDrawable fastScrollVerticalTrackDrawable layoutManager reverseLayout spanCount stackFromEnd
+styleable RightNavigationButton state_verification_failed
 styleable Rotate3dAnimation fromDeg pivotX pivotY rollType toDeg
 styleable ScrimInsetsFrameLayout insetForeground
+styleable ScrimInsetsLayout insetDrawable
 styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight
@@ -3085,8 +3312,11 @@ styleable SignInButton buttonSize colorScheme scopeUris
 styleable Snackbar snackbarButtonStyle snackbarStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha elevation maxActionInlineWidth
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
+styleable SquareImageView scaledEdge
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
+styleable StepperLayout ms_activeStepColor ms_backButtonBackground ms_backButtonColor ms_backButtonText ms_bottomNavigationBackground ms_completeButtonBackground ms_completeButtonColor ms_completeButtonText ms_errorColor ms_inactiveStepColor ms_nextButtonBackground ms_nextButtonColor ms_nextButtonText ms_showBackButtonOnFirstStep ms_showBottomNavigation ms_showErrorMessageEnabled ms_showErrorState ms_showErrorStateEnabled ms_showErrorStateOnBack ms_showErrorStateOnBackEnabled ms_stepperFeedbackType ms_stepperFeedback_contentFadeAlpha ms_stepperFeedback_contentOverlayBackground ms_stepperLayoutTheme ms_stepperType ms_tabNavigationEnabled ms_tabStepDividerWidth
+styleable StepperLayoutTheme ms_backNavigationButtonStyle ms_bottomNavigationStyle ms_colorableProgressBarStyle ms_completeNavigationButtonStyle ms_nextNavigationButtonStyle ms_stepPagerOverlayStyle ms_stepPagerProgressBarStyle ms_stepTabContainerStyle ms_stepTabDividerStyle ms_stepTabDoneIndicatorStyle ms_stepTabIconBackgroundStyle ms_stepTabNumberStyle ms_stepTabSubtitleStyle ms_stepTabTitleStyle ms_stepTabsInnerContainerStyle ms_stepTabsProgressMessageStyle ms_stepTabsScrollViewStyle ms_tabsContainerStyle
 styleable SwitchCompat android_textOn android_textOff android_thumb showText splitTrack switchMinWidth switchPadding switchTextAppearance thumbTextPadding thumbTint thumbTintMode track trackTint trackTintMode
 styleable SwitchMaterial useMaterialThemeColors
 styleable TabItem android_icon android_layout android_text
@@ -3103,6 +3333,7 @@ transition changebounds
 transition explode
 transition fade
 transition slide
+xml elevation_shadow_view
 xml file_paths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end

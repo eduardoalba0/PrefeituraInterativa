@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <!-- Cards com cores diferentes,
-         um para cada área relacionada ao problema (saude, educação, etc)
-         usuário clica no card e abre um ModalButtomSheats com os tipos de demanda
-         aí passa para a proxima etapa, marcando com verde em um progressbar.-->
+    <!-- usar recyclerview-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quadrado_irregular_pequeno" />
+
+        <ImageView
+            android:id="@+id/img2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quadrado_irregular_pequeno" />
+
+        <ImageView
+            android:id="@+id/img3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/quadrado_irregular_pequeno" />
+
+    </LinearLayout>
+
+</ScrollView>

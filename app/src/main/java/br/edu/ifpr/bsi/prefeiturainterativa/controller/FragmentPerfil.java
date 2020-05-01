@@ -11,12 +11,11 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.commit451.modalbottomsheetdialogfragment.ModalBottomSheetDialogFragment;
-import com.commit451.modalbottomsheetdialogfragment.Option;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -28,8 +27,6 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +45,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import de.mrapp.android.bottomsheet.BottomSheet;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -56,8 +54,8 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
-public class UsuarioPerfilActivity extends Fragment implements View.OnClickListener,
-        Validator.ValidationListener, OnSuccessListener<Void>, ModalBottomSheetDialogFragment.Listener {
+public class FragmentPerfil extends Fragment implements View.OnClickListener,
+        Validator.ValidationListener, OnSuccessListener<Void>, AdapterView.OnItemClickListener {
 
     private static final int REQ_GALERIA = 11, REQ_CAMERA = 12;
 
@@ -71,7 +69,7 @@ public class UsuarioPerfilActivity extends Fragment implements View.OnClickListe
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_usuario_perfil, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfil, container, false);
         ButterKnife.bind(this, view);
         helper = new FirebaseHelper(getActivity());
         validador = new Validator(this);
@@ -95,32 +93,31 @@ public class UsuarioPerfilActivity extends Fragment implements View.OnClickListe
                         .show());
                 break;
             case R.id.img_usuario:
-                UsuarioPerfilActivityPermissionsDispatcher.abrirAppSelectorWithPermissionCheck(this);
+                FragmentPerfilPermissionsDispatcher.abrirAppSelectorWithPermissionCheck(this);
                 break;
             case R.id.bt_sair:
                 helper.deslogar();
-                Intent intent = new Intent(getActivity(), UsuarioLoginActivity.class);
+                Intent intent = new Intent(getActivity(), ActivityLogin.class);
                 startActivity(intent);
                 break;
         }
     }
 
     @Override
-    public void onModalOptionSelected(@org.jetbrains.annotations.Nullable String s, @NotNull Option option) {
-        switch (option.getId()) {
-            case R.id.action_camera:
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        switch (i){
+            case 0:
                 usarCamera();
                 break;
-            case R.id.action_galeria:
+            case 1:
                 usarGaleria();
                 break;
         }
     }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == ActivityTemplate.RESULT_OK) {
+        if (resultCode == ActivityOverview.RESULT_OK) {
             switch (requestCode) {
                 case REQ_GALERIA:
                     Uri selectedImage = data.getData();
@@ -177,7 +174,7 @@ public class UsuarioPerfilActivity extends Fragment implements View.OnClickListe
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        UsuarioPerfilActivityPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        FragmentPerfilPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @Override
@@ -200,11 +197,16 @@ public class UsuarioPerfilActivity extends Fragment implements View.OnClickListe
 
     @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void abrirAppSelector() {
-        new ModalBottomSheetDialogFragment.Builder()
-                .add(R.menu.menu_imagens)
-                .columns(2)
-                .layout(R.layout.layout_item_modalbottomsheet)
-                .show(getChildFragmentManager(), "AppSelector");
+        new BottomSheet.Builder(getActivity())
+                .setTitle("Continuar com:")
+                .addItem(0, R.string.str_camera, R.drawable.ic_adicionar_foto)
+                .addItem(1, R.string.str_galeria, R.drawable.ic_adicionar_galeria)
+                .setBackground(R.drawable.shape_gradient_branco)
+                .setItemColor(getResources().getColor(R.color.black))
+                .setTitleColor(getResources().getColor(R.color.black))
+                .setStyle(BottomSheet.Style.GRID)
+                .setOnItemClickListener(this)
+                .create().show();
     }
 
     public void usarGaleria() {
@@ -229,7 +231,6 @@ public class UsuarioPerfilActivity extends Fragment implements View.OnClickListe
                 ex.printStackTrace();
             }
         }
-
     }
 
     @OnShowRationale({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})

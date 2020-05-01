@@ -6,7 +6,6 @@ import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.ViewAnimationUtils;
-import android.view.animation.AccelerateInterpolator;
 import android.view.animation.AnticipateInterpolator;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
@@ -39,7 +38,8 @@ public class TransitionHelper {
                     int cx = (sharedElement.getLeft() + sharedElement.getRight()) / 2;
                     int cy = (sharedElement.getTop() + sharedElement.getBottom()) / 2;
                     int finalRadius = Math.max(view_root.getWidth(), view_root.getHeight());
-                    Animator anim = ViewAnimationUtils.createCircularReveal(view_root, cx, cy, 0, finalRadius);
+                    int startRadius = Math.min(sharedElement.getWidth(), sharedElement.getHeight());
+                    Animator anim = ViewAnimationUtils.createCircularReveal(view_root, cx, cy, startRadius, finalRadius);
                     anim.setDuration(1000);
 
                     for (View reveal : reveals) {

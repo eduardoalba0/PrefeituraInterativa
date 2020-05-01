@@ -19,9 +19,8 @@ import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class SplashActivity extends AppCompatActivity {
+public class ActivitySplash extends AppCompatActivity {
 
     private FirebaseHelper helper;
     private UsuarioDAO dao;
@@ -45,17 +44,17 @@ public class SplashActivity extends AppCompatActivity {
     public void verificarDados() {
         Usuario usuario = new Usuario();
         if (helper.getUser() == null) {
-            chamarActivity(UsuarioLoginActivity.class);
+            chamarActivity(ActivityLogin.class);
             return;
         }
         usuario.set_ID(helper.getUser().getUid());
         String cpf = PreferenceManager.getDefaultSharedPreferences(this).getString(usuario.get_ID(), "");
         if (!cpf.trim().equalsIgnoreCase("")) {
-            chamarActivity(ActivityTemplate.class);
+            chamarActivity(ActivityOverview.class);
             return;
         }
         if (!helper.conexaoAtivada()) {
-            chamarActivity(UsuarioLoginActivity.class);
+            chamarActivity(ActivityLogin.class);
             return;
         }
 
@@ -64,17 +63,17 @@ public class SplashActivity extends AppCompatActivity {
             task.addOnSuccessListener(this, documentSnapshot -> {
                 Usuario aux = documentSnapshot.toObject(Usuario.class);
                 if (aux == null || aux.getCpf() == null || aux.getCpf().trim().equalsIgnoreCase(""))
-                    chamarActivity(UsuarioCompletarCadastroActivity.class);
+                    chamarActivity(ActivityCompletarCadastro.class);
                 else
-                    chamarActivity(ActivityTemplate.class);
+                    chamarActivity(ActivityOverview.class);
             });
 
     }
 
     public <T> void chamarActivity(Class<T> activity) {
-        Intent intent = new Intent(SplashActivity.this, activity);
+        Intent intent = new Intent(ActivitySplash.this, activity);
         ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(SplashActivity.this, img_app, "splash_transition");
+                makeSceneTransitionAnimation(ActivitySplash.this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());
     }
 

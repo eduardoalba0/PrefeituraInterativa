@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobsandgeeks.saripaar.ValidationError;
@@ -28,7 +27,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class UsuarioRedefinirActivity extends AppCompatActivity implements View.OnClickListener,
+public class ActivityRedefinirSenha extends AppCompatActivity implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<Void> {
 
     private Validator validador;
@@ -79,7 +78,7 @@ public class UsuarioRedefinirActivity extends AppCompatActivity implements View.
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setContentText("Clique no link enviado para seu e-mail para redefinir sua senha.")
                 .setConfirmClickListener(sweetAlertDialog -> {
-                    Intent intent = new Intent(UsuarioRedefinirActivity.this, UsuarioLoginActivity.class);
+                    Intent intent = new Intent(ActivityRedefinirSenha.this, ActivityLogin.class);
                     ActivityOptionsCompat options = ActivityOptionsCompat.
                             makeSceneTransitionAnimation(this, img_app, "splash_transition");
                     startActivity(intent, options.toBundle());
@@ -90,6 +89,13 @@ public class UsuarioRedefinirActivity extends AppCompatActivity implements View.
         Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
         t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, l_redefinicao));
         getWindow().setSharedElementEnterTransition(t);
+    }
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(ActivityRedefinirSenha.this, ActivityLogin.class);
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(ActivityRedefinirSenha.this, img_app, "splash_transition");
+        startActivity(intent, options.toBundle());
     }
 
     @Email(message = "Seu e-mail está inválido.")

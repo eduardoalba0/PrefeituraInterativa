@@ -56,12 +56,13 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityTemplate" />
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioRedefinirActivity" />
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioCompletarCadastroActivity" />
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioCadastroActivity" />
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioLoginActivity" />
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.SplashActivity" >
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacao" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityOverview" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityRedefinirSenha" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityCompletarCadastro" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityCadastro" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityLogin" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySplash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,12 +1,14 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
-MERGED from [com.github.Commit451:ModalBottomSheetDialogFragment:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\69f38057e7d3c85294a1acc9c50225d4\AndroidManifest.xml:2:1-11:12
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:2:1-24:12
+MERGED from [com.github.michael-rapp:android-bottom-sheet:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4d1e61dab6933aecbe7cdf029da3010c\AndroidManifest.xml:15:1-24:12
+MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:17:1-27:12
+MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\54154754f3b0a203ed4466a83ca8071a\AndroidManifest.xml:15:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:17:1-38:12
@@ -95,22 +97,22 @@ MERGED from [io.grpc:grpc-android:1.21.0] C:\Users\Eduardo\.gradle\caches\transf
 MERGED from [androidx.constraintlayout:constraintlayout:1.1.3] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\a5998cf54ebdf29421eb69b72b4ae5cd\AndroidManifest.xml:2:1-11:12
 MERGED from [com.pnikosis:materialish-progress:1.7] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e5083117c9c1f1ef03dd046c0a639109\AndroidManifest.xml:2:1-13:12
 MERGED from [io.reactivex.rxjava2:rxandroid:2.0.2] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\3d1239e6842cbb5b35e6e0d9a4d87dcb\AndroidManifest.xml:15:1-21:12
-INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
+INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
 	package
 		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:4:5-51
 		INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
 		INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-59:12
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
 		INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:11-69
@@ -211,11 +213,13 @@ ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\sr
 	android:name
 		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:19:9-47
 application
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:22:5-57:19
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:22:5-58:19
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:22:5-20
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:14:5-22:19
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:14:5-22:19
+MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:25:5-20
+MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:25:5-20
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:30:5-36:19
@@ -330,50 +334,58 @@ ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\sr
 		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:43:17-51
 	android:name
 		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:42:17-67
-activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityTemplate
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:46:9-65
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacao
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:46:9-68
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:46:19-62
-activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioRedefinirActivity
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:47:9-73
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:46:19-65
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityOverview
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:47:9-65
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:47:19-70
-activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioCompletarCadastroActivity
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:48:9-81
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:47:19-62
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityRedefinirSenha
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:48:9-71
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:48:19-78
-activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioCadastroActivity
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:49:9-72
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:48:19-68
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityCompletarCadastro
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:49:9-74
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:49:19-69
-activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.UsuarioLoginActivity
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:50:9-69
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:49:19-71
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityCadastro
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:50:9-65
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:50:19-66
-activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.SplashActivity
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:51:9-56:20
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:50:19-62
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityLogin
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:51:9-62
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:51:19-60
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:51:19-59
+activity#br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySplash
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:52:9-57:20
+	android:name
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:52:19-60
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:52:13-55:29
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:53:13-56:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:53:17-69
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:54:17-69
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:53:25-66
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:54:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:54:17-77
+ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:55:17-77
 	android:name
-		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:54:27-74
+		ADDED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:55:27-74
 uses-sdk
 INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml
-MERGED from [com.github.Commit451:ModalBottomSheetDialogFragment:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\69f38057e7d3c85294a1acc9c50225d4\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.Commit451:ModalBottomSheetDialogFragment:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\69f38057e7d3c85294a1acc9c50225d4\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:7:5-9:41
+MERGED from [com.github.michael-rapp:android-bottom-sheet:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4d1e61dab6933aecbe7cdf029da3010c\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.michael-rapp:android-bottom-sheet:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4d1e61dab6933aecbe7cdf029da3010c\AndroidManifest.xml:20:5-22:41
+MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:21:5-23:41
+MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:21:5-23:41
+MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\54154754f3b0a203ed4466a83ca8071a\AndroidManifest.xml:20:5-22:41
+MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\54154754f3b0a203ed4466a83ca8071a\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:20:5-44

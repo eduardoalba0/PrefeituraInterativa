@@ -6,30 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/shape_gradient_vermelho"
-    tools:context=".controller.ActivityTemplate">
+    tools:context=".controller.ActivityOverview">
 
-    <ScrollView
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/l_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/tb_footer"
-        android:fillViewport="true">
-
-        <FrameLayout
-            android:id="@+id/l_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_gradient_branco" />
-
-    </ScrollView>
+        android:scrollbars="vertical" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tb_footer"
+        android:layout_gravity="bottom"
         style="@style/Widget.MaterialComponents.TabLayout.Colored"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_toStartOf="@+id/bt_foto"
         android:layout_alignParentBottom="true"
         android:background="@color/float_transparent"
-        android:transitionName="splash_transition">
+        app:tabGravity="fill"
+        app:tabIconTint="@color/white"
+        app:tabIndicatorColor="@color/white">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -39,7 +36,7 @@
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/ic_adicionar_foto" />
+            android:icon="@drawable/ic_departamento" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -50,5 +47,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_usuario" />
+
     </com.google.android.material.tabs.TabLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_foto"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:src="@drawable/ic_add"
+        android:transitionName="splash_transition"
+        app:backgroundTint="@color/white"
+        app:fabSize="normal"
+        app:iconTint="@color/colorPrimary" />
 </RelativeLayout>
