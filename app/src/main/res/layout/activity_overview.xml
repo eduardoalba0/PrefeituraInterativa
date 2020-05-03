@@ -57,12 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:gravity="center"
         android:src="@drawable/ic_add"
-        android:transitionName="splash_transition"
-        app:backgroundTint="@color/white"
+        android:layout_marginBottom="@dimen/espaco_muito_pequeno"
         app:fabSize="normal"
-        app:iconTint="@color/colorPrimary" />
+        android:layout_marginEnd="@dimen/espaco_pequeno"
+        android:transitionName="splash_transition"
+        app:backgroundTint="@color/white" />
 </RelativeLayout>

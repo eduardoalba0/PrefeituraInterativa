@@ -12,6 +12,9 @@ MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradl
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:17:1-38:12
+MERGED from [com.google.android:flexbox:2.0.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\20ce34e1499536933b4975a322b37ae6\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.camera:camera-core:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\85133fc96c1046d5fcd02b1fc83f4ce7\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-core:17.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\cc79d8dbd7a34d253905202e8d418776\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-auth:19.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ca5f8cbaae029bed7aaa5b905f9a2f80\AndroidManifest.xml:17:1-42:12
 MERGED from [com.google.firebase:firebase-messaging:20.1.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b8359f0b072ee35dd0362aaf1cba4dd9\AndroidManifest.xml:17:1-44:12
@@ -73,22 +76,22 @@ MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] C:\Users\Ed
 MERGED from [androidx.core:core:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\1c894efa247bcf2e4a06b1a000f71575\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\0bf100d1964bb1245ae1d573a0179a75\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\dbb5840803c1bb41cc4a57a202046626\AndroidManifest.xml:17:1-22:12
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fc1e4b775aca818d5662e73e142b033e\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\94f1546bfe79ad3a743130d34f669bf4\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e644e892df91d21af5760c1bfb05a2df\AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\36499cc85bc9bf407f61c56e7a0c0dbf\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:15:1-41:12
 MERGED from [com.google.firebase:firebase-encoders-json:16.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\f155313f43c99e617d45c3095970d2b8\AndroidManifest.xml:15:1-23:12
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:2:1-14:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\05a009addcc5d23d7f4eed941e43869f\AndroidManifest.xml:2:1-11:12
-MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fc1e4b775aca818d5662e73e142b033e\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\9375c5fc5a0a518cfde1d02e7ac1d560\AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b6b27c1caa1e9168cb20332b75b6d14b\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\2248871848ba96de24413d2c57ccb110\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\78fb7e921b082d34a42dda585417e1fd\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\f68ffd287f34abae39e63f98bc7794ae\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\09082b26f72420dc8ed2de84d602dbbb\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\c415187b28d0939ee57f1796fdecc14e\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\3bfcd8e979297eb0f309fa9bfc56d390\AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fbeaba446e53c4478283af567dfe7ee6\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4197273268817da9457488e0ce748ac1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ebfaff8db77bf726cd4fefbdcaf73ec3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b6b27c1caa1e9168cb20332b75b6d14b\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\c415187b28d0939ee57f1796fdecc14e\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\240a4a38bd63ba2ee1b7e2eb2b7d1659\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\157f468da5d02b91bdaeaf4ea2719570\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.datatransport:transport-api:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\829cd0966d6260fdfd69f2bbffeef26d\AndroidManifest.xml:15:1-22:12
@@ -224,6 +227,8 @@ MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:22:5-37:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:30:5-36:19
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:30:5-36:19
+MERGED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:24:5-31:19
 MERGED from [com.google.firebase:firebase-core:17.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\cc79d8dbd7a34d253905202e8d418776\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-core:17.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\cc79d8dbd7a34d253905202e8d418776\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-auth:19.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ca5f8cbaae029bed7aaa5b905f9a2f80\AndroidManifest.xml:23:5-40:19
@@ -280,12 +285,12 @@ MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\Edua
 MERGED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e5dde645ef88453ad026111d099adb2f\AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.core:core:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\1c894efa247bcf2e4a06b1a000f71575\AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\1c894efa247bcf2e4a06b1a000f71575\AndroidManifest.xml:24:5-89
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\36499cc85bc9bf407f61c56e7a0c0dbf\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\36499cc85bc9bf407f61c56e7a0c0dbf\AndroidManifest.xml:28:5-36:19
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:25:5-39:19
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:25:5-39:19
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:7:5-12:19
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:7:5-12:19
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\05a009addcc5d23d7f4eed941e43869f\AndroidManifest.xml:9:5-20
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\05a009addcc5d23d7f4eed941e43869f\AndroidManifest.xml:9:5-20
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\9375c5fc5a0a518cfde1d02e7ac1d560\AndroidManifest.xml:24:5-25:19
@@ -392,6 +397,12 @@ MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android:flexbox:2.0.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\20ce34e1499536933b4975a322b37ae6\AndroidManifest.xml:22:5-24:41
+MERGED from [com.google.android:flexbox:2.0.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\20ce34e1499536933b4975a322b37ae6\AndroidManifest.xml:22:5-24:41
+MERGED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-core:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\85133fc96c1046d5fcd02b1fc83f4ce7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.camera:camera-core:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\85133fc96c1046d5fcd02b1fc83f4ce7\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-core:17.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\cc79d8dbd7a34d253905202e8d418776\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-core:17.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\cc79d8dbd7a34d253905202e8d418776\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-auth:19.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ca5f8cbaae029bed7aaa5b905f9a2f80\AndroidManifest.xml:21:5-44
@@ -514,6 +525,10 @@ MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Eduardo\.gradl
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\0bf100d1964bb1245ae1d573a0179a75\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\dbb5840803c1bb41cc4a57a202046626\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\dbb5840803c1bb41cc4a57a202046626\AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:5:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fc1e4b775aca818d5662e73e142b033e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fc1e4b775aca818d5662e73e142b033e\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\94f1546bfe79ad3a743130d34f669bf4\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\94f1546bfe79ad3a743130d34f669bf4\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:16.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e644e892df91d21af5760c1bfb05a2df\AndroidManifest.xml:19:5-21:41
@@ -524,28 +539,24 @@ MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.firebase:firebase-encoders-json:16.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\f155313f43c99e617d45c3095970d2b8\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.firebase:firebase-encoders-json:16.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\f155313f43c99e617d45c3095970d2b8\AndroidManifest.xml:19:5-21:41
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:5:5-44
-MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:5:5-44
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\05a009addcc5d23d7f4eed941e43869f\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\05a009addcc5d23d7f4eed941e43869f\AndroidManifest.xml:5:5-7:41
-MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fc1e4b775aca818d5662e73e142b033e\AndroidManifest.xml:20:5-44
-MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fc1e4b775aca818d5662e73e142b033e\AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\9375c5fc5a0a518cfde1d02e7ac1d560\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\9375c5fc5a0a518cfde1d02e7ac1d560\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b6b27c1caa1e9168cb20332b75b6d14b\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b6b27c1caa1e9168cb20332b75b6d14b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\2248871848ba96de24413d2c57ccb110\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\2248871848ba96de24413d2c57ccb110\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\78fb7e921b082d34a42dda585417e1fd\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\78fb7e921b082d34a42dda585417e1fd\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\f68ffd287f34abae39e63f98bc7794ae\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\f68ffd287f34abae39e63f98bc7794ae\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\09082b26f72420dc8ed2de84d602dbbb\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\09082b26f72420dc8ed2de84d602dbbb\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\c415187b28d0939ee57f1796fdecc14e\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\c415187b28d0939ee57f1796fdecc14e\AndroidManifest.xml:20:5-44
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\3bfcd8e979297eb0f309fa9bfc56d390\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\3bfcd8e979297eb0f309fa9bfc56d390\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fbeaba446e53c4478283af567dfe7ee6\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fbeaba446e53c4478283af567dfe7ee6\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4197273268817da9457488e0ce748ac1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4197273268817da9457488e0ce748ac1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ebfaff8db77bf726cd4fefbdcaf73ec3\AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ebfaff8db77bf726cd4fefbdcaf73ec3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b6b27c1caa1e9168cb20332b75b6d14b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b6b27c1caa1e9168cb20332b75b6d14b\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\c415187b28d0939ee57f1796fdecc14e\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\c415187b28d0939ee57f1796fdecc14e\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\240a4a38bd63ba2ee1b7e2eb2b7d1659\AndroidManifest.xml:20:5-44
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\240a4a38bd63ba2ee1b7e2eb2b7d1659\AndroidManifest.xml:20:5-44
 MERGED from [androidx.print:print:1.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\157f468da5d02b91bdaeaf4ea2719570\AndroidManifest.xml:20:5-44
@@ -640,6 +651,18 @@ ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.
 		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:35:13-37
 	android:name
 		ADDED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:34:13-50
+provider#androidx.camera.camera2.impl.Camera2Initializer
+ADDED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:25:9-30:43
+	android:authorities
+		ADDED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:27:13-64
+	android:multiprocess
+		ADDED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:30:13-40
+	android:exported
+		ADDED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:28:13-37
+	android:initOrder
+		ADDED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:29:13-36
+	android:name
+		ADDED from [androidx.camera:camera-camera2:1.0.0-alpha06] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\71e8db090099802018df55fe6a349bfe\AndroidManifest.xml:26:13-75
 activity#com.google.firebase.auth.internal.FederatedSignInActivity
 ADDED from [com.google.firebase:firebase-auth:19.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\ca5f8cbaae029bed7aaa5b905f9a2f80\AndroidManifest.xml:24:9-31:50
 	android:excludeFromRecents
@@ -816,6 +839,14 @@ ADDED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\Eduar
 		ADDED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e5dde645ef88453ad026111d099adb2f\AndroidManifest.xml:25:13-66
 	android:name
 		ADDED from [com.google.android.gms:play-services-basement:17.1.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e5dde645ef88453ad026111d099adb2f\AndroidManifest.xml:24:13-58
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:9:13-64
 service#com.google.android.datatransport.runtime.backends.TransportBackendDiscovery
 ADDED from [com.google.android.datatransport:transport-backend-cct:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\36499cc85bc9bf407f61c56e7a0c0dbf\AndroidManifest.xml:29:9-35:19
 MERGED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:36:9-38:40
@@ -844,11 +875,3 @@ ADDED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\E
 		ADDED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:34:13-37
 	android:name
 		ADDED from [com.google.android.datatransport:transport-runtime:2.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4046015b2d7530539b3c74342a5ef07\AndroidManifest.xml:33:13-132
-provider#com.squareup.picasso.PicassoProvider
-ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:8:9-11:40
-	android:authorities
-		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:10:13-72
-	android:exported
-		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:11:13-37
-	android:name
-		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7a8b78afa7e418146e5d5e2f77876069\AndroidManifest.xml:9:13-64

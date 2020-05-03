@@ -3,6 +3,7 @@ package br.edu.ifpr.bsi.prefeiturainterativa.model;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 public class Departamento implements Serializable {
@@ -13,6 +14,9 @@ public class Departamento implements Serializable {
 
     @Exclude
     private Departamento departamentoSuperior;
+
+    @Exclude
+    private List<TipoSolicitacao> tiposSolicitacao;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -47,6 +51,15 @@ public class Departamento implements Serializable {
 
     public void setDepartamentoSuperior(Departamento departamentoSuperior) {
         this.departamentoSuperior = departamentoSuperior;
+    }
+
+    @Exclude
+    public List<TipoSolicitacao> getTiposSolicitacao() {
+        return tiposSolicitacao;
+    }
+
+    public void setTiposSolicitacao(List<TipoSolicitacao> tiposSolicitacao) {
+        this.tiposSolicitacao = tiposSolicitacao;
     }
 
     @Override

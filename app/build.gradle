@@ -32,6 +32,13 @@ dependencies {
     implementation 'com.google.android.gms:play-services-auth:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
     implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android:flexbox:2.0.1'
+    implementation('androidx.camera:camera-core:1.0.0-alpha06') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
+    implementation ('androidx.camera:camera-camera2:1.0.0-alpha06') {
+        exclude group: 'com.google.guava', module: 'listenablefuture'
+    }
 
     implementation 'com.google.firebase:firebase-core:17.4.0'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
@@ -40,7 +47,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.1.1'
     implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.6'
     implementation 'com.firebaseui:firebase-ui-storage:4.3.1'
-
 
     implementation "org.permissionsdispatcher:permissionsdispatcher:4.7.0"
     implementation 'com.jakewharton:butterknife:10.2.1'

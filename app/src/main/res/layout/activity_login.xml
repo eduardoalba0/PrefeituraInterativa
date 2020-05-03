@@ -110,7 +110,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/bt_recuperar_senha"
+                android:id="@+id/bt_recuperarSenha"
                 style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/bt_login_google"
+                android:id="@+id/bt_loginGoogle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
@@ -184,7 +184,7 @@
                 android:textColor="@color/colorSecondaryDark"
                 android:textSize="@dimen/texto_label"
                 android:transitionName="base_transition"
-                app:cornerRadius="@dimen/raio_quadrado_medio"
+                app:cornerRadius="@dimen/raio_circulo_medio"
                 app:icon="@drawable/ic_google"
                 app:iconTintMode="multiply" />
 

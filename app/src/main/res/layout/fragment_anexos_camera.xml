@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/componente_grande"
+    android:background="@color/float_transparent">
+
+    <TextureView
+        android:id="@+id/view_camera"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_trocarCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/view_camera"
+        android:layout_alignBottom="@id/view_camera"
+        android:layout_margin="@dimen/espaco_muito_pequeno"
+        android:outlineAmbientShadowColor="@color/float_transparent"
+        android:outlineSpotShadowColor="@color/float_transparent"
+        android:src="@drawable/ic_trocar_camera"
+        app:backgroundTint="@color/float_transparent"
+        app:fabSize="normal" />
+
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/bt_flash"
+        style="Widget.MaterialComponents.CompoundButton.Switch"
+        android:layout_width="24dp"
+        android:layout_height="50dp"
+        android:layout_alignStart="@id/view_camera"
+        android:layout_alignBottom="@id/view_camera"
+        android:layout_margin="@dimen/espaco_pequeno"
+        android:background="@color/float_transparent"
+        android:button="@drawable/ic_flash_off"
+        android:outlineAmbientShadowColor="@color/float_transparent"
+        android:outlineSpotShadowColor="@color/float_transparent"
+        android:textOff="@null"
+        android:textOn="@null" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/bt_tirarFoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/view_camera"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="@dimen/espaco_pequeno"
+        app:backgroundTint="@color/white"
+        app:fabSize="normal" />
+
+</RelativeLayout>

@@ -28,4 +28,7 @@
     <string name="str_galeria">Galeria</string>
     <string name="str_sair">Sair</string>
     <string name="Inicio">str_inicio</string>
+    <string name="str_descricao">Descreva sua solicitação (opcional)</string>
+    <string name="str_cadastrar_demanda">Cadastrar Demanda</string>
+    <string name="str_imagens">Imagens</string>
 </resources>

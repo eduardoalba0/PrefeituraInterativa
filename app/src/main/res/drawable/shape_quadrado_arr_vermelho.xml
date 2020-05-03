@@ -6,7 +6,7 @@
                 android:angle="45"
                 android:endColor="@color/colorSecondary"
                 android:startColor="@color/colorTertiary" />
-            <corners android:radius="@dimen/raio_quadrado_grande" />
+            <corners android:radius="@dimen/raio_circulo_grande" />
         </shape>
     </item>
 </layer-list>

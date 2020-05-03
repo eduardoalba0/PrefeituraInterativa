@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/espaco_pequeno">
+
+        <TextView
+            android:id="@+id/tv_titulo"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@string/str_imagens"
+            android:textColor="@color/colorSecondary"
+            android:textSize="@dimen/texto_botao" />
+
+        <ImageView
+            android:id="@+id/img_test"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/edl_descricao">
+
+        </ImageView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_imagens"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_titulo" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/edl_descricao"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/componente_medio"
+            android:layout_below="@+id/rv_imagens"
+            android:hint="@string/str_descricao"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:errorEnabled="true"
+            app:hintAnimationEnabled="true"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/colorPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_descricao"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="fill_horizontal"
+                android:inputType="textMultiLine"
+                android:textColor="@color/colorSecondaryDark"
+                android:textSize="@dimen/texto_label" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+</ScrollView>

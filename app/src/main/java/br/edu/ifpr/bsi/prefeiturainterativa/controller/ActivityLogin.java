@@ -61,17 +61,17 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         dao = new UsuarioDAO(this);
     }
 
-    @OnClick({R.id.bt_login, R.id.bt_login_google, R.id.bt_recuperar_senha, R.id.bt_cadastrar})
+    @OnClick({R.id.bt_login, R.id.bt_loginGoogle, R.id.bt_recuperarSenha, R.id.bt_cadastrar})
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_login:
                 validador.validate();
                 break;
-            case R.id.bt_login_google:
+            case R.id.bt_loginGoogle:
                 logarGoogle();
                 break;
-            case R.id.bt_recuperar_senha:
+            case R.id.bt_recuperarSenha:
                 chamarActivity(ActivityRedefinirSenha.class);
                 break;
             case R.id.bt_cadastrar:
@@ -198,11 +198,11 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     @BindView(R.id.bt_login)
     Button bt_login;
 
-    @BindView(R.id.bt_login_google)
-    MaterialButton bt_login_google;
+    @BindView(R.id.bt_loginGoogle)
+    MaterialButton bt_loginGoogle;
 
-    @BindView(R.id.bt_recuperar_senha)
-    MaterialButton bt_recuperar_senha;
+    @BindView(R.id.bt_recuperarSenha)
+    MaterialButton bt_recuperarSenha;
 
     @BindView(R.id.bt_cadastrar)
     MaterialButton bt_cadastrar;

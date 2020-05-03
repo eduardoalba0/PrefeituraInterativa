@@ -18,14 +18,14 @@
         <View
             android:id="@+id/shape_irregular"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/quadrado_irregular_medio"
+            android:layout_height="@dimen/componente_grande"
             android:elevation="2dp"
             android:background="@drawable/shape_quadrado_irregular_vermelho" />
 
         <LinearLayout
             android:id="@+id/l_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/quadrado_irregular_medio"
+            android:layout_height="@dimen/componente_grande"
             android:elevation="2dp"
             android:gravity="center"
             android:orientation="vertical">
@@ -73,7 +73,7 @@
             android:background="@color/white"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingTop="@dimen/quadrado_irregular_medio">
+            android:paddingTop="@dimen/componente_grande">
 
             <TextView
                 android:layout_width="wrap_content"

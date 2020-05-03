@@ -15,7 +15,7 @@
         <LinearLayout
             android:id="@+id/l_header"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/quadrado_irregular_medio"
+            android:layout_height="@dimen/componente_grande"
             android:background="@drawable/shape_quadrado_irregular_vermelho"
             android:elevation="2dp"
             android:gravity="center"
@@ -179,19 +179,19 @@
                 app:strokeColor="@color/colorSecondaryDark" />
 
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_pequeno"
                 android:background="@drawable/shape_quadrado_arr_vermelho"
                 android:elevation="2dp"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp">
+                android:paddingStart="@dimen/espaco_muito_pequeno"
+                android:paddingEnd="@dimen/espaco_muito_pequeno">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/bt_atualizar"
                     android:layout_centerInParent="true"
                     style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/espaco_muito_pequeno"
                     android:text="@string/str_atualizar"

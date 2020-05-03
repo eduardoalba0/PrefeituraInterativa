@@ -13,11 +13,11 @@
     <dimen name="texto_label">14sp</dimen>
     <dimen name="texto_botao">19sp</dimen>
 
-    <!-- Circulos -->
-    <dimen name="raio_quadrado_grande">50dp</dimen>
-    <dimen name="raio_quadrado_medio">30dp</dimen>
-    <dimen name="raio_quadrado_pequeno">10dp</dimen>
-    <dimen name="quadrado_irregular_grande">500dp</dimen>
-    <dimen name="quadrado_irregular_medio">300dp</dimen>
-    <dimen name="quadrado_irregular_pequeno">150dp</dimen>
+    <!-- Componentes -->
+    <dimen name="raio_circulo_grande">50dp</dimen>
+    <dimen name="raio_circulo_medio">30dp</dimen>
+    <dimen name="raio_circulo_pequeno">10dp</dimen>
+    <dimen name="componente_gigante">500dp</dimen>
+    <dimen name="componente_grande">300dp</dimen>
+    <dimen name="componente_medio">150dp</dimen>
 </resources>

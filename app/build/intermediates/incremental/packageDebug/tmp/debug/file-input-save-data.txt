@@ -1,0 +1,19 @@
+#Internal package file, do not edit.
+#Sat May 02 21:22:49 BRT 2020
+1.base=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+2.path=classes2.dex
+0.baseType=DIRECTORY
+3.baseType=DIRECTORY
+2.base=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+3.set=DEX
+2.set=DEX
+1.baseType=DIRECTORY
+3.path=classes3.dex
+count=4
+1.set=DEX
+0.path=classes.dex
+3.base=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\1
+0.set=DEX
+0.base=C\:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+2.baseType=DIRECTORY
+1.path=classes.dex

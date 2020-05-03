@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.transition.Transition;
 import android.view.View;
 
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
@@ -13,7 +12,7 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.adapters.TabAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.OverviewTabAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import butterknife.BindView;
@@ -23,7 +22,7 @@ import butterknife.OnClick;
 public class ActivityOverview extends FragmentActivity implements View.OnClickListener {
 
     FirebaseHelper helper;
-    TabAdapter pageAdapter;
+    OverviewTabAdapter pageAdapter;
 
     @Override
     protected void onStart() {
@@ -60,10 +59,6 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
     }
 
 
-    public void changePage(int index) {
-
-    }
-
     public <T> void chamarActivity(Class<T> activity) {
         Intent intent = new Intent(ActivityOverview.this, activity);
         ActivityOptionsCompat options = ActivityOptionsCompat.
@@ -78,7 +73,7 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
     }
 
     public void initTabLayout() {
-        pageAdapter = new TabAdapter(getSupportFragmentManager());
+        pageAdapter = new OverviewTabAdapter(getSupportFragmentManager());
         l_content.setAdapter(pageAdapter);
         tb_footer.setupWithViewPager(l_content);
         tb_footer.getTabAt(0).setIcon(R.drawable.ic_inicio);

@@ -40,7 +40,7 @@ public class TransitionHelper {
                     int finalRadius = Math.max(view_root.getWidth(), view_root.getHeight());
                     int startRadius = Math.min(sharedElement.getWidth(), sharedElement.getHeight());
                     Animator anim = ViewAnimationUtils.createCircularReveal(view_root, cx, cy, startRadius, finalRadius);
-                    anim.setDuration(1000);
+                    anim.setDuration(700);
 
                     for (View reveal : reveals) {
                         reveal.setVisibility(View.VISIBLE);

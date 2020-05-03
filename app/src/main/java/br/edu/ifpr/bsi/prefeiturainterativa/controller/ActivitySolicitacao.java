@@ -9,7 +9,7 @@ import com.stepstone.stepper.VerificationError;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentActivity;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.adapters.StepAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacaoStepAdapter;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,7 +20,7 @@ public class ActivitySolicitacao extends FragmentActivity implements StepperLayo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitacao);
         ButterKnife.bind(this, this);
-        stepperLayout.setAdapter(new StepAdapter(getSupportFragmentManager(), this));
+        initStepper();
 
     }
 
@@ -41,6 +41,15 @@ public class ActivitySolicitacao extends FragmentActivity implements StepperLayo
 
     @Override
     public void onReturn() {
+
+    }
+
+    public void initStepper() {
+        SolicitacaoStepAdapter adapter = new SolicitacaoStepAdapter(getSupportFragmentManager(), this);
+        adapter.addFragment(new FragmentSolicitacaoCategoria(), "Categoria\nda demanda");
+        adapter.addFragment(new FragmentSolicitacaoAnexos(), "Identificação\nda solicitação");
+        adapter.addFragment(new FragmentSolicitacaoLocalizacao(), "Localização\ndo ocorrido");
+        stepperLayout.setAdapter(adapter);
 
     }
     @BindView(R.id.stepperLayout)

@@ -38,7 +38,7 @@ public class ActivitySplash extends AppCompatActivity {
 
     public void startAnimation() {
         Handler handler = new Handler();
-        handler.postDelayed(this::verificarDados, 1000);
+        handler.postDelayed(this::verificarDados, 700);
     }
 
     public void verificarDados() {

@@ -10,6 +10,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.TipoSolicitacao;
 
 public class TipoSolicitacaoDAO {
@@ -43,5 +44,9 @@ public class TipoSolicitacaoDAO {
 
     public Task<QuerySnapshot> getAll() {
         return helper.getAll(reference);
+    }
+
+    public Task<QuerySnapshot> getAllPorDepartamento(Departamento departamento){
+        return helper.getQuery(reference.whereEqualTo("departamento_ID", departamento.get_ID()));
     }
 }

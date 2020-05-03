@@ -22,24 +22,24 @@ public final class R {
     public static final class attr {
         private attr() {}
 
-        public static final int fromDeg = 0x7f03014d;
-        public static final int matProg_barColor = 0x7f0301e6;
-        public static final int matProg_barSpinCycleTime = 0x7f0301e7;
-        public static final int matProg_barWidth = 0x7f0301e8;
-        public static final int matProg_circleRadius = 0x7f0301e9;
-        public static final int matProg_fillRadius = 0x7f0301ea;
-        public static final int matProg_linearProgress = 0x7f0301eb;
-        public static final int matProg_progressIndeterminate = 0x7f0301ec;
-        public static final int matProg_rimColor = 0x7f0301ed;
-        public static final int matProg_rimWidth = 0x7f0301ee;
-        public static final int matProg_spinSpeed = 0x7f0301ef;
-        public static final int pivotX = 0x7f03024f;
-        public static final int pivotY = 0x7f030250;
-        public static final int rollType = 0x7f030263;
-        public static final int sweet_alert_bg_drawable = 0x7f0302a0;
-        public static final int sweet_alert_content_text_color = 0x7f0302a1;
-        public static final int sweet_alert_title_text_color = 0x7f0302a2;
-        public static final int toDeg = 0x7f0302f4;
+        public static final int fromDeg = 0x7f030154;
+        public static final int matProg_barColor = 0x7f0301f8;
+        public static final int matProg_barSpinCycleTime = 0x7f0301f9;
+        public static final int matProg_barWidth = 0x7f0301fa;
+        public static final int matProg_circleRadius = 0x7f0301fb;
+        public static final int matProg_fillRadius = 0x7f0301fc;
+        public static final int matProg_linearProgress = 0x7f0301fd;
+        public static final int matProg_progressIndeterminate = 0x7f0301fe;
+        public static final int matProg_rimColor = 0x7f0301ff;
+        public static final int matProg_rimWidth = 0x7f030200;
+        public static final int matProg_spinSpeed = 0x7f030201;
+        public static final int pivotX = 0x7f030262;
+        public static final int pivotY = 0x7f030263;
+        public static final int rollType = 0x7f030276;
+        public static final int sweet_alert_bg_drawable = 0x7f0302b6;
+        public static final int sweet_alert_content_text_color = 0x7f0302b7;
+        public static final int sweet_alert_title_text_color = 0x7f0302b8;
+        public static final int toDeg = 0x7f03030a;
     }
     public static final class color {
         private color() {}
@@ -88,8 +88,8 @@ public final class R {
         public static final int alert_width = 0x7f06004f;
         public static final int buttons_stroke_width = 0x7f060068;
         public static final int common_circle_width = 0x7f06006c;
-        public static final int custom_image_size = 0x7f060074;
-        public static final int progress_circle_radius = 0x7f06017a;
+        public static final int custom_image_size = 0x7f060077;
+        public static final int progress_circle_radius = 0x7f06017d;
     }
     public static final class drawable {
         private drawable() {}
@@ -101,41 +101,41 @@ public final class R {
         public static final int error_circle = 0x7f070089;
         public static final int gray_button_background = 0x7f07008c;
         public static final int green_button_background = 0x7f07008d;
-        public static final int red_button_background = 0x7f0700ce;
-        public static final int success_bow = 0x7f0700d7;
-        public static final int success_circle = 0x7f0700d8;
-        public static final int warning_circle = 0x7f0700dc;
-        public static final int warning_sigh = 0x7f0700dd;
+        public static final int red_button_background = 0x7f0700d4;
+        public static final int success_bow = 0x7f0700dd;
+        public static final int success_circle = 0x7f0700de;
+        public static final int warning_circle = 0x7f0700e2;
+        public static final int warning_sigh = 0x7f0700e3;
     }
     public static final class id {
         private id() {}
 
-        public static final int buttons_container = 0x7f090066;
-        public static final int cancel_button = 0x7f090068;
-        public static final int confirm_button = 0x7f090079;
-        public static final int content_text = 0x7f090081;
-        public static final int custom_image = 0x7f090085;
-        public static final int custom_view_container = 0x7f090086;
-        public static final int error_frame = 0x7f0900a8;
-        public static final int error_x = 0x7f0900a9;
-        public static final int loading = 0x7f0900e4;
-        public static final int mask_left = 0x7f0900e5;
-        public static final int mask_right = 0x7f0900e6;
-        public static final int neutral_button = 0x7f090121;
-        public static final int progressWheel = 0x7f090136;
-        public static final int progress_dialog = 0x7f090139;
-        public static final int success_frame = 0x7f090173;
-        public static final int success_tick = 0x7f090174;
-        public static final int title_text = 0x7f090193;
-        public static final int warning_frame = 0x7f0901ab;
-        public static final int x = 0x7f0901b0;
-        public static final int y = 0x7f0901b1;
-        public static final int z = 0x7f0901b2;
+        public static final int buttons_container = 0x7f09006a;
+        public static final int cancel_button = 0x7f09006c;
+        public static final int confirm_button = 0x7f090080;
+        public static final int content_text = 0x7f090088;
+        public static final int custom_image = 0x7f09008c;
+        public static final int custom_view_container = 0x7f09008d;
+        public static final int error_frame = 0x7f0900b1;
+        public static final int error_x = 0x7f0900b2;
+        public static final int loading = 0x7f0900ed;
+        public static final int mask_left = 0x7f0900ee;
+        public static final int mask_right = 0x7f0900ef;
+        public static final int neutral_button = 0x7f09012a;
+        public static final int progressWheel = 0x7f090141;
+        public static final int progress_dialog = 0x7f090144;
+        public static final int success_frame = 0x7f090186;
+        public static final int success_tick = 0x7f090187;
+        public static final int title_text = 0x7f0901a7;
+        public static final int warning_frame = 0x7f0901c1;
+        public static final int x = 0x7f0901c7;
+        public static final int y = 0x7f0901c8;
+        public static final int z = 0x7f0901c9;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int alert_dialog = 0x7f0c0023;
+        public static final int alert_dialog = 0x7f0c0025;
     }
     public static final class string {
         private string() {}
@@ -157,7 +157,7 @@ public final class R {
     public static final class styleable {
         private styleable() {}
 
-        public static final int[] ProgressWheel = { 0x7f0301e6, 0x7f0301e7, 0x7f0301e8, 0x7f0301e9, 0x7f0301ea, 0x7f0301eb, 0x7f0301ec, 0x7f0301ed, 0x7f0301ee, 0x7f0301ef };
+        public static final int[] ProgressWheel = { 0x7f0301f8, 0x7f0301f9, 0x7f0301fa, 0x7f0301fb, 0x7f0301fc, 0x7f0301fd, 0x7f0301fe, 0x7f0301ff, 0x7f030200, 0x7f030201 };
         public static final int ProgressWheel_matProg_barColor = 0;
         public static final int ProgressWheel_matProg_barSpinCycleTime = 1;
         public static final int ProgressWheel_matProg_barWidth = 2;
@@ -168,7 +168,7 @@ public final class R {
         public static final int ProgressWheel_matProg_rimColor = 7;
         public static final int ProgressWheel_matProg_rimWidth = 8;
         public static final int ProgressWheel_matProg_spinSpeed = 9;
-        public static final int[] Rotate3dAnimation = { 0x7f03014d, 0x7f03024f, 0x7f030250, 0x7f030263, 0x7f0302f4 };
+        public static final int[] Rotate3dAnimation = { 0x7f030154, 0x7f030262, 0x7f030263, 0x7f030276, 0x7f03030a };
         public static final int Rotate3dAnimation_fromDeg = 0;
         public static final int Rotate3dAnimation_pivotX = 1;
         public static final int Rotate3dAnimation_pivotY = 2;
