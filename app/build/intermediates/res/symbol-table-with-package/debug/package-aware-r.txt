@@ -217,20 +217,6 @@ attr chipStrokeWidth
 attr chipStyle
 attr chipSurfaceColor
 attr circleCrop
-attr civ_border
-attr civ_border_color
-attr civ_border_color_direction
-attr civ_border_color_end
-attr civ_border_color_start
-attr civ_border_width
-attr civ_circle_color
-attr civ_circle_color_direction
-attr civ_circle_color_end
-attr civ_circle_color_start
-attr civ_shadow
-attr civ_shadow_color
-attr civ_shadow_gravity
-attr civ_shadow_radius
 attr closeIcon
 attr closeIconEnabled
 attr closeIconEndPadding
@@ -1262,6 +1248,7 @@ dimen compat_notification_large_icon_max_width
 dimen componente_gigante
 dimen componente_grande
 dimen componente_medio
+dimen componente_normal
 dimen custom_image_size
 dimen default_dimension
 dimen default_width
@@ -1678,10 +1665,10 @@ drawable googleg_standard_color_18
 drawable gray_button_background
 drawable green_button_background
 drawable ic_add
-drawable ic_adicionar_arquivo
 drawable ic_adicionar_foto
 drawable ic_adicionar_galeria
 drawable ic_calendar_black_24dp
+drawable ic_cancelar
 drawable ic_clear_black_24dp
 drawable ic_cpf
 drawable ic_departamento
@@ -1702,7 +1689,6 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_proximo
-drawable ic_rcancelar
 drawable ic_sair
 drawable ic_senha
 drawable ic_solicitacoes
@@ -1749,6 +1735,7 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable red_button_background
 drawable rounded_layout
+drawable shape_circulo_branco
 drawable shape_cursor
 drawable shape_gradient_branco
 drawable shape_gradient_vermelho
@@ -1850,12 +1837,12 @@ id bottom
 id bottom_left
 id bottom_right
 id bottom_sheet_grid_view
-id bottom_to_top
 id browser_actions_header_text
 id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id bt_aceitar
 id bt_atualizar
 id bt_cadastrar
 id bt_flash
@@ -1863,6 +1850,7 @@ id bt_foto
 id bt_login
 id bt_loginGoogle
 id bt_recuperarSenha
+id bt_recusar
 id bt_redefinir
 id bt_sair
 id bt_tirarFoto
@@ -1977,8 +1965,10 @@ id image_content_root
 id image_root
 id image_view
 id img_app
+id img_galeria
 id img_test
 id img_usuario
+id img_viewer
 id info
 id invisible
 id italic
@@ -1995,7 +1985,6 @@ id labeled
 id largeLabel
 id left
 id left_divider
-id left_to_right
 id light
 id line1
 id line3
@@ -2095,11 +2084,11 @@ id right
 id right_divider
 id right_icon
 id right_side
-id right_to_left
 id rounded
 id row
 id row_reverse
 id rv_departamentos
+id rv_galeria
 id rv_imagens
 id rv_tipoSolicitacao
 id satellite
@@ -2192,7 +2181,6 @@ id top
 id topPanel
 id top_left
 id top_right
-id top_to_bottom
 id touch_outside
 id transition_current_scene
 id transition_layout_save
@@ -2296,6 +2284,7 @@ layout activity_splash
 layout activity_usuario_redefinir_senha
 layout adapter_categorias_departamento
 layout adapter_categorias_solicitacao
+layout adapter_galeria
 layout alert_dialog
 layout banner
 layout bottom_sheet
@@ -2325,7 +2314,6 @@ layout design_text_input_start_icon
 layout divider
 layout fragment_anexos
 layout fragment_anexos_camera
-layout fragment_anexos_documento
 layout fragment_anexos_galeria
 layout fragment_departamentos
 layout fragment_inicio
@@ -2334,6 +2322,7 @@ layout fragment_solicitacao_anexos
 layout fragment_solicitacao_categoria
 layout fragment_solicitacao_localizacao
 layout fragment_solicitacoes
+layout fragment_viewer
 layout grid_item
 layout grid_placeholder
 layout image
@@ -3311,7 +3300,6 @@ styleable ButtonBarLayout allowStacking
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_textColor android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipMinTouchTargetSize chipStartPadding chipStrokeColor chipStrokeWidth chipSurfaceColor closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible ensureMinTouchTargetSize hideMotionSpec iconEndPadding iconStartPadding rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection
-styleable CircularImageView civ_border civ_border_color civ_border_color_direction civ_border_color_end civ_border_color_start civ_border_width civ_circle_color civ_circle_color_direction civ_circle_color_end civ_circle_color_start civ_shadow civ_shadow_color civ_shadow_gravity civ_shadow_radius
 styleable CollapsingToolbarLayout collapsedTitleGravity collapsedTitleTextAppearance contentScrim expandedTitleGravity expandedTitleMargin expandedTitleMarginBottom expandedTitleMarginEnd expandedTitleMarginStart expandedTitleMarginTop expandedTitleTextAppearance scrimAnimationDuration scrimVisibleHeightTrigger statusBarScrim title titleEnabled toolbarId
 styleable CollapsingToolbarLayout_Layout layout_collapseMode layout_collapseParallaxMultiplier
 styleable ColorStateListItem android_color android_alpha alpha

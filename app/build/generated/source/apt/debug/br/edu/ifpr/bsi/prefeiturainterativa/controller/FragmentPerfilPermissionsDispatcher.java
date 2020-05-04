@@ -9,21 +9,21 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.PermissionUtils;
 
 final class FragmentPerfilPermissionsDispatcher {
-  private static final int REQUEST_ABRIRAPPSELECTOR = 2;
+  private static final int REQUEST_PEGARFOTO = 0;
 
-  private static final String[] PERMISSION_ABRIRAPPSELECTOR = new String[] {"android.permission.CAMERA","android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"};
+  private static final String[] PERMISSION_PEGARFOTO = new String[] {"android.permission.CAMERA","android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"};
 
   private FragmentPerfilPermissionsDispatcher() {
   }
 
-  static void abrirAppSelectorWithPermissionCheck(@NonNull FragmentPerfil target) {
-    if (PermissionUtils.hasSelfPermissions(target.requireActivity(), PERMISSION_ABRIRAPPSELECTOR)) {
-      target.abrirAppSelector();
+  static void pegarFotoWithPermissionCheck(@NonNull FragmentPerfil target) {
+    if (PermissionUtils.hasSelfPermissions(target.requireActivity(), PERMISSION_PEGARFOTO)) {
+      target.pegarFoto();
     } else {
-      if (PermissionUtils.shouldShowRequestPermissionRationale(target, PERMISSION_ABRIRAPPSELECTOR)) {
-        target.showRationale(new FragmentPerfilAbrirAppSelectorPermissionRequest(target));
+      if (PermissionUtils.shouldShowRequestPermissionRationale(target, PERMISSION_PEGARFOTO)) {
+        target.showRationale(new FragmentPerfilPegarFotoPermissionRequest(target));
       } else {
-        target.requestPermissions(PERMISSION_ABRIRAPPSELECTOR, REQUEST_ABRIRAPPSELECTOR);
+        target.requestPermissions(PERMISSION_PEGARFOTO, REQUEST_PEGARFOTO);
       }
     }
   }
@@ -31,11 +31,11 @@ final class FragmentPerfilPermissionsDispatcher {
   static void onRequestPermissionsResult(@NonNull FragmentPerfil target, int requestCode,
       int[] grantResults) {
     switch (requestCode) {
-      case REQUEST_ABRIRAPPSELECTOR:
+      case REQUEST_PEGARFOTO:
       if (PermissionUtils.verifyPermissions(grantResults)) {
-        target.abrirAppSelector();
+        target.pegarFoto();
       } else {
-        if (!PermissionUtils.shouldShowRequestPermissionRationale(target, PERMISSION_ABRIRAPPSELECTOR)) {
+        if (!PermissionUtils.shouldShowRequestPermissionRationale(target, PERMISSION_PEGARFOTO)) {
           target.onNeverAskAgain();
         } else {
           target.onPermissionDenied();
@@ -47,10 +47,10 @@ final class FragmentPerfilPermissionsDispatcher {
     }
   }
 
-  private static final class FragmentPerfilAbrirAppSelectorPermissionRequest implements PermissionRequest {
+  private static final class FragmentPerfilPegarFotoPermissionRequest implements PermissionRequest {
     private final WeakReference<FragmentPerfil> weakTarget;
 
-    private FragmentPerfilAbrirAppSelectorPermissionRequest(@NonNull FragmentPerfil target) {
+    private FragmentPerfilPegarFotoPermissionRequest(@NonNull FragmentPerfil target) {
       this.weakTarget = new WeakReference<FragmentPerfil>(target);
     }
 
@@ -58,7 +58,7 @@ final class FragmentPerfilPermissionsDispatcher {
     public void proceed() {
       FragmentPerfil target = weakTarget.get();
       if (target == null) return;
-      target.requestPermissions(PERMISSION_ABRIRAPPSELECTOR, REQUEST_ABRIRAPPSELECTOR);
+      target.requestPermissions(PERMISSION_PEGARFOTO, REQUEST_PEGARFOTO);
     }
 
     @Override

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/view_root"
     android:layout_width="match_parent"
@@ -17,17 +16,15 @@
         android:elevation="5dp"
         android:padding="3dp">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
+        <ImageView
             android:id="@+id/img_usuario"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
-            android:background="@drawable/shape_quadrado_arr_branco"
+            android:background="@drawable/shape_circulo_branco"
             android:contentDescription="@string/str_perfil"
-            android:src="@drawable/ic_usuario"
-            app:civ_border_width="1dp"
-            app:civ_border_color="@color/colorSecondaryDark"/>
+            android:src="@drawable/ic_usuario" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_usuario"

@@ -1,16 +1,14 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.helpers;
 
-import java.io.File;
-
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class ViewModelsHelper extends ViewModel {
-    private MutableLiveData<File> imagemCamera;
+    private MutableLiveData<String> imagemString;
 
-    public MutableLiveData<File> getImagemCamera() {
-        if (imagemCamera == null)
-            imagemCamera = new MutableLiveData<>();
-        return imagemCamera;
+    public MutableLiveData<String> getImagemString() {
+        if (imagemString == null)
+            imagemString = new MutableLiveData<>();
+        return imagemString;
     }
 }

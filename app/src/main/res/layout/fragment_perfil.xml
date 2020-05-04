@@ -21,15 +21,14 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
+            <ImageView
                 android:id="@+id/img_usuario"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
+                android:background="@drawable/shape_circulo_branco"
+                android:scaleType="centerInside"
                 android:contentDescription="@string/str_emblema"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_adicionar_foto"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="3dp" />
+                android:src="@drawable/ic_adicionar_foto" />
 
             <TextView
                 android:id="@+id/tv_usuario"

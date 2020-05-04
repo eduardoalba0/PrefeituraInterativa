@@ -10,6 +10,5 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">false</item>
-        <item name="android:textCursorDrawable">@drawable/shape_cursor</item>
     </style>
 </resources>

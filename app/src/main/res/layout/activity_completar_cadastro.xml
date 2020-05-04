@@ -9,7 +9,7 @@
     android:fillViewport="true"
     android:paddingTop="2dp"
     android:paddingBottom="48dp"
-    tools:context=".controller.ActivityRedefinirSenha">
+    tools:context=".controller.ActivityCompletarCadastro">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,16 +30,15 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <com.mikhaellopez.circularimageview.CircularImageView
+            <ImageView
                 android:id="@+id/img_app"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:contentDescription="@string/str_emblema"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_maca"
-                android:transitionName="splash_transition"
-                app:civ_circle_color_end="@color/colorSecondary"
-                app:civ_circle_color_start="@color/colorTertiary" />
+                android:background="@drawable/shape_circulo_branco"
+                android:transitionName="splash_transition" />
 
             <TextView
                 android:id="@+id/tv_usuario"

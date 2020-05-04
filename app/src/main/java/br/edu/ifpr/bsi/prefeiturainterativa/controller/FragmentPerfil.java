@@ -11,8 +11,8 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -21,7 +21,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
@@ -36,16 +35,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import br.edu.ifpr.bsi.prefeiturainterativa.BuildConfig;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.AnexosBottomSheetDialog;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import de.mrapp.android.bottomsheet.BottomSheet;
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.OnNeverAskAgain;
 import permissions.dispatcher.OnPermissionDenied;
@@ -55,7 +57,7 @@ import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
 public class FragmentPerfil extends Fragment implements View.OnClickListener,
-        Validator.ValidationListener, OnSuccessListener<Void>, AdapterView.OnItemClickListener {
+        Validator.ValidationListener, OnSuccessListener<Void>, Observer<String> {
 
     private static final int REQ_GALERIA = 11, REQ_CAMERA = 12;
 
@@ -65,6 +67,9 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
 
     private Usuario usuario;
     private SweetAlertDialog dialog;
+    private AnexosBottomSheetDialog anexos;
+    private ViewModelsHelper viewModel;
+    private Observer<String> imagemObserver;
 
     @Nullable
     @Override
@@ -76,6 +81,9 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         validador.setValidationListener(this);
         dao = new UsuarioDAO(getActivity());
         dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+        anexos = new AnexosBottomSheetDialog();
+        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        viewModel.getImagemString().observe(getViewLifecycleOwner(), this);
         preencherCampos();
         return view;
     }
@@ -93,43 +101,13 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
                         .show());
                 break;
             case R.id.img_usuario:
-                FragmentPerfilPermissionsDispatcher.abrirAppSelectorWithPermissionCheck(this);
+                FragmentPerfilPermissionsDispatcher.pegarFotoWithPermissionCheck(this);
                 break;
             case R.id.bt_sair:
                 helper.deslogar();
                 Intent intent = new Intent(getActivity(), ActivityLogin.class);
                 startActivity(intent);
                 break;
-        }
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        switch (i){
-            case 0:
-                usarCamera();
-                break;
-            case 1:
-                usarGaleria();
-                break;
-        }
-    }
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == ActivityOverview.RESULT_OK) {
-            switch (requestCode) {
-                case REQ_GALERIA:
-                    Uri selectedImage = data.getData();
-                    usuario.setUriFoto(selectedImage);
-                    Glide.with(this).load(selectedImage).into(img_usuario);
-                    break;
-
-                case REQ_CAMERA:
-                    Glide.with(this).load(usuario.getUriFoto()).into(img_usuario);
-                    break;
-
-            }
         }
     }
 
@@ -142,6 +120,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         usuario.setEmail(edt_email.getText().toString());
         usuario.setNome(edt_nome.getText().toString());
         usuario.setCpf(edt_cpf.getText().toString());
+        dialog.setTitleText("Gravando alterações...").show();
         if (usuario.getUriFoto() != null) {
             Task<Uri> upload = helper.carregarImagemUsuario(usuario.getUriFoto());
             if (upload != null)
@@ -160,15 +139,14 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
 
     @Override
     public void onSuccess(Void avoid) {
-        dialog.setTitleText("Gravando alterações...").show();
-        helper.atualizarPerfil(usuario).addOnSuccessListener(getActivity(), aVoid ->
-                dao.inserirAtualizar(usuario).addOnSuccessListener(getActivity(), task -> {
-                    new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                            .setTitleText("Sucesso!")
-                            .setContentText("Perfil atualizado com êxito!")
-                            .show();
-                    preencherCampos();
-                }));
+        dao.inserirAtualizar(usuario).addOnSuccessListener(getActivity(), task -> {
+            dialog.dismiss();
+            new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                    .setTitleText("Sucesso!")
+                    .setContentText("Perfil atualizado com êxito!")
+                    .show();
+            preencherCampos();
+        });
     }
 
     @Override
@@ -195,18 +173,21 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         }
     }
 
+    @Override
+    public void onChanged(String string) {
+        anexos.dismiss();
+        Uri uri = Uri.fromFile(new File(string));
+        usuario.setUriFoto(uri);
+        Glide.with(this)
+                .load(uri)
+                .placeholder(R.drawable.ic_adicionar_foto)
+                .circleCrop()
+                .into(img_usuario);
+    }
+
     @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
-    public void abrirAppSelector() {
-        new BottomSheet.Builder(getActivity())
-                .setTitle("Continuar com:")
-                .addItem(0, R.string.str_camera, R.drawable.ic_adicionar_foto)
-                .addItem(1, R.string.str_galeria, R.drawable.ic_adicionar_galeria)
-                .setBackground(R.drawable.shape_gradient_branco)
-                .setItemColor(getResources().getColor(R.color.black))
-                .setTitleColor(getResources().getColor(R.color.black))
-                .setStyle(BottomSheet.Style.GRID)
-                .setOnItemClickListener(this)
-                .create().show();
+    public void pegarFoto() {
+        anexos.show(getChildFragmentManager(), "Anexos");
     }
 
     public void usarGaleria() {
@@ -247,7 +228,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
 
     @OnPermissionDenied({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void onPermissionDenied() {
-        img_usuario.callOnClick();
+        FragmentPerfilPermissionsDispatcher.pegarFotoWithPermissionCheck(this);
     }
 
     @OnNeverAskAgain({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
@@ -281,6 +262,8 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
                     if (helper.getUser().getPhotoUrl() != null)
                         Glide.with(this)
                                 .load(helper.getUser().getPhotoUrl())
+                                .placeholder(R.drawable.ic_adicionar_foto)
+                                .circleCrop()
                                 .into(img_usuario);
                     dialog.dismiss();
                 }
@@ -304,7 +287,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
     TextInputEditText edt_email;
 
     @BindView(R.id.img_usuario)
-    CircularImageView img_usuario;
+    ImageView img_usuario;
 
     @BindView(R.id.tv_usuario)
     TextView tv_usuario;

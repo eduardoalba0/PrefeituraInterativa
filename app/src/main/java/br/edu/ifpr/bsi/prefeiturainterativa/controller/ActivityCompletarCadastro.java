@@ -8,13 +8,13 @@ import android.transition.Transition;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Length;
@@ -128,6 +128,8 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
         if (helper.getUser().getPhotoUrl() != null)
             Glide.with(this)
                     .load(helper.getUser().getPhotoUrl())
+                    .placeholder(R.mipmap.ic_maca)
+                    .circleCrop()
                     .into(img_app);
     }
     public void startAnimation() {
@@ -157,7 +159,7 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
     View view_root;
 
     @BindView(R.id.img_app)
-    CircularImageView img_app;
+    ImageView img_app;
 
     @BindView(R.id.l_completar)
     View l_completar;

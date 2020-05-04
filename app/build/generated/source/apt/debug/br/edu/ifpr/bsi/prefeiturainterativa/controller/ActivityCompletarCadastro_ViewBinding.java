@@ -3,6 +3,7 @@ package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
@@ -12,7 +13,6 @@ import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
@@ -21,7 +21,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
 
   private View view7f09005d;
 
-  private View view7f090064;
+  private View view7f090065;
 
   @UiThread
   public ActivityCompletarCadastro_ViewBinding(ActivityCompletarCadastro target) {
@@ -47,7 +47,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_sair, "field 'bt_sair' and method 'onClick'");
     target.bt_sair = Utils.castView(view, R.id.bt_sair, "field 'bt_sair'", Button.class);
-    view7f090064 = view;
+    view7f090065 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -56,7 +56,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
     });
     target.tv_usuario = Utils.findRequiredViewAsType(source, R.id.tv_usuario, "field 'tv_usuario'", TextView.class);
     target.view_root = Utils.findRequiredView(source, R.id.view_root, "field 'view_root'");
-    target.img_app = Utils.findRequiredViewAsType(source, R.id.img_app, "field 'img_app'", CircularImageView.class);
+    target.img_app = Utils.findRequiredViewAsType(source, R.id.img_app, "field 'img_app'", ImageView.class);
     target.l_completar = Utils.findRequiredView(source, R.id.l_completar, "field 'l_completar'");
     target.shape_irregular = Utils.findRequiredView(source, R.id.shape_irregular, "field 'shape_irregular'");
   }
@@ -80,7 +80,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
 
     view7f09005d.setOnClickListener(null);
     view7f09005d = null;
-    view7f090064.setOnClickListener(null);
-    view7f090064 = null;
+    view7f090065.setOnClickListener(null);
+    view7f090065 = null;
   }
 }

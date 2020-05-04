@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class FragmentInicio extends Fragment implements View.OnClickListener {
+public class FragmentInicio extends Fragment implements View.OnClickListener{
     private Usuario usuario;
     private FirebaseHelper helper;
     private UsuarioDAO dao;
@@ -54,6 +55,8 @@ public class FragmentInicio extends Fragment implements View.OnClickListener {
         if (helper.getUser().getPhotoUrl() != null)
             Glide.with(this)
                     .load(helper.getUser().getPhotoUrl())
+                    .placeholder(R.drawable.ic_usuario)
+                    .circleCrop()
                     .into(img_usuario);
     }
 

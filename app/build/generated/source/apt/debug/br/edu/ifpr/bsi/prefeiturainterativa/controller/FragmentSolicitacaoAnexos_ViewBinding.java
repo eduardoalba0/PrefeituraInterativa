@@ -17,7 +17,7 @@ import java.lang.Override;
 public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
   private FragmentSolicitacaoAnexos target;
 
-  private View view7f0901b4;
+  private View view7f0901b5;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -27,7 +27,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.tv_titulo, "field 'tv_titulo' and method 'onClick'");
     target.tv_titulo = Utils.castView(view, R.id.tv_titulo, "field 'tv_titulo'", TextView.class);
-    view7f0901b4 = view;
+    view7f0901b5 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -49,7 +49,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.rv_imagens = null;
     target.img_test = null;
 
-    view7f0901b4.setOnClickListener(null);
-    view7f0901b4 = null;
+    view7f0901b5.setOnClickListener(null);
+    view7f0901b5 = null;
   }
 }

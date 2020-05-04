@@ -20,9 +20,9 @@ public class FragmentAnexosCamera_ViewBinding implements Unbinder {
 
   private View view7f09005e;
 
-  private View view7f090065;
-
   private View view7f090066;
+
+  private View view7f090067;
 
   @UiThread
   public FragmentAnexosCamera_ViewBinding(final FragmentAnexosCamera target, View source) {
@@ -41,7 +41,7 @@ public class FragmentAnexosCamera_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_tirarFoto, "field 'bt_tirar_foto' and method 'onClick'");
     target.bt_tirar_foto = Utils.castView(view, R.id.bt_tirarFoto, "field 'bt_tirar_foto'", FloatingActionButton.class);
-    view7f090065 = view;
+    view7f090066 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -50,7 +50,7 @@ public class FragmentAnexosCamera_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_trocarCamera, "field 'bt_trocarCamera' and method 'onClick'");
     target.bt_trocarCamera = Utils.castView(view, R.id.bt_trocarCamera, "field 'bt_trocarCamera'", FloatingActionButton.class);
-    view7f090066 = view;
+    view7f090067 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -73,9 +73,9 @@ public class FragmentAnexosCamera_ViewBinding implements Unbinder {
 
     ((CompoundButton) view7f09005e).setOnCheckedChangeListener(null);
     view7f09005e = null;
-    view7f090065.setOnClickListener(null);
-    view7f090065 = null;
     view7f090066.setOnClickListener(null);
     view7f090066 = null;
+    view7f090067.setOnClickListener(null);
+    view7f090067 = null;
   }
 }

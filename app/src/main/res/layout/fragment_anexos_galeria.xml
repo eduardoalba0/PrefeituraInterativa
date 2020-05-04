@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/componente_grande"
-    android:orientation="vertical">
+    android:layout_height="@dimen/componente_gigante">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_galeria"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" />
 
-</RelativeLayout>
+</LinearLayout>
