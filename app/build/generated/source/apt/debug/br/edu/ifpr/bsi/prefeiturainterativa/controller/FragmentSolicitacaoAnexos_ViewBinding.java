@@ -2,8 +2,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,13 +9,14 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
+import com.google.android.material.button.MaterialButton;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
 public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
   private FragmentSolicitacaoAnexos target;
 
-  private View view7f0901b5;
+  private View view7f09005c;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -25,17 +24,16 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     this.target = target;
 
     View view;
-    view = Utils.findRequiredView(source, R.id.tv_titulo, "field 'tv_titulo' and method 'onClick'");
-    target.tv_titulo = Utils.castView(view, R.id.tv_titulo, "field 'tv_titulo'", TextView.class);
-    view7f0901b5 = view;
+    target.rv_imagens = Utils.findRequiredViewAsType(source, R.id.rv_imagens, "field 'rv_imagens'", RecyclerView.class);
+    view = Utils.findRequiredView(source, R.id.bt_adicionar, "field 'bt_adicionar' and method 'onClick'");
+    target.bt_adicionar = Utils.castView(view, R.id.bt_adicionar, "field 'bt_adicionar'", MaterialButton.class);
+    view7f09005c = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
         target.onClick(p0);
       }
     });
-    target.rv_imagens = Utils.findRequiredViewAsType(source, R.id.rv_imagens, "field 'rv_imagens'", RecyclerView.class);
-    target.img_test = Utils.findRequiredViewAsType(source, R.id.img_test, "field 'img_test'", ImageView.class);
   }
 
   @Override
@@ -45,11 +43,10 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     if (target == null) throw new IllegalStateException("Bindings already cleared.");
     this.target = null;
 
-    target.tv_titulo = null;
     target.rv_imagens = null;
-    target.img_test = null;
+    target.bt_adicionar = null;
 
-    view7f0901b5.setOnClickListener(null);
-    view7f0901b5 = null;
+    view7f09005c.setOnClickListener(null);
+    view7f09005c = null;
   }
 }
