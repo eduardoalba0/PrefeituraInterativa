@@ -6,9 +6,7 @@ INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app
 INJECTED from C:\Users\Eduardo\Documents\Android Studio\PrefeituraInterativa\app\src\main\AndroidManifest.xml:2:1-60:12
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:2:1-24:12
-MERGED from [com.github.michael-rapp:android-bottom-sheet:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4d1e61dab6933aecbe7cdf029da3010c\AndroidManifest.xml:15:1-24:12
 MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:17:1-27:12
-MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\54154754f3b0a203ed4466a83ca8071a\AndroidManifest.xml:15:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.android.gms:play-services-maps:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\b742d587bab2e94ca4c3d180dfd0c9ba\AndroidManifest.xml:17:1-38:12
@@ -24,7 +22,6 @@ MERGED from [com.google.firebase:firebase-storage:19.1.1] C:\Users\Eduardo\.grad
 MERGED from [org.permissionsdispatcher:permissionsdispatcher:4.7.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\57e86c16b219fc4f8fd2be81952d24c7\AndroidManifest.xml:2:1-9:12
 MERGED from [com.jakewharton:butterknife:10.2.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\35d4c53554ab177caa6a54e3d09318a9\AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6958a192340dac0ec93857178c5fe2f4\AndroidManifest.xml:2:1-13:12
-MERGED from [com.mikhaellopez:circularimageview:4.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\de6b9137655af54d9461f3bdc3847f90\AndroidManifest.xml:2:1-11:12
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:2:1-12:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\598400dbde1bb8b4bab8ae44edece7c5\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fa214c2e98b9999f26fb0cee79ebb057\AndroidManifest.xml:2:1-7:12
@@ -385,12 +382,8 @@ MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradl
 MERGED from [com.google.android.material:material:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\76f873aacaf5565190fb4a9332514782\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-inappmessaging-display:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\21860bbcb4fbca2b74164e78671630ca\AndroidManifest.xml:7:5-9:41
-MERGED from [com.github.michael-rapp:android-bottom-sheet:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4d1e61dab6933aecbe7cdf029da3010c\AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.michael-rapp:android-bottom-sheet:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\4d1e61dab6933aecbe7cdf029da3010c\AndroidManifest.xml:20:5-22:41
 MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:21:5-23:41
 MERGED from [com.stepstone.stepper:material-stepper:4.3.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\8adad2c5f31c0e5670004ee5f33d1350\AndroidManifest.xml:21:5-23:41
-MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\54154754f3b0a203ed4466a83ca8071a\AndroidManifest.xml:20:5-22:41
-MERGED from [com.github.michael-rapp:android-util:2.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\54154754f3b0a203ed4466a83ca8071a\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6321936723c5bde600fa7c25b619f8eb\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.android.gms:play-services-auth:18.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\7ac28d13f722f76afbf79ca903bdfa48\AndroidManifest.xml:20:5-44
@@ -421,8 +414,6 @@ MERGED from [com.jakewharton:butterknife:10.2.1] C:\Users\Eduardo\.gradle\caches
 MERGED from [com.jakewharton:butterknife:10.2.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\35d4c53554ab177caa6a54e3d09318a9\AndroidManifest.xml:5:5-44
 MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6958a192340dac0ec93857178c5fe2f4\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6958a192340dac0ec93857178c5fe2f4\AndroidManifest.xml:7:5-9:41
-MERGED from [com.mikhaellopez:circularimageview:4.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\de6b9137655af54d9461f3bdc3847f90\AndroidManifest.xml:7:5-9:41
-MERGED from [com.mikhaellopez:circularimageview:4.2.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\de6b9137655af54d9461f3bdc3847f90\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:6:5-8:41
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\598400dbde1bb8b4bab8ae44edece7c5\AndroidManifest.xml:5:5-44

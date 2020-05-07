@@ -1,4 +1,4 @@
-package br.edu.ifpr.bsi.prefeiturainterativa.controller;
+package br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -34,7 +34,6 @@ import androidx.camera.core.Preview;
 import androidx.camera.core.PreviewConfig;
 import androidx.fragment.app.Fragment;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.MyBottomSheetDialog;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnCheckedChanged;
@@ -48,19 +47,24 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
-public class FragmentAnexosCamera extends Fragment implements Executor,
-        View.OnClickListener, CompoundButton.OnCheckedChangeListener, ImageCapture.OnImageSavedListener {
+public class SelectorCamera extends Fragment implements Executor, View.OnClickListener,
+        CompoundButton.OnCheckedChangeListener, ImageCapture.OnImageSavedListener {
 
     private Preview preview;
     private ImageCapture capture;
     private CameraX.LensFacing lensFacing;
+    private boolean resultadoUnico;
+
+    public SelectorCamera(boolean resultadoUnico) {
+        this.resultadoUnico = resultadoUnico;
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_anexos_camera, container, false);
+        View view = inflater.inflate(R.layout.dialog_selector_camera, container, false);
         ButterKnife.bind(this, view);
-        FragmentAnexosCameraPermissionsDispatcher.initCameraWithPermissionCheck(this);
+        SelectorCameraPermissionsDispatcher.initCameraWithPermissionCheck(this);
         return view;
     }
 
@@ -69,10 +73,10 @@ public class FragmentAnexosCamera extends Fragment implements Executor,
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_tirarFoto:
-                FragmentAnexosCameraPermissionsDispatcher.capturarImagemWithPermissionCheck(this);
+                SelectorCameraPermissionsDispatcher.capturarImagemWithPermissionCheck(this);
                 break;
             case R.id.bt_trocarCamera:
-                FragmentAnexosCameraPermissionsDispatcher.trocarCameraWithPermissionCheck(this);
+                SelectorCameraPermissionsDispatcher.trocarCameraWithPermissionCheck(this);
                 break;
         }
     }
@@ -92,10 +96,7 @@ public class FragmentAnexosCamera extends Fragment implements Executor,
 
     @Override
     public void onImageSaved(@NonNull File file) {
-        MyBottomSheetDialog viewer = new MyBottomSheetDialog(getChildFragmentManager()).buildViewer(true);
-        Bundle bundle = new Bundle();
-        bundle.putString("Imagem", file.getAbsolutePath());
-        viewer.setArguments(bundle);
+        DialogViewer viewer = new DialogViewer(resultadoUnico, file.getAbsolutePath(), true);
         viewer.show(getChildFragmentManager(), "Viewer");
     }
 
@@ -126,7 +127,7 @@ public class FragmentAnexosCamera extends Fragment implements Executor,
                 .setTargetResolution(size).build();
         capture = new ImageCapture(captureConfig);
         CameraX.bindToLifecycle(this, preview, capture);
-        view_camera.post(() -> FragmentAnexosCameraPermissionsDispatcher.abrirCameraWithPermissionCheck(this));
+        view_camera.post(() -> SelectorCameraPermissionsDispatcher.abrirCameraWithPermissionCheck(this));
     }
 
     @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
@@ -167,7 +168,7 @@ public class FragmentAnexosCamera extends Fragment implements Executor,
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        FragmentAnexosCameraPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
+        SelectorCameraPermissionsDispatcher.onRequestPermissionsResult(this, requestCode, grantResults);
     }
 
     @OnShowRationale({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
@@ -184,7 +185,7 @@ public class FragmentAnexosCamera extends Fragment implements Executor,
 
     @OnPermissionDenied({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void onPermissionDenied() {
-        FragmentAnexosCameraPermissionsDispatcher.initCameraWithPermissionCheck(this);
+        SelectorCameraPermissionsDispatcher.initCameraWithPermissionCheck(this);
     }
 
     @OnNeverAskAgain({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})

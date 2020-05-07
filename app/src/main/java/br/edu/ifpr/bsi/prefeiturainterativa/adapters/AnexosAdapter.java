@@ -1,6 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogViewer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -63,6 +65,10 @@ public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder
         @Override
         public void onClick(View view) {
             switch (view.getId()) {
+                case R.id.img_anexo:
+                    DialogViewer dialog = new DialogViewer(false, imagem, false);
+                    dialog.show(fm, "Viewer");
+                    break;
                 case R.id.bt_remover:
                     ViewModelsHelper viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
                     viewModel.removeImage(this.getAdapterPosition());

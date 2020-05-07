@@ -18,6 +18,8 @@
     <dimen name="raio_circulo_medio">30dp</dimen>
     <dimen name="raio_circulo_pequeno">10dp</dimen>
     <dimen name="componente_gigante">500dp</dimen>
-    <dimen name="componente_grande">300dp</dimen>
-    <dimen name="componente_medio">150dp</dimen>
+    <dimen name="componente_grande">320dp</dimen>
+    <dimen name="componente_medio">240dp</dimen>
+    <dimen name="componente_normal">160dp</dimen>
+    <dimen name="componente_pequeno">80dp</dimen>
 </resources>
