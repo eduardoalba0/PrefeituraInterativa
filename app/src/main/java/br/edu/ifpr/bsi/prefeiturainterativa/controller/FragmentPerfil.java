@@ -5,8 +5,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,21 +26,18 @@ import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import br.edu.ifpr.bsi.prefeiturainterativa.BuildConfig;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.adapters.AnexosBottomSheetDialog;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogSelector;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -59,17 +54,13 @@ import permissions.dispatcher.RuntimePermissions;
 public class FragmentPerfil extends Fragment implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<Void>, Observer<String> {
 
-    private static final int REQ_GALERIA = 11, REQ_CAMERA = 12;
-
     private Validator validador;
     private FirebaseHelper helper;
     private UsuarioDAO dao;
 
     private Usuario usuario;
     private SweetAlertDialog dialog;
-    private AnexosBottomSheetDialog anexos;
-    private ViewModelsHelper viewModel;
-    private Observer<String> imagemObserver;
+    private DialogSelector selector;
 
     @Nullable
     @Override
@@ -81,8 +72,8 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         validador.setValidationListener(this);
         dao = new UsuarioDAO(getActivity());
         dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
-        anexos = new AnexosBottomSheetDialog();
-        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        selector = new DialogSelector(true);
+        ViewModelsHelper viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
         viewModel.getImagemString().observe(getViewLifecycleOwner(), this);
         preencherCampos();
         return view;
@@ -175,7 +166,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
 
     @Override
     public void onChanged(String string) {
-        anexos.dismiss();
+        selector.dismiss();
         Uri uri = Uri.fromFile(new File(string));
         usuario.setUriFoto(uri);
         Glide.with(this)
@@ -187,31 +178,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
 
     @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void pegarFoto() {
-        anexos.show(getChildFragmentManager(), "Anexos");
-    }
-
-    public void usarGaleria() {
-        Intent pegarFoto = new Intent(Intent.ACTION_PICK);
-        pegarFoto.setType("image/*");
-        startActivityForResult(Intent.createChooser(pegarFoto, "Continue com:"), REQ_GALERIA);
-    }
-
-    public void usarCamera() {
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
-            try {
-                File storageDir = getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-                File photoFile = File.createTempFile(helper.getUser().getUid(), ".jpg", storageDir);
-                if (photoFile != null) {
-                    Uri photoURI = FileProvider.getUriForFile(getActivity(), BuildConfig.APPLICATION_ID + ".fileprovider", photoFile);
-                    takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                    usuario.setUriFoto(photoURI);
-                    startActivityForResult(takePictureIntent, REQ_CAMERA);
-                }
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+        selector.show(getChildFragmentManager(), "Selector");
     }
 
     @OnShowRationale({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})

@@ -66,15 +66,15 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step {
     public void carregarDados() {
         tiposSolicitacao.clear();
         departamentos.clear();
-        depDAO.getAll().addOnSuccessListener(queryDocumentSnapshots -> {
-            for (DocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                Departamento departamento = documentSnapshot.toObject(Departamento.class);
+        depDAO.getAll().addOnSuccessListener(departamentosSnapshot -> {
+            for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
+                Departamento departamento = depsnapshot.toObject(Departamento.class);
                 departamento.setTiposSolicitacao(new ArrayList<>());
-                tipoDAO.getAllPorDepartamento(departamento).addOnSuccessListener(queryDocumentSnapshots1 -> {
-                    departamento.setTiposSolicitacao(queryDocumentSnapshots1.toObjects(TipoSolicitacao.class));
+                tipoDAO.getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
+                    departamento.setTiposSolicitacao(tipossolicitacaoSnapshot.toObjects(TipoSolicitacao.class));
                     if (departamento.getTiposSolicitacao() != null && !departamento.getTiposSolicitacao().isEmpty())
                         departamentos.add(departamento);
-                    rv_departamentos.setAdapter(new CategoriasDepartamentoAdapter(getActivity(), departamentos));
+                    rv_departamentos.setAdapter(new CategoriasDepartamentoAdapter(getActivity(), departamentos, getChildFragmentManager()));
                 });
             }
         });

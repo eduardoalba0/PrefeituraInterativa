@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
-import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import butterknife.Unbinder;
+import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import java.lang.IllegalStateException;
 import java.lang.Override;
@@ -15,13 +15,23 @@ import java.lang.Override;
 public class CategoriasDepartamentoAdapter$ViewHolder_ViewBinding implements Unbinder {
   private CategoriasDepartamentoAdapter.ViewHolder target;
 
+  private View view7f0901b6;
+
   @UiThread
   public CategoriasDepartamentoAdapter$ViewHolder_ViewBinding(
-      CategoriasDepartamentoAdapter.ViewHolder target, View source) {
+      final CategoriasDepartamentoAdapter.ViewHolder target, View source) {
     this.target = target;
 
-    target.tv_departamento = Utils.findRequiredViewAsType(source, R.id.tv_departamento, "field 'tv_departamento'", TextView.class);
-    target.rv_tipoSolicitacao = Utils.findRequiredViewAsType(source, R.id.rv_tipoSolicitacao, "field 'rv_tipoSolicitacao'", RecyclerView.class);
+    View view;
+    view = Utils.findRequiredView(source, R.id.tv_departamento, "field 'tv_departamento' and method 'onClick'");
+    target.tv_departamento = Utils.castView(view, R.id.tv_departamento, "field 'tv_departamento'", TextView.class);
+    view7f0901b6 = view;
+    view.setOnClickListener(new DebouncingOnClickListener() {
+      @Override
+      public void doClick(View p0) {
+        target.onClick(p0);
+      }
+    });
   }
 
   @Override
@@ -32,6 +42,8 @@ public class CategoriasDepartamentoAdapter$ViewHolder_ViewBinding implements Unb
     this.target = null;
 
     target.tv_departamento = null;
-    target.rv_tipoSolicitacao = null;
+
+    view7f0901b6.setOnClickListener(null);
+    view7f0901b6 = null;
   }
 }

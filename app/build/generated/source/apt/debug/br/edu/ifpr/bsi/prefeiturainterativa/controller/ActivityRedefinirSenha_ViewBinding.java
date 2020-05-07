@@ -17,7 +17,7 @@ import java.lang.Override;
 public class ActivityRedefinirSenha_ViewBinding implements Unbinder {
   private ActivityRedefinirSenha target;
 
-  private View view7f090064;
+  private View view7f090065;
 
   @UiThread
   public ActivityRedefinirSenha_ViewBinding(ActivityRedefinirSenha target) {
@@ -33,7 +33,7 @@ public class ActivityRedefinirSenha_ViewBinding implements Unbinder {
     target.edl_email = Utils.findRequiredViewAsType(source, R.id.edl_email, "field 'edl_email'", TextInputLayout.class);
     view = Utils.findRequiredView(source, R.id.bt_redefinir, "field 'bt_redefinir' and method 'onClick'");
     target.bt_redefinir = Utils.castView(view, R.id.bt_redefinir, "field 'bt_redefinir'", Button.class);
-    view7f090064 = view;
+    view7f090065 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -59,7 +59,7 @@ public class ActivityRedefinirSenha_ViewBinding implements Unbinder {
     target.img_app = null;
     target.l_redefinicao = null;
 
-    view7f090064.setOnClickListener(null);
-    view7f090064 = null;
+    view7f090065.setOnClickListener(null);
+    view7f090065 = null;
   }
 }
