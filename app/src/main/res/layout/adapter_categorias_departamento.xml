@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/espaco_pequeno"
+    app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="@dimen/espaco_pequeno">
-    <!-- Colocar em bottomsheet os Chips -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,11 +21,5 @@
             android:layout_margin="@dimen/espaco_muito_pequeno"
             android:textColor="@color/ms_black_87_opacity"
             android:textSize="@dimen/texto_label" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_tipoSolicitacao"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_departamento" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

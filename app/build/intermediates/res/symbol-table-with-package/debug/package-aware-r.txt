@@ -29,13 +29,11 @@ anim design_snackbar_in
 anim design_snackbar_out
 anim error_frame_in
 anim error_x_in
-anim hide_bottom_sheet_animation
 anim modal_in
 anim modal_out
 anim mtrl_bottom_sheet_slide_in
 anim mtrl_bottom_sheet_slide_out
 anim mtrl_card_lowers_interpolator
-anim show_bottom_sheet_animation
 anim success_bow_roate
 anim success_mask_layout
 animator design_appbar_state_list_animator
@@ -139,15 +137,8 @@ attr borderWidth
 attr borderlessButtonStyle
 attr bottomAppBarStyle
 attr bottomNavigationStyle
-attr bottomSheetBackground
 attr bottomSheetDialogTheme
-attr bottomSheetDimAmount
-attr bottomSheetDividerColor
-attr bottomSheetDragSensitivity
-attr bottomSheetItemColor
 attr bottomSheetStyle
-attr bottomSheetTheme
-attr bottomSheetTitleColor
 attr boxBackgroundColor
 attr boxBackgroundMode
 attr boxCollapsedPaddingTop
@@ -324,7 +315,6 @@ attr elevation
 attr elevationOverlayColor
 attr elevationOverlayEnabled
 attr emptyVisibility
-attr emulateParallelLight
 attr endIconCheckable
 attr endIconContentDescription
 attr endIconDrawable
@@ -412,7 +402,6 @@ attr imageAspectRatioAdjust
 attr imageButtonStyle
 attr indeterminateProgressStyle
 attr initialActivityCount
-attr insetDrawable
 attr insetForeground
 attr isLightTheme
 attr isMaterialTheme
@@ -670,7 +659,6 @@ attr recyclerViewStyle
 attr reverseLayout
 attr rippleColor
 attr rollType
-attr scaledEdge
 attr scopeUris
 attr scrimAnimationDuration
 attr scrimBackground
@@ -681,8 +669,6 @@ attr searchViewStyle
 attr seekBarStyle
 attr selectableItemBackground
 attr selectableItemBackgroundBorderless
-attr shadowElevation
-attr shadowOrientation
 attr shapeAppearance
 attr shapeAppearanceLargeComponent
 attr shapeAppearanceMediumComponent
@@ -858,7 +844,6 @@ attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
-bool elevation_shadow_view_emulate_parallel_light_default_value
 bool ms_rtlEnabled
 bool mtrl_btn_textappearance_all_caps
 color abc_background_cache_hint_selector_material_dark
@@ -891,7 +876,7 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
-color black
+color blackWhite
 color blue_btn_bg_color
 color blue_btn_bg_pressed_color
 color bright_foreground_disabled_material_dark
@@ -970,8 +955,6 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
-color divider_dark
-color divider_light
 color error_color_material_dark
 color error_color_material_light
 color error_stroke_color
@@ -1103,7 +1086,6 @@ color red_btn_bg_color
 color red_btn_bg_pressed_color
 color ripple_material_dark
 color ripple_material_light
-color scrim_insets_layout_insets_drawable_default_value
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
 color secondary_text_disabled_material_dark
@@ -1212,25 +1194,6 @@ dimen alert_width
 dimen appcompat_dialog_background_inset
 dimen bannerContentWeight
 dimen bannerWeightSum
-dimen bottom_sheet_divider_height
-dimen bottom_sheet_divider_indent
-dimen bottom_sheet_divider_title_height
-dimen bottom_sheet_divider_title_horizontal_padding
-dimen bottom_sheet_drawable_padding
-dimen bottom_sheet_grid_item_horizontal_padding
-dimen bottom_sheet_grid_item_horizontal_spacing
-dimen bottom_sheet_grid_item_icon_size
-dimen bottom_sheet_grid_item_size
-dimen bottom_sheet_grid_item_vertical_spacing
-dimen bottom_sheet_grid_padding_bottom
-dimen bottom_sheet_grid_padding_top
-dimen bottom_sheet_grid_title_height
-dimen bottom_sheet_list_item_height
-dimen bottom_sheet_list_item_horizontal_padding
-dimen bottom_sheet_list_item_icon_size
-dimen bottom_sheet_list_padding_bottom
-dimen bottom_sheet_list_padding_top
-dimen bottom_sheet_title_height
 dimen browser_actions_context_menu_max_width
 dimen browser_actions_context_menu_min_padding
 dimen buttons_stroke_width
@@ -1249,9 +1212,9 @@ dimen componente_gigante
 dimen componente_grande
 dimen componente_medio
 dimen componente_normal
+dimen componente_pequeno
 dimen custom_image_size
 dimen default_dimension
-dimen default_width
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_item_min_width
@@ -1302,7 +1265,6 @@ dimen dialogHeightPct
 dimen dialogWidthPct
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
-dimen elevation_shadow_view_shadow_elevation_default_value
 dimen espaco_gigante
 dimen espaco_grande
 dimen espaco_medio
@@ -1689,6 +1651,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_proximo
+drawable ic_remover
 drawable ic_sair
 drawable ic_senha
 drawable ic_solicitacoes
@@ -1737,11 +1700,11 @@ drawable red_button_background
 drawable rounded_layout
 drawable shape_circulo_branco
 drawable shape_cursor
+drawable shape_dialog
 drawable shape_gradient_branco
 drawable shape_gradient_vermelho
 drawable shape_quadrado_arr_branco
 drawable shape_quadrado_arr_vermelho
-drawable shape_quadrado_irregular_branco
 drawable shape_quadrado_irregular_vermelho
 drawable success_bow
 drawable success_circle
@@ -1834,15 +1797,13 @@ id beginning
 id blocking
 id body_scroll
 id bottom
-id bottom_left
-id bottom_right
-id bottom_sheet_grid_view
 id browser_actions_header_text
 id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
 id bt_aceitar
+id bt_adicionar
 id bt_atualizar
 id bt_cadastrar
 id bt_flash
@@ -1852,6 +1813,7 @@ id bt_loginGoogle
 id bt_recuperarSenha
 id bt_recusar
 id bt_redefinir
+id bt_remover
 id bt_sair
 id bt_tirarFoto
 id bt_trocarCamera
@@ -1884,7 +1846,6 @@ id confirm_button
 id container
 id content
 id contentPanel
-id content_container
 id content_fade
 id content_overlay
 id content_progress
@@ -1954,7 +1915,6 @@ id groups
 id hideable
 id home
 id homeAsUp
-id horizontal
 id hybrid
 id icon
 id icon_group
@@ -1964,9 +1924,9 @@ id image
 id image_content_root
 id image_root
 id image_view
+id img_anexo
 id img_app
 id img_galeria
-id img_test
 id img_usuario
 id img_viewer
 id info
@@ -1984,7 +1944,6 @@ id l_redefinicao
 id labeled
 id largeLabel
 id left
-id left_divider
 id light
 id line1
 id line3
@@ -2081,7 +2040,6 @@ id progress_dialog
 id progress_horizontal
 id radio
 id right
-id right_divider
 id right_icon
 id right_side
 id rounded
@@ -2090,7 +2048,7 @@ id row_reverse
 id rv_departamentos
 id rv_galeria
 id rv_imagens
-id rv_tipoSolicitacao
+id rv_tipos
 id satellite
 id save_non_transition_alpha
 id save_overlay_view
@@ -2174,13 +2132,10 @@ id textinput_helper_text
 id time
 id title
 id titleDividerNoCustom
-id title_container
 id title_template
 id title_text
 id top
 id topPanel
-id top_left
-id top_right
 id touch_outside
 id transition_current_scene
 id transition_layout_save
@@ -2196,7 +2151,6 @@ id uniform
 id unlabeled
 id up
 id useLogo
-id vertical
 id view_camera
 id view_offset_helper
 id view_root
@@ -2212,14 +2166,12 @@ id y
 id z
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
-integer animation_duration
 integer app_bar_elevation_anim_duration
 integer bottom_sheet_slide_duration
 integer cancel_button_image_alpha
 integer config_tooltipAnimTime
 integer design_snackbar_text_max_lines
 integer design_tab_indicator_anim_duration_ms
-integer elevation_shadow_view_shadow_orientation_default_value
 integer google_play_services_version
 integer hide_password_duration
 integer ms_default_error_tab_animation_duration
@@ -2282,14 +2234,12 @@ layout activity_overview
 layout activity_solicitacao
 layout activity_splash
 layout activity_usuario_redefinir_senha
+layout adapter_anexos
 layout adapter_categorias_departamento
-layout adapter_categorias_solicitacao
 layout adapter_galeria
+layout adapter_tipos_solicitacao
 layout alert_dialog
 layout banner
-layout bottom_sheet
-layout bottom_sheet_grid_view
-layout bottom_sheet_title
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout card
@@ -2311,10 +2261,11 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout divider
-layout fragment_anexos
-layout fragment_anexos_camera
-layout fragment_anexos_galeria
+layout dialog_anexos
+layout dialog_selector_camera
+layout dialog_selector_galeria
+layout dialog_tipos_solicitacao
+layout dialog_viewer
 layout fragment_departamentos
 layout fragment_inicio
 layout fragment_perfil
@@ -2322,12 +2273,7 @@ layout fragment_solicitacao_anexos
 layout fragment_solicitacao_categoria
 layout fragment_solicitacao_localizacao
 layout fragment_solicitacoes
-layout fragment_viewer
-layout grid_item
-layout grid_placeholder
 layout image
-layout list_item
-layout list_placeholder
 layout modal
 layout modal_portrait_inner
 layout ms_dot
@@ -2458,7 +2404,6 @@ string common_signin_button_text
 string common_signin_button_text_long
 string default_progressbar
 string default_web_client_id
-string device_type
 string dialog_cancel
 string dialog_default_title
 string dialog_ok
@@ -2527,6 +2472,7 @@ string path_password_strike_through
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
+string str_adicionar
 string str_atualizar
 string str_cadastrar
 string str_cadastrar_demanda
@@ -2549,9 +2495,11 @@ string str_nome
 string str_ou
 string str_perfil
 string str_redefinir
+string str_remover
 string str_sair
 string str_senha
 string str_senha_confirm
+string str_solicitacao_tipo
 string str_tipo_problema
 string str_vamos_comecar
 string str_voltar
@@ -2563,6 +2511,8 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style Animation_MaterialComponents_BottomSheetDialog
+style AppBottomSheetDialogTheme
+style AppModalStyle
 style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
@@ -2774,9 +2724,6 @@ style Base_Widget_MaterialComponents_PopupMenu_Overflow
 style Base_Widget_MaterialComponents_TextInputEditText
 style Base_Widget_MaterialComponents_TextInputLayout
 style Base_Widget_MaterialComponents_TextView
-style BottomSheet
-style BottomSheet_Light
-style BottomSheetAnimation
 style CardView
 style CardView_Dark
 style CardView_Light
@@ -3310,7 +3257,6 @@ styleable ConstraintSet android_orientation android_id android_visibility androi
 styleable CoordinatorLayout keylines statusBarBackground
 styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
-styleable ElevationShadowView emulateParallelLight shadowElevation shadowOrientation
 styleable ExtendedFloatingActionButton elevation extendMotionSpec hideMotionSpec showMotionSpec shrinkMotionSpec
 styleable ExtendedFloatingActionButton_Behavior_Layout behavior_autoHide behavior_autoShrink
 styleable FlexboxLayout alignContent alignItems dividerDrawable dividerDrawableHorizontal dividerDrawableVertical flexDirection flexWrap justifyContent maxLine showDivider showDividerHorizontal showDividerVertical
@@ -3354,7 +3300,6 @@ styleable RecyclerView android_orientation android_clipToPadding android_descend
 styleable RightNavigationButton state_verification_failed
 styleable Rotate3dAnimation fromDeg pivotX pivotY rollType toDeg
 styleable ScrimInsetsFrameLayout insetForeground
-styleable ScrimInsetsLayout insetDrawable
 styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight
@@ -3362,7 +3307,6 @@ styleable SignInButton buttonSize colorScheme scopeUris
 styleable Snackbar snackbarButtonStyle snackbarStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha elevation maxActionInlineWidth
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme
-styleable SquareImageView scaledEdge
 styleable StateListDrawable android_dither android_visible android_variablePadding android_constantSize android_enterFadeDuration android_exitFadeDuration
 styleable StateListDrawableItem android_drawable
 styleable StepperLayout ms_activeStepColor ms_backButtonBackground ms_backButtonColor ms_backButtonText ms_bottomNavigationBackground ms_completeButtonBackground ms_completeButtonColor ms_completeButtonText ms_errorColor ms_inactiveStepColor ms_nextButtonBackground ms_nextButtonColor ms_nextButtonText ms_showBackButtonOnFirstStep ms_showBottomNavigation ms_showErrorMessageEnabled ms_showErrorState ms_showErrorStateEnabled ms_showErrorStateOnBack ms_showErrorStateOnBackEnabled ms_stepperFeedbackType ms_stepperFeedback_contentFadeAlpha ms_stepperFeedback_contentOverlayBackground ms_stepperLayoutTheme ms_stepperType ms_tabNavigationEnabled ms_tabStepDividerWidth
@@ -3383,7 +3327,6 @@ transition changebounds
 transition explode
 transition fade
 transition slide
-xml elevation_shadow_view
 xml file_paths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end

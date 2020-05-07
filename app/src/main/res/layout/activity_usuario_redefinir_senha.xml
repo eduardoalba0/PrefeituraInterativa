@@ -92,8 +92,10 @@
                 android:gravity="center"
                 android:text="@string/str_redefinir"
                 android:textSize="@dimen/texto_botao"
+                android:textColor="@color/white"
                 app:icon="@drawable/ic_senha"
-                app:iconGravity="textEnd" />
+                app:iconGravity="textEnd"
+                app:iconTint="@color/white"/>
         </RelativeLayout>
     </LinearLayout>
 </RelativeLayout>

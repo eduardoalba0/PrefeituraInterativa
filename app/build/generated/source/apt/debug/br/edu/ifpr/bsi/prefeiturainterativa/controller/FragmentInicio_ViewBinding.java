@@ -16,7 +16,7 @@ import java.lang.Override;
 public class FragmentInicio_ViewBinding implements Unbinder {
   private FragmentInicio target;
 
-  private View view7f09006a;
+  private View view7f090067;
 
   @UiThread
   public FragmentInicio_ViewBinding(final FragmentInicio target, View source) {
@@ -26,7 +26,7 @@ public class FragmentInicio_ViewBinding implements Unbinder {
     target.img_usuario = Utils.findRequiredViewAsType(source, R.id.img_usuario, "field 'img_usuario'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.bt_usuario, "field 'bt_usuario' and method 'onClick'");
     target.bt_usuario = Utils.castView(view, R.id.bt_usuario, "field 'bt_usuario'", TextView.class);
-    view7f09006a = view;
+    view7f090067 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -45,7 +45,7 @@ public class FragmentInicio_ViewBinding implements Unbinder {
     target.img_usuario = null;
     target.bt_usuario = null;
 
-    view7f09006a.setOnClickListener(null);
-    view7f09006a = null;
+    view7f090067.setOnClickListener(null);
+    view7f090067 = null;
   }
 }

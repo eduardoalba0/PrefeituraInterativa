@@ -28,7 +28,10 @@
     <string name="str_galeria">Galeria</string>
     <string name="str_sair">Sair</string>
     <string name="Inicio">str_inicio</string>
-    <string name="str_descricao">Descreva sua solicitação (opcional)</string>
-    <string name="str_cadastrar_demanda">Cadastrar Demanda</string>
+    <string name="str_descricao">Descrição</string>
+    <string name="str_cadastrar_demanda">Nova Demanda</string>
     <string name="str_imagens">Imagens</string>
+    <string name="str_remover">Remover</string>
+    <string name="str_adicionar">Adicionar</string>
+    <string name="str_solicitacao_tipo">Selecione os tópicos relacionados com sua demanda.</string>
 </resources>

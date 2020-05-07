@@ -39,15 +39,14 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
         super.onStart();
         Window window = getDialog().getWindow();
         WindowManager.LayoutParams windowParams = window.getAttributes();
-        windowParams.dimAmount = 0f;
-        windowParams.flags += WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+        windowParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(windowParams);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_viewer, container, false);
+        View view = inflater.inflate(R.layout.dialog_viewer, container, false);
         ButterKnife.bind(this, view);
         if (imagem == null)
             this.dismiss();

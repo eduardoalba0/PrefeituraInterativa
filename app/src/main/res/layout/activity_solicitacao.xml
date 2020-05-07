@@ -7,23 +7,18 @@
     android:background="@color/float_transparent"
     android:orientation="vertical">
 
-    <com.google.android.material.button.MaterialButton
+    <TextView
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/float_transparent"
+        android:clickable="false"
         android:padding="@dimen/espaco_muito_pequeno"
         android:text="@string/str_cadastrar_demanda"
         android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:transitionName="splash_transition"
-        app:backgroundTint="@color/white"
-        app:cornerRadius="@dimen/espaco_pequeno"
-        app:icon="@drawable/ic_add"
-        app:iconGravity="textEnd"
-        app:iconSize="30dp"
-        android:outlineSpotShadowColor="@color/float_transparent"
-        android:outlineAmbientShadowColor="@color/float_transparent"
-        app:iconTint="@color/colorSecondary" />
+        android:textColor="@color/ms_white"
+        android:textSize="@dimen/texto_botao"
+        android:transitionName="splash_transition" />
 
     <com.stepstone.stepper.StepperLayout
         android:id="@+id/stepperLayout"
@@ -32,7 +27,6 @@
         app:ms_activeStepColor="@color/colorSecondary"
         app:ms_backButtonColor="@color/white"
         app:ms_backButtonText="@string/str_voltar"
-        android:layout_marginTop="-20dp"
         app:ms_bottomNavigationBackground="@color/float_transparent"
         app:ms_completeButtonColor="@color/white"
         app:ms_completeButtonText="Enviar"

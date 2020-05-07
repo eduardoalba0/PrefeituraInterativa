@@ -6,32 +6,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.google.android.flexbox.FlexDirection;
-import com.google.android.flexbox.FlexboxLayoutManager;
-import com.google.android.flexbox.JustifyContent;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.TipoSolicitacaoDAO;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogTiposSolicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.TipoSolicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class CategoriasDepartamentoAdapter extends RecyclerView.Adapter<CategoriasDepartamentoAdapter.ViewHolder> {
 
     private Activity context;
     private List<Departamento> departamentos;
-    private List<TipoSolicitacao> tipoSolicitacoes;
-    private TipoSolicitacaoDAO dao;
+    private FragmentManager fm;
 
-    public CategoriasDepartamentoAdapter(Activity context, List<Departamento> departamentos) {
+    public CategoriasDepartamentoAdapter(Activity context, List<Departamento> departamentos, FragmentManager fm) {
         this.context = context;
         this.departamentos = departamentos;
+        this.fm = fm;
     }
 
     @NonNull
@@ -44,11 +40,6 @@ public class CategoriasDepartamentoAdapter extends RecyclerView.Adapter<Categori
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.setData(departamentos.get(position));
-        FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(context);
-        layoutManager.setFlexDirection(FlexDirection.ROW);
-        layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
-        holder.rv_tipoSolicitacao.setLayoutManager(layoutManager);
-        holder.rv_tipoSolicitacao.setAdapter(new CategoriasSolicitacaoAdapter(context, departamentos.get(position).getTiposSolicitacao()));
     }
 
     @Override
@@ -56,23 +47,31 @@ public class CategoriasDepartamentoAdapter extends RecyclerView.Adapter<Categori
         return departamentos.size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder {
+    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        private Departamento departamento;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            dao = new TipoSolicitacaoDAO(context);
-            tipoSolicitacoes = new ArrayList<>();
+        }
+
+        @OnClick(R.id.tv_departamento)
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.tv_departamento:
+                    new DialogTiposSolicitacao(departamento).show(fm, "TiposSolicitacao");
+                    break;
+            }
         }
 
         public void setData(Departamento departamento) {
+            this.departamento = departamento;
             tv_departamento.setText(departamento.getDescricao());
         }
 
         @BindView(R.id.tv_departamento)
         TextView tv_departamento;
-
-        @BindView(R.id.rv_tipoSolicitacao)
-        RecyclerView rv_tipoSolicitacao;
     }
 }

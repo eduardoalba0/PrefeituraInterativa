@@ -2,7 +2,6 @@ package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogViewer;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,11 +24,13 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHold
     private Activity context;
     private List<String> imagens;
     private FragmentManager fm;
+    private boolean resultadoUnico;
 
-    public GaleriaAdapter(Activity context, List<String> imagens, FragmentManager manager) {
+    public GaleriaAdapter(Activity context, List<String> imagens, FragmentManager manager, boolean resultadoUnico) {
         this.context = context;
         this.imagens = imagens;
         this.fm = manager;
+        this.resultadoUnico = resultadoUnico;
     }
 
     @NonNull
@@ -60,11 +62,7 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHold
         @OnClick(R.id.img_galeria)
         @Override
         public void onClick(View view) {
-            Log.e("GaleriaAdapter", "OnClick");
-            ViewerBottomSheetDialog viewer = new ViewerBottomSheetDialog();
-            Bundle bundle = new Bundle();
-            bundle.putString("Imagem", imagem);
-            viewer.setArguments(bundle);
+            DialogViewer viewer = new DialogViewer(resultadoUnico, imagem, true);
             viewer.show(fm, "Viewer");
         }
 
