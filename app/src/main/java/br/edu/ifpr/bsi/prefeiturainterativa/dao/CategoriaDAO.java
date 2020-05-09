@@ -11,35 +11,35 @@ import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.TipoSolicitacao;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 
-public class TipoSolicitacaoDAO {
+public class CategoriaDAO {
 
 
     private DatabaseHelper helper;
     private CollectionReference reference;
 
-    public TipoSolicitacaoDAO(Activity context) {
+    public CategoriaDAO(Activity context) {
         helper = new DatabaseHelper(context);
         reference = helper.getDataBase().collection("TiposSolicitacao");
     }
 
-    public Task<Void> inserirAtualizar(TipoSolicitacao tipoSolicitacao) {
-        if (tipoSolicitacao.get_ID() == null || tipoSolicitacao.get_ID().equals(""))
-            tipoSolicitacao.set_ID(UUID.randomUUID().toString());
-        return helper.inserirAtualizar(reference.document(tipoSolicitacao.get_ID()), tipoSolicitacao);
+    public Task<Void> inserirAtualizar(Categoria categoria) {
+        if (categoria.get_ID() == null || categoria.get_ID().equals(""))
+            categoria.set_ID(UUID.randomUUID().toString());
+        return helper.inserirAtualizar(reference.document(categoria.get_ID()), categoria);
     }
 
-    public Task<Void> remover(TipoSolicitacao tipoSolicitacao) {
-        if (tipoSolicitacao.get_ID() != null && !tipoSolicitacao.get_ID().equals(""))
+    public Task<Void> remover(Categoria categoria) {
+        if (categoria.get_ID() != null && !categoria.get_ID().equals(""))
             return null;
-        return helper.remover(reference.document(tipoSolicitacao.get_ID()));
+        return helper.remover(reference.document(categoria.get_ID()));
     }
 
-    public Task<DocumentSnapshot> get(TipoSolicitacao tipoSolicitacao) {
-        if (tipoSolicitacao.get_ID() != null && !tipoSolicitacao.get_ID().equals(""))
+    public Task<DocumentSnapshot> get(Categoria categoria) {
+        if (categoria.get_ID() != null && !categoria.get_ID().equals(""))
             return null;
-        return helper.get(reference.document(tipoSolicitacao.get_ID()));
+        return helper.get(reference.document(categoria.get_ID()));
     }
 
     public Task<QuerySnapshot> getAll() {

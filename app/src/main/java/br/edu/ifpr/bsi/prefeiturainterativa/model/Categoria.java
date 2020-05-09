@@ -5,7 +5,7 @@ import com.google.firebase.firestore.Exclude;
 import java.io.Serializable;
 import java.util.Objects;
 
-public class TipoSolicitacao implements Serializable {
+public class Categoria implements Serializable {
 
     private String _ID;
     private String descricao;
@@ -89,8 +89,8 @@ public class TipoSolicitacao implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TipoSolicitacao tipoSolicitacao = (TipoSolicitacao) o;
-        return _ID.equals(tipoSolicitacao._ID);
+        Categoria categoria = (Categoria) o;
+        return _ID.equals(categoria._ID);
     }
 
     @Override

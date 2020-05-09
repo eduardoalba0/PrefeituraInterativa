@@ -16,7 +16,7 @@ public class Departamento implements Serializable {
     private Departamento departamentoSuperior;
 
     @Exclude
-    private List<TipoSolicitacao> tiposSolicitacao;
+    private List<Categoria> tiposSolicitacao;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -54,11 +54,11 @@ public class Departamento implements Serializable {
     }
 
     @Exclude
-    public List<TipoSolicitacao> getTiposSolicitacao() {
+    public List<Categoria> getTiposSolicitacao() {
         return tiposSolicitacao;
     }
 
-    public void setTiposSolicitacao(List<TipoSolicitacao> tiposSolicitacao) {
+    public void setTiposSolicitacao(List<Categoria> tiposSolicitacao) {
         this.tiposSolicitacao = tiposSolicitacao;
     }
 

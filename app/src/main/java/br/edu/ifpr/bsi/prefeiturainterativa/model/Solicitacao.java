@@ -25,7 +25,7 @@ public class Solicitacao implements Serializable {
     @ServerTimestamp
     private Date data;
     @Exclude
-    private TipoSolicitacao tipoSolicitacao;
+    private Categoria categoria;
     @Exclude
     private Usuario usuario;
 
@@ -136,12 +136,12 @@ public class Solicitacao implements Serializable {
     }
 
     @Exclude
-    public TipoSolicitacao getTipoSolicitacao() {
-        return tipoSolicitacao;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setTipoSolicitacao(TipoSolicitacao tipoSolicitacao) {
-        this.tipoSolicitacao = tipoSolicitacao;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Exclude
