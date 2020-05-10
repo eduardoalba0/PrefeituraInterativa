@@ -42,6 +42,6 @@ public class DepartamentoDAO {
     }
 
     public Task<QuerySnapshot> getAll() {
-        return helper.getAll(reference);
+        return helper.getQuery(reference.orderBy("descricao"));
     }
 }

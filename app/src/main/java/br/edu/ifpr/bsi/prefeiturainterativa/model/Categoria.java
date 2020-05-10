@@ -17,6 +17,8 @@ public class Categoria implements Serializable {
 
     @Exclude
     private Departamento departamento;
+    @Exclude
+    private boolean selecionada;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -59,6 +61,15 @@ public class Categoria implements Serializable {
 
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    @Exclude
+    public boolean isSelecionada() {
+        return selecionada;
+    }
+
+    public void setSelecionada(boolean selecionada) {
+        this.selecionada = selecionada;
     }
 
     public boolean isFotoObrigatoria() {

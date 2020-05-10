@@ -10,20 +10,26 @@ import com.google.android.material.chip.Chip;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.TipoSolicitacao;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CategoriasSolicitacaoAdapter extends RecyclerView.Adapter<CategoriasSolicitacaoAdapter.ViewHolder> {
 
     private Activity context;
-    private List<TipoSolicitacao> tiposSolicitacao;
+    private List<Categoria> tiposSolicitacao;
+    private ViewModelsHelper viewModel;
 
-    public CategoriasSolicitacaoAdapter(Activity context, List<TipoSolicitacao> solicitacoes) {
+    public CategoriasSolicitacaoAdapter(Activity context, List<Categoria> solicitacoes) {
         this.context = context;
         this.tiposSolicitacao = solicitacoes;
+        this.viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
     }
 
     @NonNull
@@ -44,13 +50,32 @@ public class CategoriasSolicitacaoAdapter extends RecyclerView.Adapter<Categoria
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void setData(TipoSolicitacao tipoSolicitacao) {
-            chip_solicitacao.setText(tipoSolicitacao.getDescricao());
+        public void setData(Categoria categoria) {
+            categoria.setSelecionada(viewModel.getListCategorias().contains(categoria));
+            chip_solicitacao.setText(categoria.getDescricao());
+            chip_solicitacao.setChecked(categoria.isSelecionada());
+            chip_solicitacao.setOnCheckedChangeListener((compoundButton, b) -> {
+                if (b) {
+                    if (viewModel.getListCategorias().size() >= 10)
+                        new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText("Erro!")
+                                .setContentText("Você só pode selecionar no máximo 10 tópicos por vez.")
+                                .show();
+                    else {
+                        categoria.setSelecionada(true);
+                        viewModel.addCategoria(categoria);
+                    }
+                } else {
+                    categoria.setSelecionada(false);
+                    viewModel.removeCategoria(this.getAdapterPosition());
+                }
+            });
         }
 
         @BindView(R.id.chip_solicitacao)

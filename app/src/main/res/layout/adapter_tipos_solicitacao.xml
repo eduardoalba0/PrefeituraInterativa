@@ -10,11 +10,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="5dp"
-        android:textColor="@color/white"
+        android:textColor="@color/whiteFA"
         android:textSize="@dimen/texto_label"
-        app:chipBackgroundColor="@color/colorSecondary"
+        android:fontFamily="@font/fredoka"
+        app:chipBackgroundColor="@color/colorPrimary"
         app:chipEndPadding="10dp"
         app:chipStartPadding="10dp"
-        app:chipStrokeColor="@color/colorTertiary"
+        app:chipStrokeColor="@color/colorPrimary"
         app:chipStrokeWidth="1dp" />
 </RelativeLayout>

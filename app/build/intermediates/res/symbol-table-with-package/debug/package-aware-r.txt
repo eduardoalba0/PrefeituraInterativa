@@ -822,6 +822,18 @@ attr uiScrollGesturesDuringRotateOrZoom
 attr uiTiltGestures
 attr uiZoomControls
 attr uiZoomGestures
+attr umanoAnchorPoint
+attr umanoClipPanel
+attr umanoDragView
+attr umanoFadeColor
+attr umanoFlingVelocity
+attr umanoInitialState
+attr umanoOverlay
+attr umanoPanelHeight
+attr umanoParallaxOffset
+attr umanoScrollInterpolator
+attr umanoScrollableView
+attr umanoShadowHeight
 attr useCompatPadding
 attr useMaterialThemeColors
 attr useViewLifecycle
@@ -1580,8 +1592,10 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable above_shadow
 drawable avd_hide_password
 drawable avd_show_password
+drawable below_shadow
 drawable blue_button_background
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
@@ -1784,6 +1798,7 @@ id adjust_width
 id alertTitle
 id all
 id always
+id anchored
 id async
 id auto
 id banner_body
@@ -1840,6 +1855,7 @@ id clip_horizontal
 id clip_vertical
 id collapseActionView
 id collapse_button
+id collapsed
 id column
 id column_reverse
 id confirm_button
@@ -1894,6 +1910,7 @@ id error_frame
 id error_x
 id exitUntilCollapsed
 id expand_activities_button
+id expanded
 id expanded_menu
 id fade
 id fill
@@ -1912,6 +1929,7 @@ id glide_custom_view_target_tag
 id gone
 id group_divider
 id groups
+id hidden
 id hideable
 id home
 id homeAsUp
@@ -2045,10 +2063,11 @@ id right_side
 id rounded
 id row
 id row_reverse
+id rv_categorias
 id rv_departamentos
 id rv_galeria
 id rv_imagens
-id rv_tipos
+id rv_topicosSelecionados
 id satellite
 id save_non_transition_alpha
 id save_overlay_view
@@ -2079,6 +2098,7 @@ id showHome
 id showTitle
 id skipCollapsed
 id slide
+id sliding_categorias
 id smallLabel
 id snackbar_action
 id snackbar_text
@@ -2143,7 +2163,9 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tv_departamento
+id tv_numeroTopicos
 id tv_titulo
+id tv_topicosVazios
 id tv_usuario
 id tx_app
 id unchecked
@@ -2501,8 +2523,11 @@ string str_senha
 string str_senha_confirm
 string str_solicitacao_tipo
 string str_tipo_problema
+string str_topicos_selecionados
+string str_topicos_vazios
 string str_vamos_comecar
 string str_voltar
+string str_zero
 string title_activity_maps
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
@@ -3304,6 +3329,7 @@ styleable ScrollingViewBehavior_Layout behavior_overlapTop
 styleable SearchView android_focusable android_maxWidth android_inputType android_imeOptions closeIcon commitIcon defaultQueryHint goIcon iconifiedByDefault layout queryBackground queryHint searchHintIcon searchIcon submitBackground suggestionRowLayout voiceIcon
 styleable ShapeAppearance cornerFamily cornerFamilyBottomLeft cornerFamilyBottomRight cornerFamilyTopLeft cornerFamilyTopRight cornerSize cornerSizeBottomLeft cornerSizeBottomRight cornerSizeTopLeft cornerSizeTopRight
 styleable SignInButton buttonSize colorScheme scopeUris
+styleable SlidingUpPanelLayout umanoAnchorPoint umanoClipPanel umanoDragView umanoFadeColor umanoFlingVelocity umanoInitialState umanoOverlay umanoPanelHeight umanoParallaxOffset umanoScrollInterpolator umanoScrollableView umanoShadowHeight
 styleable Snackbar snackbarButtonStyle snackbarStyle
 styleable SnackbarLayout android_maxWidth actionTextColorAlpha animationMode backgroundOverlayColorAlpha elevation maxActionInlineWidth
 styleable Spinner android_entries android_popupBackground android_prompt android_dropDownWidth popupTheme

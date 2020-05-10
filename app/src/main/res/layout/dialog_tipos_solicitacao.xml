@@ -30,7 +30,7 @@
         android:background="@color/ms_material_grey_400" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tipos"
+        android:id="@+id/rv_categorias"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" />

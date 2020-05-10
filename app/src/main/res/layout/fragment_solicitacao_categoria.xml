@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_categorias"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="@drawable/shape_gradient_branco"
-    android:padding="@dimen/espaco_muito_pequeno"
+    android:background="@color/float_transparent"
+    android:gravity="bottom"
+    app:layout_maxHeight="@dimen/componente_gigante"
+    app:umanoOverlay="true"
+    app:umanoPanelHeight="@dimen/componente_pequeno"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="@dimen/espaco_muito_pequeno"
         android:id="@+id/rv_departamentos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whiteFA"
+        android:padding="@dimen/espaco_pequeno">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/tv_numeroTopicos"
+            android:gravity="start"
+            android:padding="@dimen/espaco_pequeno"
+            android:text="@string/str_topicos_selecionados"
+            android:textColor="@color/blackWhite"
+            android:textSize="@dimen/texto_botao" />
+
+        <TextView
+            android:id="@+id/tv_numeroTopicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:padding="@dimen/espaco_pequeno"
+            android:text="@string/str_zero"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/texto_botao" />
+
+        <TextView
+            android:id="@+id/tv_topicosVazios"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/componente_pequeno"
+            android:gravity="center"
+            android:padding="@dimen/espaco_muito_pequeno"
+            android:text="@string/str_topicos_vazios"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/texto_label" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_topicosSelecionados"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/componente_pequeno"
+            android:padding="@dimen/espaco_muito_pequeno" />
+    </RelativeLayout>
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

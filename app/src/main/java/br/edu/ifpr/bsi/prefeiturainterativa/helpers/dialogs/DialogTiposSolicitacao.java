@@ -53,12 +53,12 @@ public class DialogTiposSolicitacao extends BottomSheetDialogFragment {
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
         tv_departamento.setText(departamento.getDescricao());
-        rv_tipos.setLayoutManager(layoutManager);
-        rv_tipos.setAdapter(new CategoriasSolicitacaoAdapter(getActivity(), departamento.getTiposSolicitacao()));
+        rv_categorias.setLayoutManager(layoutManager);
+        rv_categorias.setAdapter(new CategoriasSolicitacaoAdapter(getActivity(), departamento.getTiposSolicitacao()));
     }
 
-    @BindView(R.id.rv_tipos)
-    RecyclerView rv_tipos;
+    @BindView(R.id.rv_categorias)
+    RecyclerView rv_categorias;
 
     @BindView(R.id.tv_departamento)
     TextView tv_departamento;

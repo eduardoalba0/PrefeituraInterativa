@@ -15,7 +15,7 @@ import java.lang.Override;
 public class CategoriasDepartamentoAdapter$ViewHolder_ViewBinding implements Unbinder {
   private CategoriasDepartamentoAdapter.ViewHolder target;
 
-  private View view7f0901ac;
+  private View view7f0901b2;
 
   @UiThread
   public CategoriasDepartamentoAdapter$ViewHolder_ViewBinding(
@@ -25,7 +25,7 @@ public class CategoriasDepartamentoAdapter$ViewHolder_ViewBinding implements Unb
     View view;
     view = Utils.findRequiredView(source, R.id.tv_departamento, "field 'tv_departamento' and method 'onClick'");
     target.tv_departamento = Utils.castView(view, R.id.tv_departamento, "field 'tv_departamento'", TextView.class);
-    view7f0901ac = view;
+    view7f0901b2 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -43,7 +43,7 @@ public class CategoriasDepartamentoAdapter$ViewHolder_ViewBinding implements Unb
 
     target.tv_departamento = null;
 
-    view7f0901ac.setOnClickListener(null);
-    view7f0901ac = null;
+    view7f0901b2.setOnClickListener(null);
+    view7f0901b2 = null;
   }
 }

@@ -19,9 +19,9 @@ import java.lang.Override;
 public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
   private ActivityCompletarCadastro target;
 
-  private View view7f09005b;
+  private View view7f09005c;
 
-  private View view7f090064;
+  private View view7f090065;
 
   @UiThread
   public ActivityCompletarCadastro_ViewBinding(ActivityCompletarCadastro target) {
@@ -38,7 +38,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
     target.edl_cpf = Utils.findRequiredViewAsType(source, R.id.edl_cpf, "field 'edl_cpf'", TextInputLayout.class);
     view = Utils.findRequiredView(source, R.id.bt_cadastrar, "field 'bt_cadastrar' and method 'onClick'");
     target.bt_cadastrar = Utils.castView(view, R.id.bt_cadastrar, "field 'bt_cadastrar'", Button.class);
-    view7f09005b = view;
+    view7f09005c = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -47,7 +47,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_sair, "field 'bt_sair' and method 'onClick'");
     target.bt_sair = Utils.castView(view, R.id.bt_sair, "field 'bt_sair'", Button.class);
-    view7f090064 = view;
+    view7f090065 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -78,9 +78,9 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
     target.l_completar = null;
     target.shape_irregular = null;
 
-    view7f09005b.setOnClickListener(null);
-    view7f09005b = null;
-    view7f090064.setOnClickListener(null);
-    view7f090064 = null;
+    view7f09005c.setOnClickListener(null);
+    view7f09005c = null;
+    view7f090065.setOnClickListener(null);
+    view7f090065 = null;
   }
 }

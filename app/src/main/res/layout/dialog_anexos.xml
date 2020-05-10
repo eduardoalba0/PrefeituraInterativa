@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:background="@drawable/shape_gradient_branco"
     android:layout_height="@dimen/componente_gigante">
 
     <LinearLayout
@@ -19,6 +20,7 @@
             android:id="@+id/tabs_anexos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/float_transparent"
             app:tabGravity="fill"
             app:tabIconTint="@color/white"
             app:tabIndicatorColor="@color/white"

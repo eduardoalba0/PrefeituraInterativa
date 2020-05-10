@@ -19,7 +19,7 @@
             android:textAllCaps="true"
             android:gravity="fill_horizontal"
             android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:textColor="@color/ms_black_87_opacity"
+            android:textColor="@color/blackWhite"
             android:textSize="@dimen/texto_label" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

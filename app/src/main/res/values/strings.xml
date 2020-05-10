@@ -34,4 +34,7 @@
     <string name="str_remover">Remover</string>
     <string name="str_adicionar">Adicionar</string>
     <string name="str_solicitacao_tipo">Selecione os tópicos relacionados com sua demanda.</string>
+    <string name="str_topicos_selecionados">Tópicos Selecionados</string>
+    <string name="str_zero">0</string>
+    <string name="str_topicos_vazios">Selecione no menu acima, os tópicos relacionados com sua demanda.</string>
 </resources>

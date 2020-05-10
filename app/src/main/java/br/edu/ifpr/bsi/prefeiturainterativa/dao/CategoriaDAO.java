@@ -10,8 +10,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 
 public class CategoriaDAO {
 
@@ -42,11 +42,7 @@ public class CategoriaDAO {
         return helper.get(reference.document(categoria.get_ID()));
     }
 
-    public Task<QuerySnapshot> getAll() {
-        return helper.getAll(reference);
-    }
-
     public Task<QuerySnapshot> getAllPorDepartamento(Departamento departamento){
-        return helper.getQuery(reference.whereEqualTo("departamento_ID", departamento.get_ID()));
+        return helper.getQuery(reference.whereEqualTo("departamento_ID", departamento.get_ID()).orderBy("descricao"));
     }
 }

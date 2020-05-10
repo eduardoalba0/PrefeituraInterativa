@@ -87,9 +87,11 @@ public class DatabaseHelper {
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText("Erro!").setContentText("Você não possui permissão para acessar esta coleção.")
                             .show();
-                else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha na consulta ao banco de dados, consulte o suporte do sistema.")
-                        .show();
+                else
+                    new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText("Erro!").setContentText("Falha na consulta ao banco de dados, consulte o suporte do sistema.")
+                            .show();
+
         });
     }
 

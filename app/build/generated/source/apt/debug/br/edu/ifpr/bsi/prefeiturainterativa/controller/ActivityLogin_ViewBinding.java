@@ -18,13 +18,13 @@ import java.lang.Override;
 public class ActivityLogin_ViewBinding implements Unbinder {
   private ActivityLogin target;
 
-  private View view7f09005e;
-
   private View view7f09005f;
 
   private View view7f090060;
 
-  private View view7f09005b;
+  private View view7f090061;
+
+  private View view7f09005c;
 
   @UiThread
   public ActivityLogin_ViewBinding(ActivityLogin target) {
@@ -42,7 +42,7 @@ public class ActivityLogin_ViewBinding implements Unbinder {
     target.edl_senha = Utils.findRequiredViewAsType(source, R.id.edl_senha, "field 'edl_senha'", TextInputLayout.class);
     view = Utils.findRequiredView(source, R.id.bt_login, "field 'bt_login' and method 'onClick'");
     target.bt_login = Utils.castView(view, R.id.bt_login, "field 'bt_login'", Button.class);
-    view7f09005e = view;
+    view7f09005f = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -51,7 +51,7 @@ public class ActivityLogin_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_loginGoogle, "field 'bt_loginGoogle' and method 'onClick'");
     target.bt_loginGoogle = Utils.castView(view, R.id.bt_loginGoogle, "field 'bt_loginGoogle'", MaterialButton.class);
-    view7f09005f = view;
+    view7f090060 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -60,7 +60,7 @@ public class ActivityLogin_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_recuperarSenha, "field 'bt_recuperarSenha' and method 'onClick'");
     target.bt_recuperarSenha = Utils.castView(view, R.id.bt_recuperarSenha, "field 'bt_recuperarSenha'", MaterialButton.class);
-    view7f090060 = view;
+    view7f090061 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -69,7 +69,7 @@ public class ActivityLogin_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_cadastrar, "field 'bt_cadastrar' and method 'onClick'");
     target.bt_cadastrar = Utils.castView(view, R.id.bt_cadastrar, "field 'bt_cadastrar'", MaterialButton.class);
-    view7f09005b = view;
+    view7f09005c = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -102,13 +102,13 @@ public class ActivityLogin_ViewBinding implements Unbinder {
     target.l_login = null;
     target.l_footer = null;
 
-    view7f09005e.setOnClickListener(null);
-    view7f09005e = null;
     view7f09005f.setOnClickListener(null);
     view7f09005f = null;
     view7f090060.setOnClickListener(null);
     view7f090060 = null;
-    view7f09005b.setOnClickListener(null);
-    view7f09005b = null;
+    view7f090061.setOnClickListener(null);
+    view7f090061 = null;
+    view7f09005c.setOnClickListener(null);
+    view7f09005c = null;
   }
 }

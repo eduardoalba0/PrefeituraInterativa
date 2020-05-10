@@ -16,7 +16,7 @@ import java.lang.Override;
 public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
   private FragmentSolicitacaoAnexos target;
 
-  private View view7f090059;
+  private View view7f09005a;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -27,7 +27,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.rv_imagens = Utils.findRequiredViewAsType(source, R.id.rv_imagens, "field 'rv_imagens'", RecyclerView.class);
     view = Utils.findRequiredView(source, R.id.bt_adicionar, "field 'bt_adicionar' and method 'onClick'");
     target.bt_adicionar = Utils.castView(view, R.id.bt_adicionar, "field 'bt_adicionar'", MaterialButton.class);
-    view7f090059 = view;
+    view7f09005a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.rv_imagens = null;
     target.bt_adicionar = null;
 
-    view7f090059.setOnClickListener(null);
-    view7f090059 = null;
+    view7f09005a.setOnClickListener(null);
+    view7f09005a = null;
   }
 }
