@@ -158,7 +158,7 @@ public class SelectorCamera extends Fragment implements Executor, View.OnClickLi
             else
                 lensFacing = CameraX.LensFacing.FRONT;
             CameraX.getCameraWithLensFacing(lensFacing);
-            initCamera();
+            SelectorCameraPermissionsDispatcher.abrirCameraWithPermissionCheck(this);
         } catch (CameraInfoUnavailableException e) {
             lensFacing = backup;
             Snackbar.make(getView(), "Falha ao trocar a câmera. Se o erro persistir consulte o suporte do sistema",

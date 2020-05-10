@@ -2,6 +2,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.view.View;
+import android.widget.CompoundButton;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,6 +11,7 @@ import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
@@ -17,6 +19,8 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
   private FragmentSolicitacaoAnexos target;
 
   private View view7f09005a;
+
+  private View view7f09018c;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -34,6 +38,15 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
         target.onClick(p0);
       }
     });
+    view = Utils.findRequiredView(source, R.id.sw_anonimo, "field 'sw_anonimo' and method 'onCheckedChanged'");
+    target.sw_anonimo = Utils.castView(view, R.id.sw_anonimo, "field 'sw_anonimo'", SwitchMaterial.class);
+    view7f09018c = view;
+    ((CompoundButton) view).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+      @Override
+      public void onCheckedChanged(CompoundButton p0, boolean p1) {
+        target.onCheckedChanged(p0, p1);
+      }
+    });
   }
 
   @Override
@@ -45,8 +58,11 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
 
     target.rv_imagens = null;
     target.bt_adicionar = null;
+    target.sw_anonimo = null;
 
     view7f09005a.setOnClickListener(null);
     view7f09005a = null;
+    ((CompoundButton) view7f09018c).setOnCheckedChangeListener(null);
+    view7f09018c = null;
   }
 }

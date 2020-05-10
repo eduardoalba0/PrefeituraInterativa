@@ -8,7 +8,7 @@
     android:gravity="bottom"
     app:layout_maxHeight="@dimen/componente_gigante"
     app:umanoOverlay="true"
-    app:umanoPanelHeight="@dimen/componente_pequeno"
+    app:umanoPanelHeight="@dimen/componente_muito_pequeno"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/whiteFA"
-        android:padding="@dimen/espaco_pequeno">
+        android:padding="@dimen/espaco_muito_pequeno">
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,26 +29,26 @@
             android:layout_alignParentStart="true"
             android:layout_toStartOf="@id/tv_numeroTopicos"
             android:gravity="start"
-            android:padding="@dimen/espaco_pequeno"
+            android:padding="@dimen/espaco_muito_pequeno"
             android:text="@string/str_topicos_selecionados"
             android:textColor="@color/blackWhite"
-            android:textSize="@dimen/texto_botao" />
+            android:textSize="@dimen/texto_label" />
 
         <TextView
             android:id="@+id/tv_numeroTopicos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:padding="@dimen/espaco_pequeno"
+            android:padding="@dimen/espaco_muito_pequeno"
             android:text="@string/str_zero"
             android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/texto_botao" />
+            android:textSize="@dimen/texto_label" />
 
         <TextView
             android:id="@+id/tv_topicosVazios"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/componente_pequeno"
+            android:layout_marginTop="@dimen/componente_muito_pequeno"
             android:gravity="center"
             android:padding="@dimen/espaco_muito_pequeno"
             android:text="@string/str_topicos_vazios"
@@ -59,7 +59,7 @@
             android:id="@+id/rv_topicosSelecionados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/componente_pequeno"
+            android:layout_marginTop="@dimen/componente_muito_pequeno"
             android:padding="@dimen/espaco_muito_pequeno" />
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

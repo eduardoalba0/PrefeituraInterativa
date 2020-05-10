@@ -913,6 +913,7 @@ color colorPrimary
 color colorSecondary
 color colorSecondaryDark
 color colorTertiary
+color color_states_switch
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
 color common_google_signin_btn_text_dark_disabled
@@ -1223,6 +1224,7 @@ dimen compat_notification_large_icon_max_width
 dimen componente_gigante
 dimen componente_grande
 dimen componente_medio
+dimen componente_muito_pequeno
 dimen componente_normal
 dimen componente_pequeno
 dimen custom_image_size
@@ -1968,6 +1970,7 @@ id line3
 id listMode
 id list_item
 id loading
+id map
 id mask_left
 id mask_right
 id masked
@@ -2123,6 +2126,7 @@ id submenuarrow
 id submit_area
 id success_frame
 id success_tick
+id sw_anonimo
 id tabMode
 id tabs
 id tabs_anexos
@@ -2163,6 +2167,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id tv_departamento
+id tv_marcadorSelecionado
 id tv_numeroTopicos
 id tv_titulo
 id tv_topicosVazios
@@ -2440,7 +2445,6 @@ string google_api_key
 string google_app_id
 string google_auth_id
 string google_crash_reporting_api_key
-string google_maps_key
 string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string hint_senha
@@ -2495,6 +2499,7 @@ string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
 string str_adicionar
+string str_anonimo
 string str_atualizar
 string str_cadastrar
 string str_cadastrar_demanda
@@ -2510,9 +2515,12 @@ string str_emblema
 string str_entrar
 string str_esqueceu_senha
 string str_galeria
+string str_hint_mapa
 string str_imagens
 string str_label_cpf
 string str_label_email
+string str_marcadorNaoSelecionado
+string str_marcadorSelecionado
 string str_nome
 string str_ou
 string str_perfil

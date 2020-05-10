@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
@@ -23,13 +25,17 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.AnexosAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogSelector;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnCheckedChanged;
 import butterknife.OnClick;
 
-public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.OnClickListener {
+public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.OnClickListener,
+        CompoundButton.OnCheckedChangeListener {
 
     private DialogSelector dialogo;
+    private Solicitacao solicitacao;
 
     @Nullable
     @Override
@@ -37,6 +43,7 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
         View view = inflater.inflate(R.layout.fragment_solicitacao_anexos, container, false);
         ButterKnife.bind(this, view);
         dialogo = new DialogSelector(false);
+        solicitacao = new Solicitacao();
         initRecyclerView();
         return view;
     }
@@ -47,6 +54,16 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
         switch (view.getId()) {
             case R.id.bt_adicionar:
                 dialogo.show(getChildFragmentManager(), "Selector");
+                break;
+        }
+    }
+
+    @OnCheckedChanged(R.id.sw_anonimo)
+    @Override
+    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+        switch (compoundButton.getId()) {
+            case R.id.sw_anonimo:
+                solicitacao.setAnonima(b);
                 break;
         }
     }
@@ -72,6 +89,7 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
         layoutManager.setFlexDirection(FlexDirection.ROW);
         layoutManager.setJustifyContent(JustifyContent.CENTER);
         rv_imagens.setLayoutManager(layoutManager);
+        sw_anonimo.setTrackTintList(getResources().getColorStateList(R.color.color_states_switch));
 
         ViewModelsHelper viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
         viewModel.getImagensString().observe(getViewLifecycleOwner(),
@@ -90,4 +108,7 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
 
     @BindView(R.id.bt_adicionar)
     MaterialButton bt_adicionar;
+
+    @BindView(R.id.sw_anonimo)
+    SwitchMaterial sw_anonimo;
 }

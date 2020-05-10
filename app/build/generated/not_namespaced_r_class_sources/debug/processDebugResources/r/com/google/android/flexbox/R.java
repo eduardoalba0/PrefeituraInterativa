@@ -45,15 +45,15 @@ public final class R {
         public static final int column_reverse = 0x7f090081;
         public static final int flex_end = 0x7f0900c0;
         public static final int flex_start = 0x7f0900c1;
-        public static final int nowrap = 0x7f090134;
-        public static final int row = 0x7f09014d;
-        public static final int row_reverse = 0x7f09014e;
-        public static final int space_around = 0x7f090178;
-        public static final int space_between = 0x7f090179;
-        public static final int space_evenly = 0x7f09017a;
-        public static final int stretch = 0x7f090186;
-        public static final int wrap = 0x7f0901c4;
-        public static final int wrap_reverse = 0x7f0901c6;
+        public static final int nowrap = 0x7f090135;
+        public static final int row = 0x7f09014e;
+        public static final int row_reverse = 0x7f09014f;
+        public static final int space_around = 0x7f090179;
+        public static final int space_between = 0x7f09017a;
+        public static final int space_evenly = 0x7f09017b;
+        public static final int stretch = 0x7f090187;
+        public static final int wrap = 0x7f0901c7;
+        public static final int wrap_reverse = 0x7f0901c9;
     }
     public static final class styleable {
         private styleable() {}

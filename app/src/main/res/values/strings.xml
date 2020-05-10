@@ -37,4 +37,8 @@
     <string name="str_topicos_selecionados">Tópicos Selecionados</string>
     <string name="str_zero">0</string>
     <string name="str_topicos_vazios">Selecione no menu acima, os tópicos relacionados com sua demanda.</string>
+    <string name="str_marcadorNaoSelecionado">Nenhuma localização selecionada.</string>
+    <string name="str_hint_mapa">Toque no mapa para selecionar a localização</string>
+    <string name="str_marcadorSelecionado">Localização selecionada.</string>
+    <string name="str_anonimo">Preservar minha identidade.</string>
 </resources>
