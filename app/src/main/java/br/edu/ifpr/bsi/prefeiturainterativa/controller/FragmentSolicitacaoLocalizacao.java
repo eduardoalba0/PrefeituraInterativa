@@ -94,7 +94,6 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
     public void onMapReady(GoogleMap googleMap) {
         map_view = googleMap;
         map_view.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        map_view.setMyLocationEnabled(true);
         map_view.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-26.484335, -51.991754), MAP_ZOOM));
         map_view.setOnMapClickListener(latLng -> {
             map_view.clear();
@@ -113,6 +112,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
 
     @NeedsPermission({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public void updateLocation() {
+        map_view.setMyLocationEnabled(true);
         LocationRequest locationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(1000 * 20)
