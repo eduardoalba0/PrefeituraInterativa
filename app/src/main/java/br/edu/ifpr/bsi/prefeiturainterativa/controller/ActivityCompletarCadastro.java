@@ -121,9 +121,9 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
 
     public void preencherCampos() {
         usuario.set_ID(helper.getUser().getUid());
-        usuario.set_ID(helper.getUser().getUid());
         usuario.setNome(helper.getUser().getDisplayName());
         usuario.setEmail(helper.getUser().getEmail());
+        usuario.setTipoUsuario_ID(getResources().getString(R.string.tipo_usuario_cidadao_id));
         tv_usuario.setText(usuario.getNome());
         if (helper.getUser().getPhotoUrl() != null)
             Glide.with(this)

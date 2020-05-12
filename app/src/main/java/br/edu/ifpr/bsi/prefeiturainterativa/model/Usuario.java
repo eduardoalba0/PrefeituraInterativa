@@ -16,9 +16,7 @@ public class Usuario implements Serializable {
     private String tipoUsuario_ID;
 
     @Exclude
-    private Uri uriFoto;
-    @Exclude
-    private String urlFoto;
+    private Uri localUriFoto;
     @Exclude
     private String senha;
     @Exclude
@@ -43,21 +41,12 @@ public class Usuario implements Serializable {
     }
 
     @Exclude
-    public Uri getUriFoto() {
-        return uriFoto;
+    public Uri getLocalUriFoto() {
+        return localUriFoto;
     }
 
-    public void setUriFoto(Uri urlFoto) {
-        this.uriFoto = urlFoto;
-    }
-
-    @Exclude
-    public String getUrlFoto() {
-        return urlFoto;
-    }
-
-    public void setUrlFoto(String urlFoto) {
-        this.urlFoto = urlFoto;
+    public void setLocalUriFoto(Uri urlFoto) {
+        this.localUriFoto = urlFoto;
     }
 
     public String getCpf() {

@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name" translatable="true">Prefeitura Interativa</string>
+    <string name="tipo_usuario_cidadao_id" templateMergeStrategy="preserve" translatable="false">6b395be8-a7c1-4971-8dc0-afa04be63a00</string>
     <string name="str_emblema" translatable="true">Emblema do aplicativo em formato de maçã</string>
     <string name="hint_senha" translatable="true">INSIRA SUA SENHA</string>
     <string name="str_esqueceu_senha" translatable="true">Esqueci minha senha</string>
@@ -41,4 +42,34 @@
     <string name="str_hint_mapa">Toque no mapa para selecionar a localização</string>
     <string name="str_marcadorSelecionado">Localização selecionada.</string>
     <string name="str_anonimo">Preservar minha identidade.</string>
+    <string name="str_rationale">Para prosseguir, autorize as seguintes permissões:</string>
+    <string name="str_cancelar">Cancelar</string>
+    <string name="str_confirmar">OK</string>
+    <string name="str_never_ask_imagens">Sem as permissões, não será possível anexar localUriImagens, por favor, autorize-as.</string>
+    <string name="str_error_camera">Falha ao capturar imagem. Se o erro persistir consulte o suporte do sistema</string>
+    <string name="str_error_trocar_camera">Falha ao trocar a câmera. Se o erro persistir consulte o suporte do sistema</string>
+    <string name="str_local_nao_informado">Você precisa marcar no mapa, o local onde ocorreu o problema.</string>
+    <string name="str_never_ask_gps">Sem as permissões, não será possível usar seu GPS, por favor, autorize-as.</string>
+    <string name="str_categoria_nao_selecionada">Você precisa selecionar uma categoria para a sua demanda.</string>
+    <string name="str_sem_anexos_descricao">Você precisa nos informar o que ocorreu, ou inserir localUriImagens.</string>
+    <string name="str_titulo_localizacao">Localização \n Onde ocorreu?</string>
+    <string name="str_titulo_detalhes">Detalhes \n O que aconteceu?</string>
+    <string name="str_titulo_categoria">Categoria \n Sobre o que se trata?</string>
+    <string name="str_carregando">Carregando</string>
+    <string name="str_cadastrando_demanda">Cadastrando Demanda…</string>
+    <string name="str_erro_carregar_imagem">Falha ao carregar imagem. Consulte o suporte do sistema.</string>
+    <string name="str_erro">Erro!</string>
+    <string name="str_erro_internet_carregar_imagem">Você precisa de uma conexão com a internet para inserir uma imagem.</string>
+    <string name="str_erro_internet_redefinir_senha">Você precisa de uma conexão com a internet para redefinir a senha.</string>
+    <string name="str_erro_redefinir_Senha">Falha ao redefinir senha. Consulte o suporte do sistema.</string>
+    <string name="str_erro_email_nao_cadastrado">O e-mail informado não pertence a nenhuma conta.</string>
+    <string name="str_erro_internet_atualizar_perfil">Você precisa estar conectado com a internet para atualizar seu perfil.</string>
+    <string name="str_erro_validar_email">Falha ao validar e-mail. Consulte o suporte do sistema.</string>
+    <string name="str_clique_link_email">Clique no link enviado para seu e-mail para ativar a conta.</string>
+    <string name="str_erro_email_cadastrado">Seu e-mail já está cadastrado.</string>
+    <string name="str_erro_internet_cadastro">Você precisa de uma conexão com a internet para se registrar.</string>
+    <string name="str_erro_login">Falha no login. Consulte o suporte do sistema.</string>
+    <string name="str_erro_dados_invalidos">E-mail e/ou senha incorretos.</string>
+    <string name="str_erro_internet_login">Você precisa estar conectado a internet para logar.</string>
+    <string name="str_erro_cadastro">Falha no registro. Consulte o suporte do sistema.</string>
 </resources>

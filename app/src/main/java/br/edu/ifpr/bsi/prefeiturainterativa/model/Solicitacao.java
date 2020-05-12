@@ -1,10 +1,13 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
+import android.net.Uri;
+
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class Solicitacao implements Serializable {
@@ -13,21 +16,19 @@ public class Solicitacao implements Serializable {
     private String descricao;
     private double latitude;
     private double longitude;
+    private String endereco;
     private boolean concluida;
     private boolean anonima;
-    private String imagem_url;
-    private String anexos_url;
     private Double avaliacao_nota;
     private String avaliacao_comentario;
-    private String tipoSolicitacao_ID;
     private String usuario_ID;
-
+    private List<String> urlImagens;
     @ServerTimestamp
     private Date data;
     @Exclude
-    private Categoria categoria;
-    @Exclude
     private Usuario usuario;
+    @Exclude
+    private List<Uri> localUriImagens;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -63,6 +64,14 @@ public class Solicitacao implements Serializable {
         this.longitude = longitude;
     }
 
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
     public boolean isConcluida() {
         return concluida;
     }
@@ -79,20 +88,21 @@ public class Solicitacao implements Serializable {
         this.anonima = anonima;
     }
 
-    public String getImagem_url() {
-        return imagem_url;
+    public List<String> getUrlImagens() {
+        return urlImagens;
     }
 
-    public void setImagem_url(String imagem_url) {
-        this.imagem_url = imagem_url;
+    public void setUrlImagens(List<String> urlImagens) {
+        this.urlImagens = urlImagens;
     }
 
-    public String getAnexos_url() {
-        return anexos_url;
+    @Exclude
+    public List<Uri> getLocalUriImagens() {
+        return localUriImagens;
     }
 
-    public void setAnexos_url(String anexos_url) {
-        this.anexos_url = anexos_url;
+    public void setLocalUriImagens(List<Uri> localUriImagens) {
+        this.localUriImagens = localUriImagens;
     }
 
     public Double getAvaliacao_nota() {
@@ -111,14 +121,6 @@ public class Solicitacao implements Serializable {
         this.avaliacao_comentario = avaliacao_comentario;
     }
 
-    public String getTipoSolicitacao_ID() {
-        return tipoSolicitacao_ID;
-    }
-
-    public void setTipoSolicitacao_ID(String tipoSolicitacao_ID) {
-        this.tipoSolicitacao_ID = tipoSolicitacao_ID;
-    }
-
     public String getUsuario_ID() {
         return usuario_ID;
     }
@@ -133,15 +135,6 @@ public class Solicitacao implements Serializable {
 
     public void setData(Date data) {
         this.data = data;
-    }
-
-    @Exclude
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     @Exclude

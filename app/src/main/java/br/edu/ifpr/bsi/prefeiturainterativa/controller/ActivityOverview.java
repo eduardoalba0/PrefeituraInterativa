@@ -80,6 +80,9 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         tb_footer.getTabAt(1).setIcon(R.drawable.ic_departamento);
         tb_footer.getTabAt(2).setIcon(R.drawable.ic_solicitacoes);
         tb_footer.getTabAt(3).setIcon(R.drawable.ic_usuario);
+
+        if (getIntent() != null)
+            trocarPagina(getIntent().getIntExtra("Tab", 0));
     }
 
     public void trocarPagina(int index) {

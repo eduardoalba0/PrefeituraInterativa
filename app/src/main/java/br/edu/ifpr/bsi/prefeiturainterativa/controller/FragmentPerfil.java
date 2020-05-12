@@ -25,7 +25,6 @@ import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
-import java.io.File;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -52,7 +51,7 @@ import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
 public class FragmentPerfil extends Fragment implements View.OnClickListener,
-        Validator.ValidationListener, OnSuccessListener<Void>, Observer<String> {
+        Validator.ValidationListener, OnSuccessListener<Void>, Observer<Uri> {
 
     private Validator validador;
     private FirebaseHelper helper;
@@ -74,7 +73,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
         selector = new DialogSelector(true);
         ViewModelsHelper viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
-        viewModel.getImagemString().observe(getViewLifecycleOwner(), this);
+        viewModel.getImagem().observe(getViewLifecycleOwner(), this);
         preencherCampos();
         return view;
     }
@@ -112,11 +111,11 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         usuario.setNome(edt_nome.getText().toString());
         usuario.setCpf(edt_cpf.getText().toString());
         dialog.setTitleText("Gravando alterações...").show();
-        if (usuario.getUriFoto() != null) {
-            Task<Uri> upload = helper.carregarImagemUsuario(usuario.getUriFoto());
+        if (usuario.getLocalUriFoto() != null) {
+            Task<Uri> upload = helper.carregarImagemUsuario(usuario.getLocalUriFoto());
             if (upload != null)
                 upload.addOnSuccessListener(getActivity(), (Uri task) -> {
-                    usuario.setUriFoto(task);
+                    usuario.setLocalUriFoto(task);
                     Task<Void> update = helper.atualizarPerfil(usuario);
                     if (update != null)
                         update.addOnSuccessListener(getActivity(), this);
@@ -165,12 +164,11 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
     }
 
     @Override
-    public void onChanged(String string) {
+    public void onChanged(Uri imagem) {
         selector.dismiss();
-        Uri uri = Uri.fromFile(new File(string));
-        usuario.setUriFoto(uri);
+        usuario.setLocalUriFoto(imagem);
         Glide.with(this)
-                .load(uri)
+                .load(imagem)
                 .placeholder(R.drawable.ic_adicionar_foto)
                 .circleCrop()
                 .into(img_usuario);

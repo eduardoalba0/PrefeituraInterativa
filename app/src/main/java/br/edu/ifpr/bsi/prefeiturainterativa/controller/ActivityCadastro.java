@@ -82,6 +82,7 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         usuario.setSenha(edt_senha.getText().toString());
         usuario.setNome(edt_nome.getText().toString());
         usuario.setCpf(edt_cpf.getText().toString());
+        usuario.setTipoUsuario_ID(getResources().getString(R.string.tipo_usuario_cidadao_id));
 
         Task<AuthResult> task = helper.registrar(usuario);
         dialog.setTitleText("Cadastrando...").show();

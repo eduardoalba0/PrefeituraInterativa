@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.CommonStatusCodes;
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -29,20 +30,29 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.Task;
+import com.google.android.libraries.places.api.model.Place;
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment;
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -64,8 +74,10 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
 
     private FirebaseHelper helper;
     private GoogleMap map_view;
+    private Marker map_marker;
     private Geocoder geocoder;
 
+    private ViewModelsHelper viewModel;
     private Solicitacao solicitacao;
 
     @Nullable
@@ -96,31 +108,31 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
         map_view.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         map_view.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-26.484335, -51.991754), MAP_ZOOM));
         map_view.setOnMapClickListener(latLng -> {
+            map_view.stopAnimation();
             map_view.clear();
-            map_view.addMarker(new MarkerOptions()
-                    .title(getEndereco(latLng.latitude, latLng.longitude))
+            map_marker = map_view.addMarker(new MarkerOptions()
                     .position(latLng));
+            map_marker.setTitle((getEndereco(latLng.latitude, latLng.longitude)));
         });
         map_view.setOnMyLocationClickListener(location -> {
+            map_view.stopAnimation();
             map_view.clear();
-            map_view.addMarker(new MarkerOptions()
-                    .title(getEndereco(location.getLatitude(), location.getLongitude()))
+            map_marker = map_view.addMarker(new MarkerOptions()
                     .position(new LatLng(location.getLatitude(), location.getLongitude())));
+            map_marker.setTitle((getEndereco(location.getLatitude(), location.getLongitude())));
         });
         FragmentSolicitacaoLocalizacaoPermissionsDispatcher.updateLocationWithPermissionCheck(this);
     }
 
     @NeedsPermission({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public void updateLocation() {
-        map_view.setMyLocationEnabled(true);
-        LocationRequest locationRequest = LocationRequest.create()
-                .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                .setInterval(1000 * 20)
-                .setFastestInterval(1000 * 5);
 
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest)
-                .setAlwaysShow(true);
+                .setAlwaysShow(true)
+                .addLocationRequest(LocationRequest.create()
+                        .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
+                        .setInterval(1000 * 20)
+                        .setFastestInterval(1000 * 5));
 
         Task<LocationSettingsResponse> result =
                 LocationServices.getSettingsClient(getActivity()).checkLocationSettings(builder.build());
@@ -128,6 +140,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
         result.addOnSuccessListener(getActivity(), locationSettingsResponse -> {
             LocationSettingsStates status = locationSettingsResponse.getLocationSettingsStates();
             if (status.isLocationPresent()) {
+                map_view.setMyLocationEnabled(true);
                 FusedLocationProviderClient locationProvider = LocationServices.getFusedLocationProviderClient(getActivity());
                 locationProvider.getLastLocation().addOnSuccessListener(getActivity(), location -> {
                     if (location != null) {
@@ -149,6 +162,12 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
     @Nullable
     @Override
     public VerificationError verifyStep() {
+        if (map_marker == null || map_marker.getPosition() == null)
+            return new VerificationError(getString(R.string.str_local_nao_informado));
+        solicitacao.setLatitude(map_marker.getPosition().latitude);
+        solicitacao.setLongitude(map_marker.getPosition().longitude);
+        solicitacao.setEndereco(map_marker.getTitle());
+        viewModel.postSolicitacao(solicitacao);
         return null;
     }
 
@@ -159,7 +178,44 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
 
     @Override
     public void onError(@NonNull VerificationError error) {
+        Snackbar.make(getView(), error.getErrorMessage(), BaseTransientBottomBar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.ms_errorColor))
+                .setTextColor(getResources().getColor(R.color.ms_white))
+                .show();
+    }
 
+    public String getEndereco(double latitude, double longitude) {
+        String endereco = "";
+        tv_marcadorSelecionado.setText(R.string.str_marcadorSelecionado);
+        bt_remover.setVisibility(View.VISIBLE);
+        if (helper.conexaoAtivada())
+            try {
+                geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                Address address = geocoder.getFromLocation(latitude, longitude, 1)
+                        .get(0);
+                if (address != null) {
+                    String rua = address.getThoroughfare();
+                    String numero = address.getSubThoroughfare();
+                    String bairro = address.getAdminArea();
+
+                    endereco = (rua == null ? "" : rua) +
+                            (numero == null ? "" : ", " + numero) +
+                            (bairro == null ? "" : ", " + bairro) + ".";
+                }
+            } catch (IOException ex) {
+
+            }
+        return endereco;
+    }
+
+    public void initMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.map);
+
+        mapFragment.getMapAsync(this);
+        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        solicitacao = viewModel.getObjetoSolicitacao();
+        helper = new FirebaseHelper(getActivity());
     }
 
     @Override
@@ -182,9 +238,9 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
     @OnShowRationale({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public void showRationale(PermissionRequest request) {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Para prosseguir, autorize as seguintes permissões:")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_rationale))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     request.proceed();
                     sweetAlertDialog.dismiss();
                 })
@@ -199,9 +255,9 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
     @OnNeverAskAgain({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public void onNeverAskAgain() {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Sem as permissões, não será possível usar seu GPS, por favor, autorize-as.")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_never_ask_gps))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                     intent.setData(uri);
@@ -210,38 +266,6 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
                 })
                 .show();
     }
-
-    public String getEndereco(double latitude, double longitude) {
-        String endereco = "";
-        tv_marcadorSelecionado.setText(R.string.str_marcadorSelecionado);
-        bt_remover.setVisibility(View.VISIBLE);
-        if (helper.conexaoAtivada())
-            try {
-                geocoder = new Geocoder(getActivity(), Locale.getDefault());
-                Address address = geocoder.getFromLocation(latitude, longitude, 1)
-                        .get(0);
-                if (address != null) {
-                    String rua = address.getThoroughfare();
-                    String numero = address.getSubThoroughfare();
-                    String bairro = address.getAdminArea();
-
-                    endereco = (rua.equals("null") ? "" : rua) +
-                            (numero.equals("null") ? "" : ", " + numero) +
-                            (bairro.equals("null") ? "" : ", " + bairro) + ".";
-                }
-            } catch (IOException ex) {
-
-            }
-        return endereco;
-    }
-
-    public void initMap() {
-        helper = new FirebaseHelper(getActivity());
-        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-    }
-
     @BindView(R.id.tv_marcadorSelecionado)
     TextView tv_marcadorSelecionado;
 

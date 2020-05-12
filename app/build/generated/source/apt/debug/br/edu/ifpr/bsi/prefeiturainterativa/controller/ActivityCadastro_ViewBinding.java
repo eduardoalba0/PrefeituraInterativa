@@ -17,7 +17,7 @@ import java.lang.Override;
 public class ActivityCadastro_ViewBinding implements Unbinder {
   private ActivityCadastro target;
 
-  private View view7f09005c;
+  private View view7f09005d;
 
   @UiThread
   public ActivityCadastro_ViewBinding(ActivityCadastro target) {
@@ -41,7 +41,7 @@ public class ActivityCadastro_ViewBinding implements Unbinder {
     target.edl_senha_conf = Utils.findRequiredViewAsType(source, R.id.edl_senha_conf, "field 'edl_senha_conf'", TextInputLayout.class);
     view = Utils.findRequiredView(source, R.id.bt_cadastrar, "field 'bt_cadastrar' and method 'onClick'");
     target.bt_cadastrar = Utils.castView(view, R.id.bt_cadastrar, "field 'bt_cadastrar'", Button.class);
-    view7f09005c = view;
+    view7f09005d = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -75,7 +75,7 @@ public class ActivityCadastro_ViewBinding implements Unbinder {
     target.img_app = null;
     target.l_cadastro = null;
 
-    view7f09005c.setOnClickListener(null);
-    view7f09005c = null;
+    view7f09005d.setOnClickListener(null);
+    view7f09005d = null;
   }
 }

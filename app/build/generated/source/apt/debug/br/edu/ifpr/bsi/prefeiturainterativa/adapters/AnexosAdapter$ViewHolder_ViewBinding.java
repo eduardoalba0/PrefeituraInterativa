@@ -16,9 +16,9 @@ import java.lang.Override;
 public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
   private AnexosAdapter.ViewHolder target;
 
-  private View view7f0900d6;
+  private View view7f0900d7;
 
-  private View view7f090064;
+  private View view7f090065;
 
   @UiThread
   public AnexosAdapter$ViewHolder_ViewBinding(final AnexosAdapter.ViewHolder target, View source) {
@@ -27,7 +27,7 @@ public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.img_anexo, "field 'img_anexo' and method 'onClick'");
     target.img_anexo = Utils.castView(view, R.id.img_anexo, "field 'img_anexo'", ImageView.class);
-    view7f0900d6 = view;
+    view7f0900d7 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -36,7 +36,7 @@ public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_remover, "field 'bt_remover' and method 'onClick'");
     target.bt_remover = Utils.castView(view, R.id.bt_remover, "field 'bt_remover'", MaterialButton.class);
-    view7f090064 = view;
+    view7f090065 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -55,9 +55,9 @@ public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
     target.img_anexo = null;
     target.bt_remover = null;
 
-    view7f0900d6.setOnClickListener(null);
-    view7f0900d6 = null;
-    view7f090064.setOnClickListener(null);
-    view7f090064 = null;
+    view7f0900d7.setOnClickListener(null);
+    view7f0900d7 = null;
+    view7f090065.setOnClickListener(null);
+    view7f090065 = null;
   }
 }

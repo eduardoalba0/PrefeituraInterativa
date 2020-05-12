@@ -11,11 +11,18 @@ import android.widget.ImageView;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import java.util.UUID;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
+import br.edu.ifpr.bsi.prefeiturainterativa.dao.CategoriaDAO;
+import br.edu.ifpr.bsi.prefeiturainterativa.dao.TipoUsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.TipoUsuario;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;

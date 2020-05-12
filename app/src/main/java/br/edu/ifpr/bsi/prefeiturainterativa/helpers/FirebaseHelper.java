@@ -21,8 +21,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.Date;
-
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -55,7 +53,7 @@ public class FirebaseHelper {
     public Task<AuthResult> logar(Usuario usuario) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Erro!").setContentText("Você não está conectado à Internet.")
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_login))
                     .show();
             return null;
         }
@@ -68,11 +66,11 @@ public class FirebaseHelper {
             if (!authResultTask.isSuccessful()) {
                 if (authResultTask.getException().toString().contains("FirebaseAuthInvalidCredentialsException"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("E-mail e/ou senha incorretos.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_dados_invalidos))
                             .show();
                 else
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Falha no login. Consulte o suporte do sistema.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_login))
                             .show();
             }
         });
@@ -82,7 +80,7 @@ public class FirebaseHelper {
     public Task<AuthResult> logarGoogle(GoogleSignInAccount account) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Erro!").setContentText("Você não está conectado à Internet.")
+                    .setTitleText(R.string.str_erro).setContentText("Você não está conectado à Internet.")
                     .show();
             return null;
         }
@@ -91,7 +89,7 @@ public class FirebaseHelper {
         return auth.signInWithCredential(credential).addOnCompleteListener(context, task -> {
             if (!task.isSuccessful())
                 new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha ao associar conta Google. Consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText("Falha ao associar conta Google. Consulte o suporte do sistema.")
                         .show();
         });
     }
@@ -99,7 +97,7 @@ public class FirebaseHelper {
     public Task<AuthResult> registrar(Usuario usuario) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Erro!").setContentText("Você precisa de uma conexão com a internet para se registrar.")
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_cadastro))
                     .show();
             return null;
         } else
@@ -107,11 +105,11 @@ public class FirebaseHelper {
                 if (!task.isSuccessful()) {
                     if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
                         new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("Erro!").setContentText("Seu e-mail já está cadastrado.")
+                                .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_email_cadastrado))
                                 .show();
                     else
                         new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText("Erro!").setContentText("Falha no registro. Consulte o suporte do sistema.")
+                                .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_cadastro))
                                 .show();
                 }
             });
@@ -126,11 +124,11 @@ public class FirebaseHelper {
             if (!task.isSuccessful()) {
                 if (task.getException().toString().contains("FirebaseTooManyRequestsException"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_clique_link_email))
                             .show();
                 else
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Falha ao validar e-mail. Consulte o suporte do sistema.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_validar_email))
                             .show();
             }
         });
@@ -140,7 +138,7 @@ public class FirebaseHelper {
     public Task<Void> redefinirSenha(String email) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Erro!").setContentText("Você precisa de uma conexão com a internet para redefinir a senha.")
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_redefinir_senha))
                     .show();
             return null;
         }
@@ -148,11 +146,11 @@ public class FirebaseHelper {
             if (!task.isSuccessful()) {
                 if (task.getException().toString().contains("FirebaseAuthEmailException"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("O e-mail informado não pertence a nenhuma conta.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_email_nao_cadastrado))
                             .show();
                 else
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Falha ao redefinir senha. Consulte o suporte do sistema.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_redefinir_Senha))
                             .show();
             }
         });
@@ -161,23 +159,23 @@ public class FirebaseHelper {
     public Task<Void> atualizarPerfil(Usuario usuario) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Erro!").setContentText("Você precisa de uma conexão com a internet para redefinir a senha.")
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_atualizar_perfil))
                     .show();
             return null;
         }
 
         UserProfileChangeRequest profileUpdates;
-        if (usuario.getUriFoto() == null)
+        if (usuario.getLocalUriFoto() == null)
             profileUpdates = new UserProfileChangeRequest.Builder()
                     .setDisplayName(usuario.getNome()).build();
         else profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(usuario.getNome()).setPhotoUri(usuario.getUriFoto())
+                .setDisplayName(usuario.getNome()).setPhotoUri(usuario.getLocalUriFoto())
                 .build();
 
         return auth.getCurrentUser().updateProfile(profileUpdates).addOnCompleteListener(context, task -> {
             if (!task.isSuccessful()) {
                 new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha ao atualizar perfil. Consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_carregar_imagem))
                         .show();
             }
         });
@@ -186,12 +184,12 @@ public class FirebaseHelper {
     public Task<Uri> carregarImagemUsuario(Uri file) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Erro!").setContentText("Você precisa de uma conexão com a internet para inserir uma imagem.")
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_carregar_imagem))
                     .show();
             return null;
         }
 
-        StorageReference upload = storage.child("Usuarios").child(getUser().getUid()).child(new Date() + "_.jpg");
+        StorageReference upload = storage.child("Usuarios").child(getUser().getUid()).child(System.currentTimeMillis() + "_.jpg");
 
         return upload.putFile(file).continueWithTask(task -> {
             if (!task.isSuccessful()) throw task.getException();
@@ -199,7 +197,26 @@ public class FirebaseHelper {
         }).addOnCompleteListener(context, task -> {
             if (!task.isSuccessful())
                 new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha ao carregar imagem. Consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_carregar_imagem))
+                        .show();
+        });
+    }
+
+    public Task<Uri> carregarAnexos(Uri uri) {
+        if (!conexaoAtivada()) {
+            new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_carregar_imagem))
+                    .show();
+            return null;
+        }
+        StorageReference upload = storage.child("Solicitacoes").child(getUser().getUid()).child(System.currentTimeMillis() + ".jpg");
+        return upload.putFile(uri).continueWithTask(task -> {
+            if (!task.isSuccessful()) throw task.getException();
+            return upload.getDownloadUrl();
+        }).addOnCompleteListener(context, task -> {
+            if (!task.isSuccessful())
+                new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_carregar_imagem))
                         .show();
         });
     }
@@ -207,15 +224,6 @@ public class FirebaseHelper {
     public boolean conexaoAtivada() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         return cm != null && cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
-    }
-
-
-    public FirebaseMessaging getMessaging() {
-        return messaging;
-    }
-
-    public StorageReference getStorage() {
-        return storage;
     }
 
     public FirebaseUser getUser() {

@@ -1,5 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.helpers;
 
+import android.net.Uri;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -25,38 +27,48 @@ public class ViewModelsHelper extends ViewModel {
     }
 
     private Solicitacao solicitacao;
-    private List<String> imagens;
+    private List<Uri> imagens;
     private List<Categoria> categorias;
 
     private MutableLiveData<Solicitacao> solicitacaoLiveData;
-    private MutableLiveData<String> imagemLiveData;
-    private MutableLiveData<List<String>> imagensLiveData;
+    private MutableLiveData<Uri> imagemLiveData;
+    private MutableLiveData<List<Uri>> imagensLiveData;
     private MutableLiveData<List<Categoria>> categoriasLiveData;
 
-    public MutableLiveData<Solicitacao> getSolictacaoLiveData(){
+    public MutableLiveData<Solicitacao> getSolictacao() {
         return solicitacaoLiveData;
     }
 
-    public Solicitacao getSolicitacao(){return solicitacao;}
+    public Solicitacao getObjetoSolicitacao() {
+        return solicitacao;
+    }
 
-    public MutableLiveData<String> getImagemString() {
+    public MutableLiveData<Uri> getImagem() {
         return imagemLiveData;
     }
 
 
-    public MutableLiveData<List<String>> getImagensString() {
+    public MutableLiveData<List<Uri>> getImagens() {
         return imagensLiveData;
     }
 
+    public void postSolicitacao(Solicitacao solicitacao) {
+        this.solicitacao = solicitacao;
+        solicitacaoLiveData.postValue(solicitacao);
+    }
 
-    public void addImage(String string) {
-        imagens.add(string);
+    public void addImage(Uri imagem) {
+        imagens.add(imagem);
         imagensLiveData.postValue(imagens);
     }
 
     public void removeImage(int index) {
         imagens.remove(index);
         imagensLiveData.postValue(imagens);
+    }
+
+    public List<Uri> getListImagens() {
+        return imagens;
     }
 
     public MutableLiveData<List<Categoria>> getCategorias() {

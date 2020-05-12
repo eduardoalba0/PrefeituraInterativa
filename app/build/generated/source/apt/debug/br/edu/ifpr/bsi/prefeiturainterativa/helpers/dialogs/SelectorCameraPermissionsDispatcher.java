@@ -9,19 +9,19 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.PermissionUtils;
 
 final class SelectorCameraPermissionsDispatcher {
-  private static final int REQUEST_ABRIRCAMERA = 1;
+  private static final int REQUEST_ABRIRCAMERA = 3;
 
   private static final String[] PERMISSION_ABRIRCAMERA = new String[] {"android.permission.CAMERA","android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"};
 
-  private static final int REQUEST_CAPTURARIMAGEM = 2;
+  private static final int REQUEST_CAPTURARIMAGEM = 4;
 
   private static final String[] PERMISSION_CAPTURARIMAGEM = new String[] {"android.permission.CAMERA","android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"};
 
-  private static final int REQUEST_INITCAMERA = 3;
+  private static final int REQUEST_INITCAMERA = 5;
 
   private static final String[] PERMISSION_INITCAMERA = new String[] {"android.permission.CAMERA","android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"};
 
-  private static final int REQUEST_TROCARCAMERA = 4;
+  private static final int REQUEST_TROCARCAMERA = 6;
 
   private static final String[] PERMISSION_TROCARCAMERA = new String[] {"android.permission.CAMERA","android.permission.READ_EXTERNAL_STORAGE","android.permission.WRITE_EXTERNAL_STORAGE"};
 

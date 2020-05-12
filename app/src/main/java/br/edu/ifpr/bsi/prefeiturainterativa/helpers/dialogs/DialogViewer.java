@@ -1,5 +1,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,9 +27,9 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
 
     private boolean mostrarBotoes;
     private boolean resultadoUnico;
-    private String imagem;
+    private Uri imagem;
 
-    public DialogViewer(boolean resultadoUnico, String imagem, boolean mostrarBotoes) {
+    public DialogViewer(boolean resultadoUnico, Uri imagem, boolean mostrarBotoes) {
         this.resultadoUnico = resultadoUnico;
         this.mostrarBotoes = mostrarBotoes;
         this.imagem = imagem;
@@ -62,7 +63,7 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
         switch (view.getId()) {
             case R.id.bt_aceitar:
                 if (resultadoUnico)
-                    viewModel.getImagemString().postValue(imagem);
+                    viewModel.getImagem().postValue(imagem);
                 else viewModel.addImage(imagem);
                 dismiss();
                 break;

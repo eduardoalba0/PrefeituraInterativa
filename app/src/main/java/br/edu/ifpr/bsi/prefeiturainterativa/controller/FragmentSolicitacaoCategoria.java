@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.stepstone.stepper.Step;
@@ -40,6 +42,7 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     private DepartamentoDAO depDAO;
     private CategoriaDAO categoriaDAO;
     private List<Departamento> departamentos;
+    private ViewModelsHelper viewModel;
 
     @Nullable
     @Override
@@ -67,6 +70,9 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     @Nullable
     @Override
     public VerificationError verifyStep() {
+        if (viewModel.getListCategorias().isEmpty())
+            return new VerificationError(getString(R.string.str_categoria_nao_selecionada));
+
         return null;
     }
 
@@ -77,7 +83,10 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
 
     @Override
     public void onError(@NonNull VerificationError error) {
-
+        Snackbar.make(getView(), error.getErrorMessage(), BaseTransientBottomBar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.ms_errorColor))
+                .setTextColor(getResources().getColor(R.color.ms_white))
+                .show();
     }
 
     public void carregarDados() {
@@ -103,7 +112,7 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
         layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
         rv_topicosSelecionados.setLayoutManager(layoutManager);
 
-        ViewModelsHelper viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
         viewModel.getCategorias().observe(getActivity(), categorias -> {
             if (!categorias.isEmpty())
                 tv_topicosVazios.setVisibility(View.GONE);

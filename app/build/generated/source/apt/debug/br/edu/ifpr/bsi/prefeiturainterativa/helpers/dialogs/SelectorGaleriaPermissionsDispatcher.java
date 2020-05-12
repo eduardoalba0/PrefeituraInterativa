@@ -9,7 +9,7 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.PermissionUtils;
 
 final class SelectorGaleriaPermissionsDispatcher {
-  private static final int REQUEST_INITGALERIA = 5;
+  private static final int REQUEST_INITGALERIA = 7;
 
   private static final String[] PERMISSION_INITGALERIA = new String[] {"android.permission.WRITE_EXTERNAL_STORAGE","android.permission.READ_EXTERNAL_STORAGE"};
 

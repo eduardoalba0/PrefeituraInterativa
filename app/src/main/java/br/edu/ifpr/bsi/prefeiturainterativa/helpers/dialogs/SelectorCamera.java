@@ -96,13 +96,13 @@ public class SelectorCamera extends Fragment implements Executor, View.OnClickLi
 
     @Override
     public void onImageSaved(@NonNull File file) {
-        DialogViewer viewer = new DialogViewer(resultadoUnico, file.getAbsolutePath(), true);
+        DialogViewer viewer = new DialogViewer(resultadoUnico, Uri.fromFile(file), true);
         viewer.show(getChildFragmentManager(), "Viewer");
     }
 
     @Override
     public void onError(@NonNull ImageCapture.ImageCaptureError imageCaptureError, @NonNull String message, @Nullable Throwable cause) {
-        Snackbar.make(getView(), "Falha ao capturar imagem. Se o erro persistir consulte o suporte do sistema",
+        Snackbar.make(getView(), getString(R.string.str_error_camera),
                 BaseTransientBottomBar.LENGTH_LONG).show();
     }
 
@@ -161,7 +161,7 @@ public class SelectorCamera extends Fragment implements Executor, View.OnClickLi
             SelectorCameraPermissionsDispatcher.abrirCameraWithPermissionCheck(this);
         } catch (CameraInfoUnavailableException e) {
             lensFacing = backup;
-            Snackbar.make(getView(), "Falha ao trocar a câmera. Se o erro persistir consulte o suporte do sistema",
+            Snackbar.make(getView(), getString(R.string.str_error_trocar_camera),
                     BaseTransientBottomBar.LENGTH_LONG).show();
         }
     }
@@ -174,9 +174,9 @@ public class SelectorCamera extends Fragment implements Executor, View.OnClickLi
     @OnShowRationale({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void showRationale(PermissionRequest request) {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Para prosseguir, autorize as seguintes permissões:")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_rationale))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     request.proceed();
                     sweetAlertDialog.dismiss();
                 })
@@ -191,9 +191,9 @@ public class SelectorCamera extends Fragment implements Executor, View.OnClickLi
     @OnNeverAskAgain({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void onNeverAskAgain() {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Sem as permissões, não será possível anexar imagens, por favor, autorize-as.")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_never_ask_imagens))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                     intent.setData(uri);

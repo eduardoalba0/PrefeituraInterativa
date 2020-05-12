@@ -10,10 +10,6 @@ public class Categoria implements Serializable {
     private String _ID;
     private String descricao;
     private String Departamento_ID;
-    private int prazoResposta;
-    private boolean fotoObrigatoria;
-    private boolean localObrigatorio;
-    private boolean descricaoObrigatoria;
 
     @Exclude
     private Departamento departamento;
@@ -36,14 +32,6 @@ public class Categoria implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public int getPrazoResposta() {
-        return prazoResposta;
-    }
-
-    public void setPrazoResposta(int prazoResposta) {
-        this.prazoResposta = prazoResposta;
     }
 
     public String getDepartamento_ID() {
@@ -70,30 +58,6 @@ public class Categoria implements Serializable {
 
     public void setSelecionada(boolean selecionada) {
         this.selecionada = selecionada;
-    }
-
-    public boolean isFotoObrigatoria() {
-        return fotoObrigatoria;
-    }
-
-    public void setFotoObrigatoria(boolean fotoObrigatoria) {
-        this.fotoObrigatoria = fotoObrigatoria;
-    }
-
-    public boolean isLocalObrigatorio() {
-        return localObrigatorio;
-    }
-
-    public void setLocalObrigatorio(boolean localObrigatorio) {
-        this.localObrigatorio = localObrigatorio;
-    }
-
-    public boolean isDescricaoObrigatoria() {
-        return descricaoObrigatoria;
-    }
-
-    public void setDescricaoObrigatoria(boolean descricaoObrigatoria) {
-        this.descricaoObrigatoria = descricaoObrigatoria;
     }
 
     @Override

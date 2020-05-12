@@ -12,15 +12,17 @@ import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
 public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
   private FragmentSolicitacaoAnexos target;
 
-  private View view7f09005a;
+  private View view7f09005b;
 
-  private View view7f09018c;
+  private View view7f0901a6;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -31,7 +33,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.rv_imagens = Utils.findRequiredViewAsType(source, R.id.rv_imagens, "field 'rv_imagens'", RecyclerView.class);
     view = Utils.findRequiredView(source, R.id.bt_adicionar, "field 'bt_adicionar' and method 'onClick'");
     target.bt_adicionar = Utils.castView(view, R.id.bt_adicionar, "field 'bt_adicionar'", MaterialButton.class);
-    view7f09005a = view;
+    view7f09005b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -40,13 +42,15 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.sw_anonimo, "field 'sw_anonimo' and method 'onCheckedChanged'");
     target.sw_anonimo = Utils.castView(view, R.id.sw_anonimo, "field 'sw_anonimo'", SwitchMaterial.class);
-    view7f09018c = view;
+    view7f0901a6 = view;
     ((CompoundButton) view).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       @Override
       public void onCheckedChanged(CompoundButton p0, boolean p1) {
         target.onCheckedChanged(p0, p1);
       }
     });
+    target.edt_descricao = Utils.findRequiredViewAsType(source, R.id.edt_descricao, "field 'edt_descricao'", TextInputEditText.class);
+    target.edl_descricao = Utils.findRequiredViewAsType(source, R.id.edl_descricao, "field 'edl_descricao'", TextInputLayout.class);
   }
 
   @Override
@@ -59,10 +63,12 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.rv_imagens = null;
     target.bt_adicionar = null;
     target.sw_anonimo = null;
+    target.edt_descricao = null;
+    target.edl_descricao = null;
 
-    view7f09005a.setOnClickListener(null);
-    view7f09005a = null;
-    ((CompoundButton) view7f09018c).setOnCheckedChangeListener(null);
-    view7f09018c = null;
+    view7f09005b.setOnClickListener(null);
+    view7f09005b = null;
+    ((CompoundButton) view7f0901a6).setOnCheckedChangeListener(null);
+    view7f0901a6 = null;
   }
 }

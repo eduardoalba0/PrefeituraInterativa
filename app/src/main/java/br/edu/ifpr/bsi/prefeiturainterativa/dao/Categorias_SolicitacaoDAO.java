@@ -7,11 +7,14 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.List;
 import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 
 public class Categorias_SolicitacaoDAO {
 
@@ -21,7 +24,7 @@ public class Categorias_SolicitacaoDAO {
 
     public Categorias_SolicitacaoDAO(Activity context) {
         helper = new DatabaseHelper(context);
-        reference = helper.getDataBase().collection("TiposSolicitacao");
+        reference = helper.getDataBase().collection("Categorias_Solicitacao");
     }
 
     public Task<Void> inserirAtualizar(Categorias_Solicitacao categorias_Solicitacao) {

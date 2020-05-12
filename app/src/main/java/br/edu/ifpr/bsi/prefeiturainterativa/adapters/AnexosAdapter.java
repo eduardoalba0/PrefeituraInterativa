@@ -1,7 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
-import android.os.Bundle;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,10 +26,10 @@ import butterknife.OnClick;
 
 public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder> {
     private Activity context;
-    private List<String> imagens;
+    private List<Uri> imagens;
     private FragmentManager fm;
 
-    public AnexosAdapter(Activity context, List<String> imagens, FragmentManager manager) {
+    public AnexosAdapter(Activity context, List<Uri> imagens, FragmentManager manager) {
         this.context = context;
         this.imagens = imagens;
         this.fm = manager;
@@ -54,7 +54,7 @@ public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder
 
     protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private String imagem;
+        private Uri imagem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -76,7 +76,7 @@ public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder
             }
         }
 
-        public void setData(String imagem) {
+        public void setData(Uri imagem) {
             this.imagem = imagem;
             Glide.with(itemView).load(imagem)
                     .placeholder(R.drawable.ic_adicionar_galeria)

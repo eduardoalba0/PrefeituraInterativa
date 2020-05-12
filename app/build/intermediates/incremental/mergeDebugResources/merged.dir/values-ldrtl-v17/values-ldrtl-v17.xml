@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="ms_rtlEnabled">true</bool>
+    <drawable name="ms_ic_chevron_end">@drawable/ms_ic_chevron_left</drawable>
+    <drawable name="ms_ic_chevron_start">@drawable/ms_ic_chevron_right</drawable>
+</resources>

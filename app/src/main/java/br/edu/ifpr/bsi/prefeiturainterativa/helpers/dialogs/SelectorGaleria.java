@@ -16,6 +16,7 @@ import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,10 +69,10 @@ public class SelectorGaleria extends Fragment {
         rv_galeria.setAdapter(new GaleriaAdapter(getActivity(), getImagens(), getChildFragmentManager(), resultadoUnico));
     }
 
-    public List<String> getImagens() {
+    public List<Uri> getImagens() {
         Cursor cursor;
         int index_imagem;
-        ArrayList<String> imagens = new ArrayList<>();
+        ArrayList<Uri> imagens = new ArrayList<>();
 
         String[] projection = {MediaStore.MediaColumns.DATA,
                 MediaStore.Images.Media.BUCKET_DISPLAY_NAME};
@@ -84,16 +85,17 @@ public class SelectorGaleria extends Fragment {
 
         index_imagem = cursor.getColumnIndexOrThrow(MediaStore.MediaColumns.DATA);
         while (cursor.moveToNext())
-            imagens.add(cursor.getString(index_imagem));
+            imagens.add(Uri.fromFile(new File(cursor.getString(index_imagem))));
         cursor.close();
         return imagens;
     }
+
     @OnShowRationale({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
     public void showRationale(PermissionRequest request) {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Para prosseguir, autorize as seguintes permissões:")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_rationale))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     request.proceed();
                     sweetAlertDialog.dismiss();
                 })
@@ -108,9 +110,9 @@ public class SelectorGaleria extends Fragment {
     @OnNeverAskAgain({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
     public void onNeverAskAgain() {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Sem as permissões, não será possível anexar imagens, por favor, autorize-as.")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_never_ask_imagens))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                     intent.setData(uri);

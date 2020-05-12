@@ -21,7 +21,7 @@ public class CategoriaDAO {
 
     public CategoriaDAO(Activity context) {
         helper = new DatabaseHelper(context);
-        reference = helper.getDataBase().collection("TiposSolicitacao");
+        reference = helper.getDataBase().collection("Categorias");
     }
 
     public Task<Void> inserirAtualizar(Categoria categoria) {
