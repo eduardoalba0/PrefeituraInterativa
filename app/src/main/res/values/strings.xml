@@ -72,4 +72,7 @@
     <string name="str_erro_dados_invalidos">E-mail e/ou senha incorretos.</string>
     <string name="str_erro_internet_login">Você precisa estar conectado a internet para logar.</string>
     <string name="str_erro_cadastro">Falha no registro. Consulte o suporte do sistema.</string>
+    <string name="str_solicitacao_em_andamento">Em andamento</string>
+    <string name="str_solicitacao_encerrada">Concluídas</string>
+    <string name="str_minhas_demandas">Demandas Cadastradas</string>
 </resources>

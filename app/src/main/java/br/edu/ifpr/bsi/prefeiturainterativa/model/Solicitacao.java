@@ -29,6 +29,8 @@ public class Solicitacao implements Serializable {
     private Usuario usuario;
     @Exclude
     private List<Uri> localUriImagens;
+    @Exclude
+    private List<Categoria> localCategorias;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -135,6 +137,14 @@ public class Solicitacao implements Serializable {
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public List<Categoria> getLocalCategorias() {
+        return localCategorias;
+    }
+
+    public void setLocalCategorias(List<Categoria> localCategorias) {
+        this.localCategorias = localCategorias;
     }
 
     @Exclude

@@ -10,14 +10,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/espaco_muito_pequeno">
+        android:padding="@dimen/espaco_pequeno">
 
         <TextView
             android:id="@+id/tv_departamento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
-            android:gravity="fill_horizontal"
+            android:gravity="center"
             android:layout_margin="@dimen/espaco_muito_pequeno"
             android:textColor="@color/blackWhite"
             android:textSize="@dimen/texto_label" />

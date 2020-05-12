@@ -32,8 +32,8 @@
 
             <ImageView
                 android:id="@+id/img_app"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="@dimen/componente_normal"
+                android:layout_height="@dimen/componente_normal"
                 android:contentDescription="@string/str_emblema"
                 android:scaleType="fitCenter"
                 android:src="@mipmap/ic_maca"

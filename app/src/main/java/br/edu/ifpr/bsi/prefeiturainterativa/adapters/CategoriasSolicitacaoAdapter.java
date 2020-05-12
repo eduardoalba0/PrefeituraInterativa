@@ -23,30 +23,36 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class CategoriasSolicitacaoAdapter extends RecyclerView.Adapter<CategoriasSolicitacaoAdapter.ViewHolder> {
 
     private Activity context;
-    private List<Categoria> tiposSolicitacao;
+    private List<Categoria> categorias;
     private ViewModelsHelper viewModel;
+    private boolean editavel = true;
 
-    public CategoriasSolicitacaoAdapter(Activity context, List<Categoria> solicitacoes) {
+    public CategoriasSolicitacaoAdapter(Activity context, List<Categoria> categorias) {
         this.context = context;
-        this.tiposSolicitacao = solicitacoes;
+        this.categorias = categorias;
         this.viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+    }
+
+    public CategoriasSolicitacaoAdapter setEditable(boolean b) {
+        editavel = b;
+        return this;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.adapter_tipos_solicitacao, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.adapter_categorias, parent, false);
         return new CategoriasSolicitacaoAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(tiposSolicitacao.get(position));
+        holder.setData(categorias.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return tiposSolicitacao.size();
+        return categorias.size();
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
@@ -60,6 +66,7 @@ public class CategoriasSolicitacaoAdapter extends RecyclerView.Adapter<Categoria
             categoria.setSelecionada(viewModel.getListCategorias().contains(categoria));
             chip_solicitacao.setText(categoria.getDescricao());
             chip_solicitacao.setChecked(categoria.isSelecionada());
+            chip_solicitacao.setCheckable(editavel);
             chip_solicitacao.setOnCheckedChangeListener((compoundButton, b) -> {
                 if (b) {
                     if (viewModel.getListCategorias().size() >= 10)

@@ -9,11 +9,11 @@
     tools:context=".controller.ActivitySolicitacao">
 
     <TextView
-        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/float_transparent"
         android:clickable="false"
+        android:gravity="center"
         android:padding="@dimen/espaco_muito_pequeno"
         android:text="@string/str_cadastrar_demanda"
         android:textAllCaps="false"

@@ -9,18 +9,18 @@
     tools:context=".controller.ActivityOverview">
 
     <androidx.viewpager.widget.ViewPager
-        android:id="@+id/l_content"
+        android:id="@+id/pager_overview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/tb_footer"
+        android:layout_above="@id/tab_overview"
         android:scrollbars="vertical" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tb_footer"
+        android:id="@+id/tab_overview"
         android:layout_gravity="bottom"
         style="@style/Widget.MaterialComponents.TabLayout.Colored"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/componente_muito_pequeno"
         android:layout_toStartOf="@+id/bt_foto"
         android:layout_alignParentBottom="true"
         android:background="@color/float_transparent"

@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/img_usuario"
-                android:layout_width="130dp"
-                android:layout_height="130dp"
+                android:layout_width="@dimen/componente_normal"
+                android:layout_height="@dimen/componente_normal"
                 android:background="@drawable/shape_circulo_branco"
                 android:scaleType="centerInside"
                 android:contentDescription="@string/str_emblema"

@@ -1947,6 +1947,7 @@ id image_view
 id img_anexo
 id img_app
 id img_galeria
+id img_solicitacao
 id img_usuario
 id img_viewer
 id info
@@ -1955,7 +1956,6 @@ id italic
 id item_touch_helper_previous_elevation
 id l_cadastro
 id l_completar
-id l_content
 id l_footer
 id l_header
 id l_login
@@ -2045,6 +2045,8 @@ id on
 id outline
 id packed
 id pager_anexos
+id pager_overview
+id pager_solicitacoes
 id parallax
 id parent
 id parentPanel
@@ -2070,6 +2072,7 @@ id rv_categorias
 id rv_departamentos
 id rv_galeria
 id rv_imagens
+id rv_solicitacoes
 id rv_topicosSelecionados
 id satellite
 id save_non_transition_alpha
@@ -2128,6 +2131,8 @@ id success_frame
 id success_tick
 id sw_anonimo
 id tabMode
+id tab_overview
+id tab_solicitacoes
 id tabs
 id tabs_anexos
 id tag_accessibility_actions
@@ -2138,7 +2143,6 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
-id tb_footer
 id terrain
 id test_checkbox_android_button_tint
 id test_checkbox_app_button_tint
@@ -2166,6 +2170,7 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_data
 id tv_departamento
 id tv_marcadorSelecionado
 id tv_numeroTopicos
@@ -2262,9 +2267,10 @@ layout activity_solicitacao
 layout activity_splash
 layout activity_usuario_redefinir_senha
 layout adapter_anexos
+layout adapter_categorias
 layout adapter_categorias_departamento
 layout adapter_galeria
-layout adapter_tipos_solicitacao
+layout adapter_solicitacoes
 layout alert_dialog
 layout banner
 layout browser_actions_context_menu_page
@@ -2300,6 +2306,7 @@ layout fragment_solicitacao_anexos
 layout fragment_solicitacao_categoria
 layout fragment_solicitacao_localizacao
 layout fragment_solicitacoes
+layout fragment_tab_solicitacoes
 layout image
 layout modal
 layout modal_portrait_inner
@@ -2544,6 +2551,7 @@ string str_label_email
 string str_local_nao_informado
 string str_marcadorNaoSelecionado
 string str_marcadorSelecionado
+string str_minhas_demandas
 string str_never_ask_gps
 string str_never_ask_imagens
 string str_nome
@@ -2556,6 +2564,8 @@ string str_sair
 string str_sem_anexos_descricao
 string str_senha
 string str_senha_confirm
+string str_solicitacao_em_andamento
+string str_solicitacao_encerrada
 string str_solicitacao_tipo
 string str_tipo_problema
 string str_titulo_categoria

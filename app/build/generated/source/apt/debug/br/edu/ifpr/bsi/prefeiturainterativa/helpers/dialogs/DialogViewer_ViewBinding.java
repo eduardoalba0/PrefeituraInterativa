@@ -16,9 +16,9 @@ import java.lang.Override;
 public class DialogViewer_ViewBinding implements Unbinder {
   private DialogViewer target;
 
-  private View view7f09005a;
+  private View view7f090059;
 
-  private View view7f090063;
+  private View view7f090062;
 
   @UiThread
   public DialogViewer_ViewBinding(final DialogViewer target, View source) {
@@ -28,7 +28,7 @@ public class DialogViewer_ViewBinding implements Unbinder {
     target.img_viewer = Utils.findRequiredViewAsType(source, R.id.img_viewer, "field 'img_viewer'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.bt_aceitar, "field 'bt_aceitar' and method 'onClick'");
     target.bt_aceitar = Utils.castView(view, R.id.bt_aceitar, "field 'bt_aceitar'", FloatingActionButton.class);
-    view7f09005a = view;
+    view7f090059 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -37,7 +37,7 @@ public class DialogViewer_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_recusar, "field 'bt_recusar' and method 'onClick'");
     target.bt_recusar = Utils.castView(view, R.id.bt_recusar, "field 'bt_recusar'", FloatingActionButton.class);
-    view7f090063 = view;
+    view7f090062 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -57,9 +57,9 @@ public class DialogViewer_ViewBinding implements Unbinder {
     target.bt_aceitar = null;
     target.bt_recusar = null;
 
-    view7f09005a.setOnClickListener(null);
-    view7f09005a = null;
-    view7f090063.setOnClickListener(null);
-    view7f090063 = null;
+    view7f090059.setOnClickListener(null);
+    view7f090059 = null;
+    view7f090062.setOnClickListener(null);
+    view7f090062 = null;
   }
 }
