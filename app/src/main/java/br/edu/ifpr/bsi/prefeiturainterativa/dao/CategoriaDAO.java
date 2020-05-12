@@ -37,7 +37,7 @@ public class CategoriaDAO {
     }
 
     public Task<DocumentSnapshot> get(Categoria categoria) {
-        if (categoria.get_ID() != null && !categoria.get_ID().equals(""))
+        if (categoria.get_ID() == null || categoria.get_ID().equals(""))
             return null;
         return helper.get(reference.document(categoria.get_ID()));
     }

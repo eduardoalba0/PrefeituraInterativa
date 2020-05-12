@@ -36,7 +36,7 @@ public class FuncionarioDAO {
     }
 
     public Task<DocumentSnapshot> get(Funcionario funcionario) {
-        if (funcionario.get_ID() != null && !funcionario.get_ID().equals(""))
+        if (funcionario.get_ID()  == null || funcionario.get_ID().equals(""))
             return null;
         return helper.get(reference.document(funcionario.get_ID()));
     }

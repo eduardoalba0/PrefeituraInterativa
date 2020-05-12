@@ -36,7 +36,7 @@ public class TipoUsuarioDAO {
     }
 
     public Task<DocumentSnapshot> get(TipoUsuario tipoUsuario) {
-        if (tipoUsuario.get_ID() != null && !tipoUsuario.get_ID().equals(""))
+        if (tipoUsuario.get_ID()  == null || tipoUsuario.get_ID().equals(""))
             return null;
         return helper.get(reference.document(tipoUsuario.get_ID()));
     }

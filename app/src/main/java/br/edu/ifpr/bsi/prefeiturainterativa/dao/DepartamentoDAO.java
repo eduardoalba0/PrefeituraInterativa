@@ -36,7 +36,7 @@ public class DepartamentoDAO {
     }
 
     public Task<DocumentSnapshot> get(Departamento departamento) {
-        if (departamento.get_ID() != null && !departamento.get_ID().equals(""))
+        if (departamento.get_ID()  == null || departamento.get_ID().equals(""))
             return null;
         return helper.get(reference.document(departamento.get_ID()));
     }

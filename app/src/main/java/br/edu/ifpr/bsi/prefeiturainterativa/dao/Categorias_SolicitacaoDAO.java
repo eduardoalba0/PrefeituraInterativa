@@ -7,13 +7,10 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.List;
 import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 
 public class Categorias_SolicitacaoDAO {
@@ -40,7 +37,7 @@ public class Categorias_SolicitacaoDAO {
     }
 
     public Task<DocumentSnapshot> get(Categorias_Solicitacao categorias_Solicitacao) {
-        if (categorias_Solicitacao.get_ID() != null && !categorias_Solicitacao.get_ID().equals(""))
+        if (categorias_Solicitacao.get_ID()  == null || categorias_Solicitacao.get_ID().equals(""))
             return null;
         return helper.get(reference.document(categorias_Solicitacao.get_ID()));
     }
@@ -49,7 +46,7 @@ public class Categorias_SolicitacaoDAO {
         return helper.getAll(reference);
     }
 
-    public Task<QuerySnapshot> getAllPorDepartamento(Departamento departamento) {
-        return helper.getQuery(reference.whereEqualTo("departamento_ID", departamento.get_ID()));
+    public Task<QuerySnapshot> getAllporSolicitacao(Solicitacao solicitacao) {
+        return helper.getQuery(reference.whereEqualTo("solicitacao_ID", solicitacao.get_ID()));
     }
 }

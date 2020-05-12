@@ -36,7 +36,7 @@ public class AtendimentoDAO {
     }
 
     public Task<DocumentSnapshot> get(Atendimento atendimento) {
-        if (atendimento.get_ID() != null && !atendimento.get_ID().equals(""))
+        if (atendimento.get_ID() == null || atendimento.get_ID().equals(""))
             return null;
         return helper.get(reference.document(atendimento.get_ID()));
     }
