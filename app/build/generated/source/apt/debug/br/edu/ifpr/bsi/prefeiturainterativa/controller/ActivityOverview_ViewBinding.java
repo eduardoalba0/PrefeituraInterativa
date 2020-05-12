@@ -17,7 +17,7 @@ import java.lang.Override;
 public class ActivityOverview_ViewBinding implements Unbinder {
   private ActivityOverview target;
 
-  private View view7f09005f;
+  private View view7f09005e;
 
   @UiThread
   public ActivityOverview_ViewBinding(ActivityOverview target) {
@@ -31,16 +31,16 @@ public class ActivityOverview_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.bt_foto, "field 'bt_foto' and method 'onClick'");
     target.bt_foto = Utils.castView(view, R.id.bt_foto, "field 'bt_foto'", FloatingActionButton.class);
-    view7f09005f = view;
+    view7f09005e = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
         target.onClick(p0);
       }
     });
-    target.tb_footer = Utils.findRequiredViewAsType(source, R.id.tb_footer, "field 'tb_footer'", TabLayout.class);
+    target.tab_overview = Utils.findRequiredViewAsType(source, R.id.tab_overview, "field 'tab_overview'", TabLayout.class);
     target.view_root = Utils.findRequiredView(source, R.id.view_root, "field 'view_root'");
-    target.l_content = Utils.findRequiredViewAsType(source, R.id.l_content, "field 'l_content'", ViewPager.class);
+    target.pager_overview = Utils.findRequiredViewAsType(source, R.id.pager_overview, "field 'pager_overview'", ViewPager.class);
   }
 
   @Override
@@ -51,11 +51,11 @@ public class ActivityOverview_ViewBinding implements Unbinder {
     this.target = null;
 
     target.bt_foto = null;
-    target.tb_footer = null;
+    target.tab_overview = null;
     target.view_root = null;
-    target.l_content = null;
+    target.pager_overview = null;
 
-    view7f09005f.setOnClickListener(null);
-    view7f09005f = null;
+    view7f09005e.setOnClickListener(null);
+    view7f09005e = null;
   }
 }

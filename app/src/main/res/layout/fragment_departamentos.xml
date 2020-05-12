@@ -9,6 +9,7 @@
     <!-- Cards com cores diferentes,
      um para cada área relacionada ao problema (saude, educação, etc)
      usuário clica no card e abre um ModalButtomSheats com os tipos de demanda
-     aí passa para a proxima etapa, marcando com verde em um progressbar.-->
+     aí passa para a proxima etapa, marcando com verde em um progressbar.
+     Foto do Secretário e informações da secretaria no ModalbottomSheet-->
 
 </LinearLayout>

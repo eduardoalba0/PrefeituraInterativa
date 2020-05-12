@@ -68,37 +68,37 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
 
     public void startAnimation() {
         Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
-        t.addListener(TransitionHelper.getCircularEnterTransitionListener(bt_foto, view_root, l_content));
+        t.addListener(TransitionHelper.getCircularEnterTransitionListener(bt_foto, view_root, pager_overview));
         getWindow().setSharedElementEnterTransition(t);
     }
 
     public void initTabLayout() {
         pageAdapter = new OverviewTabAdapter(getSupportFragmentManager());
-        l_content.setAdapter(pageAdapter);
-        tb_footer.setupWithViewPager(l_content);
-        tb_footer.getTabAt(0).setIcon(R.drawable.ic_inicio);
-        tb_footer.getTabAt(1).setIcon(R.drawable.ic_departamento);
-        tb_footer.getTabAt(2).setIcon(R.drawable.ic_solicitacoes);
-        tb_footer.getTabAt(3).setIcon(R.drawable.ic_usuario);
+        pager_overview.setAdapter(pageAdapter);
+        tab_overview.setupWithViewPager(pager_overview);
+        tab_overview.getTabAt(0).setIcon(R.drawable.ic_inicio);
+        tab_overview.getTabAt(1).setIcon(R.drawable.ic_departamento);
+        tab_overview.getTabAt(2).setIcon(R.drawable.ic_solicitacoes);
+        tab_overview.getTabAt(3).setIcon(R.drawable.ic_usuario);
 
         if (getIntent() != null)
             trocarPagina(getIntent().getIntExtra("Tab", 0));
     }
 
     public void trocarPagina(int index) {
-        l_content.setCurrentItem(index, false);
+        pager_overview.setCurrentItem(index, false);
     }
 
     @BindView(R.id.bt_foto)
     FloatingActionButton bt_foto;
 
-    @BindView(R.id.tb_footer)
-    TabLayout tb_footer;
+    @BindView(R.id.tab_overview)
+    TabLayout tab_overview;
 
     @BindView(R.id.view_root)
     View view_root;
 
-    @BindView(R.id.l_content)
-    ViewPager l_content;
+    @BindView(R.id.pager_overview)
+    ViewPager pager_overview;
 
 }

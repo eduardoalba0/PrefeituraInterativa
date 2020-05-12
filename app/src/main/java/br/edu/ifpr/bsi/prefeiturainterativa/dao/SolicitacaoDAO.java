@@ -5,6 +5,7 @@ import android.app.Activity;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.UUID;
@@ -53,7 +54,7 @@ public class SolicitacaoDAO {
         return helper.getQuery(reference
                 .whereEqualTo("concluida", concluida)
                 .whereEqualTo("usuario_ID", new FirebaseHelper(context).getUser().getUid())
-                .orderBy("data"));
+                .orderBy("data", Query.Direction.DESCENDING));
     }
 
 }

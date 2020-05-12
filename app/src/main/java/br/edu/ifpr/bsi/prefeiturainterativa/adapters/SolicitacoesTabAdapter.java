@@ -17,9 +17,9 @@ public class SolicitacoesTabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentTabSolicitacoes(true);
-            case 1:
                 return new FragmentTabSolicitacoes(false);
+            case 1:
+                return new FragmentTabSolicitacoes(true);
         }
         return null;
     }

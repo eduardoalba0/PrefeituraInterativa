@@ -9,7 +9,7 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.PermissionUtils;
 
 final class FragmentSolicitacaoLocalizacaoPermissionsDispatcher {
-  private static final int REQUEST_UPDATELOCATION = 1;
+  private static final int REQUEST_UPDATELOCATION = 2;
 
   private static final String[] PERMISSION_UPDATELOCATION = new String[] {"android.permission.ACCESS_COARSE_LOCATION","android.permission.ACCESS_FINE_LOCATION"};
 

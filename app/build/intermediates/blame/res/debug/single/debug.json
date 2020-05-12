@@ -296,6 +296,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_adapter_categorias.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\adapter_categorias.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable_btn_radio_off_mtrl.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable\\btn_radio_off_mtrl.xml"
     },
@@ -620,6 +624,10 @@
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable\\abc_ic_ab_back_material.xml"
     },
     {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_tab_solicitacoes.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\fragment_tab_solicitacoes.xml"
+    },
+    {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_layout_snackbar_include.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\76f873aacaf5565190fb4a9332514782\\res\\layout\\design_layout_snackbar_include.xml"
     },
@@ -914,6 +922,10 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_material.xml.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_adapter_solicitacoes.xml.flat",
+        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\adapter_solicitacoes.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp-v13_design_layout_snackbar.xml.flat",
@@ -1438,10 +1450,6 @@
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
         "source": "C:\\Users\\Eduardo\\.gradle\\caches\\transforms-2\\files-2.1\\6321936723c5bde600fa7c25b619f8eb\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
-    },
-    {
-        "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\layout_adapter_tipos_solicitacao.xml.flat",
-        "source": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\src\\main\\res\\layout\\adapter_tipos_solicitacao.xml"
     },
     {
         "merged": "C:\\Users\\Eduardo\\Documents\\Android Studio\\PrefeituraInterativa\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_longpressed_holo.9.png.flat",

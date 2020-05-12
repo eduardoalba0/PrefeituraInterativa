@@ -23,7 +23,6 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapter.ViewHolder> {
 
@@ -54,7 +53,7 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
         return solicitacoes.size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected class ViewHolder extends RecyclerView.ViewHolder {
 
         private Solicitacao solicitacao;
 
@@ -63,23 +62,14 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             ButterKnife.bind(this, itemView);
         }
 
-        @OnClick(R.id.tv_departamento)
-        @Override
-        public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.tv_departamento:
-
-                    break;
-            }
-        }
-
         public void setData(Solicitacao solicitacao) {
             this.solicitacao = solicitacao;
-            Glide.with(itemView)
-                    .load(solicitacao.getUrlImagens().get(0))
-                    .circleCrop()
-                    .placeholder(R.mipmap.ic_maca)
-                    .into(img_solicitacao);
+            if (solicitacao.getLocalUriImagens() != null && !solicitacao.getLocalUriImagens().isEmpty())
+                Glide.with(itemView)
+                        .load(solicitacao.getUrlImagens().get(0))
+                        .circleCrop()
+                        .placeholder(R.mipmap.ic_maca)
+                        .into(img_solicitacao);
             DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, new Locale("pt", "BR"));
             tv_data.setText(df.format(solicitacao.getData()));
             FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(context);
