@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/float_transparent"
     android:orientation="vertical"
-    tools:context=".controller.ActivitySolicitacao">
+    tools:context=".controller.ActivitySolicitacaoCadastrar">
 
     <TextView
         android:layout_width="match_parent"

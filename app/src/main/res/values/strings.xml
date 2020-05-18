@@ -78,5 +78,5 @@
     <string name="str_categoria_hint">Esta secretaria é responsável por:</string>
     <string name="str_dados_solicitacao">Dados da Demanda</string>
     <string name="str_tramitacao">Tramitação</string>
-    <string name="str_local">Abrir localização</string>
+    <string name="str_local">Mostrar localização</string>
 </resources>

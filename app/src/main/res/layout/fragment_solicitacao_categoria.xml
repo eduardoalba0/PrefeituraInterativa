@@ -8,11 +8,9 @@
     android:gravity="bottom"
     app:layout_maxHeight="@dimen/componente_gigante"
     app:umanoOverlay="true"
-    app:umanoPanelHeight="@dimen/componente_muito_pequeno"
-    android:orientation="vertical">
+    app:umanoPanelHeight="@dimen/componente_muito_pequeno">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:padding="@dimen/espaco_muito_pequeno"
         android:id="@+id/rv_departamentos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
