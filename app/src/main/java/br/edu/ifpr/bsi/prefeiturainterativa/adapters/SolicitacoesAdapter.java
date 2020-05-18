@@ -1,6 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +18,12 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogSolicitacao;
+import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,10 +68,11 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             itemView.setOnClickListener(this);
         }
 
-        @OnClick(R.id.img_solicitacao)
         @Override
         public void onClick(View view) {
-            new DialogSolicitacao(solicitacao).show(fm, "Solicitacao");
+            Intent intent = new Intent(context, ActivitySolicitacaoVisualizar.class);
+            intent.putExtra("Solicitacao", solicitacao);
+            context.startActivity(intent);
         }
 
         public void setData(Solicitacao solicitacao) {
@@ -96,5 +100,8 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
 
         @BindView(R.id.rv_categorias)
         RecyclerView rv_categorias;
+
+        @BindView(R.id.card_solicitacao)
+        CardView card_solicitacao;
     }
 }

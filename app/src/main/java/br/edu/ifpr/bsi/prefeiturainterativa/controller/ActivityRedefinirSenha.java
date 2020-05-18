@@ -37,7 +37,6 @@ public class ActivityRedefinirSenha extends AppCompatActivity implements View.On
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuario_redefinir_senha);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ButterKnife.bind(this,this);
         startAnimation();
         helper = new FirebaseHelper(this);

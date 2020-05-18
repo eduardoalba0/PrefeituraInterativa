@@ -44,7 +44,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".controller.ActivitySolicitacao" />
+        <activity android:name=".controller.ActivitySolicitacaoVisualizar" />
+        <activity android:name=".controller.ActivitySolicitacaoCadastrar" />
         <activity android:name=".controller.ActivityOverview" />
         <activity android:name=".controller.ActivityRedefinirSenha" />
         <activity android:name=".controller.ActivityCompletarCadastro" />

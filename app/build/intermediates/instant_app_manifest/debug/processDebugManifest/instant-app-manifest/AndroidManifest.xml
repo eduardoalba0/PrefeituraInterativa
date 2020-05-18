@@ -58,7 +58,8 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacao" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar" />
+        <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoCadastrar" />
         <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityOverview" />
         <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityRedefinirSenha" />
         <activity android:name="br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivityCompletarCadastro" />

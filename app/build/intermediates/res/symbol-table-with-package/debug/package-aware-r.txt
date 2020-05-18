@@ -1844,6 +1844,7 @@ id cancel_action
 id cancel_button
 id card_content_root
 id card_root
+id card_solicitacao
 id center
 id center_horizontal
 id center_vertical
@@ -2268,7 +2269,8 @@ layout activity_cadastro
 layout activity_completar_cadastro
 layout activity_login
 layout activity_overview
-layout activity_solicitacao
+layout activity_solicitacao_cadastrar
+layout activity_solicitacao_visualizar
 layout activity_splash
 layout activity_usuario_redefinir_senha
 layout adapter_anexos
@@ -2303,16 +2305,15 @@ layout dialog_categorias
 layout dialog_selector
 layout dialog_selector_camera
 layout dialog_selector_galeria
-layout dialog_solicitacao
-layout dialog_solicitacao_dados
-layout dialog_solicitacao_tramitacao
 layout dialog_viewer
 layout fragment_departamentos
 layout fragment_inicio
 layout fragment_perfil
 layout fragment_solicitacao_anexos
 layout fragment_solicitacao_categoria
+layout fragment_solicitacao_dados
 layout fragment_solicitacao_localizacao
+layout fragment_solicitacao_tramitacao
 layout fragment_solicitacoes
 layout fragment_tab_solicitacoes
 layout image
@@ -3411,9 +3412,6 @@ styleable ViewBackgroundHelper android_background backgroundTint backgroundTintM
 styleable ViewPager2 android_orientation
 styleable ViewStubCompat android_id android_layout android_inflatedId
 transition changebounds
-transition explode
-transition fade
-transition slide
 xml file_paths
 xml standalone_badge
 xml standalone_badge_gravity_bottom_end

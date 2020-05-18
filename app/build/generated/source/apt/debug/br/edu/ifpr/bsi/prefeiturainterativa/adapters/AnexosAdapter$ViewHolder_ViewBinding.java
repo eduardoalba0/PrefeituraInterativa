@@ -16,7 +16,7 @@ import java.lang.Override;
 public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
   private AnexosAdapter.ViewHolder target;
 
-  private View view7f0900d7;
+  private View view7f0900d8;
 
   private View view7f090065;
 
@@ -27,7 +27,7 @@ public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.img_anexo, "field 'img_anexo' and method 'onClick'");
     target.img_anexo = Utils.castView(view, R.id.img_anexo, "field 'img_anexo'", ImageView.class);
-    view7f0900d7 = view;
+    view7f0900d8 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -55,8 +55,8 @@ public class AnexosAdapter$ViewHolder_ViewBinding implements Unbinder {
     target.img_anexo = null;
     target.bt_remover = null;
 
-    view7f0900d7.setOnClickListener(null);
-    view7f0900d7 = null;
+    view7f0900d8.setOnClickListener(null);
+    view7f0900d8 = null;
     view7f090065.setOnClickListener(null);
     view7f090065 = null;
   }

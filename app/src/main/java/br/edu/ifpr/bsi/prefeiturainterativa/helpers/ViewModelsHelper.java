@@ -3,7 +3,6 @@ package br.edu.ifpr.bsi.prefeiturainterativa.helpers;
 import android.net.Uri;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import androidx.lifecycle.MutableLiveData;
@@ -80,9 +79,8 @@ public class ViewModelsHelper extends ViewModel {
         categoriasLiveData.postValue(categorias);
     }
 
-    public void removeCategoria(int index) {
-        categorias.remove(index);
-        Collections.sort(categorias, (categoria, t1) -> categoria.getDescricao().compareTo(t1.getDescricao()));
+    public void removeCategoria(Categoria categoria) {
+        categorias.remove(categoria);
         categoriasLiveData.postValue(categorias);
     }
 

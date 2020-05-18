@@ -21,8 +21,8 @@ import butterknife.OnClick;
 
 public class ActivityOverview extends FragmentActivity implements View.OnClickListener {
 
-    FirebaseHelper helper;
-    OverviewTabAdapter pageAdapter;
+    private FirebaseHelper helper;
+    private OverviewTabAdapter pageAdapter;
 
     @Override
     protected void onStart() {
@@ -46,7 +46,7 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
     @OnClick(R.id.bt_foto)
     @Override
     public void onClick(View view) {
-        chamarActivity(ActivitySolicitacao.class);
+        chamarActivity(ActivitySolicitacaoCadastrar.class);
     }
 
     @Override

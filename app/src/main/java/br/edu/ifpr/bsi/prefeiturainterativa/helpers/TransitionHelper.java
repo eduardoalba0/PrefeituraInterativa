@@ -2,6 +2,7 @@ package br.edu.ifpr.bsi.prefeiturainterativa.helpers;
 
 import android.animation.Animator;
 import android.content.Context;
+import android.transition.Explode;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
@@ -19,6 +20,12 @@ public class TransitionHelper {
 
     public static Transition inflateChangeBoundsTransition(Context context, long duration) {
         Transition t = TransitionInflater.from(context).inflateTransition(R.transition.changebounds);
+        t.setDuration(duration);
+        return t;
+    }
+
+    public static Transition inflateExplodeTransition(long duration) {
+        Transition t = new Explode();
         t.setDuration(duration);
         return t;
     }

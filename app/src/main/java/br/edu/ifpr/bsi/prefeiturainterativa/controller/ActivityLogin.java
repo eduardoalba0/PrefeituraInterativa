@@ -51,7 +51,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         ButterKnife.bind(this, this);
         startAnimation();
         helper = new FirebaseHelper(this);

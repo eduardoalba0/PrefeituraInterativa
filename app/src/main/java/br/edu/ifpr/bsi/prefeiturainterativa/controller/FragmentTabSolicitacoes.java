@@ -35,6 +35,7 @@ public class FragmentTabSolicitacoes extends Fragment {
         this.concluidas = concluidas;
     }
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
