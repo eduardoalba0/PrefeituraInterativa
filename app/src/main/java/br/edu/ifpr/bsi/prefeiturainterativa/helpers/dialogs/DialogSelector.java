@@ -31,7 +31,8 @@ public class DialogSelector extends BottomSheetDialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        Window window = getDialog().getWindow();
+        Dialog dialog = getDialog();
+        Window window = dialog.getWindow();
         WindowManager.LayoutParams windowParams = window.getAttributes();
         windowParams.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
         window.setAttributes(windowParams);
@@ -40,7 +41,7 @@ public class DialogSelector extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_anexos, container, false);
+        View view = inflater.inflate(R.layout.dialog_selector, container, false);
         ButterKnife.bind(this, view);
         initTabLayout();
         return view;

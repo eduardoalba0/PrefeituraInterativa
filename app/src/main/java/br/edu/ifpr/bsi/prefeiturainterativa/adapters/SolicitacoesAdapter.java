@@ -20,9 +20,11 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.dialogs.DialogSolicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapter.ViewHolder> {
 
@@ -53,18 +55,25 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
         return solicitacoes.size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder {
+    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Solicitacao solicitacao;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @OnClick(R.id.img_solicitacao)
+        @Override
+        public void onClick(View view) {
+            new DialogSolicitacao(solicitacao).show(fm, "Solicitacao");
         }
 
         public void setData(Solicitacao solicitacao) {
             this.solicitacao = solicitacao;
-            if (solicitacao.getLocalUriImagens() != null && !solicitacao.getLocalUriImagens().isEmpty())
+            if (solicitacao.getUrlImagens() != null && !solicitacao.getUrlImagens().isEmpty())
                 Glide.with(itemView)
                         .load(solicitacao.getUrlImagens().get(0))
                         .circleCrop()
@@ -76,7 +85,7 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             layoutManager.setFlexDirection(FlexDirection.ROW);
             layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
             rv_categorias.setLayoutManager(layoutManager);
-            rv_categorias.setAdapter(new CategoriasSolicitacaoAdapter(context, solicitacao.getLocalCategorias()).setEditable(false));
+            rv_categorias.setAdapter(new CategoriasAdapter(context, solicitacao.getLocalCategorias(), false));
         }
 
         @BindView(R.id.img_solicitacao)

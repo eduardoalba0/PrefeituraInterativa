@@ -112,7 +112,7 @@ public class ActivitySolicitacao extends FragmentActivity implements StepperLayo
         SolicitacaoStepAdapter adapter = new SolicitacaoStepAdapter(getSupportFragmentManager(), this);
         adapter.addFragment(new FragmentSolicitacaoLocalizacao(), getString(R.string.str_titulo_localizacao));
         adapter.addFragment(new FragmentSolicitacaoAnexos(), getString(R.string.str_titulo_detalhes));
-        adapter.addFragment(new FragmentSolicitacaoCategoria(), getString(R.string.str_titulo_categoria));
+        adapter.addFragment(new FragmentSolicitacaoCategoria(), getString(R.string.str_titulo_categorias));
         stepperLayout.setAdapter(adapter);
         stepperLayout.setListener(this);
 

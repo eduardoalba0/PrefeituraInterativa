@@ -54,7 +54,7 @@
     <string name="str_sem_anexos_descricao">Você precisa nos informar o que ocorreu, ou inserir localUriImagens.</string>
     <string name="str_titulo_localizacao">Localização \n Onde ocorreu?</string>
     <string name="str_titulo_detalhes">Detalhes \n O que aconteceu?</string>
-    <string name="str_titulo_categoria">Categoria \n Sobre o que se trata?</string>
+    <string name="str_titulo_categorias">Categoria \n Sobre o que se trata?</string>
     <string name="str_carregando">Carregando</string>
     <string name="str_cadastrando_demanda">Cadastrando Demanda…</string>
     <string name="str_erro_carregar_imagem">Falha ao carregar imagem. Consulte o suporte do sistema.</string>
@@ -75,4 +75,8 @@
     <string name="str_solicitacao_em_andamento">Em andamento</string>
     <string name="str_solicitacao_encerrada">Concluídas</string>
     <string name="str_minhas_demandas">Demandas Cadastradas</string>
+    <string name="str_categoria_hint">Esta secretaria é responsável por:</string>
+    <string name="str_dados_solicitacao">Dados da Demanda</string>
+    <string name="str_tramitacao">Tramitação</string>
+    <string name="str_local">Abrir localização</string>
 </resources>

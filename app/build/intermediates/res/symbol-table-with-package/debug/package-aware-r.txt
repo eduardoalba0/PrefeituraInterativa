@@ -1660,6 +1660,7 @@ drawable ic_inicio
 drawable ic_keyboard_arrow_left_black_24dp
 drawable ic_keyboard_arrow_right_black_24dp
 drawable ic_launcher_background
+drawable ic_local
 drawable ic_menu_arrow_down_black_24dp
 drawable ic_menu_arrow_up_black_24dp
 drawable ic_mtrl_checked_circle
@@ -1825,6 +1826,7 @@ id bt_atualizar
 id bt_cadastrar
 id bt_flash
 id bt_foto
+id bt_localizacao
 id bt_login
 id bt_loginGoogle
 id bt_recuperarSenha
@@ -2046,6 +2048,7 @@ id outline
 id packed
 id pager_anexos
 id pager_overview
+id pager_solicitacao
 id pager_solicitacoes
 id parallax
 id parent
@@ -2132,6 +2135,7 @@ id success_tick
 id sw_anonimo
 id tabMode
 id tab_overview
+id tab_solicitacao
 id tab_solicitacoes
 id tabs
 id tabs_anexos
@@ -2172,6 +2176,7 @@ id transition_scene_layoutid_cache
 id transition_transform
 id tv_data
 id tv_departamento
+id tv_hintCategoria
 id tv_marcadorSelecionado
 id tv_numeroTopicos
 id tv_titulo
@@ -2268,7 +2273,7 @@ layout activity_splash
 layout activity_usuario_redefinir_senha
 layout adapter_anexos
 layout adapter_categorias
-layout adapter_categorias_departamento
+layout adapter_departamento
 layout adapter_galeria
 layout adapter_solicitacoes
 layout alert_dialog
@@ -2294,10 +2299,13 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
-layout dialog_anexos
+layout dialog_categorias
+layout dialog_selector
 layout dialog_selector_camera
 layout dialog_selector_galeria
-layout dialog_tipos_solicitacao
+layout dialog_solicitacao
+layout dialog_solicitacao_dados
+layout dialog_solicitacao_tramitacao
 layout dialog_viewer
 layout fragment_departamentos
 layout fragment_inicio
@@ -2515,6 +2523,7 @@ string str_cadastrar_titulo
 string str_camera
 string str_cancelar
 string str_carregando
+string str_categoria_hint
 string str_categoria_nao_selecionada
 string str_clique_link_email
 string str_completar_cadastro
@@ -2522,6 +2531,7 @@ string str_confirmar
 string str_conta_google
 string str_continuar
 string str_cpf
+string str_dados_solicitacao
 string str_descricao
 string str_email
 string str_emblema
@@ -2548,6 +2558,7 @@ string str_hint_mapa
 string str_imagens
 string str_label_cpf
 string str_label_email
+string str_local
 string str_local_nao_informado
 string str_marcadorNaoSelecionado
 string str_marcadorSelecionado
@@ -2568,11 +2579,12 @@ string str_solicitacao_em_andamento
 string str_solicitacao_encerrada
 string str_solicitacao_tipo
 string str_tipo_problema
-string str_titulo_categoria
+string str_titulo_categorias
 string str_titulo_detalhes
 string str_titulo_localizacao
 string str_topicos_selecionados
 string str_topicos_vazios
+string str_tramitacao
 string str_vamos_comecar
 string str_voltar
 string str_zero

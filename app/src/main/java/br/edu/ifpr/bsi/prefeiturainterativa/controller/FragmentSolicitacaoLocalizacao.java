@@ -10,6 +10,7 @@ import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -121,16 +122,15 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
 
     @NeedsPermission({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public void updateLocation() {
-
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-                .setAlwaysShow(true)
                 .addLocationRequest(LocationRequest.create()
                         .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                        .setInterval(1000 * 20)
-                        .setFastestInterval(1000 * 5));
+                        .setInterval(1000)
+                        .setFastestInterval(1000));
 
-        Task<LocationSettingsResponse> result =
-                LocationServices.getSettingsClient(getActivity()).checkLocationSettings(builder.build());
+        Task<LocationSettingsResponse> result = LocationServices
+                .getSettingsClient(getActivity())
+                .checkLocationSettings(builder.build());
 
         result.addOnSuccessListener(getActivity(), locationSettingsResponse -> {
             LocationSettingsStates status = locationSettingsResponse.getLocationSettingsStates();
@@ -144,6 +144,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
                 });
             }
         }).addOnFailureListener(getActivity(), e -> {
+            Log.e("Localização", "Failed Listener");
             int statusCode = ((ApiException) e).getStatusCode();
             if (statusCode == CommonStatusCodes.RESOLUTION_REQUIRED)
                 try {

@@ -24,16 +24,44 @@ import butterknife.OnClick;
 
 public class DialogViewer extends BottomSheetDialogFragment implements View.OnClickListener {
 
-
     private boolean mostrarBotoes;
     private boolean resultadoUnico;
+    private boolean isUrl;
     private Uri imagem;
+    private String imagemUrl;
+
+    public DialogViewer(Uri imagem) {
+        this.resultadoUnico = resultadoUnico;
+        this.mostrarBotoes = mostrarBotoes;
+        this.imagem = imagem;
+        this.isUrl = false;
+        this.resultadoUnico = true;
+        this.mostrarBotoes = false;
+    }
+
+    public DialogViewer(String imagem) {
+        this.resultadoUnico = resultadoUnico;
+        this.mostrarBotoes = mostrarBotoes;
+        this.imagemUrl = imagem;
+        this.isUrl = true;
+        this.resultadoUnico = true;
+        this.mostrarBotoes = false;
+    }
 
     public DialogViewer(boolean resultadoUnico, Uri imagem, boolean mostrarBotoes) {
         this.resultadoUnico = resultadoUnico;
         this.mostrarBotoes = mostrarBotoes;
         this.imagem = imagem;
+        this.isUrl = false;
     }
+
+    public DialogViewer(boolean resultadoUnico, String imagem, boolean mostrarBotoes) {
+        this.resultadoUnico = resultadoUnico;
+        this.mostrarBotoes = mostrarBotoes;
+        this.imagemUrl = imagem;
+        this.isUrl = true;
+    }
+
 
     @Override
     public void onStart() {
@@ -49,10 +77,17 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_viewer, container, false);
         ButterKnife.bind(this, view);
-        if (imagem == null)
-            this.dismiss();
-        else
-            initViewer();
+        if (isUrl) {
+            if (imagemUrl.isEmpty())
+                this.dismiss();
+            else
+                initViewer();
+        } else {
+            if (imagem == null)
+                this.dismiss();
+            else
+                initViewer();
+        }
         return view;
     }
 
@@ -74,10 +109,16 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
     }
 
     private void initViewer() {
-        Glide.with(this)
-                .load(imagem)
-                .placeholder(R.drawable.ic_adicionar_galeria)
-                .into(img_viewer);
+        if (isUrl)
+            Glide.with(this)
+                    .load(imagemUrl)
+                    .placeholder(R.drawable.ic_adicionar_galeria)
+                    .into(img_viewer);
+        else
+            Glide.with(this)
+                    .load(imagem)
+                    .placeholder(R.drawable.ic_adicionar_galeria)
+                    .into(img_viewer);
         if (!mostrarBotoes) {
             bt_aceitar.setVisibility(View.GONE);
             bt_recusar.setVisibility(View.GONE);

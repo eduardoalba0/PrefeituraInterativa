@@ -26,8 +26,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.adapters.CategoriasDepartamentoAdapter;
-import br.edu.ifpr.bsi.prefeiturainterativa.adapters.CategoriasSolicitacaoAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.DepartamentosAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.CategoriasAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.CategoriaDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.DepartamentoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
@@ -89,22 +89,6 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
                 .show();
     }
 
-    public void carregarDados() {
-        departamentos.clear();
-        depDAO.getAll().addOnSuccessListener(departamentosSnapshot -> {
-            for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
-                Departamento departamento = depsnapshot.toObject(Departamento.class);
-                departamento.setTiposSolicitacao(new ArrayList<>());
-                categoriaDAO.getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
-                    departamento.setTiposSolicitacao(tipossolicitacaoSnapshot.toObjects(Categoria.class));
-                    if (departamento.getTiposSolicitacao() != null && !departamento.getTiposSolicitacao().isEmpty())
-                        departamentos.add(departamento);
-                    rv_departamentos.setAdapter(new CategoriasDepartamentoAdapter(getActivity(), departamentos, getChildFragmentManager()));
-                });
-            }
-        });
-    }
-
     public void initRecyclerView() {
         rv_departamentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getActivity());
@@ -119,9 +103,25 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
             else
                 tv_topicosVazios.setVisibility(View.VISIBLE);
             tv_numeroTopicos.setText(categorias.size() + "");
-            rv_topicosSelecionados.setAdapter(new CategoriasSolicitacaoAdapter(getActivity(), categorias));
+            rv_topicosSelecionados.setAdapter(new CategoriasAdapter(getActivity(), categorias));
         });
 
+    }
+
+    public void carregarDados() {
+        departamentos.clear();
+        depDAO.getAll().addOnSuccessListener(departamentosSnapshot -> {
+            for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
+                Departamento departamento = depsnapshot.toObject(Departamento.class);
+                departamento.setTiposSolicitacao(new ArrayList<>());
+                categoriaDAO.getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
+                    departamento.setTiposSolicitacao(tipossolicitacaoSnapshot.toObjects(Categoria.class));
+                    if (departamento.getTiposSolicitacao() != null && !departamento.getTiposSolicitacao().isEmpty())
+                        departamentos.add(departamento);
+                    rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager()));
+                });
+            }
+        });
     }
 
     @BindView(R.id.rv_departamentos)

@@ -59,7 +59,6 @@
             android:id="@+id/rv_topicosSelecionados"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/componente_muito_pequeno"
-            android:padding="@dimen/espaco_muito_pequeno" />
+            android:layout_marginTop="@dimen/componente_muito_pequeno" />
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

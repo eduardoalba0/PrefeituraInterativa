@@ -27,12 +27,25 @@ import butterknife.OnClick;
 public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder> {
     private Activity context;
     private List<Uri> imagens;
+    private List<String> imagensUrl;
     private FragmentManager fm;
+    private boolean editavel;
+    private boolean isUrl;
 
     public AnexosAdapter(Activity context, List<Uri> imagens, FragmentManager manager) {
         this.context = context;
         this.imagens = imagens;
         this.fm = manager;
+        this.editavel = true;
+        this.isUrl = false;
+    }
+
+    public AnexosAdapter(Activity context, List<String> imagens, FragmentManager manager, boolean b) {
+        this.context = context;
+        this.imagensUrl = imagens;
+        this.fm = manager;
+        this.editavel = b;
+        this.isUrl = true;
     }
 
     @NonNull
@@ -44,21 +57,33 @@ public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(imagens.get(position));
+        if (isUrl)
+            holder.setData(imagensUrl.get(position));
+        else
+            holder.setData(imagens.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return imagens.size();
+        if (isUrl) {
+            if (imagensUrl == null) return 0;
+            else return imagensUrl.size();
+        } else {
+            if (imagens == null) return 0;
+            else return imagens.size();
+        }
     }
 
     protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Uri imagem;
+        private String imagemUrl;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            if (editavel) bt_remover.setVisibility(View.VISIBLE);
+            else bt_remover.setVisibility(View.GONE);
         }
 
         @OnClick({R.id.img_anexo, R.id.bt_remover})
@@ -66,18 +91,32 @@ public class AnexosAdapter extends RecyclerView.Adapter<AnexosAdapter.ViewHolder
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.img_anexo:
-                    DialogViewer dialog = new DialogViewer(false, imagem, false);
+                    DialogViewer dialog;
+                    if (isUrl)
+                        dialog = new DialogViewer(imagemUrl);
+                    else
+                        dialog = new DialogViewer(imagem);
                     dialog.show(fm, "Viewer");
                     break;
                 case R.id.bt_remover:
-                    ViewModelsHelper viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
-                    viewModel.removeImage(this.getAdapterPosition());
+                    if (!isUrl) {
+                        ViewModelsHelper viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+                        viewModel.removeImage(this.getAdapterPosition());
+                    }
                     break;
             }
         }
 
         public void setData(Uri imagem) {
             this.imagem = imagem;
+            Glide.with(itemView).load(imagem)
+                    .placeholder(R.drawable.ic_adicionar_galeria)
+                    .fitCenter()
+                    .into(img_anexo);
+        }
+
+        public void setData(String imagem) {
+            this.imagemUrl = imagem;
             Glide.with(itemView).load(imagem)
                     .placeholder(R.drawable.ic_adicionar_galeria)
                     .fitCenter()
