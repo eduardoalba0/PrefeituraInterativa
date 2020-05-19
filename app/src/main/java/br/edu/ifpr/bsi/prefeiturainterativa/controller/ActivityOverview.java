@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;

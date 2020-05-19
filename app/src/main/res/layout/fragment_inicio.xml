@@ -36,12 +36,12 @@
             android:layout_marginStart="@dimen/espaco_pequeno"
             android:layout_toEndOf="@id/img_usuario"
             android:gravity="center_vertical"
-            android:textColor="@color/colorSecondaryDark"
+            android:textColor="@color/colorDarkOrange"
             android:textSize="@dimen/texto_label"
             app:icon="@drawable/ic_proximo"
             app:iconGravity="end"
             app:iconSize="30dp"
-            app:iconTint="@color/colorSecondaryDark"
+            app:iconTint="@color/colorDarkOrange"
             app:textAllCaps="false" />
     </RelativeLayout>
 </ScrollView>

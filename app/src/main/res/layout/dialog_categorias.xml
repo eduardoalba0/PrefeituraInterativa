@@ -21,7 +21,7 @@
         android:gravity="center"
         android:padding="@dimen/espaco_muito_pequeno"
         android:text="@string/str_solicitacao_tipo"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorRed"
         android:textSize="@dimen/texto_label" />
 
     <View

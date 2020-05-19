@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFFFFF</color>
-    <color name="colorSecondary">#181515</color>
-    <color name="colorTertiary">#181818</color>
+    <color name="colorRed">#FFFFFF</color>
+    <color name="colorOrange">#181515</color>
+    <color name="colorDarkOrange">#F3F3F3</color>
+    <color name="colorPink">#181818</color>
+    <color name="colorBlue">#181515</color>
+    <color name="colorDarkBlue">#181818</color>
+    <color name="colorGreen">#181515</color>
+    <color name="colorDarkGreen">#181818</color>
     <color name="white">#7C7C7C</color>
     <color name="whiteFA">#181515</color>
     <color name="whiteEE">#181818</color>
     <color name="blackWhite">#FFFFFF</color>
-    <color name="colorSecondaryDark">#F3F3F3</color>
 </resources>

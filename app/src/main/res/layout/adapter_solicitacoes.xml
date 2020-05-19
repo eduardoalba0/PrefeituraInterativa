@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/espaco_muito_pequeno">
 
     <TextView
         android:id="@+id/tv_data"
@@ -33,7 +34,7 @@
                 android:layout_width="@dimen/componente_pequeno"
                 android:layout_height="@dimen/componente_pequeno"
                 android:layout_centerVertical="true"
-                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:background="@drawable/shape_circulo_vermelho"
                 android:contentDescription="@string/str_emblema"
                 android:scaleType="centerInside"
                 android:src="@mipmap/ic_maca" />

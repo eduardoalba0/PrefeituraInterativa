@@ -6329,14 +6329,14 @@ public final class R {
     public static final int cardview_shadow_end_color=0x7f050030;
     public static final int cardview_shadow_start_color=0x7f050031;
     public static final int checkbox_themeable_attribute_color=0x7f050032;
-    public static final int colorPrimary=0x7f050033;
-    public static final int colorQuartiary=0x7f050034;
-    public static final int colorQuintiary=0x7f050035;
-    public static final int colorSecondary=0x7f050036;
-    public static final int colorSecondaryDark=0x7f050037;
-    public static final int colorSecondaryInverse=0x7f050038;
-    public static final int colorTertiary=0x7f050039;
-    public static final int colorTertiaryInverse=0x7f05003a;
+    public static final int colorBlue=0x7f050033;
+    public static final int colorDarkBlue=0x7f050034;
+    public static final int colorDarkGreen=0x7f050035;
+    public static final int colorDarkOrange=0x7f050036;
+    public static final int colorGreen=0x7f050037;
+    public static final int colorOrange=0x7f050038;
+    public static final int colorPink=0x7f050039;
+    public static final int colorRed=0x7f05003a;
     public static final int color_states_switch=0x7f05003b;
     public static final int common_google_signin_btn_text_dark=0x7f05003c;
     public static final int common_google_signin_btn_text_dark_default=0x7f05003d;
@@ -8038,10 +8038,11 @@ public final class R {
     public static final int str_topicos_vazios=0x7f1000c4;
     public static final int str_tramitacao=0x7f1000c5;
     public static final int str_vamos_comecar=0x7f1000c6;
-    public static final int str_voltar=0x7f1000c7;
-    public static final int str_zero=0x7f1000c8;
-    public static final int tipo_usuario_cidadao_id=0x7f1000c9;
-    public static final int title_activity_maps=0x7f1000ca;
+    public static final int str_visualizar_demanda=0x7f1000c7;
+    public static final int str_voltar=0x7f1000c8;
+    public static final int str_zero=0x7f1000c9;
+    public static final int tipo_usuario_cidadao_id=0x7f1000ca;
+    public static final int title_activity_maps=0x7f1000cb;
   }
   public static final class style {
     public static final int AlertDialog_AppCompat=0x7f110000;
