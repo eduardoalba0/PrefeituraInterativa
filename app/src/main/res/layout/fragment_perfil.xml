@@ -75,15 +75,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_nome"
-                app:boxStrokeColor="@color/colorSecondaryDark"
+                app:boxStrokeColor="@color/colorDarkOrange"
                 app:counterMaxLength="40"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorSecondaryDark"
+                app:hintTextColor="@color/colorDarkOrange"
                 app:startIconContentDescription="@string/str_email"
                 app:startIconDrawable="@drawable/ic_usuario"
-                app:startIconTint="@color/colorSecondaryDark">
+                app:startIconTint="@color/colorDarkOrange">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_nome"
@@ -92,8 +92,8 @@
                     android:inputType="textPersonName"
                     android:maxLength="40"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorSecondaryDark"
-                    android:textColorHint="@color/colorSecondaryDark"
+                    android:textColor="@color/colorDarkOrange"
+                    android:textColorHint="@color/colorDarkOrange"
                     android:textSize="@dimen/texto_label" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -105,17 +105,17 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_label_cpf"
-                app:boxStrokeColor="@color/colorSecondaryDark"
+                app:boxStrokeColor="@color/colorDarkOrange"
                 app:counterEnabled="false"
                 app:counterMaxLength="11"
-                app:counterTextColor="@color/colorPrimary"
+                app:counterTextColor="@color/colorRed"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorSecondaryDark"
+                app:hintTextColor="@color/colorDarkOrange"
                 app:startIconContentDescription="@string/str_label_cpf"
                 app:startIconDrawable="@drawable/ic_cpf"
-                app:startIconTint="@color/colorSecondaryDark">
+                app:startIconTint="@color/colorDarkOrange">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cpf"
@@ -125,8 +125,8 @@
                     android:inputType="none"
                     android:maxLength="11"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorSecondaryDark"
-                    android:textColorHint="@color/colorSecondaryDark"
+                    android:textColor="@color/colorDarkOrange"
+                    android:textColorHint="@color/colorDarkOrange"
                     android:textSize="@dimen/texto_label" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -138,15 +138,15 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_label_email"
-                app:boxStrokeColor="@color/colorSecondaryDark"
+                app:boxStrokeColor="@color/colorDarkOrange"
                 app:counterMaxLength="40"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorSecondaryDark"
+                app:hintTextColor="@color/colorDarkOrange"
                 app:startIconContentDescription="@string/str_email"
                 app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/colorSecondaryDark">
+                app:startIconTint="@color/colorDarkOrange">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_email"
@@ -155,7 +155,7 @@
                     android:enabled="false"
                     android:inputType="none"
                     android:maxLength="40"
-                    android:textColor="@color/colorSecondaryDark"
+                    android:textColor="@color/colorDarkOrange"
                     android:textSize="@dimen/texto_label" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -167,12 +167,12 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/espaco_muito_pequeno"
                 android:text="@string/str_redefinir"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorRed"
                 android:textSize="@dimen/texto_label"
                 app:icon="@drawable/ic_senha"
                 app:iconGravity="end"
-                app:iconTint="@color/colorPrimary"
-                app:strokeColor="@color/colorSecondaryDark" />
+                app:iconTint="@color/colorRed"
+                app:strokeColor="@color/colorDarkOrange" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"

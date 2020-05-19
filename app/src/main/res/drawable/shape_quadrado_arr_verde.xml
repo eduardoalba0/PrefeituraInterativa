@@ -4,8 +4,8 @@
         <shape android:shape="rectangle">
             <gradient
                 android:angle="45"
-                android:endColor="@color/colorSecondaryInverse"
-                android:startColor="@color/colorTertiaryInverse" />
+                android:endColor="@color/colorGreen"
+                android:startColor="@color/colorDarkGreen" />
             <corners android:radius="@dimen/raio_circulo_medio" />
         </shape>
     </item>

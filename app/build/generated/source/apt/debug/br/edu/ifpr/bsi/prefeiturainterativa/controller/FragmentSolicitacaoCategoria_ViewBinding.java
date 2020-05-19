@@ -2,6 +2,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.CallSuper;
 import androidx.annotation.UiThread;
@@ -10,14 +11,13 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
 public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
   private FragmentSolicitacaoCategoria target;
 
-  private View view7f09017a;
+  private View view7f0900e4;
 
   @UiThread
   public FragmentSolicitacaoCategoria_ViewBinding(final FragmentSolicitacaoCategoria target,
@@ -26,10 +26,9 @@ public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
 
     View view;
     target.rv_departamentos = Utils.findRequiredViewAsType(source, R.id.rv_departamentos, "field 'rv_departamentos'", RecyclerView.class);
-    target.rv_topicosSelecionados = Utils.findRequiredViewAsType(source, R.id.rv_topicosSelecionados, "field 'rv_topicosSelecionados'", RecyclerView.class);
-    view = Utils.findRequiredView(source, R.id.sliding_categorias, "field 'sliding_categorias' and method 'onClick'");
-    target.sliding_categorias = Utils.castView(view, R.id.sliding_categorias, "field 'sliding_categorias'", SlidingUpPanelLayout.class);
-    view7f09017a = view;
+    view = Utils.findRequiredView(source, R.id.l_footer, "field 'sliding_categorias' and method 'onClick'");
+    target.sliding_categorias = Utils.castView(view, R.id.l_footer, "field 'sliding_categorias'", RelativeLayout.class);
+    view7f0900e4 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -37,7 +36,6 @@ public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
       }
     });
     target.tv_numeroTopicos = Utils.findRequiredViewAsType(source, R.id.tv_numeroTopicos, "field 'tv_numeroTopicos'", TextView.class);
-    target.tv_topicosVazios = Utils.findRequiredViewAsType(source, R.id.tv_topicosVazios, "field 'tv_topicosVazios'", TextView.class);
   }
 
   @Override
@@ -48,12 +46,10 @@ public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
     this.target = null;
 
     target.rv_departamentos = null;
-    target.rv_topicosSelecionados = null;
     target.sliding_categorias = null;
     target.tv_numeroTopicos = null;
-    target.tv_topicosVazios = null;
 
-    view7f09017a.setOnClickListener(null);
-    view7f09017a = null;
+    view7f0900e4.setOnClickListener(null);
+    view7f0900e4 = null;
   }
 }

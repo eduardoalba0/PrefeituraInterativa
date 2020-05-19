@@ -10,12 +10,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="2dp"
-        android:textColor="@color/whiteFA"
+        android:textColor="@color/ms_white"
         android:textSize="@dimen/texto_label"
         android:fontFamily="@font/fredoka"
-        app:chipBackgroundColor="@color/colorPrimary"
+        app:checkedIcon="@drawable/ic_sucesso"
+        app:chipBackgroundColor="@color/colorRed"
         app:chipEndPadding="10dp"
         app:chipStartPadding="10dp"
-        app:chipStrokeColor="@color/colorPrimary"
+        app:chipStrokeColor="@color/float_transparent"
         app:chipStrokeWidth="1dp" />
 </RelativeLayout>

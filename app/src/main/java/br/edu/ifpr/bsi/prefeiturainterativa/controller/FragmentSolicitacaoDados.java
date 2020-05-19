@@ -72,7 +72,7 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
 
     private void carregarDados() {
         edt_descricao.setText(solicitacao.getDescricao());
-        rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), solicitacao.getLocalCategorias(), false));
+        rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), solicitacao.getLocalCategorias(), false, CategoriasAdapter.STYLE_RED));
         rv_imagens.setAdapter(new AnexosAdapter(getActivity(), solicitacao.getUrlImagens(), getChildFragmentManager(), false));
     }
 

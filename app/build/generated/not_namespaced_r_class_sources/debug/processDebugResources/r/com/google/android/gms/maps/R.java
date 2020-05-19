@@ -34,22 +34,22 @@ public final class R {
         public static final int uiTiltGestures = 0x7f030300;
         public static final int uiZoomControls = 0x7f030301;
         public static final int uiZoomGestures = 0x7f030302;
-        public static final int useViewLifecycle = 0x7f030311;
-        public static final int zOrderOnTop = 0x7f030321;
+        public static final int useViewLifecycle = 0x7f030305;
+        public static final int zOrderOnTop = 0x7f030315;
     }
     public static final class id {
         private id() {}
 
-        public static final int hybrid = 0x7f0900cf;
-        public static final int none = 0x7f090133;
-        public static final int normal = 0x7f090134;
-        public static final int satellite = 0x7f09015c;
-        public static final int terrain = 0x7f0901a2;
+        public static final int hybrid = 0x7f0900cb;
+        public static final int none = 0x7f09012f;
+        public static final int normal = 0x7f090130;
+        public static final int satellite = 0x7f090157;
+        public static final int terrain = 0x7f09019c;
     }
     public static final class styleable {
         private styleable() {}
 
-        public static final int[] MapAttrs = { 0x7f03002c, 0x7f030070, 0x7f030071, 0x7f030072, 0x7f030073, 0x7f030074, 0x7f030075, 0x7f030076, 0x7f03017e, 0x7f03017f, 0x7f030180, 0x7f030181, 0x7f0301dd, 0x7f0301e0, 0x7f0302fb, 0x7f0302fc, 0x7f0302fd, 0x7f0302fe, 0x7f0302ff, 0x7f030300, 0x7f030301, 0x7f030302, 0x7f030311, 0x7f030321 };
+        public static final int[] MapAttrs = { 0x7f03002c, 0x7f030070, 0x7f030071, 0x7f030072, 0x7f030073, 0x7f030074, 0x7f030075, 0x7f030076, 0x7f03017e, 0x7f03017f, 0x7f030180, 0x7f030181, 0x7f0301dd, 0x7f0301e0, 0x7f0302fb, 0x7f0302fc, 0x7f0302fd, 0x7f0302fe, 0x7f0302ff, 0x7f030300, 0x7f030301, 0x7f030302, 0x7f030305, 0x7f030315 };
         public static final int MapAttrs_ambientEnabled = 0;
         public static final int MapAttrs_cameraBearing = 1;
         public static final int MapAttrs_cameraMaxZoomPreference = 2;

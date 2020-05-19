@@ -23,19 +23,24 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.ViewHolder> {
 
+    public static final int STYLE_GREEN = 1, STYLE_BLUE = 2, STYLE_RED = 0;
+
     private Activity context;
     private List<Categoria> categorias;
     private ViewModelsHelper viewModel;
     private boolean editavel;
+    private int style;
 
     public CategoriasAdapter(Activity context, List<Categoria> categorias) {
+        this.style = 0;
         this.editavel = true;
         this.context = context;
         this.categorias = categorias;
         this.viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
     }
 
-    public CategoriasAdapter(Activity context, List<Categoria> categorias, boolean b) {
+    public CategoriasAdapter(Activity context, List<Categoria> categorias, boolean b, int style) {
+        this.style = style;
         this.editavel = b;
         this.context = context;
         this.categorias = categorias;
@@ -67,6 +72,17 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            switch (style) {
+                case STYLE_RED:
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorRed);
+                    break;
+                case STYLE_BLUE:
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkBlue);
+                    break;
+                case STYLE_GREEN:
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkGreen);
+                    break;
+            }
         }
 
         @Override

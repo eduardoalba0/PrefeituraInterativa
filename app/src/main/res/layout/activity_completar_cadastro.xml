@@ -5,10 +5,7 @@
     android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_gradient_vermelho"
     android:fillViewport="true"
-    android:paddingTop="2dp"
-    android:paddingBottom="48dp"
     tools:context=".controller.ActivityCompletarCadastro">
 
     <RelativeLayout
@@ -57,11 +54,11 @@
                 android:paddingStart="@dimen/espaco_medio"
                 android:paddingEnd="@dimen/espaco_medio"
                 android:text="@string/str_sair"
-                android:textColor="@color/white"
+                android:textColor="@color/ms_white"
                 android:textSize="@dimen/texto_botao"
                 app:icon="@drawable/ic_sair"
                 app:iconGravity="end"
-                app:iconTint="@color/white" />
+                app:iconTint="@color/ms_white" />
 
         </LinearLayout>
 
@@ -81,7 +78,7 @@
                 android:layout_margin="@dimen/espaco_medio"
                 android:text="@string/str_completar_cadastro"
                 android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorRed"
                 android:textSize="@dimen/texto_botao"
                 android:textStyle="normal" />
 
@@ -93,19 +90,19 @@
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_cpf"
                 app:boxBackgroundColor="@color/white"
-                app:boxStrokeColor="@color/colorSecondaryDark"
+                app:boxStrokeColor="@color/colorDarkOrange"
                 app:counterEnabled="true"
                 app:counterMaxLength="11"
-                app:counterTextColor="@color/colorPrimary"
+                app:counterTextColor="@color/colorRed"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/colorSecondaryDark"
+                app:endIconTint="@color/colorDarkOrange"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorSecondaryDark"
+                app:hintTextColor="@color/colorDarkOrange"
                 app:startIconContentDescription="@string/str_cpf"
                 app:startIconDrawable="@drawable/ic_cpf"
-                app:startIconTint="@color/colorSecondaryDark">
+                app:startIconTint="@color/colorDarkOrange">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_cpf"
@@ -114,7 +111,7 @@
                     android:inputType="number"
                     android:maxLength="11"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorSecondaryDark"
+                    android:textColor="@color/colorDarkOrange"
                     android:textSize="@dimen/texto_label" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -135,8 +132,10 @@
                     android:gravity="center"
                     android:text="@string/str_continuar"
                     android:textSize="@dimen/texto_botao"
+                    android:textColor="@color/ms_white"
                     app:icon="@drawable/ic_proximo"
-                    app:iconGravity="textEnd" />
+                    app:iconGravity="textEnd"
+                    app:iconTint="@color/ms_white" />
             </RelativeLayout>
         </LinearLayout>
 

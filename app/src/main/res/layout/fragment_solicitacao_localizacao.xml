@@ -4,21 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/white"
     android:orientation="vertical">
-
-    <fragment
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/componente_muito_pequeno" />
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/l_footer"
+        android:background="@color/white"
+        android:padding="@dimen/espaco_muito_pequeno">
+
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/l_footer"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/componente_muito_pequeno"
         android:layout_alignParentBottom="true"
-        android:background="@color/whiteFA">
+        android:background="@drawable/shape_quadrado_irregular_branco"
+        android:paddingStart="@dimen/espaco_medio"
+        android:paddingEnd="@dimen/espaco_medio">
 
         <TextView
             android:id="@+id/tv_marcadorSelecionado"

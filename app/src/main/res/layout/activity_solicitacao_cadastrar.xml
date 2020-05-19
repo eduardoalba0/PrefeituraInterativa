@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/float_transparent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     tools:context=".controller.ActivitySolicitacaoCadastrar">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ms_white"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -36,9 +36,10 @@
         android:id="@+id/stepperLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:ms_activeStepColor="@color/colorSecondary"
         app:ms_backButtonColor="@color/ms_white"
         app:ms_backButtonText="@string/str_voltar"
+        app:ms_activeStepColor="@color/colorOrange"
+        app:ms_stepperLayoutTheme="@style/MyStepperLayoutTheme"
         app:ms_bottomNavigationBackground="@color/float_transparent"
         app:ms_completeButtonColor="@color/white"
         app:ms_completeButtonText="Enviar"

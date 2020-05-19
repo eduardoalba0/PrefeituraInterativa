@@ -4,12 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/espaco_pequeno"
-    app:cardBackgroundColor="@color/white"
-    app:cardCornerRadius="@dimen/espaco_medio">
+    android:layout_marginStart="@dimen/espaco_muito_pequeno"
+    android:layout_marginEnd="@dimen/espaco_muito_pequeno"
+    app:cardBackgroundColor="@color/float_transparent"
+    app:cardCornerRadius="@dimen/espaco_gigante">
 
     <RelativeLayout
+        android:id="@+id/l_gradient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/shape_quadrado_arr_vermelho"
         android:padding="@dimen/espaco_pequeno">
 
         <TextView
@@ -17,9 +21,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
+            android:layout_centerInParent="true"
             android:gravity="center"
             android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:textColor="@color/blackWhite"
+            android:textColor="@color/ms_white"
             android:textSize="@dimen/texto_label" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

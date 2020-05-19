@@ -3,25 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:fitsSystemWindows="true">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_above="@id/l_footer"
+        android:fillViewport="true"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="@dimen/componente_muito_pequeno"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="@dimen/espaco_medio">
+            android:paddingTop="@dimen/espaco_pequeno">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="@dimen/espaco_pequeno">
+                app:cardCornerRadius="@dimen/raio_circulo_medio">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -37,8 +38,8 @@
                         android:background="@color/float_transparent"
                         android:gravity="start"
                         android:text="@string/str_imagens"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/texto_subtitulo" />
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/texto_botao" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_imagens"
@@ -62,11 +63,11 @@
                             android:layout_centerInParent="true"
                             android:gravity="center"
                             android:text="@string/str_adicionar"
-                            android:textColor="@color/white"
+                            android:textColor="@color/ms_white"
                             android:textSize="@dimen/texto_label"
                             app:icon="@drawable/ic_add"
                             app:iconGravity="textEnd"
-                            app:iconTint="@color/white" />
+                            app:iconTint="@color/ms_white" />
                     </RelativeLayout>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -75,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/espaco_pequeno"
-                app:cardCornerRadius="@dimen/espaco_pequeno">
+                app:cardCornerRadius="@dimen/raio_circulo_medio">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -91,8 +92,8 @@
                         android:background="@color/float_transparent"
                         android:gravity="start"
                         android:text="@string/str_descricao"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="@dimen/texto_subtitulo" />
+                        android:textColor="@color/colorRed"
+                        android:textSize="@dimen/texto_botao" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/edl_descricao"
@@ -102,11 +103,11 @@
                         android:layout_margin="@dimen/espaco_muito_pequeno"
                         android:elevation="0dp"
                         app:boxBackgroundColor="@color/float_transparent"
-                        app:boxStrokeColor="@color/colorPrimary"
+                        app:boxStrokeColor="@color/colorRed"
                         app:counterEnabled="true"
                         app:counterMaxLength="600"
                         app:errorEnabled="true"
-                        app:hintTextColor="@color/colorPrimary">
+                        app:hintTextColor="@color/colorRed">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_descricao"
@@ -114,7 +115,7 @@
                             android:layout_height="match_parent"
                             android:inputType="textMultiLine"
                             android:maxLength="600"
-                            android:textColor="@color/colorSecondaryDark"
+                            android:textColor="@color/colorDarkOrange"
                             android:textSize="@dimen/texto_label" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -124,12 +125,13 @@
     </ScrollView>
 
     <RelativeLayout
+        android:id="@+id/l_footer"
         android:layout_width="match_parent"
         android:layout_height="@dimen/componente_muito_pequeno"
         android:layout_alignParentBottom="true"
-        android:background="@color/whiteFA"
-        android:paddingStart="@dimen/espaco_pequeno"
-        android:paddingEnd="@dimen/espaco_pequeno">
+        android:background="@drawable/shape_quadrado_irregular_branco"
+        android:paddingStart="@dimen/espaco_medio"
+        android:paddingEnd="@dimen/espaco_medio">
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,7 +152,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:checked="false"
-            app:thumbTint="@color/colorPrimary"
+            app:thumbTint="@color/colorRed"
             app:trackTint="@color/color_states_switch" />
     </RelativeLayout>
 </RelativeLayout>

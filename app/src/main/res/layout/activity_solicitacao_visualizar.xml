@@ -5,6 +5,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/whiteFA"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_quadrado_irregular_vermelho"
+            android:gravity="center"
+            android:padding="@dimen/espaco_medio">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/str_visualizar_demanda"
+                android:textColor="@color/ms_white"
+                android:textSize="@dimen/texto_botao"
+                android:transitionName="splash_transition" />
+        </LinearLayout>
+    </LinearLayout>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_solicitacao"
         android:transitionName="solicitacao_transition"

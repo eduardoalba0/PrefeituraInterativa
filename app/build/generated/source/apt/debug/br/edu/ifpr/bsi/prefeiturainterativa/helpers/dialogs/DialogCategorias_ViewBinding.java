@@ -20,7 +20,7 @@ public class DialogCategorias_ViewBinding implements Unbinder {
     this.target = target;
 
     target.rv_categorias = Utils.findRequiredViewAsType(source, R.id.rv_categorias, "field 'rv_categorias'", RecyclerView.class);
-    target.tv_departamento = Utils.findRequiredViewAsType(source, R.id.tv_departamento, "field 'tv_departamento'", TextView.class);
+    target.tv_titulo = Utils.findRequiredViewAsType(source, R.id.tv_titulo, "field 'tv_titulo'", TextView.class);
     target.tv_hintCategoria = Utils.findRequiredViewAsType(source, R.id.tv_hintCategoria, "field 'tv_hintCategoria'", TextView.class);
   }
 
@@ -32,7 +32,7 @@ public class DialogCategorias_ViewBinding implements Unbinder {
     this.target = null;
 
     target.rv_categorias = null;
-    target.tv_departamento = null;
+    target.tv_titulo = null;
     target.tv_hintCategoria = null;
   }
 }

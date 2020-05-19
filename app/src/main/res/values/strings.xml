@@ -45,13 +45,13 @@
     <string name="str_rationale">Para prosseguir, autorize as seguintes permissões:</string>
     <string name="str_cancelar">Cancelar</string>
     <string name="str_confirmar">OK</string>
-    <string name="str_never_ask_imagens">Sem as permissões, não será possível anexar localUriImagens, por favor, autorize-as.</string>
+    <string name="str_never_ask_imagens">Sem as permissões, não será possível anexar imagens, por favor, autorize-as.</string>
     <string name="str_error_camera">Falha ao capturar imagem. Se o erro persistir consulte o suporte do sistema</string>
     <string name="str_error_trocar_camera">Falha ao trocar a câmera. Se o erro persistir consulte o suporte do sistema</string>
     <string name="str_local_nao_informado">Você precisa marcar no mapa, o local onde ocorreu o problema.</string>
     <string name="str_never_ask_gps">Sem as permissões, não será possível usar seu GPS, por favor, autorize-as.</string>
     <string name="str_categoria_nao_selecionada">Você precisa selecionar uma categoria para a sua demanda.</string>
-    <string name="str_sem_anexos_descricao">Você precisa nos informar o que ocorreu, ou inserir localUriImagens.</string>
+    <string name="str_sem_anexos_descricao">Você precisa nos informar o que ocorreu, ou inserir imagens.</string>
     <string name="str_titulo_localizacao">Localização \n Onde ocorreu?</string>
     <string name="str_titulo_detalhes">Detalhes \n O que aconteceu?</string>
     <string name="str_titulo_categorias">Categoria \n Sobre o que se trata?</string>
@@ -72,11 +72,13 @@
     <string name="str_erro_dados_invalidos">E-mail e/ou senha incorretos.</string>
     <string name="str_erro_internet_login">Você precisa estar conectado a internet para logar.</string>
     <string name="str_erro_cadastro">Falha no registro. Consulte o suporte do sistema.</string>
-    <string name="str_solicitacao_em_andamento">Em andamento</string>
+    <string name="str_solicitacao_em_andamento">Abertas</string>
     <string name="str_solicitacao_encerrada">Concluídas</string>
     <string name="str_minhas_demandas">Demandas Cadastradas</string>
     <string name="str_categoria_hint">Esta secretaria é responsável por:</string>
-    <string name="str_dados_solicitacao">Dados da Demanda</string>
+    <string name="str_dados_solicitacao">Informações</string>
     <string name="str_tramitacao">Tramitação</string>
     <string name="str_local">Mostrar localização</string>
+    <string name="str_departamentos">Secretarias</string>
+    <string name="str_visualizar_demanda">Visualizar Solicitação</string>
 </resources>

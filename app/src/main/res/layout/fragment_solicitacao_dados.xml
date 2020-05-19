@@ -33,11 +33,8 @@
                     android:hint="@string/str_descricao"
                     app:hintEnabled="true"
                     app:boxBackgroundColor="@color/float_transparent"
-                    app:boxStrokeColor="@color/colorPrimary"
-                    app:counterEnabled="true"
-                    app:counterMaxLength="600"
-                    app:errorEnabled="true"
-                    app:hintTextColor="@color/colorPrimary">
+                    app:boxStrokeColor="@color/colorRed"
+                    app:hintTextColor="@color/colorRed">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_descricao"
@@ -45,8 +42,7 @@
                         android:layout_height="match_parent"
                         android:enabled="false"
                         android:inputType="none"
-                        android:maxLength="600"
-                        android:textColor="@color/colorSecondaryDark"
+                        android:textColor="@color/colorDarkOrange"
                         android:textSize="@dimen/texto_label" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -97,13 +93,14 @@
                     android:background="@color/float_transparent"
                     android:gravity="start"
                     android:text="@string/str_imagens"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorRed"
                     android:textSize="@dimen/texto_subtitulo" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_imagens"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
+
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -139,7 +136,7 @@
                     android:background="@color/float_transparent"
                     android:gravity="start"
                     android:text="@string/str_topicos_selecionados"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/colorRed"
                     android:textSize="@dimen/texto_subtitulo" />
 
                 <androidx.recyclerview.widget.RecyclerView

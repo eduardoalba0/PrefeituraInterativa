@@ -4,7 +4,6 @@
     android:id="@+id/view_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/shape_gradient_vermelho"
     android:gravity="center"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
@@ -19,7 +18,7 @@
         android:contentDescription="@string/str_emblema"
         android:elevation="5dp"
         android:src="@mipmap/ic_maca"
-        android:tint="@color/colorPrimary"
+        android:tint="@color/colorRed"
         android:transitionName="splash_transition"/>
 
     <TextView

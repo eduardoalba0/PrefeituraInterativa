@@ -19,7 +19,6 @@ import java.util.Locale;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
@@ -27,7 +26,6 @@ import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisual
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapter.ViewHolder> {
 
@@ -89,7 +87,7 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             layoutManager.setFlexDirection(FlexDirection.ROW);
             layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
             rv_categorias.setLayoutManager(layoutManager);
-            rv_categorias.setAdapter(new CategoriasAdapter(context, solicitacao.getLocalCategorias(), false));
+            rv_categorias.setAdapter(new CategoriasAdapter(context, solicitacao.getLocalCategorias(), false, CategoriasAdapter.STYLE_RED));
         }
 
         @BindView(R.id.img_solicitacao)

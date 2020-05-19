@@ -2,6 +2,7 @@ package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.os.Bundle;
 import android.transition.Transition;
+import android.view.WindowManager;
 
 import com.google.android.material.tabs.TabLayout;
 
