@@ -8,18 +8,29 @@
     android:orientation="vertical"
     tools:context=".controller.ActivitySolicitacaoCadastrar">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/float_transparent"
-        android:clickable="false"
-        android:gravity="center"
-        android:padding="@dimen/espaco_muito_pequeno"
-        android:text="@string/str_cadastrar_demanda"
-        android:textAllCaps="false"
-        android:textColor="@color/ms_white"
-        android:textSize="@dimen/texto_botao"
-        android:transitionName="splash_transition" />
+        android:background="@color/ms_white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_quadrado_irregular_vermelho"
+            android:gravity="center"
+            android:padding="@dimen/espaco_medio">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/str_cadastrar_demanda"
+                android:textColor="@color/ms_white"
+                android:textSize="@dimen/texto_botao"
+                android:transitionName="splash_transition" />
+        </LinearLayout>
+    </LinearLayout>
 
     <com.stepstone.stepper.StepperLayout
         android:id="@+id/stepperLayout"

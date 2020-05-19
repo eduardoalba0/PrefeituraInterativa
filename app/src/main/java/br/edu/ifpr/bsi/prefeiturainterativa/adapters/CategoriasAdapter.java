@@ -92,7 +92,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                 }
             } else {
                 if (viewModel.getListCategorias().contains(categoria)) {
-                    viewModel.removeCategoria(categoria);
+                    viewModel.removeCategoria(viewModel.getListCategorias().indexOf(categoria));
                 }
                 compoundButton.setChecked(false);
             }

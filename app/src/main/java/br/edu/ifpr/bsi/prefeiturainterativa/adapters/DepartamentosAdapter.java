@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,19 +24,20 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
     private Activity context;
     private List<Departamento> departamentos;
     private FragmentManager fm;
-    private boolean editavel = true;
+    private boolean editavel;
 
     public DepartamentosAdapter(Activity context, List<Departamento> departamentos, FragmentManager fm) {
+        this.editavel = true;
         this.context = context;
         this.departamentos = departamentos;
         this.fm = fm;
     }
 
     public DepartamentosAdapter(Activity context, List<Departamento> departamentos, FragmentManager fm, boolean b) {
+        this.editavel = b;
         this.context = context;
         this.departamentos = departamentos;
         this.fm = fm;
-        this.editavel = b;
     }
 
     @NonNull
@@ -47,7 +49,7 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(departamentos.get(position));
+        holder.setData(departamentos.get(position), position);
     }
 
     @Override
@@ -69,17 +71,29 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.tv_departamento:
-                    new DialogCategorias(departamento, false).show(fm, "TiposSolicitacao");
+                    new DialogCategorias(departamento, editavel).show(fm, "TiposSolicitacao");
                     break;
             }
         }
 
-        public void setData(Departamento departamento) {
+        public void setData(Departamento departamento, int posicao) {
             this.departamento = departamento;
             tv_departamento.setText(departamento.getDescricao());
+            float pos = (float) posicao + 1;
+            if (pos % 3 == 0)
+                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_vermelho));
+            else if (pos % 2 == 0)
+                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_azul));
+            else
+                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_verde));
+
+
         }
 
         @BindView(R.id.tv_departamento)
         TextView tv_departamento;
+
+        @BindView(R.id.l_gradient)
+        RelativeLayout l_gradient;
     }
 }

@@ -17,7 +17,7 @@ import java.lang.Override;
 public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
   private FragmentSolicitacaoCategoria target;
 
-  private View view7f090179;
+  private View view7f09017a;
 
   @UiThread
   public FragmentSolicitacaoCategoria_ViewBinding(final FragmentSolicitacaoCategoria target,
@@ -29,7 +29,7 @@ public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
     target.rv_topicosSelecionados = Utils.findRequiredViewAsType(source, R.id.rv_topicosSelecionados, "field 'rv_topicosSelecionados'", RecyclerView.class);
     view = Utils.findRequiredView(source, R.id.sliding_categorias, "field 'sliding_categorias' and method 'onClick'");
     target.sliding_categorias = Utils.castView(view, R.id.sliding_categorias, "field 'sliding_categorias'", SlidingUpPanelLayout.class);
-    view7f090179 = view;
+    view7f09017a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -53,7 +53,7 @@ public class FragmentSolicitacaoCategoria_ViewBinding implements Unbinder {
     target.tv_numeroTopicos = null;
     target.tv_topicosVazios = null;
 
-    view7f090179.setOnClickListener(null);
-    view7f090179 = null;
+    view7f09017a.setOnClickListener(null);
+    view7f09017a = null;
   }
 }

@@ -79,8 +79,8 @@ public class ViewModelsHelper extends ViewModel {
         categoriasLiveData.postValue(categorias);
     }
 
-    public void removeCategoria(Categoria categoria) {
-        categorias.remove(categoria);
+    public void removeCategoria(int index) {
+        categorias.remove(index);
         categoriasLiveData.postValue(categorias);
     }
 

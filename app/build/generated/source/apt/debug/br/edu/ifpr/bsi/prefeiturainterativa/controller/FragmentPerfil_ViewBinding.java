@@ -19,7 +19,7 @@ import java.lang.Override;
 public class FragmentPerfil_ViewBinding implements Unbinder {
   private FragmentPerfil target;
 
-  private View view7f0900db;
+  private View view7f0900dc;
 
   private View view7f090066;
 
@@ -37,7 +37,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.edt_email = Utils.findRequiredViewAsType(source, R.id.edt_email, "field 'edt_email'", TextInputEditText.class);
     view = Utils.findRequiredView(source, R.id.img_usuario, "field 'img_usuario' and method 'onClick'");
     target.img_usuario = Utils.castView(view, R.id.img_usuario, "field 'img_usuario'", ImageView.class);
-    view7f0900db = view;
+    view7f0900dc = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -100,8 +100,8 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.edl_cpf = null;
     target.edl_email = null;
 
-    view7f0900db.setOnClickListener(null);
-    view7f0900db = null;
+    view7f0900dc.setOnClickListener(null);
+    view7f0900dc = null;
     view7f090066.setOnClickListener(null);
     view7f090066 = null;
     view7f090064.setOnClickListener(null);

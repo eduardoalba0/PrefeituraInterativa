@@ -4,7 +4,7 @@
     android:id="@+id/sliding_categorias"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/float_transparent"
+    android:background="@color/white"
     android:gravity="bottom"
     app:layout_maxHeight="@dimen/componente_gigante"
     app:umanoOverlay="true"
