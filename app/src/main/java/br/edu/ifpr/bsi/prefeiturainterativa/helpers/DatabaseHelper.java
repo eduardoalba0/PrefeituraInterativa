@@ -12,6 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class DatabaseHelper {
@@ -31,10 +32,10 @@ public class DatabaseHelper {
             if (!task.isSuccessful()) {
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Você não possui permissão para gravar nesta coleção.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_db_permissao_gravar))
                             .show();
                 else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha na gravação, consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_inserir_db))
                         .show();
             }
         });
@@ -45,10 +46,10 @@ public class DatabaseHelper {
             if (!task.isSuccessful()) {
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Você não possui permissão para remover dados nesta coleção.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_db_permissao_remover))
                             .show();
                 else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha na gravação, consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_remover_db))
                         .show();
 
             }
@@ -60,10 +61,10 @@ public class DatabaseHelper {
             if (!task.isSuccessful())
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Você não possui permissão para acessar esta coleção.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_db_permissao_consultar))
                             .show();
                 else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha na consulta ao banco de dados, consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_consultar_db))
                         .show();
         });
     }
@@ -73,10 +74,10 @@ public class DatabaseHelper {
             if (!task.isSuccessful())
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Você não possui permissão para acessar esta coleção.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_db_permissao_consultar))
                             .show();
                 else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Erro!").setContentText("Falha na consulta ao banco de dados, consulte o suporte do sistema.")
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_consultar_db))
                         .show();
         });
     }
@@ -86,11 +87,11 @@ public class DatabaseHelper {
             if (!task.isSuccessful())
                 if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Você não possui permissão para acessar esta coleção.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_db_permissao_consultar))
                             .show();
                 else
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!").setContentText("Falha na consulta ao banco de dados, consulte o suporte do sistema.")
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_consultar_db))
                             .show();
 
         });

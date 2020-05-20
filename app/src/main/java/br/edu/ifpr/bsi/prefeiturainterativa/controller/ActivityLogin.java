@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.transition.Transition;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -99,7 +98,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
             if (task != null)
                 task.addOnSuccessListener(this, aVoid ->
                         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                                .setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
+                                .setContentText(getResources().getString(R.string.str_clique_link_email))
                                 .show());
             return;
         }
@@ -108,10 +107,10 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         if (task != null)
             task.addOnSuccessListener(this, documentSnapshot -> {
                 Usuario aux = documentSnapshot.toObject(Usuario.class);
-                if (aux == null || aux.getCpf() == null || aux.getCpf().trim().equalsIgnoreCase(""))
+                if (aux == null || aux.getCpf() == null || aux.getCpf().trim().isEmpty())
                     if (task.getResult().getMetadata().isFromCache()) {
-                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Erro!")
-                                .setTitleText("Você precisa se conectar com a internet para validar seu login.").show();
+                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText(R.string.str_erro)
+                                .setTitleText(getResources().getString(R.string.str_erro_internet_login)).show();
                     } else
                         chamarActivity(ActivityCompletarCadastro.class);
                 else {

@@ -11,11 +11,13 @@ import com.google.firebase.storage.StorageReference;
 
 import java.io.InputStream;
 
+import androidx.annotation.NonNull;
+
 @GlideModule
 public class GlideModuleHelper extends AppGlideModule {
 
     @Override
-    public void registerComponents(Context context, Glide glide, Registry registry) {
+    public void registerComponents(@NonNull Context context, @NonNull Glide glide, Registry registry) {
         registry.append(StorageReference.class, InputStream.class,
                 new FirebaseImageLoader.Factory());
     }

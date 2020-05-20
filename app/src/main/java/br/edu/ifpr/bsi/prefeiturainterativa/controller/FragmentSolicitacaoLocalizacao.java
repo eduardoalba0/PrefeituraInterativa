@@ -10,7 +10,6 @@ import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,7 +143,6 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
                 });
             }
         }).addOnFailureListener(getActivity(), e -> {
-            Log.e("Localização", "Failed Listener");
             int statusCode = ((ApiException) e).getStatusCode();
             if (statusCode == CommonStatusCodes.RESOLUTION_REQUIRED)
                 try {

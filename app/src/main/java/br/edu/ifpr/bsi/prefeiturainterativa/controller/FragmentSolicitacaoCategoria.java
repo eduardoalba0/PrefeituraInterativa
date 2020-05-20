@@ -59,7 +59,7 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.l_footer:
-                new DialogCategorias().show(getChildFragmentManager(), "TiposSolicitacao");
+                new DialogCategorias().show(getChildFragmentManager(), "Categoria");
                 break;
         }
     }
@@ -85,9 +85,7 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     public void initRecyclerView() {
         rv_departamentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
         viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
-        viewModel.getCategorias().observe(getActivity(), categorias -> {
-            tv_numeroTopicos.setText(categorias.size() + "");
-        });
+        viewModel.getCategorias().observe(getActivity(), categorias -> tv_numeroTopicos.setText((categorias.size() + "")));
 
     }
 

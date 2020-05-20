@@ -87,7 +87,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
                 break;
             case R.id.bt_redefinir:
                 helper.redefinirSenha(helper.getUser().getEmail()).addOnSuccessListener(getActivity(), aVoid -> new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                        .setContentText("Clique no link enviado para seu e-mail para redefinir sua senha.")
+                        .setContentText(getResources().getString(R.string.str_clique_link_redefinir_senha))
                         .show());
                 break;
             case R.id.img_usuario:
@@ -110,7 +110,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         usuario.setEmail(edt_email.getText().toString());
         usuario.setNome(edt_nome.getText().toString());
         usuario.setCpf(edt_cpf.getText().toString());
-        dialog.setTitleText("Gravando alterações...").show();
+        dialog.setTitleText(R.string.str_gravando_alteracoes).show();
         if (usuario.getLocalUriFoto() != null) {
             Task<Uri> upload = helper.carregarImagemUsuario(usuario.getLocalUriFoto());
             if (upload != null)
@@ -132,8 +132,8 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         dao.inserirAtualizar(usuario).addOnSuccessListener(getActivity(), task -> {
             dialog.dismiss();
             new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                    .setTitleText("Sucesso!")
-                    .setContentText("Perfil atualizado com êxito!")
+                    .setTitleText(R.string.str_sucesso)
+                    .setContentText(getResources().getString(R.string.str_perfil_atualizado))
                     .show();
             preencherCampos();
         });
@@ -182,9 +182,9 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
     @OnShowRationale({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void showRationale(PermissionRequest request) {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Para prosseguir, autorize as seguintes permissões:")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getString(R.string.str_rationale))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     request.proceed();
                     sweetAlertDialog.dismiss();
                 })
@@ -199,9 +199,9 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
     @OnNeverAskAgain({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void onNeverAskAgain() {
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Sem as permissões, não será possível trocar sua foto, por favor, autorize-as.")
-                .setCancelButton("Cancelar", Dialog::dismiss)
-                .setConfirmButton("OK", sweetAlertDialog -> {
+                .setContentText(getResources().getString(R.string.str_never_ask_imagens))
+                .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                     intent.setData(uri);

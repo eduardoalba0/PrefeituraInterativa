@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -75,7 +74,7 @@ public class ActivityRedefinirSenha extends AppCompatActivity implements View.On
     @Override
     public void onSuccess(Void tVoid) {
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setContentText("Clique no link enviado para seu e-mail para redefinir sua senha.")
+                .setContentText(getResources().getString(R.string.str_clique_link_redefinir_senha))
                 .setConfirmClickListener(sweetAlertDialog -> {
                     Intent intent = new Intent(ActivityRedefinirSenha.this, ActivityLogin.class);
                     ActivityOptionsCompat options = ActivityOptionsCompat.

@@ -41,9 +41,8 @@
     <string name="str_marcadorNaoSelecionado">Nenhuma localização selecionada.</string>
     <string name="str_hint_mapa">Toque no mapa para selecionar a localização</string>
     <string name="str_marcadorSelecionado">Localização selecionada.</string>
-    <string name="str_anonimo">Preservar minha identidade.</string>
+    <string name="str_anonimo">Ocultar meus dados pessoais.</string>
     <string name="str_rationale">Para prosseguir, autorize as seguintes permissões:</string>
-    <string name="str_cancelar">Cancelar</string>
     <string name="str_confirmar">OK</string>
     <string name="str_never_ask_imagens">Sem as permissões, não será possível anexar imagens, por favor, autorize-as.</string>
     <string name="str_error_camera">Falha ao capturar imagem. Se o erro persistir consulte o suporte do sistema</string>
@@ -81,4 +80,20 @@
     <string name="str_local">Mostrar localização</string>
     <string name="str_departamentos">Secretarias</string>
     <string name="str_visualizar_demanda">Visualizar Solicitação</string>
+    <string name="str_erro_limite_topicos">Em cada solicitação, você pode marcar apenas 10 tópicos.</string>
+    <string name="str_erro_apenas_topicos_secretaria">Em cada solicitação, você pode marcar apenas os tópicos relacionados a uma única secretaria.</string>
+    <string name="str_carregando_cadastro">Cadastrando…</string>
+    <string name="str_sucesso">Sucesso!</string>
+    <string name="str_cadastro_completo">Cadastro completo.</string>
+    <string name="str_clique_link_redefinir_senha">Clique no link enviado para seu e-mail para redefinir sua senha.</string>
+    <string name="str_gravando_alteracoes">Gravando alterações…</string>
+    <string name="str_perfil_atualizado">Perfil atualizado com êxito!</string>
+    <string name="str_cancelar">Cancelar</string>
+    <string name="str_url_map_search">https://www.google.com/maps/search/</string>
+    <string name="str_erro_db_permissao_gravar">Você não possui permissão para gravar nesta coleção.</string>
+    <string name="str_falha_inserir_db">Falha na gravação, consulte o suporte do sistema.</string>
+    <string name="str_falha_remover_db">Falha ao remover dado, consulte o suporte do sistema.</string>
+    <string name="str_erro_db_permissao_remover">Você não possui permissão para remover dados nesta coleção.</string>
+    <string name="str_erro_db_permissao_consultar">Você não possui permissão para acessar esta coleção.</string>
+    <string name="str_falha_consultar_db">Falha na consulta ao banco de dados, consulte o suporte do sistema.</string>
 </resources>
