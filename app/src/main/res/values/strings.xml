@@ -41,7 +41,7 @@
     <string name="str_marcadorNaoSelecionado">Nenhuma localização selecionada.</string>
     <string name="str_hint_mapa">Toque no mapa para selecionar a localização</string>
     <string name="str_marcadorSelecionado">Localização selecionada.</string>
-    <string name="str_anonimo">Ocultar meus dados pessoais.</string>
+    <string name="str_anonimo">Ocultar minha identidade.</string>
     <string name="str_rationale">Para prosseguir, autorize as seguintes permissões:</string>
     <string name="str_confirmar">OK</string>
     <string name="str_never_ask_imagens">Sem as permissões, não será possível anexar imagens, por favor, autorize-as.</string>
@@ -96,4 +96,6 @@
     <string name="str_erro_db_permissao_remover">Você não possui permissão para remover dados nesta coleção.</string>
     <string name="str_erro_db_permissao_consultar">Você não possui permissão para acessar esta coleção.</string>
     <string name="str_falha_consultar_db">Falha na consulta ao banco de dados, consulte o suporte do sistema.</string>
+    <string name="str_helper_anonimo">Somente você consegue ver o sua identificação.</string>
+    <string name="str_demanda_cadastrada">DEMANDA CADASTRADA NO SISTEMA.</string>
 </resources>

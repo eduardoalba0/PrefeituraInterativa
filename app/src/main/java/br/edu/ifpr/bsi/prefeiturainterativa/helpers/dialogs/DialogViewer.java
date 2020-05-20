@@ -31,8 +31,6 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
     private String imagemUrl;
 
     public DialogViewer(Uri imagem) {
-        this.resultadoUnico = resultadoUnico;
-        this.mostrarBotoes = mostrarBotoes;
         this.imagem = imagem;
         this.isUrl = false;
         this.resultadoUnico = true;
@@ -40,8 +38,6 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
     }
 
     public DialogViewer(String imagem) {
-        this.resultadoUnico = resultadoUnico;
-        this.mostrarBotoes = mostrarBotoes;
         this.imagemUrl = imagem;
         this.isUrl = true;
         this.resultadoUnico = true;

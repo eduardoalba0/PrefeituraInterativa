@@ -22,7 +22,9 @@ public class Solicitacao implements Serializable {
     private Double avaliacao_nota;
     private String avaliacao_comentario;
     private String usuario_ID;
+    private String departamento_ID;
     private List<String> urlImagens;
+
     @ServerTimestamp
     private Date data;
     @Exclude
@@ -31,6 +33,8 @@ public class Solicitacao implements Serializable {
     private List<Uri> localUriImagens;
     @Exclude
     private List<Categoria> localCategorias;
+    @Exclude
+    Departamento departamento;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -135,8 +139,21 @@ public class Solicitacao implements Serializable {
         return data;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public String getDepartamento_ID() {
+        return departamento_ID;
+    }
+
+    public void setDepartamento_ID(String departamento_ID) {
+        this.departamento_ID = departamento_ID;
+    }
+
+    @Exclude
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     @Exclude

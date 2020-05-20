@@ -1,10 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/espaco_muito_pequeno"
+            android:textAllCaps="true"
+            android:textColor="@color/ms_white"
+            android:textSize="@dimen/texto_label" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/espaco_muito_pequeno"
+            android:layout_marginEnd="@dimen/espaco_muito_pequeno"
+            android:transitionName="solicitacao_transition"
+            app:cardCornerRadius="@dimen/raio_circulo_medio">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/espaco_pequeno"
+                android:padding="5dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edl_autor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/espaco_muito_pequeno"
+                    android:layout_toStartOf="@id/img_usuario"
+                    app:boxBackgroundColor="@color/float_transparent"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/float_transparent"
+                    app:hintEnabled="true"
+                    app:hintTextColor="@color/colorDarkOrange">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_acao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:inputType="none"
+                        android:padding="@dimen/espaco_pequeno"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blackWhite"
+                        android:textSize="@dimen/texto_label" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/img_usuario"
+                    android:layout_width="@dimen/componente_muito_pequeno"
+                    android:layout_height="@dimen/componente_muito_pequeno"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/shape_circulo_branco"
+                    android:contentDescription="@string/str_perfil"
+                    android:src="@drawable/ic_usuario" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_atendimentos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>

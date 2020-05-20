@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/espaco_pequeno">
+    android:layout_marginStart="@dimen/espaco_muito_pequeno"
+    android:layout_marginTop="@dimen/espaco_pequeno"
+    android:layout_marginEnd="@dimen/espaco_muito_pequeno">
 
     <TextView
         android:id="@+id/tv_data"

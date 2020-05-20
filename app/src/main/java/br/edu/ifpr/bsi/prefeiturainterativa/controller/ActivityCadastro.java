@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -86,12 +85,12 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         usuario.setTipoUsuario_ID(getResources().getString(R.string.tipo_usuario_cidadao_id));
 
         Task<AuthResult> task = helper.registrar(usuario);
-        dialog.setTitleText("Cadastrando...").show();
+        dialog.setTitleText(R.string.str_carregando_cadastro).show();
         if (task != null)
             task.addOnSuccessListener(this, this)
                     .addOnFailureListener(this, e -> {
                         if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
-                            edl_email.setError("Seu e-mail já está cadastrado.");
+                            edl_email.setError(this.getResources().getString(R.string.str_erro_email_cadastrado));
                     });
     }
 
@@ -106,7 +105,7 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
                         helper.verificarEmail().addOnSuccessListener(this, bVoid -> {
                             dialog.dismiss();
                             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                                        .setContentText("Clique no link enviado para seu e-mail para ativar a conta.")
+                                    .setContentText(getResources().getString(R.string.str_clique_link_email))
                                         .setConfirmClickListener(sweetAlertDialog -> {
                                             Intent intent = new Intent(ActivityCadastro.this, ActivityLogin.class);
                                             ActivityOptionsCompat options = ActivityOptionsCompat.

@@ -22,7 +22,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
 
   private View view7f090059;
 
-  private View view7f09018e;
+  private View view7f090190;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -42,7 +42,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.sw_anonimo, "field 'sw_anonimo' and method 'onCheckedChanged'");
     target.sw_anonimo = Utils.castView(view, R.id.sw_anonimo, "field 'sw_anonimo'", SwitchMaterial.class);
-    view7f09018e = view;
+    view7f090190 = view;
     ((CompoundButton) view).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       @Override
       public void onCheckedChanged(CompoundButton p0, boolean p1) {
@@ -68,7 +68,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
 
     view7f090059.setOnClickListener(null);
     view7f090059 = null;
-    ((CompoundButton) view7f09018e).setOnCheckedChangeListener(null);
-    view7f09018e = null;
+    ((CompoundButton) view7f090190).setOnCheckedChangeListener(null);
+    view7f090190 = null;
   }
 }
