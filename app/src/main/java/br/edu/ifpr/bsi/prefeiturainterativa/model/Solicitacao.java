@@ -139,6 +139,7 @@ public class Solicitacao implements Serializable {
         this.data = data;
     }
 
+    @Exclude
     public List<Categoria> getLocalCategorias() {
         return localCategorias;
     }

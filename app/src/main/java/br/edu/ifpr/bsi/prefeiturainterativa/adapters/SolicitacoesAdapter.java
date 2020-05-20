@@ -83,6 +83,14 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
                         .into(img_solicitacao);
             DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, new Locale("pt", "BR"));
             tv_data.setText(df.format(solicitacao.getData()));
+            if (solicitacoes.size() > 1) {
+                int index = solicitacoes.indexOf(solicitacao) - 1;
+                if (index >= 0) {
+                    Solicitacao aux = solicitacoes.get(index);
+                    if (df.format(aux.getData()).equals(df.format(solicitacao.getData())))
+                        tv_data.setVisibility(View.GONE);
+                }
+            }
             FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(context);
             layoutManager.setFlexDirection(FlexDirection.ROW);
             layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);

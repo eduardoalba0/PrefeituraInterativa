@@ -24,7 +24,6 @@ MERGED from [org.permissionsdispatcher:permissionsdispatcher:4.7.0] C:\Users\Edu
 MERGED from [com.jakewharton:butterknife:10.2.1] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\35d4c53554ab177caa6a54e3d09318a9\AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6958a192340dac0ec93857178c5fe2f4\AndroidManifest.xml:2:1-13:12
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:2:1-12:12
-MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e38d96a35250958e9d66ee02bc83fd1f\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\598400dbde1bb8b4bab8ae44edece7c5\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fa214c2e98b9999f26fb0cee79ebb057\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\488e4af5263fe29f1b2a57e46ced228f\AndroidManifest.xml:2:1-10:12
@@ -249,8 +248,6 @@ MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle
 MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6958a192340dac0ec93857178c5fe2f4\AndroidManifest.xml:11:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:10:5-20
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:10:5-20
-MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e38d96a35250958e9d66ee02bc83fd1f\AndroidManifest.xml:9:5-20
-MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e38d96a35250958e9d66ee02bc83fd1f\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\488e4af5263fe29f1b2a57e46ced228f\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\488e4af5263fe29f1b2a57e46ced228f\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-inappmessaging:19.0.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\3fa7ae151846a182a2390dd354d7b7d7\AndroidManifest.xml:13:5-21:19
@@ -435,8 +432,6 @@ MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle
 MERGED from [com.github.f0ris.sweetalert:library:1.5.6] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\6958a192340dac0ec93857178c5fe2f4\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:6:5-8:41
 MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\d4ad422409b1384fe197d1b308079487\AndroidManifest.xml:6:5-8:41
-MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e38d96a35250958e9d66ee02bc83fd1f\AndroidManifest.xml:7:5-44
-MERGED from [com.sothree.slidinguppanel:library:3.4.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\e38d96a35250958e9d66ee02bc83fd1f\AndroidManifest.xml:7:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\598400dbde1bb8b4bab8ae44edece7c5\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-api-phone:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\598400dbde1bb8b4bab8ae44edece7c5\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-auth-base:17.0.0] C:\Users\Eduardo\.gradle\caches\transforms-2\files-2.1\fa214c2e98b9999f26fb0cee79ebb057\AndroidManifest.xml:5:5-44

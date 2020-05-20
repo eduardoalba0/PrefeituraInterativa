@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="2dp"
-        android:textColor="@color/ms_white"
+        android:textColor="@color/whiteBlack"
         android:textSize="@dimen/texto_label"
         android:fontFamily="@font/fredoka"
         app:checkedIcon="@drawable/ic_sucesso"

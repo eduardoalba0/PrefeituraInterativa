@@ -1117,6 +1117,7 @@ color tooltip_background_light
 color trans_success_stroke_color
 color warning_stroke_color
 color white
+color whiteBlack
 color whiteEE
 color whiteFA
 dimen abc_action_bar_content_inset_material
@@ -2066,6 +2067,7 @@ id right_side
 id rounded
 id row
 id row_reverse
+id rv_atendimentos
 id rv_categorias
 id rv_departamentos
 id rv_galeria
@@ -2265,6 +2267,7 @@ layout activity_solicitacao_visualizar
 layout activity_splash
 layout activity_usuario_redefinir_senha
 layout adapter_anexos
+layout adapter_atendimentos
 layout adapter_categorias
 layout adapter_departamento
 layout adapter_galeria

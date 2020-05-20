@@ -64,11 +64,11 @@
                         android:layout_centerInParent="true"
                         android:gravity="center"
                         android:text="@string/str_local"
-                        android:textColor="@color/white"
+                        android:textColor="@color/ms_white"
                         android:textSize="@dimen/texto_label"
                         app:icon="@drawable/ic_local"
                         app:iconGravity="textEnd"
-                        app:iconTint="@color/white" />
+                        app:iconTint="@color/ms_white" />
                 </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -94,7 +94,7 @@
                     android:gravity="start"
                     android:text="@string/str_imagens"
                     android:textColor="@color/colorRed"
-                    android:textSize="@dimen/texto_subtitulo" />
+                    android:textSize="@dimen/texto_botao" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_imagens"
@@ -137,7 +137,7 @@
                     android:gravity="start"
                     android:text="@string/str_topicos_selecionados"
                     android:textColor="@color/colorRed"
-                    android:textSize="@dimen/texto_subtitulo" />
+                    android:textSize="@dimen/texto_botao" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_categorias"

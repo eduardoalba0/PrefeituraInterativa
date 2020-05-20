@@ -15,7 +15,7 @@ import java.lang.Override;
 public class GaleriaAdapter$ViewHolder_ViewBinding implements Unbinder {
   private GaleriaAdapter.ViewHolder target;
 
-  private View view7f0900da;
+  private View view7f0900d6;
 
   @UiThread
   public GaleriaAdapter$ViewHolder_ViewBinding(final GaleriaAdapter.ViewHolder target,
@@ -25,7 +25,7 @@ public class GaleriaAdapter$ViewHolder_ViewBinding implements Unbinder {
     View view;
     view = Utils.findRequiredView(source, R.id.img_galeria, "field 'img_galeria' and method 'onClick'");
     target.img_galeria = Utils.castView(view, R.id.img_galeria, "field 'img_galeria'", ImageView.class);
-    view7f0900da = view;
+    view7f0900d6 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -43,7 +43,7 @@ public class GaleriaAdapter$ViewHolder_ViewBinding implements Unbinder {
 
     target.img_galeria = null;
 
-    view7f0900da.setOnClickListener(null);
-    view7f0900da = null;
+    view7f0900d6.setOnClickListener(null);
+    view7f0900d6 = null;
   }
 }

@@ -77,10 +77,10 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                     chip_solicitacao.setChipBackgroundColorResource(R.color.colorRed);
                     break;
                 case STYLE_BLUE:
-                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkBlue);
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkBlueWhite);
                     break;
                 case STYLE_GREEN:
-                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkGreen);
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkGreenWhite);
                     break;
             }
         }

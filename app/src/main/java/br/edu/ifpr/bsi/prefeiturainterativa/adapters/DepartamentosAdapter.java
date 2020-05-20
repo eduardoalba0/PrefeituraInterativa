@@ -21,6 +21,7 @@ import butterknife.OnClick;
 
 public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdapter.ViewHolder> {
 
+    private static final int STYLE_GREEN = 1, STYLE_BLUE = 2, STYLE_RED = 0;
     private Activity context;
     private List<Departamento> departamentos;
     private FragmentManager fm;
@@ -49,7 +50,8 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.setData(departamentos.get(position), position);
+        int style = (position + 1) % 3;
+        holder.setData(departamentos.get(position), style);
     }
 
     @Override
@@ -60,34 +62,36 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
     protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private Departamento departamento;
+        private int style;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
         @OnClick(R.id.tv_departamento)
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.tv_departamento:
-                    new DialogCategorias(departamento, editavel).show(fm, "TiposSolicitacao");
-                    break;
-            }
+            new DialogCategorias(departamento, editavel, style)
+                    .show(fm, "Categorias");
         }
 
-        public void setData(Departamento departamento, int posicao) {
+        public void setData(Departamento departamento, int style) {
             this.departamento = departamento;
+            this.style = style;
             tv_departamento.setText(departamento.getDescricao());
-            float pos = (float) posicao + 1;
-            if (pos % 3 == 0)
+            switch (style) {
+                case STYLE_RED:
                 l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_vermelho));
-            else if (pos % 2 == 0)
+                    break;
+                case STYLE_BLUE:
                 l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_azul));
-            else
+                    break;
+                case STYLE_GREEN:
                 l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_verde));
-
-
+                    break;
+            }
         }
 
         @BindView(R.id.tv_departamento)

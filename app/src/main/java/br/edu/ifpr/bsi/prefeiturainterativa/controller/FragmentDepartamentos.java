@@ -48,10 +48,10 @@ public class FragmentDepartamentos extends Fragment {
         depDAO.getAll().addOnSuccessListener(departamentosSnapshot -> {
             for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
                 Departamento departamento = depsnapshot.toObject(Departamento.class);
-                departamento.setTiposSolicitacao(new ArrayList<>());
+                departamento.setCategorias(new ArrayList<>());
                 categoriaDAO.getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
-                    departamento.setTiposSolicitacao(tipossolicitacaoSnapshot.toObjects(Categoria.class));
-                    if (departamento.getTiposSolicitacao() != null && !departamento.getTiposSolicitacao().isEmpty())
+                    departamento.setCategorias(tipossolicitacaoSnapshot.toObjects(Categoria.class));
+                    if (departamento.getCategorias() != null && !departamento.getCategorias().isEmpty())
                         departamentos.add(departamento);
                     rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager(), false));
                 });

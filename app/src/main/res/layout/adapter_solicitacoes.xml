@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/espaco_muito_pequeno">
+    android:layout_marginTop="@dimen/espaco_pequeno">
 
     <TextView
         android:id="@+id/tv_data"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="@dimen/espaco_medio">
+        app:cardCornerRadius="@dimen/raio_circulo_medio">
 
         <RelativeLayout
             android:layout_width="match_parent"
