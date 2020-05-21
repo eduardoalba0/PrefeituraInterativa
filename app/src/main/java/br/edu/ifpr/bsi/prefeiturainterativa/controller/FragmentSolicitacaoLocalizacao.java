@@ -9,7 +9,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,12 +28,13 @@ import com.google.android.gms.location.LocationSettingsResponse;
 import com.google.android.gms.location.LocationSettingsStates;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
@@ -61,17 +64,15 @@ import permissions.dispatcher.PermissionRequest;
 import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
-public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
-        OnMapReadyCallback, View.OnClickListener {
+public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, View.OnClickListener,
+        OnFailureListener, OnSuccessListener<LocationSettingsResponse> {
 
-    private static final float MAP_ZOOM = 17.0f;
-    private static final int RC_LOCAL = 111;
+    public static final int RC_LOCAL = 111;
 
     private FirebaseHelper helper;
     private GoogleMap map_view;
     private Marker map_marker;
     private Geocoder geocoder;
-
     private ViewModelsHelper viewModel;
     private Solicitacao solicitacao;
 
@@ -80,7 +81,9 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_solicitacao_localizacao, container, false);
         ButterKnife.bind(this, view);
-        solicitacao = new Solicitacao();
+        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        solicitacao = viewModel.getObjetoSolicitacao();
+        helper = new FirebaseHelper(getActivity());
         initMap();
         return view;
     }
@@ -91,91 +94,91 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
         switch (view.getId()) {
             case R.id.bt_remover:
                 map_view.clear();
+                map_marker = null;
                 tv_marcadorSelecionado.setText(R.string.str_marcadorNaoSelecionado);
                 bt_remover.setVisibility(View.GONE);
                 break;
         }
     }
 
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        map_view = googleMap;
-        map_view.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        map_view.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-26.484335, -51.991754), MAP_ZOOM));
-        map_view.setOnMapClickListener(latLng -> {
-            map_view.stopAnimation();
-            map_view.clear();
-            map_marker = map_view.addMarker(new MarkerOptions()
-                    .position(latLng));
-            map_marker.setTitle((getEndereco(latLng.latitude, latLng.longitude)));
-        });
-        map_view.setOnMyLocationClickListener(location -> {
-            map_view.stopAnimation();
-            map_view.clear();
-            map_marker = map_view.addMarker(new MarkerOptions()
-                    .position(new LatLng(location.getLatitude(), location.getLongitude())));
-            map_marker.setTitle((getEndereco(location.getLatitude(), location.getLongitude())));
-        });
-        FragmentSolicitacaoLocalizacaoPermissionsDispatcher.updateLocationWithPermissionCheck(this);
-    }
-
     @NeedsPermission({Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION})
     public void updateLocation() {
+        map_view.setMyLocationEnabled(true);
+        map_view.getUiSettings().setMyLocationButtonEnabled(true);
         LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
                 .addLocationRequest(LocationRequest.create()
                         .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-                        .setInterval(1000)
+                        .setInterval(2000)
                         .setFastestInterval(1000));
-
-        Task<LocationSettingsResponse> result = LocationServices
+        LocationServices
                 .getSettingsClient(getActivity())
-                .checkLocationSettings(builder.build());
+                .checkLocationSettings(builder.build())
+                .addOnSuccessListener(getActivity(), this)
+                .addOnFailureListener(getActivity(), this);
+    }
 
-        result.addOnSuccessListener(getActivity(), locationSettingsResponse -> {
-            LocationSettingsStates status = locationSettingsResponse.getLocationSettingsStates();
-            if (status.isLocationPresent()) {
-                map_view.setMyLocationEnabled(true);
-                FusedLocationProviderClient locationProvider = LocationServices.getFusedLocationProviderClient(getActivity());
+    @Override
+    public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+        LocationSettingsStates status = locationSettingsResponse.getLocationSettingsStates();
+        if (status.isLocationPresent()) {
+            FusedLocationProviderClient locationProvider = LocationServices.getFusedLocationProviderClient(getActivity());
                 locationProvider.getLastLocation().addOnSuccessListener(getActivity(), location -> {
                     if (location != null) {
-                        map_view.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), MAP_ZOOM));
+                        map_view.moveCamera(CameraUpdateFactory
+                                .newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 17f));
                     }
                 });
+        }
+    }
+
+    @Override
+    public void onFailure(@NonNull Exception e) {
+        int statusCode = ((ApiException) e).getStatusCode();
+        if (statusCode == CommonStatusCodes.RESOLUTION_REQUIRED)
+            try {
+                ResolvableApiException resolvable = (ResolvableApiException) e;
+                startIntentSenderForResult(resolvable.getResolution().getIntentSender(),
+                        RC_LOCAL,
+                        null,
+                        0,
+                        0,
+                        0,
+                        null);
+            } catch (IntentSender.SendIntentException sendEx) {
             }
-        }).addOnFailureListener(getActivity(), e -> {
-            int statusCode = ((ApiException) e).getStatusCode();
-            if (statusCode == CommonStatusCodes.RESOLUTION_REQUIRED)
-                try {
-                    ResolvableApiException resolvable = (ResolvableApiException) e;
-                    resolvable.startResolutionForResult(getActivity(), RC_LOCAL);
-                } catch (IntentSender.SendIntentException sendEx) {
-                }
+    }
+
+    public void initMap() {
+        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(googleMap -> {
+            map_view = googleMap;
+            map_view.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            map_view.moveCamera(CameraUpdateFactory
+                    .newLatLngZoom(new LatLng(-26.484335, -51.991754), 17f));
+
+            map_view.setOnMapClickListener(latLng -> {
+                map_view.clear();
+                map_marker = map_view.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title((getEndereco(latLng.latitude, latLng.longitude)))
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+            });
+
+            map_view.setOnMyLocationClickListener(location -> {
+                map_view.clear();
+                map_marker = map_view.addMarker(new MarkerOptions()
+                        .position(new LatLng(location.getLatitude(), location.getLongitude()))
+                        .title((getEndereco(location.getLatitude(), location.getLongitude())))
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
+            });
+
+            map_view.setOnMyLocationButtonClickListener(() -> {
+                FragmentSolicitacaoLocalizacaoPermissionsDispatcher.updateLocationWithPermissionCheck(this);
+                return true;
+            });
+            FragmentSolicitacaoLocalizacaoPermissionsDispatcher.updateLocationWithPermissionCheck(this);
         });
-    }
-
-    @Nullable
-    @Override
-    public VerificationError verifyStep() {
-        if (map_marker == null || map_marker.getPosition() == null)
-            return new VerificationError(getString(R.string.str_local_nao_informado));
-        solicitacao.setLatitude(map_marker.getPosition().latitude);
-        solicitacao.setLongitude(map_marker.getPosition().longitude);
-        solicitacao.setEndereco(map_marker.getTitle());
-        viewModel.postSolicitacao(solicitacao);
-        return null;
-    }
-
-    @Override
-    public void onSelected() {
-
-    }
-
-    @Override
-    public void onError(@NonNull VerificationError error) {
-        Snackbar.make(getView(), error.getErrorMessage(), BaseTransientBottomBar.LENGTH_LONG)
-                .setBackgroundTint(getResources().getColor(R.color.ms_errorColor))
-                .setTextColor(getResources().getColor(R.color.ms_white))
-                .show();
     }
 
     public String getEndereco(double latitude, double longitude) {
@@ -202,25 +205,16 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
         return endereco;
     }
 
-    public void initMap() {
-        SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager()
-                .findFragmentById(R.id.map);
-
-        mapFragment.getMapAsync(this);
-        viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
-        solicitacao = viewModel.getObjetoSolicitacao();
-        helper = new FirebaseHelper(getActivity());
-    }
-
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK)
+        if (resultCode == Activity.RESULT_OK) {
             switch (requestCode) {
                 case RC_LOCAL:
                     FragmentSolicitacaoLocalizacaoPermissionsDispatcher.updateLocationWithPermissionCheck(this);
                     break;
             }
+        }
     }
 
     @Override
@@ -260,6 +254,32 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step,
                 })
                 .show();
     }
+
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        if (map_marker == null || map_marker.getPosition() == null)
+            return new VerificationError(getString(R.string.str_local_nao_informado));
+        solicitacao.setLatitude(map_marker.getPosition().latitude);
+        solicitacao.setLongitude(map_marker.getPosition().longitude);
+        solicitacao.setEndereco(map_marker.getTitle());
+        viewModel.postSolicitacao(solicitacao);
+        return null;
+    }
+
+    @Override
+    public void onError(@NonNull VerificationError error) {
+        Snackbar.make(getView(), error.getErrorMessage(), BaseTransientBottomBar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.ms_errorColor))
+                .setTextColor(getResources().getColor(R.color.ms_white))
+                .show();
+    }
+
+    @Override
+    public void onSelected() {
+
+    }
+
     @BindView(R.id.tv_marcadorSelecionado)
     TextView tv_marcadorSelecionado;
 

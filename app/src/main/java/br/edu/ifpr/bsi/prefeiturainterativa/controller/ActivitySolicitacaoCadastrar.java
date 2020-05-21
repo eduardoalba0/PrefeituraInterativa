@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
@@ -96,16 +95,6 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements St
                 .show();
     }
 
-    @Override
-    public void onStepSelected(int newStepPosition) {
-
-    }
-
-    @Override
-    public void onReturn() {
-
-    }
-
     public void initStepper() {
         cat_solDAO = new Categorias_SolicitacaoDAO(this);
         solicitacaoDAO = new SolicitacaoDAO(this);
@@ -125,6 +114,16 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements St
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(ActivitySolicitacaoCadastrar.this, stepperLayout, "splash_transition");
         startActivity(intent, options.toBundle());
+    }
+
+    @Override
+    public void onStepSelected(int newStepPosition) {
+
+    }
+
+    @Override
+    public void onReturn() {
+
     }
 
     @BindView(R.id.stepperLayout)
