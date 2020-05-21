@@ -45,7 +45,7 @@
         android:layout_marginTop="@dimen/espaco_pequeno"
         android:paddingStart="@dimen/espaco_medio"
         android:paddingEnd="@dimen/espaco_medio"
-        android:text="@string/str_continuar"
+        android:text="@string/dialog_ok"
         android:textColor="@color/colorRed"
         android:textSize="@dimen/texto_botao"
         android:visibility="visible"

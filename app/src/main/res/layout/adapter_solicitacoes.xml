@@ -18,12 +18,11 @@
         android:textColor="@color/ms_white"
         android:textSize="@dimen/texto_label" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_solicitacao"
         android:transitionName="solicitacao_transition"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/raio_circulo_medio">
 
         <RelativeLayout
@@ -49,5 +48,5 @@
                 android:layout_marginStart="@dimen/espaco_muito_pequeno"
                 android:layout_toEndOf="@id/img_solicitacao" />
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
