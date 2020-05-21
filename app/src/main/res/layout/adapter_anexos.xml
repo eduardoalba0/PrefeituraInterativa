@@ -10,8 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/whiteFA"
-        android:elevation="5dp"
-        android:padding="@dimen/espaco_muito_pequeno">
+        android:elevation="5dp">
 
         <ImageView
             android:id="@+id/img_anexo"
@@ -29,6 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/img_anexo"
             android:text="@string/str_remover"
             android:textColor="@color/colorRed"
             android:textSize="@dimen/texto_label"

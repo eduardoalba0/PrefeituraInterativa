@@ -18,7 +18,7 @@ public class DialogViewer_ViewBinding implements Unbinder {
 
   private View view7f090058;
 
-  private View view7f090062;
+  private View view7f090063;
 
   @UiThread
   public DialogViewer_ViewBinding(final DialogViewer target, View source) {
@@ -37,7 +37,7 @@ public class DialogViewer_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_recusar, "field 'bt_recusar' and method 'onClick'");
     target.bt_recusar = Utils.castView(view, R.id.bt_recusar, "field 'bt_recusar'", FloatingActionButton.class);
-    view7f090062 = view;
+    view7f090063 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -59,7 +59,7 @@ public class DialogViewer_ViewBinding implements Unbinder {
 
     view7f090058.setOnClickListener(null);
     view7f090058 = null;
-    view7f090062.setOnClickListener(null);
-    view7f090062 = null;
+    view7f090063.setOnClickListener(null);
+    view7f090063 = null;
   }
 }

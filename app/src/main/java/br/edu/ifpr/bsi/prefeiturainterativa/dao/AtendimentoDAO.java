@@ -5,12 +5,14 @@ import android.app.Activity;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Atendimento;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 
 public class AtendimentoDAO {
 
@@ -41,7 +43,9 @@ public class AtendimentoDAO {
         return helper.get(reference.document(atendimento.get_ID()));
     }
 
-    public Task<QuerySnapshot> getAll() {
-        return helper.getAll(reference);
+    public Task<QuerySnapshot> getAllBySolicitacao(Solicitacao solicitacao) {
+        return helper.getQuery(reference
+                .whereEqualTo("solicitacao_ID", solicitacao.get_ID())
+                .orderBy("data", Query.Direction.ASCENDING));
     }
 }

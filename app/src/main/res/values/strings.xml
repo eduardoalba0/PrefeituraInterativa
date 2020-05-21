@@ -97,5 +97,6 @@
     <string name="str_erro_db_permissao_consultar">Você não possui permissão para acessar esta coleção.</string>
     <string name="str_falha_consultar_db">Falha na consulta ao banco de dados, consulte o suporte do sistema.</string>
     <string name="str_helper_anonimo">Somente você consegue ver o sua identificação.</string>
-    <string name="str_demanda_cadastrada">DEMANDA CADASTRADA NO SISTEMA.</string>
+    <string name="str_demanda_cadastrada">DEMANDA CADASTRADA.</string>
+    <string name="str_nenhuma_imagem">Nenhuma imagem inserida.</string>
 </resources>

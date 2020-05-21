@@ -1,7 +1,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.helpers;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -93,6 +92,7 @@ public class DatabaseHelper {
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_consultar_db))
                             .show();
+
 
         });
     }
