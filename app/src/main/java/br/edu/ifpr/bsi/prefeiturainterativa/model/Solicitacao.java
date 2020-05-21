@@ -139,6 +139,10 @@ public class Solicitacao implements Serializable {
         return data;
     }
 
+    public void setData(Date data) {
+        this.data = data;
+    }
+
     public String getDepartamento_ID() {
         return departamento_ID;
     }
