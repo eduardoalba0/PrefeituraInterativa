@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -50,28 +51,35 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
         return atendimentos.size();
     }
 
-    protected class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected class ViewHolder extends RecyclerView.ViewHolder {
 
         private Atendimento atendimento;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View view) {
-            //abrir dialog ampliando resposta
         }
 
         public void setData(Atendimento atendimento) {
             this.atendimento = atendimento;
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
             tv_data.setText(df.format(atendimento.getData()));
-            edt_descricao.setText(atendimento.getResposta());
-            edl_autor.setHelperText(atendimento.getFuncionario().getDepartamento().getDescricao());
-            edl_autor.setHint(atendimento.getFuncionario().getUsuario().getNome());
+
+            if (atendimento.getResposta().trim().isEmpty())
+                card_resposta.setVisibility(View.GONE);
+            else {
+                edt_descricao.setText(atendimento.getResposta());
+                edl_autor.setHelperText(atendimento.getFuncionario().getDepartamento().getDescricao());
+                edl_autor.setHint(atendimento.getFuncionario().getUsuario().getNome());
+            }
+
+            if (atendimento.getAcao().trim().isEmpty())
+                tv_acao.setVisibility(View.GONE);
+            else {
+                tv_acao.setVisibility(View.VISIBLE);
+                tv_acao.setText(atendimento.getAcao());
+            }
+
         }
 
         @BindView(R.id.edl_autor)
@@ -82,5 +90,11 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
 
         @BindView(R.id.tv_data)
         TextView tv_data;
+
+        @BindView(R.id.tv_acao)
+        TextView tv_acao;
+
+        @BindView(R.id.card_resposta)
+        MaterialCardView card_resposta;
     }
 }

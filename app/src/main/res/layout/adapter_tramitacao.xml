@@ -18,7 +18,8 @@
         android:textColor="@color/ms_white"
         android:textSize="@dimen/texto_label" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_resposta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:transitionName="solicitacao_transition"
@@ -52,5 +53,13 @@
                     android:textSize="@dimen/texto_label" />
             </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tv_acao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/espaco_medio"
+        android:gravity="center"
+        android:textSize="@dimen/texto_label" />
 </LinearLayout>

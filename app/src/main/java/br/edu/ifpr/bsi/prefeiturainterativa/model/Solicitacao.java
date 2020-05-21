@@ -10,6 +10,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+
 public class Solicitacao implements Serializable {
 
     private String _ID;
@@ -191,6 +193,7 @@ public class Solicitacao implements Serializable {
         return Objects.hash(_ID);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return this.descricao;
