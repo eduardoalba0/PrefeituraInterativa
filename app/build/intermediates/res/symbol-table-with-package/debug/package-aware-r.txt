@@ -908,6 +908,7 @@ color colorOrange
 color colorOrangeWhite
 color colorPink
 color colorRed
+color colorSuccess
 color color_states_switch
 color common_google_signin_btn_text_dark
 color common_google_signin_btn_text_dark_default
@@ -1209,6 +1210,7 @@ dimen buttons_stroke_width
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
+dimen cardview_margin
 dimen common_circle_width
 dimen compat_button_inset_horizontal_material
 dimen compat_button_inset_vertical_material
@@ -1291,6 +1293,7 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen info_text_size
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
@@ -1639,6 +1642,7 @@ drawable green_button_background
 drawable ic_add
 drawable ic_adicionar_foto
 drawable ic_adicionar_galeria
+drawable ic_ajuda
 drawable ic_calendar_black_24dp
 drawable ic_cancelar
 drawable ic_clear_black_24dp
@@ -1670,6 +1674,8 @@ drawable ic_sucesso
 drawable ic_trocar_camera
 drawable ic_usuario
 drawable ic_voltar
+drawable icon_dotview
+drawable icon_question
 drawable image_placeholder
 drawable ms_animated_vector_circle_to_warning_24dp
 drawable ms_animated_vector_warning_to_circle_24dp
@@ -1827,6 +1833,7 @@ id bt_foto
 id bt_localizacao
 id bt_login
 id bt_loginGoogle
+id bt_offline
 id bt_recuperarSenha
 id bt_recusar
 id bt_redefinir
@@ -1841,8 +1848,12 @@ id buttons_container
 id cancel_action
 id cancel_button
 id card_content_root
+id card_pendentes
+id card_perfil
+id card_resposta
 id card_root
 id card_solicitacao
+id card_view
 id center
 id center_horizontal
 id center_vertical
@@ -1889,6 +1900,7 @@ id direct
 id disableHome
 id disabled_bottom_navigation
 id disabled_content_interaction
+id dotView
 id dots
 id dropdown_menu
 id edit_query
@@ -1944,6 +1956,7 @@ id image
 id image_content_root
 id image_root
 id image_view
+id imageview_icon
 id img_anexo
 id img_app
 id img_galeria
@@ -1951,6 +1964,7 @@ id img_solicitacao
 id img_usuario
 id img_viewer
 id info
+id info_layout
 id invisible
 id italic
 id item_touch_helper_previous_elevation
@@ -1960,10 +1974,10 @@ id l_footer
 id l_gradient
 id l_header
 id l_login
-id l_perfil
 id l_redefinicao
 id labeled
 id largeLabel
+id layout_info_main
 id left
 id light
 id line1
@@ -2159,6 +2173,7 @@ id text_input_start_icon
 id textinput_counter
 id textinput_error
 id textinput_helper_text
+id textview_info
 id time
 id title
 id titleDividerNoCustom
@@ -2172,6 +2187,7 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_acao
 id tv_data
 id tv_departamento
 id tv_hintCategoria
@@ -2303,6 +2319,7 @@ layout dialog_selector
 layout dialog_selector_camera
 layout dialog_selector_galeria
 layout dialog_viewer
+layout dotview
 layout fragment_departamentos
 layout fragment_inicio
 layout fragment_perfil
@@ -2314,6 +2331,7 @@ layout fragment_solicitacao_tramitacao
 layout fragment_solicitacoes
 layout fragment_tab_solicitacoes
 layout image
+layout material_intro_card
 layout modal
 layout modal_portrait_inner
 layout ms_dot
@@ -2512,6 +2530,7 @@ string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
 string str_adicionar
+string str_aguardando_conexao
 string str_anonimo
 string str_atualizar
 string str_cadastrando_demanda
@@ -2523,6 +2542,7 @@ string str_camera
 string str_cancelar
 string str_carregando
 string str_carregando_cadastro
+string str_carregando_demandas
 string str_categoria_hint
 string str_categoria_nao_selecionada
 string str_clique_link_email
@@ -2576,6 +2596,7 @@ string str_local_nao_informado
 string str_marcadorNaoSelecionado
 string str_marcadorSelecionado
 string str_minhas_demandas
+string str_modo_offline
 string str_nenhuma_imagem
 string str_never_ask_gps
 string str_never_ask_imagens

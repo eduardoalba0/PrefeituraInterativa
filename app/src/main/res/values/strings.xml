@@ -99,4 +99,7 @@
     <string name="str_helper_anonimo">Somente você consegue ver o sua identificação.</string>
     <string name="str_demanda_cadastrada">DEMANDA CADASTRADA.</string>
     <string name="str_nenhuma_imagem">Nenhuma imagem inserida.</string>
+    <string name="str_aguardando_conexao">Aguardando Conexão</string>
+    <string name="str_modo_offline">Modo Offline - Utilizando dados em cache.</string>
+    <string name="str_carregando_demandas">Enviando Solicitações pendentes...</string>
 </resources>

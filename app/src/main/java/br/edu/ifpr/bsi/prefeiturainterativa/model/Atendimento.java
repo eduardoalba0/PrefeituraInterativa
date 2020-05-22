@@ -11,6 +11,7 @@ public class Atendimento implements Serializable {
 
     private String _ID;
     private String resposta;
+    private String acao;
     private String funcionario_ID;
     private String solicitacao_ID;
 
@@ -37,6 +38,14 @@ public class Atendimento implements Serializable {
 
     public void setResposta(String resposta) {
         this.resposta = resposta;
+    }
+
+    public String getAcao() {
+        return acao;
+    }
+
+    public void setAcao(String acao) {
+        this.acao = acao;
     }
 
     public String getFuncionario_ID() {

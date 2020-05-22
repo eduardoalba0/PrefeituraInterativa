@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -37,12 +38,20 @@ import butterknife.ButterKnife;
 
 public class FragmentSolicitacaoTramitacao extends Fragment {
 
+    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
+
     private Solicitacao solicitacao;
     private AtendimentoDAO dao;
-    private FirebaseHelper helper;
+    private int estilo;
 
     public FragmentSolicitacaoTramitacao(Solicitacao solicitacao) {
         this.solicitacao = solicitacao;
+        this.estilo = STYLE_NORMAL;
+    }
+
+    public FragmentSolicitacaoTramitacao(Solicitacao solicitacao, int estilo) {
+        this.solicitacao = solicitacao;
+        this.estilo = estilo;
     }
 
     @Nullable
@@ -56,9 +65,21 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
     }
 
     private void preencherCampos() {
-        helper = new FirebaseHelper(getActivity());
-        DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
-        tv_data.setText(df.format(solicitacao.getData()));
+        FirebaseHelper helper = new FirebaseHelper(getActivity());
+
+        switch (estilo) {
+            case STYLE_PENDENTE:
+                card_solicitacao.setVisibility(View.GONE);
+                tv_data.setVisibility(View.GONE);
+                return;
+            case STYLE_NORMAL:
+                card_solicitacao.setVisibility(View.VISIBLE);
+                tv_data.setVisibility(View.VISIBLE);
+                DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
+                tv_data.setText(df.format(solicitacao.getData()));
+                break;
+        }
+
         if (solicitacao.isAnonima())
             edl_autor.setHint(helper.getUser().getDisplayName() + "(Anônimo)");
         else
@@ -114,4 +135,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
 
     @BindView(R.id.rv_atendimentos)
     RecyclerView rv_atendimentos;
+
+    @BindView(R.id.card_solicitacao)
+    MaterialCardView card_solicitacao;
 }

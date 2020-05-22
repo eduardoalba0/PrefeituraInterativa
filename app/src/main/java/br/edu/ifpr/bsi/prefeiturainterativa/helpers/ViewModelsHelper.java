@@ -87,4 +87,17 @@ public class ViewModelsHelper extends ViewModel {
     public List<Categoria> getListCategorias() {
         return categorias;
     }
+
+    public void removeAll() {
+        solicitacaoLiveData = new MutableLiveData<>();
+        imagemLiveData = new MutableLiveData<>();
+        imagensLiveData = new MutableLiveData<>();
+        categoriasLiveData = new MutableLiveData<>();
+        solicitacao = new Solicitacao();
+        imagens = new ArrayList<>();
+        categorias = new ArrayList<>();
+        solicitacaoLiveData.postValue(solicitacao);
+        imagensLiveData.postValue(imagens);
+        categoriasLiveData.postValue(categorias);
+    }
 }

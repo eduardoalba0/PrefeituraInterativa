@@ -1,7 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import android.net.Uri;
-
 import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.ServerTimestamp;
 
@@ -32,9 +30,9 @@ public class Solicitacao implements Serializable {
     @Exclude
     private Usuario usuario;
     @Exclude
-    private List<Uri> localUriImagens;
-    @Exclude
     private List<Categoria> localCategorias;
+    @Exclude
+    private List<String> localCaminhoImagens;
     @Exclude
     Departamento departamento;
 
@@ -104,15 +102,6 @@ public class Solicitacao implements Serializable {
         this.urlImagens = urlImagens;
     }
 
-    @Exclude
-    public List<Uri> getLocalUriImagens() {
-        return localUriImagens;
-    }
-
-    public void setLocalUriImagens(List<Uri> localUriImagens) {
-        this.localUriImagens = localUriImagens;
-    }
-
     public Double getAvaliacao_nota() {
         return avaliacao_nota;
     }
@@ -169,6 +158,14 @@ public class Solicitacao implements Serializable {
 
     public void setLocalCategorias(List<Categoria> localCategorias) {
         this.localCategorias = localCategorias;
+    }
+
+    public List<String> getLocalCaminhoImagens() {
+        return localCaminhoImagens;
+    }
+
+    public void setLocalCaminhoImagens(List<String> localCaminhoImagens) {
+        this.localCaminhoImagens = localCaminhoImagens;
     }
 
     @Exclude

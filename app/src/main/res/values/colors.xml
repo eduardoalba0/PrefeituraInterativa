@@ -16,4 +16,5 @@
     <color name="whiteEE">#EEEEEE</color>
     <color name="blackWhite">#070707</color>
     <color name="whiteBlack">#FFFFFF</color>
+    <color name="colorSuccess">#00695C</color>
 </resources>

@@ -8,59 +8,79 @@
     android:fitsSystemWindows="true"
     tools:context=".controller.ActivityOverview">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager_overview"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/tab_overview"
-        android:scrollbars="vertical" />
+        android:layout_above="@id/bt_offline">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_overview"
-        android:layout_gravity="bottom"
-        style="@style/Widget.MaterialComponents.TabLayout.Colored"
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager_overview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/tab_overview"
+            android:scrollbars="vertical" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_overview"
+            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/componente_muito_pequeno"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_toStartOf="@+id/bt_foto"
+            android:background="@color/float_transparent"
+            app:tabGravity="fill"
+            app:tabIconTint="@color/white"
+            app:tabIndicatorColor="@color/white">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_inicio" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_departamento" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_solicitacoes" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_usuario" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/bt_foto"
+            style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/espaco_pequeno"
+            android:layout_marginBottom="@dimen/espaco_muito_pequeno"
+            android:src="@drawable/ic_add"
+            android:transitionName="splash_transition"
+            app:backgroundTint="@color/white"
+            app:fabSize="normal" />
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_offline"
+        style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/componente_muito_pequeno"
-        android:layout_toStartOf="@+id/bt_foto"
-        android:layout_alignParentBottom="true"
-        android:background="@color/float_transparent"
-        app:tabGravity="fill"
-        app:tabIconTint="@color/white"
-        app:tabIndicatorColor="@color/white">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_inicio" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_departamento" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_solicitacoes" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/ic_usuario" />
-
-    </com.google.android.material.tabs.TabLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/bt_foto"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton.Icon"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/ic_add"
-        android:layout_marginBottom="@dimen/espaco_muito_pequeno"
-        app:fabSize="normal"
-        android:layout_marginEnd="@dimen/espaco_pequeno"
-        android:transitionName="splash_transition"
-        app:backgroundTint="@color/white" />
+        android:gravity="center_vertical"
+        android:text="@string/str_modo_offline"
+        android:textAllCaps="false"
+        android:textColor="@color/ms_white"
+        android:visibility="gone"
+        app:backgroundTint="@color/ms_black_87_opacity"
+ />
 </RelativeLayout>

@@ -101,6 +101,30 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         }
     }
 
+    private void preencherCampos() {
+        usuario = new Usuario();
+        usuario.set_ID(helper.getUser().getUid());
+        Task<DocumentSnapshot> task = dao.get(usuario);
+
+        if (task != null) {
+            task.addOnSuccessListener(getActivity(), documentSnapshot -> {
+                usuario = documentSnapshot.toObject(Usuario.class);
+                if (usuario != null) {
+                    tv_usuario.setText(usuario.getNome());
+                    edt_nome.setText(usuario.getNome());
+                    edt_email.setText(usuario.getEmail());
+                    edt_cpf.setText(usuario.getCpf());
+                    if (helper.getUser().getPhotoUrl() != null)
+                        Glide.with(this)
+                                .load(helper.getUser().getPhotoUrl())
+                                .placeholder(R.drawable.ic_adicionar_foto)
+                                .circleCrop()
+                                .into(img_usuario);
+                    dialog.dismiss();
+                }
+            });
+        }
+    }
     @Override
     public void onValidationSucceeded() {
         edl_nome.setError(null);
@@ -211,31 +235,6 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
                 .show();
     }
 
-    private void preencherCampos() {
-        usuario = new Usuario();
-        usuario.set_ID(helper.getUser().getUid());
-        Task<DocumentSnapshot> task = dao.get(usuario);
-
-        if (task != null) {
-            task.addOnSuccessListener(getActivity(), documentSnapshot -> {
-                usuario = documentSnapshot.toObject(Usuario.class);
-                if (usuario != null) {
-                    tv_usuario.setText(usuario.getNome());
-                    edt_nome.setText(usuario.getNome());
-                    edt_email.setText(usuario.getEmail());
-                    edt_cpf.setText(usuario.getCpf());
-                    if (helper.getUser().getPhotoUrl() != null)
-                        Glide.with(this)
-                                .load(helper.getUser().getPhotoUrl())
-                                .placeholder(R.drawable.ic_adicionar_foto)
-                                .circleCrop()
-                                .into(img_usuario);
-                    dialog.dismiss();
-                }
-            });
-        }
-    }
-
     @NotEmpty(message = "Campo obrigatório.", trim = true)
     @Length(min = 8, message = "Seu nome está inválido")
     @BindView(R.id.edt_nome)
@@ -269,7 +268,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
     @BindView(R.id.view_root)
     View view_root;
 
-    @BindView(R.id.l_perfil)
+    @BindView(R.id.card_perfil)
     View l_perfil;
 
     @BindView(R.id.edl_nome)

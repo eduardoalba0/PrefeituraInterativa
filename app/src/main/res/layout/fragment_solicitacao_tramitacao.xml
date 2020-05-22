@@ -20,7 +20,8 @@
             android:textColor="@color/ms_white"
             android:textSize="@dimen/texto_label" />
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_solicitacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/espaco_muito_pequeno"
@@ -70,7 +71,7 @@
                     android:contentDescription="@string/str_perfil"
                     android:src="@drawable/ic_usuario" />
             </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_atendimentos"
         android:layout_width="match_parent"

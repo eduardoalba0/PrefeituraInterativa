@@ -21,7 +21,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
 
   private View view7f09005b;
 
-  private View view7f090066;
+  private View view7f090067;
 
   @UiThread
   public ActivityCompletarCadastro_ViewBinding(ActivityCompletarCadastro target) {
@@ -47,7 +47,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_sair, "field 'bt_sair' and method 'onClick'");
     target.bt_sair = Utils.castView(view, R.id.bt_sair, "field 'bt_sair'", Button.class);
-    view7f090066 = view;
+    view7f090067 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -80,7 +80,7 @@ public class ActivityCompletarCadastro_ViewBinding implements Unbinder {
 
     view7f09005b.setOnClickListener(null);
     view7f09005b = null;
-    view7f090066.setOnClickListener(null);
-    view7f090066 = null;
+    view7f090067.setOnClickListener(null);
+    view7f090067 = null;
   }
 }

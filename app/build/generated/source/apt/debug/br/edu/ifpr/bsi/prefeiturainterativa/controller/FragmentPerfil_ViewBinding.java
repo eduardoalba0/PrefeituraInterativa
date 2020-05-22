@@ -19,11 +19,11 @@ import java.lang.Override;
 public class FragmentPerfil_ViewBinding implements Unbinder {
   private FragmentPerfil target;
 
-  private View view7f0900db;
+  private View view7f0900e2;
 
-  private View view7f090066;
+  private View view7f090067;
 
-  private View view7f090064;
+  private View view7f090065;
 
   private View view7f09005a;
 
@@ -37,7 +37,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.edt_email = Utils.findRequiredViewAsType(source, R.id.edt_email, "field 'edt_email'", TextInputEditText.class);
     view = Utils.findRequiredView(source, R.id.img_usuario, "field 'img_usuario' and method 'onClick'");
     target.img_usuario = Utils.castView(view, R.id.img_usuario, "field 'img_usuario'", ImageView.class);
-    view7f0900db = view;
+    view7f0900e2 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -47,7 +47,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.tv_usuario = Utils.findRequiredViewAsType(source, R.id.tv_usuario, "field 'tv_usuario'", TextView.class);
     view = Utils.findRequiredView(source, R.id.bt_sair, "field 'bt_sair' and method 'onClick'");
     target.bt_sair = Utils.castView(view, R.id.bt_sair, "field 'bt_sair'", Button.class);
-    view7f090066 = view;
+    view7f090067 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -56,7 +56,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_redefinir, "field 'bt_redefinir' and method 'onClick'");
     target.bt_redefinir = Utils.castView(view, R.id.bt_redefinir, "field 'bt_redefinir'", Button.class);
-    view7f090064 = view;
+    view7f090065 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -73,7 +73,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
       }
     });
     target.view_root = Utils.findRequiredView(source, R.id.view_root, "field 'view_root'");
-    target.l_perfil = Utils.findRequiredView(source, R.id.l_perfil, "field 'l_perfil'");
+    target.l_perfil = Utils.findRequiredView(source, R.id.card_perfil, "field 'l_perfil'");
     target.edl_nome = Utils.findRequiredViewAsType(source, R.id.edl_nome, "field 'edl_nome'", TextInputLayout.class);
     target.edl_cpf = Utils.findRequiredViewAsType(source, R.id.edl_cpf, "field 'edl_cpf'", TextInputLayout.class);
     target.edl_email = Utils.findRequiredViewAsType(source, R.id.edl_email, "field 'edl_email'", TextInputLayout.class);
@@ -100,12 +100,12 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.edl_cpf = null;
     target.edl_email = null;
 
-    view7f0900db.setOnClickListener(null);
-    view7f0900db = null;
-    view7f090066.setOnClickListener(null);
-    view7f090066 = null;
-    view7f090064.setOnClickListener(null);
-    view7f090064 = null;
+    view7f0900e2.setOnClickListener(null);
+    view7f0900e2 = null;
+    view7f090067.setOnClickListener(null);
+    view7f090067 = null;
+    view7f090065.setOnClickListener(null);
+    view7f090065 = null;
     view7f09005a.setOnClickListener(null);
     view7f09005a = null;
   }

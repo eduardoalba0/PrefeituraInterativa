@@ -203,12 +203,6 @@ public class FirebaseHelper {
     }
 
     public Task<Uri> carregarAnexos(Uri uri) {
-        if (!conexaoAtivada()) {
-            new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_carregar_imagem))
-                    .show();
-            return null;
-        }
         StorageReference upload = storage.child("Solicitacoes").child(getUser().getUid()).child(System.currentTimeMillis() + ".jpg");
         return upload.putFile(uri).continueWithTask(task -> {
             if (!task.isSuccessful()) throw task.getException();
