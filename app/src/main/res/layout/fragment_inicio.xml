@@ -6,41 +6,80 @@
     android:layout_height="match_parent"
     android:transitionName="base_transition">
 
-    <RelativeLayout
-        android:id="@+id/l_perfil"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/espaco_pequeno"
-        android:background="@drawable/shape_quadrado_arr_branco"
-        android:elevation="5dp"
-        android:padding="3dp">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/espaco_muito_pequeno">
 
-        <ImageView
-            android:id="@+id/img_usuario"
-            android:layout_width="@dimen/componente_muito_pequeno"
-            android:layout_height="@dimen/componente_muito_pequeno"
-            android:layout_marginStart="10dp"
-            android:layout_centerVertical="true"
-            android:background="@drawable/shape_circulo_branco"
-            android:contentDescription="@string/str_perfil"
-            android:src="@drawable/ic_usuario" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/bt_usuario"
-            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_perfil"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/espaco_pequeno"
-            android:layout_toEndOf="@id/img_usuario"
-            android:gravity="center_vertical"
-            android:textColor="@color/colorDarkOrange"
-            android:textSize="@dimen/texto_label"
-            app:icon="@drawable/ic_proximo"
-            app:iconGravity="end"
-            app:iconSize="30dp"
-            app:iconTint="@color/colorDarkOrange"
-            app:textAllCaps="false" />
-    </RelativeLayout>
+            app:cardCornerRadius="@dimen/raio_circulo_medio">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp">
+
+                <ImageView
+                    android:id="@+id/img_usuario"
+                    android:layout_width="@dimen/componente_muito_pequeno"
+                    android:layout_height="@dimen/componente_muito_pequeno"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/shape_circulo_branco"
+                    android:contentDescription="@string/str_perfil"
+                    android:src="@drawable/ic_usuario" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_usuario"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/espaco_pequeno"
+                    android:layout_toEndOf="@id/img_usuario"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorDarkOrange"
+                    android:textSize="@dimen/texto_label"
+                    app:icon="@drawable/ic_proximo"
+                    app:iconGravity="end"
+                    app:iconSize="30dp"
+                    app:iconTint="@color/colorDarkOrange"
+                    app:textAllCaps="false" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_pendentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_pequeno"
+            app:cardCornerRadius="@dimen/raio_circulo_medio">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_pequeno"
+                    android:text="@string/str_aguardando_conexao"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/texto_label" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_solicitacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
 </ScrollView>

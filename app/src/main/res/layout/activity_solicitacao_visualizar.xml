@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/shape_quadrado_irregular_vermelho"
             android:gravity="center"
-            android:padding="@dimen/espaco_medio">
+            android:padding="@dimen/espaco_pequeno">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -51,10 +51,28 @@
             android:text="@string/str_tramitacao" />
     </com.google.android.material.tabs.TabLayout>
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/pager_solicitacao"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
+        android:layout_height="match_parent">
 
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager_solicitacao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/bt_offline"
+            android:scrollbars="vertical" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_offline"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:text="@string/str_modo_offline"
+            android:textAllCaps="false"
+            android:textColor="@color/ms_white"
+            android:visibility="gone"
+            app:backgroundTint="@color/ms_black_87_opacity" />
+    </RelativeLayout>
 </LinearLayout>

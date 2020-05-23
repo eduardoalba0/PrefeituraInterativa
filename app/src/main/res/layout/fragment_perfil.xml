@@ -47,11 +47,11 @@
                 android:paddingStart="@dimen/espaco_medio"
                 android:paddingEnd="@dimen/espaco_medio"
                 android:text="@string/str_sair"
-                android:textColor="@color/white"
+                android:textColor="@color/ms_white"
                 android:textSize="@dimen/texto_botao"
                 app:icon="@drawable/ic_sair"
                 app:iconGravity="end"
-                app:iconTint="@color/white" />
+                app:iconTint="@color/ms_white" />
 
         </LinearLayout>
 
@@ -191,12 +191,12 @@
                     android:layout_height="wrap_content"
                     android:padding="@dimen/espaco_muito_pequeno"
                     android:text="@string/str_atualizar"
-                    android:textColor="@color/white"
+                    android:textColor="@color/ms_white"
                     android:textSize="@dimen/texto_botao"
                     app:backgroundTint="@color/float_transparent"
                     app:icon="@drawable/ic_gravar"
                     app:iconGravity="end"
-                    app:iconTint="@color/white" />
+                    app:iconTint="@color/ms_white" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>

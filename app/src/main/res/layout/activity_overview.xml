@@ -30,8 +30,8 @@
             android:layout_toStartOf="@+id/bt_foto"
             android:background="@color/float_transparent"
             app:tabGravity="fill"
-            app:tabIconTint="@color/white"
-            app:tabIndicatorColor="@color/white">
+            app:tabIconTint="@color/ms_white"
+            app:tabIndicatorColor="@color/ms_white">
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"

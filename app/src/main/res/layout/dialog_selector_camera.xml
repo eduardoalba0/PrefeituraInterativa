@@ -20,6 +20,7 @@
         android:outlineSpotShadowColor="@color/float_transparent"
         android:src="@drawable/ic_trocar_camera"
         app:backgroundTint="@color/float_transparent"
+        android:tint="@color/ms_white"
         app:fabSize="normal" />
 
     <androidx.appcompat.widget.AppCompatToggleButton
@@ -34,6 +35,7 @@
         android:button="@drawable/ic_flash_off"
         android:outlineAmbientShadowColor="@color/float_transparent"
         android:outlineSpotShadowColor="@color/float_transparent"
+        android:buttonTint="@color/ms_white"
         android:textOff="@null"
         android:textOn="@null" />
 
@@ -44,7 +46,7 @@
         android:layout_alignBottom="@id/view_camera"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/espaco_pequeno"
-        app:backgroundTint="@color/white"
+        app:backgroundTint="@color/ms_white"
         app:fabSize="normal" />
 
 </RelativeLayout>
