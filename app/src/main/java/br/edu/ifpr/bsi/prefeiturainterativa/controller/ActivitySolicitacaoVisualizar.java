@@ -30,8 +30,6 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
 
     public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
 
-    private Solicitacao solicitacao;
-    private FirebaseHelper helper;
     private int estilo;
 
     @Override
@@ -39,7 +37,6 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitacao_visualizar);
         ButterKnife.bind(this, this);
-        helper = new FirebaseHelper(this);
         verificarConexao();
         initTabLayout();
         startAnimation();
@@ -79,13 +76,13 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
     }
 
     public void verificarConexao() {
-        if (helper.conexaoAtivada())
+        if (new FirebaseHelper(this).conexaoAtivada())
             bt_offline.setVisibility(View.GONE);
         else bt_offline.setVisibility(View.VISIBLE);
     }
 
     public void initTabLayout() {
-        solicitacao = (Solicitacao) getIntent().getSerializableExtra("Solicitacao");
+        Solicitacao solicitacao = (Solicitacao) getIntent().getSerializableExtra("Solicitacao");
         estilo = getIntent().getIntExtra("Estilo", STYLE_NORMAL);
         if (solicitacao == null) {
             onBackPressed();
@@ -96,6 +93,7 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
         tabs_solicitacao.setupWithViewPager(pager_solicitacao);
         tabs_solicitacao.getTabAt(0).setText(R.string.str_dados_solicitacao);
         tabs_solicitacao.getTabAt(1).setText(R.string.str_tramitacao);
+        tabs_solicitacao.setEnabled(false);
         pager_solicitacao.addOnPageChangeListener(this);
     }
 

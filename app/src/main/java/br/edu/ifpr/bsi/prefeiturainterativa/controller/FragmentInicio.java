@@ -115,9 +115,9 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
 
     private void uploadsPendentes() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String gsonListPendentes = preferences.getString("SolicitacoesPendentes", "");
+        String jsonList = preferences.getString("SolicitacoesPendentes", "");
 
-        if (gsonListPendentes.trim().equals("") || gsonListPendentes.trim().equals("[]"))
+        if (jsonList.trim().equals("") || jsonList.trim().equals("[]"))
             return;
         SweetAlertDialog dialogo = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
                 .setTitleText(R.string.str_carregando_demandas)
@@ -127,7 +127,7 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
         Gson gson = new Gson();
 
         List<Solicitacao> listPendentes = new ArrayList<>();
-        Collections.addAll(listPendentes, gson.fromJson(gsonListPendentes, Solicitacao[].class));
+        Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
 
         for (Solicitacao solicitacao : listPendentes) {
 
@@ -153,7 +153,7 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
                 }
                 Tasks.whenAllComplete(insertTasks).addOnSuccessListener(tasks -> {
                     List<Solicitacao> aux = new ArrayList<>();
-                    Collections.addAll(listPendentes, gson.fromJson(gsonListPendentes, Solicitacao[].class));
+                    Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
                     aux.remove(solicitacao);
                     preferences.edit().remove("SolicitacoesPendentes")
                             .putString("SolicitacoesPendentes", gson.toJson(aux)).apply();
@@ -165,14 +165,14 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
     }
 
     private void initRecyclerView() {
-        String gsonListPendentes = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("SolicitacoesPendentes", "");
+        String jsonList = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("SolicitacoesPendentes", "");
         Gson gson = new Gson();
 
-        if (gsonListPendentes.trim().equals("") || gsonListPendentes.trim().equals("[]"))
+        if (jsonList.trim().equals("") || jsonList.trim().equals("[]"))
             card_pendentes.setVisibility(View.GONE);
         else {
             List<Solicitacao> listPendentes = new ArrayList<>();
-            Collections.addAll(listPendentes, gson.fromJson(gsonListPendentes, Solicitacao[].class));
+            Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
             card_pendentes.setVisibility(View.VISIBLE);
             rv_solicitacoes.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
             rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), listPendentes, getChildFragmentManager(), SolicitacoesAdapter.STYLE_PENDENTE));

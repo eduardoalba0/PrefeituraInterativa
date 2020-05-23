@@ -27,7 +27,6 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
 
     private Activity context;
     private List<Categoria> categorias;
-    private ViewModelsHelper viewModel;
     private boolean editavel;
     private int style;
 
@@ -36,7 +35,6 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
         this.editavel = true;
         this.context = context;
         this.categorias = categorias;
-        this.viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
     }
 
     public CategoriasAdapter(Activity context, List<Categoria> categorias, boolean b, int style) {
@@ -44,7 +42,6 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
         this.editavel = b;
         this.context = context;
         this.categorias = categorias;
-        this.viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
     }
 
     @NonNull
@@ -68,6 +65,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
     protected class ViewHolder extends RecyclerView.ViewHolder implements CompoundButton.OnCheckedChangeListener {
 
         private Categoria categoria;
+        private ViewModelsHelper viewModel;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,15 +89,15 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                 if (viewModel.getListCategorias().size() >= 10) {
                     compoundButton.setChecked(false);
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!")
-                            .setContentText("Em cada solicitação, você pode marcar apenas 10 tópicos.")
+                            .setTitleText(R.string.str_erro)
+                            .setContentText(context.getString(R.string.str_erro_limite_topicos))
                             .show();
                 } else if (!viewModel.getListCategorias().isEmpty()
                         && !viewModel.getListCategorias().get(0).getDepartamento_ID().equals(categoria.getDepartamento_ID())) {
                     compoundButton.setChecked(false);
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText("Erro!")
-                            .setContentText("Em cada solicitação, você pode marcar apenas os tópicos relacionados a uma única secretaria.")
+                            .setTitleText(R.string.str_erro)
+                            .setContentText(context.getString(R.string.str_erro_apenas_topicos_secretaria))
                             .show();
                 } else {
                     compoundButton.setChecked(true);
@@ -116,6 +114,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
 
         public void setData(Categoria categoria) {
             this.categoria = categoria;
+            viewModel = new ViewModelProvider((ViewModelStoreOwner) context, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
             categoria.setSelecionada(viewModel.getListCategorias().contains(categoria));
             chip_solicitacao.setText(categoria.getDescricao());
             chip_solicitacao.setChecked(categoria.isSelecionada());
