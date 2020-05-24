@@ -4,12 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.controller.FragmentSolicitacaoAvaliacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.FragmentSolicitacaoDados;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.FragmentSolicitacaoTramitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 
 public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
-    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
+    public static final int STYLE_NORMAL = 0,
+            STYLE_PENDENTE = 1,
+            STYLE_NAO_AVALIADA = 2,
+            STYLE_PENDENTE_NAO_AVALIADA = 3;
 
     private Solicitacao solicitacao;
     private int estilo;
@@ -31,16 +35,28 @@ public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentSolicitacaoDados(solicitacao, estilo);
+                return new FragmentSolicitacaoDados(solicitacao);
             case 1:
-                return new FragmentSolicitacaoTramitacao(solicitacao, estilo);
+                return new FragmentSolicitacaoTramitacao(solicitacao);
+            case 2:
+                return new FragmentSolicitacaoAvaliacao(solicitacao);
         }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 2;
+//        switch (estilo) {
+//            case STYLE_PENDENTE:
+//            case STYLE_PENDENTE_NAO_AVALIADA:
+//                return 1;
+//            case STYLE_NAO_AVALIADA:
+//                return 2;
+//            case STYLE_NORMAL:
+//            default:
+//                return 3;
+//        }
+        return 3;
     }
 
 }

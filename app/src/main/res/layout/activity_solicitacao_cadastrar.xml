@@ -45,7 +45,7 @@
             app:ms_backButtonColor="@color/ms_white"
             app:ms_backButtonText="@string/str_voltar"
             app:ms_bottomNavigationBackground="@color/float_transparent"
-            app:ms_completeButtonColor="@color/white"
+            app:ms_completeButtonColor="@color/ms_white"
             app:ms_completeButtonText="Enviar"
             app:ms_nextButtonColor="@color/ms_white"
             app:ms_nextButtonText="@string/str_continuar"

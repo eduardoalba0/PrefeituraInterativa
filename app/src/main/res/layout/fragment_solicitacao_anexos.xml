@@ -36,7 +36,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/espaco_muito_pequeno"
                         android:background="@color/float_transparent"
-                        android:gravity="start"
+                        android:gravity="center"
                         android:text="@string/str_imagens"
                         android:textColor="@color/colorRed"
                         android:textSize="@dimen/texto_botao" />
@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/espaco_muito_pequeno"
                         android:background="@color/float_transparent"
-                        android:gravity="start"
+                        android:gravity="center"
                         android:text="@string/str_descricao"
                         android:textColor="@color/colorRed"
                         android:textSize="@dimen/texto_botao" />

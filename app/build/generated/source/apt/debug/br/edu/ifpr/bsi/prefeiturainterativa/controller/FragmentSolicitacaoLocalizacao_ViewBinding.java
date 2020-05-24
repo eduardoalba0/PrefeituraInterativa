@@ -16,7 +16,7 @@ import java.lang.Override;
 public class FragmentSolicitacaoLocalizacao_ViewBinding implements Unbinder {
   private FragmentSolicitacaoLocalizacao target;
 
-  private View view7f090066;
+  private View view7f090068;
 
   @UiThread
   public FragmentSolicitacaoLocalizacao_ViewBinding(final FragmentSolicitacaoLocalizacao target,
@@ -27,7 +27,7 @@ public class FragmentSolicitacaoLocalizacao_ViewBinding implements Unbinder {
     target.tv_marcadorSelecionado = Utils.findRequiredViewAsType(source, R.id.tv_marcadorSelecionado, "field 'tv_marcadorSelecionado'", TextView.class);
     view = Utils.findRequiredView(source, R.id.bt_remover, "field 'bt_remover' and method 'onClick'");
     target.bt_remover = Utils.castView(view, R.id.bt_remover, "field 'bt_remover'", MaterialButton.class);
-    view7f090066 = view;
+    view7f090068 = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -46,7 +46,7 @@ public class FragmentSolicitacaoLocalizacao_ViewBinding implements Unbinder {
     target.tv_marcadorSelecionado = null;
     target.bt_remover = null;
 
-    view7f090066.setOnClickListener(null);
-    view7f090066 = null;
+    view7f090068.setOnClickListener(null);
+    view7f090068 = null;
   }
 }

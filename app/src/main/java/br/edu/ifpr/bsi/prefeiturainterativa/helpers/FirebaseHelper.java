@@ -157,13 +157,6 @@ public class FirebaseHelper {
     }
 
     public Task<Void> atualizarPerfil(Usuario usuario) {
-        if (!conexaoAtivada()) {
-            new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_atualizar_perfil))
-                    .show();
-            return null;
-        }
-
         UserProfileChangeRequest profileUpdates;
         if (usuario.getLocalUriFoto() == null)
             profileUpdates = new UserProfileChangeRequest.Builder()

@@ -20,9 +20,9 @@ import java.lang.Override;
 public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
   private FragmentSolicitacaoAnexos target;
 
-  private View view7f090059;
+  private View view7f09005a;
 
-  private View view7f090199;
+  private View view7f090198;
 
   @UiThread
   public FragmentSolicitacaoAnexos_ViewBinding(final FragmentSolicitacaoAnexos target,
@@ -33,7 +33,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.rv_imagens = Utils.findRequiredViewAsType(source, R.id.rv_imagens, "field 'rv_imagens'", RecyclerView.class);
     view = Utils.findRequiredView(source, R.id.bt_adicionar, "field 'bt_adicionar' and method 'onClick'");
     target.bt_adicionar = Utils.castView(view, R.id.bt_adicionar, "field 'bt_adicionar'", MaterialButton.class);
-    view7f090059 = view;
+    view7f09005a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -42,7 +42,7 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.sw_anonimo, "field 'sw_anonimo' and method 'onCheckedChanged'");
     target.sw_anonimo = Utils.castView(view, R.id.sw_anonimo, "field 'sw_anonimo'", SwitchMaterial.class);
-    view7f090199 = view;
+    view7f090198 = view;
     ((CompoundButton) view).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       @Override
       public void onCheckedChanged(CompoundButton p0, boolean p1) {
@@ -66,9 +66,9 @@ public class FragmentSolicitacaoAnexos_ViewBinding implements Unbinder {
     target.edt_descricao = null;
     target.edl_descricao = null;
 
-    view7f090059.setOnClickListener(null);
-    view7f090059 = null;
-    ((CompoundButton) view7f090199).setOnCheckedChangeListener(null);
-    view7f090199 = null;
+    view7f09005a.setOnClickListener(null);
+    view7f09005a = null;
+    ((CompoundButton) view7f090198).setOnCheckedChangeListener(null);
+    view7f090198 = null;
   }
 }
