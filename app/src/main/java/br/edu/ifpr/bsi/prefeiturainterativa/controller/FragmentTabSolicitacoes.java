@@ -31,10 +31,12 @@ public class FragmentTabSolicitacoes extends Fragment {
     private CategoriaDAO daoCategorias;
     private Categorias_SolicitacaoDAO daoMerge;
 
+    public FragmentTabSolicitacoes() {
+    }
+
     public FragmentTabSolicitacoes(boolean concluidas) {
         this.concluidas = concluidas;
     }
-
 
     @Nullable
     @Override

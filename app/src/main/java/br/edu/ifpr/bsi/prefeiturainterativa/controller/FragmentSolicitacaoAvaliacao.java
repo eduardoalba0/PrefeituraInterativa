@@ -60,11 +60,12 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
 
     private void carregarDados() {
         if (solicitacao.isAvaliada() || !solicitacao.isConcluida()) {
-            bar_avaliacao.setEnabled(false);
+            bar_avaliacao.setIsIndicator(true);
             tv_solucionada.setEnabled(false);
             sw_solucionada.setEnabled(false);
             edl_comentario.setEnabled(false);
             edt_comentario.setEnabled(false);
+            edl_comentario.setCounterEnabled(false);
             bt_avaliar.setEnabled(false);
         }
         if (solicitacao.isAvaliada()) {
@@ -73,11 +74,17 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
             sw_solucionada.setChecked(avaliacao.isSolucionada());
             edt_comentario.setText(avaliacao.getComentario());
             tv_data.setVisibility(View.VISIBLE);
-            tv_data.setText(("Avaliação cadastrada em :" + df.format(avaliacao.getData())));
+            tv_data.setText(("Avaliação cadastrada em :\n" + df.format(avaliacao.getData())));
         }
     }
 
     public void salvarAvaliacao() {
+        if (!validacao())
+            return;
+        SweetAlertDialog dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE)
+                .setTitleText(R.string.str_carregando);
+        dialog.show();
+
         avaliacao = new Avaliacao();
         avaliacao.setComentario(edt_comentario.getText().toString());
         avaliacao.setNota(bar_avaliacao.getRating());
@@ -86,6 +93,7 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
         solicitacao.setAvaliada(true);
 
         new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao)
+                .addOnCompleteListener(getActivity(), task -> dialog.dismiss())
                 .addOnSuccessListener(getActivity(), aVoid ->
                         new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                                 .setTitleText(R.string.str_sucesso)
@@ -93,6 +101,18 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
                                 .setConfirmText(getResources().getString(R.string.dialog_ok))
                                 .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityOverview.class))
                                 .show());
+    }
+
+    public boolean validacao() {
+        if (bar_avaliacao.getRating() <= 0f) {
+            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText(R.string.str_erro)
+                    .setContentText(getResources().getString(R.string.str_erro_avaliacao_vazia))
+                    .setConfirmText(getResources().getString(R.string.dialog_ok))
+                    .show();
+            return false;
+        }
+        return true;
     }
 
     private <T> void chamarActivity(Class<T> activity) {
