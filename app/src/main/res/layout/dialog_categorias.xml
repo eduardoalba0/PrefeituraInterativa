@@ -34,22 +34,40 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_categorias"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/espaco_grande" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bt_continuar"
-        style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/componente_muito_pequeno"
-        android:layout_gravity="end"
-        android:layout_marginTop="@dimen/espaco_pequeno"
-        android:paddingStart="@dimen/espaco_medio"
-        android:paddingEnd="@dimen/espaco_medio"
-        android:text="@string/dialog_ok"
-        android:textColor="@color/colorRed"
-        android:textSize="@dimen/texto_botao"
-        android:visibility="visible"
-        app:icon="@drawable/ic_proximo"
-        app:iconGravity="end"
-        app:iconTint="@color/colorRed" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="@dimen/espaco_pequeno"
+        android:background="@color/ms_material_grey_400" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:gravity="end"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_continuar"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/componente_muito_pequeno"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/espaco_medio"
+            android:paddingEnd="@dimen/espaco_medio"
+            android:text="@string/dialog_ok"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/texto_botao"
+            android:visibility="visible"
+            app:icon="@drawable/ic_proximo"
+            app:iconGravity="textEnd"
+            app:iconTint="@color/colorRed" />
+
+    </LinearLayout>
 </LinearLayout>

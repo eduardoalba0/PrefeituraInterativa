@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/whiteFA"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -29,27 +29,30 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_solicitacao"
-        android:transitionName="solicitacao_transition"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/componente_muito_pequeno"
-        app:tabBackground="@color/whiteFA"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/blackWhite"
-        app:tabPadding="@dimen/espaco_pequeno"
-        app:tabTextColor="@color/blackWhite">
+        android:layout_height="wrap_content"
+        android:background="@color/white">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_dados_solicitacao" />
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_solicitacao"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/componente_muito_pequeno"
+            android:transitionName="solicitacao_transition"
+            app:tabBackground="@color/white"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/blackWhite"
+            app:tabMode="fixed"
+            app:tabPadding="@dimen/espaco_pequeno"
+            app:tabTextColor="@color/blackWhite">
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_tramitacao" />
-    </com.google.android.material.tabs.TabLayout>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/str_dados_solicitacao" />
+
+        </com.google.android.material.tabs.TabLayout>
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

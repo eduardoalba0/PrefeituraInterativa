@@ -2,42 +2,53 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/componente_gigante"
-    android:padding="@dimen/espaco_pequeno">
+    android:layout_height="@dimen/componente_gigante">
 
     <ImageView
         android:id="@+id/img_viewer"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/componente_gigante"
         android:src="@drawable/ic_adicionar_galeria"
-        android:layout_height="@dimen/componente_gigante" />
+        android:contentDescription="@string/str_imagens"
+        android:paddingBottom="@dimen/componente_muito_pequeno" />
 
     <LinearLayout
+        android:id="@+id/l_footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/componente_muito_pequeno"
         android:layout_alignBottom="@id/img_viewer"
         android:layout_centerHorizontal="true"
+        android:background="@color/whiteFA"
         android:gravity="center"
+        android:weightSum="2"
+        android:elevation="10dp"
         android:orientation="horizontal">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_recusar"
-            android:layout_width="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:src="@drawable/ic_cancelar"
-            android:tint="@color/ms_black"
-            app:backgroundTint="@color/ms_white"
-            app:fabSize="normal" />
+            android:text="@string/str_voltar"
+            android:textColor="@color/blackWhite"
+            android:textSize="@dimen/texto_botao"
+            app:icon="@drawable/ic_cancelar"
+            app:iconGravity="textStart"
+            app:iconTint="@color/blackWhite" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/bt_aceitar"
-            android:layout_width="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:src="@drawable/ic_sucesso"
-            android:tint="@color/ms_black"
-            app:backgroundTint="@color/ms_white"
-            app:fabSize="normal" />
+            android:layout_weight="1"
+            android:text="@string/dialog_ok"
+            android:textColor="@color/blackWhite"
+            android:textSize="@dimen/texto_botao"
+            app:icon="@drawable/ic_sucesso"
+            app:iconGravity="textStart"
+            app:iconTint="@color/blackWhite" />
     </LinearLayout>
 
 </RelativeLayout>

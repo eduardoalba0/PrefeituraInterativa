@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/float_transparent"
+    android:background="@color/white"
     android:gravity="bottom"
     android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_solicitacoes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/espaco_muito_pequeno"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

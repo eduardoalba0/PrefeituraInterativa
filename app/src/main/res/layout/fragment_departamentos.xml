@@ -12,12 +12,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_quadrado_irregular_vermelho"
         android:gravity="center"
-        android:padding="@dimen/espaco_medio">
+        android:padding="@dimen/espaco_pequeno">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/str_departamentos"
+            android:textColor="@color/ms_white"
             android:textSize="@dimen/texto_botao" />
     </LinearLayout>
 
