@@ -46,17 +46,16 @@ public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-//        switch (estilo) {
-//            case STYLE_PENDENTE:
-//            case STYLE_PENDENTE_NAO_AVALIADA:
-//                return 1;
-//            case STYLE_NAO_AVALIADA:
-//                return 2;
-//            case STYLE_NORMAL:
-//            default:
-//                return 3;
-//        }
-        return 3;
+        switch (estilo) {
+            case STYLE_PENDENTE:
+            case STYLE_PENDENTE_NAO_AVALIADA:
+                return 1;
+            case STYLE_NAO_AVALIADA:
+                return 2;
+            case STYLE_NORMAL:
+            default:
+                return 3;
+        }
     }
 
 }

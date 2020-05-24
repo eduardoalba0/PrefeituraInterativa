@@ -64,10 +64,16 @@ public class GaleriaAdapter extends RecyclerView.Adapter<GaleriaAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        if (tipo == TIPO_STRING_SEM_BOTOES)
-            return imagensString.size();
-        else if (tipo == TIPO_URI_BOTOES)
-            return imagens.size();
+        switch (tipo) {
+            case TIPO_STRING_SEM_BOTOES:
+                if (imagensString != null)
+                    return imagensString.size();
+                break;
+            case TIPO_URI_BOTOES:
+                if (imagens != null)
+                    return imagens.size();
+                break;
+        }
         return 0;
     }
 

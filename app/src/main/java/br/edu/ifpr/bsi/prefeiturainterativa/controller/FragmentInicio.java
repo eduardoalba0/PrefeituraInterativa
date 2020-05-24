@@ -35,8 +35,6 @@ import butterknife.OnClick;
 public class FragmentInicio extends Fragment implements View.OnClickListener, View.OnFocusChangeListener, View.OnTouchListener {
     private FirebaseHelper helper;
 
-    private boolean onUpload = false;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

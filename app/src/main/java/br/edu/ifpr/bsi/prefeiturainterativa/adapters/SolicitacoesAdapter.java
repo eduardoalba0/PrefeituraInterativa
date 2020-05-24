@@ -2,6 +2,7 @@ package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,20 +24,32 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapter.ViewHolder> {
 
+    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
+
     private Activity context;
     private List<Solicitacao> solicitacoes;
     private FragmentManager fm;
+    private int estilo;
+
+    public SolicitacoesAdapter(Activity context, List<Solicitacao> solicitacoes, FragmentManager fm, int estilo) {
+        this.context = context;
+        this.solicitacoes = solicitacoes;
+        this.fm = fm;
+        this.estilo = estilo;
+    }
 
     public SolicitacoesAdapter(Activity context, List<Solicitacao> solicitacoes, FragmentManager fm) {
         this.context = context;
         this.solicitacoes = solicitacoes;
         this.fm = fm;
+        this.estilo = 0;
     }
 
     @NonNull
@@ -66,36 +79,54 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             itemView.setOnClickListener(this);
         }
 
+        public void setData(Solicitacao solicitacao) {
+            this.solicitacao = solicitacao;
+            DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, new Locale("pt", "BR"));
+            switch (estilo) {
+                case STYLE_NORMAL:
+                    carregarImagens(solicitacao.getUrlImagens());
+                    tv_data.setVisibility(View.VISIBLE);
+                    tv_data.setText(df.format(solicitacao.getData()));
+                    if (solicitacoes.size() > 1) {
+                        int index = solicitacoes.indexOf(solicitacao) - 1;
+                        if (index >= 0) {
+                            Solicitacao aux = solicitacoes.get(index);
+                            if (df.format(aux.getData()).equals(df.format(solicitacao.getData())))
+                                tv_data.setVisibility(View.GONE);
+                        }
+                    }
+                    break;
+                case STYLE_PENDENTE:
+                    carregarImagens(solicitacao.getLocalCaminhoImagens());
+                    tv_data.setVisibility(View.GONE);
+                    break;
+            }
+            initRecyclerView(solicitacao.getLocalCategorias());
+        }
+
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(context, ActivitySolicitacaoVisualizar.class);
             intent.putExtra("Solicitacao", solicitacao);
+            intent.putExtra("Estilo", estilo);
             context.startActivity(intent);
         }
 
-        public void setData(Solicitacao solicitacao) {
-            this.solicitacao = solicitacao;
-            if (solicitacao.getUrlImagens() != null && !solicitacao.getUrlImagens().isEmpty())
+        private void carregarImagens(List<String> imagens) {
+            if (imagens != null && !imagens.isEmpty())
                 Glide.with(itemView)
-                        .load(solicitacao.getUrlImagens().get(0))
+                        .load(Uri.parse(imagens.get(0)))
                         .circleCrop()
                         .placeholder(R.mipmap.ic_maca)
                         .into(img_solicitacao);
-            DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, new Locale("pt", "BR"));
-            tv_data.setText(df.format(solicitacao.getData()));
-            if (solicitacoes.size() > 1) {
-                int index = solicitacoes.indexOf(solicitacao) - 1;
-                if (index >= 0) {
-                    Solicitacao aux = solicitacoes.get(index);
-                    if (df.format(aux.getData()).equals(df.format(solicitacao.getData())))
-                        tv_data.setVisibility(View.GONE);
-                }
-            }
+        }
+
+        private void initRecyclerView(List<Categoria> categorias) {
             FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(context);
             layoutManager.setFlexDirection(FlexDirection.ROW);
             layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
             rv_categorias.setLayoutManager(layoutManager);
-            rv_categorias.setAdapter(new CategoriasAdapter(context, solicitacao.getLocalCategorias(), false, CategoriasAdapter.STYLE_RED));
+            rv_categorias.setAdapter(new CategoriasAdapter(context, categorias, false, CategoriasAdapter.STYLE_RED));
         }
 
         @BindView(R.id.img_solicitacao)

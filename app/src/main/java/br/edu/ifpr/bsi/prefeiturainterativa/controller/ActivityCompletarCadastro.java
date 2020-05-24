@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.transition.Transition;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -78,7 +77,11 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
     public void onValidationSucceeded() {
         edl_cpf.setError(null);
         usuario.setCpf(edt_cpf.getText().toString());
-        dao.inserirAtualizar(usuario).addOnSuccessListener(this, this);
+        helper.getToken().addOnSuccessListener(this, instanceIdResult -> {
+            usuario.setToken(instanceIdResult.getToken());
+            dao.inserirAtualizar(usuario)
+                    .addOnSuccessListener(this, this);
+        });
     }
 
     @Override

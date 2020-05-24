@@ -21,7 +21,6 @@ import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Password;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -44,6 +43,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     private FirebaseHelper helper;
     private UsuarioDAO dao;
     private Usuario usuario;
+    private SweetAlertDialog dialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +54,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         helper = new FirebaseHelper(this);
         validador = new Validator(this);
         validador.setValidationListener(this);
-        usuario = new Usuario();
         dao = new UsuarioDAO(this);
     }
 
@@ -79,6 +78,9 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onValidationSucceeded() {
+        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                .setTitleText(R.string.str_autenticando);
+        dialog.show();
         edl_email.setError(null);
         edl_senha.setError(null);
         usuario = new Usuario();
@@ -86,7 +88,10 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         usuario.setSenha(edt_senha.getText().toString());
         Task<AuthResult> task = helper.logar(usuario);
         if (task != null)
-            task.addOnSuccessListener(this, this);
+            task.addOnSuccessListener(this, this)
+                    .addOnFailureListener(this, e -> dialog.dismiss());
+        else
+            dialog.dismiss();
     }
 
     @Override
@@ -95,36 +100,42 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         if (!authResult.getUser().isEmailVerified()) {
             Task<Void> task = helper.verificarEmail();
             if (task != null)
-                task.addOnSuccessListener(this, aVoid ->
+                task.addOnCompleteListener(this, e -> dialog.dismiss())
+                        .addOnSuccessListener(this, aVoid ->
                         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                                 .setContentText(getResources().getString(R.string.str_clique_link_email))
                                 .show());
+            else dialog.dismiss();
             return;
         }
 
         Task<DocumentSnapshot> task = dao.get(usuario);
         if (task != null)
-            task.addOnSuccessListener(this, documentSnapshot -> {
-                Usuario aux = documentSnapshot.toObject(Usuario.class);
-                if (aux == null || aux.getCpf() == null || aux.getCpf().trim().isEmpty())
+            task.addOnFailureListener(this, e -> dialog.dismiss())
+                    .addOnSuccessListener(this, documentSnapshot -> {
+                        usuario = documentSnapshot.toObject(Usuario.class);
+                        if (usuario == null || usuario.getCpf() == null || usuario.getCpf().trim().isEmpty())
                     if (task.getResult().getMetadata().isFromCache()) {
+                        dialog.dismiss();
                         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
                                 .setTitleText(R.string.str_erro)
                                 .setTitleText(getResources().getString(R.string.str_erro_internet_login))
                                 .show();
-                    } else
+                    } else {
+                        dialog.dismiss();
                         chamarActivity(ActivityCompletarCadastro.class);
+                    }
                 else {
-                    List<String> tokens;
-                    if (aux.getTokens() == null) {
-                        tokens = new ArrayList<>();
-                    } else
-                        tokens = aux.getTokens();
                     helper.getToken().addOnSuccessListener(this, instanceIdResult -> {
-                        tokens.add(instanceIdResult.getToken());
-                        usuario.setTokens(tokens);
-                        dao.inserirAtualizar(usuario)
-                                .addOnSuccessListener(this, aVoid -> chamarActivity(ActivityOverview.class));
+                        if (usuario.getToken() == null || !usuario.getToken().equals(instanceIdResult.getToken())) {
+                            usuario.setToken(instanceIdResult.getToken());
+                            dao.inserirAtualizar(usuario)
+                                    .addOnCompleteListener(this, e -> dialog.dismiss())
+                                    .addOnSuccessListener(this, aVoid -> chamarActivity(ActivityOverview.class));
+                        } else {
+                            dialog.dismiss();
+                            chamarActivity(ActivityOverview.class);
+                        }
                     });
                 }
             });
