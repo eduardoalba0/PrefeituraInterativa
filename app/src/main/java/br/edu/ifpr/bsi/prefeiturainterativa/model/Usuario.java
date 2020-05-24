@@ -5,7 +5,10 @@ import android.net.Uri;
 import com.google.firebase.firestore.Exclude;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+
+import androidx.annotation.NonNull;
 
 public class Usuario implements Serializable {
 
@@ -14,6 +17,7 @@ public class Usuario implements Serializable {
     private String cpf;
     private String email;
     private String tipoUsuario_ID;
+    private List<String> tokens;
 
     @Exclude
     private Uri localUriFoto;
@@ -91,6 +95,14 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public List<String> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(List<String> tokens) {
+        this.tokens = tokens;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,8 +116,9 @@ public class Usuario implements Serializable {
         return Objects.hash(_ID);
     }
 
+    @NonNull
     @Override
     public String toString() {
-        return this.nome;
+        return this._ID;
     }
 }
