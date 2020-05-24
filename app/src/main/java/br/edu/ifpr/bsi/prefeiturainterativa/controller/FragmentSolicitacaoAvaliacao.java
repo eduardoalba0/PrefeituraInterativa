@@ -78,10 +78,12 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
     }
 
     public void salvarAvaliacao() {
+        avaliacao = new Avaliacao();
         avaliacao.setComentario(edt_comentario.getText().toString());
         avaliacao.setNota(bar_avaliacao.getRating());
         avaliacao.setSolucionada(sw_solucionada.isChecked());
         solicitacao.setAvaliacao(avaliacao);
+        solicitacao.setAvaliada(true);
 
         new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao)
                 .addOnSuccessListener(getActivity(), aVoid ->
@@ -89,7 +91,8 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
                                 .setTitleText(R.string.str_sucesso)
                                 .setContentText(getResources().getString(R.string.str_avaliacao_concluida))
                                 .setConfirmText(getResources().getString(R.string.dialog_ok))
-                                .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityOverview.class)));
+                                .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityOverview.class))
+                                .show());
     }
 
     private <T> void chamarActivity(Class<T> activity) {

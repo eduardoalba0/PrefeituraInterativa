@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -38,20 +40,10 @@ import butterknife.ButterKnife;
 
 public class FragmentSolicitacaoTramitacao extends Fragment {
 
-    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
-
     private Solicitacao solicitacao;
-    private AtendimentoDAO dao;
-    private int estilo;
 
     public FragmentSolicitacaoTramitacao(Solicitacao solicitacao) {
         this.solicitacao = solicitacao;
-        this.estilo = STYLE_NORMAL;
-    }
-
-    public FragmentSolicitacaoTramitacao(Solicitacao solicitacao, int estilo) {
-        this.solicitacao = solicitacao;
-        this.estilo = estilo;
     }
 
     @Nullable
@@ -66,18 +58,15 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
 
     private void preencherCampos() {
         FirebaseHelper helper = new FirebaseHelper(getActivity());
-
-        switch (estilo) {
-            case STYLE_PENDENTE:
-                card_solicitacao.setVisibility(View.GONE);
-                tv_data.setVisibility(View.GONE);
-                return;
-            case STYLE_NORMAL:
-                card_solicitacao.setVisibility(View.VISIBLE);
-                tv_data.setVisibility(View.VISIBLE);
-                DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
-                tv_data.setText(df.format(solicitacao.getData()));
-                break;
+        if (solicitacao.getData() == null) {
+            card_solicitacao.setVisibility(View.GONE);
+            tv_data.setVisibility(View.GONE);
+            return;
+        } else {
+            card_solicitacao.setVisibility(View.VISIBLE);
+            tv_data.setVisibility(View.VISIBLE);
+            DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
+            tv_data.setText(df.format(solicitacao.getData()));
         }
 
         if (solicitacao.isAnonima())
@@ -94,9 +83,8 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
     }
 
     private void initRecyclerView() {
-        dao = new AtendimentoDAO(getActivity());
         rv_atendimentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
-        dao.getAllBySolicitacao(solicitacao).addOnSuccessListener(getActivity(), o -> {
+        new AtendimentoDAO(getActivity()).getAllBySolicitacao(solicitacao).addOnSuccessListener(getActivity(), o -> {
             List<Atendimento> result = o.toObjects(Atendimento.class);
             for (Atendimento atendimento : result) {
                 Funcionario funcionario = new Funcionario();

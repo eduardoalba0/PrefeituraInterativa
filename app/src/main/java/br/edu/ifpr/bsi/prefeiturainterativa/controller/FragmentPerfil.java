@@ -134,6 +134,14 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         usuario.setEmail(edt_email.getText().toString());
         usuario.setNome(edt_nome.getText().toString());
         usuario.setCpf(edt_cpf.getText().toString());
+
+        if (!helper.conexaoAtivada()) {
+            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText(R.string.str_erro)
+                    .setContentText(getString(R.string.str_erro_internet_atualizar_perfil))
+                    .show();
+            return;
+        }
         dialog.setTitleText(R.string.str_gravando_alteracoes).show();
         if (usuario.getLocalUriFoto() != null) {
             Task<Uri> upload = helper.carregarImagemUsuario(usuario.getLocalUriFoto());

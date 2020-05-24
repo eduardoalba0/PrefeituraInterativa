@@ -1,11 +1,14 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
@@ -18,19 +21,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.adapters.AnexosAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.CategoriasAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.GaleriaAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTouch;
 
-public class FragmentSolicitacaoDados extends Fragment implements View.OnClickListener {
+public class FragmentSolicitacaoDados extends Fragment implements View.OnClickListener, View.OnTouchListener {
+    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
 
-    public Solicitacao solicitacao;
+    private Solicitacao solicitacao;
+    private int estilo;
 
     public FragmentSolicitacaoDados(Solicitacao solicitacao) {
         this.solicitacao = solicitacao;
+        this.estilo = STYLE_NORMAL;
+    }
+
+    public FragmentSolicitacaoDados(Solicitacao solicitacao, int estilo) {
+        this.solicitacao = solicitacao;
+        this.estilo = estilo;
     }
 
     @Nullable
@@ -49,13 +61,21 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
         switch (view.getId()) {
             case R.id.bt_localizacao:
                 Uri gmmIntentUri = Uri.parse("https://www.google.com/maps/search/"
-                        + solicitacao.getLatitude()
-                        + "," + solicitacao.getLongitude());
+                        + solicitacao.getLocalizacao().getLatitude()
+                        + "," + solicitacao.getLocalizacao().getLongitude());
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
                 break;
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    @OnTouch(R.id.rv_categorias)
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        ((ViewGroup) getView()).requestDisallowInterceptTouchEvent(true);
+        return false;
     }
 
     private void initRecyclerView() {
@@ -65,15 +85,29 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
         rv_categorias.setLayoutManager(categoriasLayoutManager);
 
         FlexboxLayoutManager imagensLayoutManager = new FlexboxLayoutManager(getActivity());
-        imagensLayoutManager.setFlexDirection(FlexDirection.ROW);
-        imagensLayoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
+        imagensLayoutManager.setFlexDirection(FlexDirection.COLUMN_REVERSE);
+        imagensLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
         rv_imagens.setLayoutManager(imagensLayoutManager);
     }
 
     private void carregarDados() {
+        switch (estilo) {
+            case STYLE_NORMAL:
+                if (solicitacao.getUrlImagens() == null || solicitacao.getUrlImagens().isEmpty())
+                    l_imagens.setVisibility(View.GONE);
+                else
+                    rv_imagens.setAdapter(new GaleriaAdapter(getActivity(), solicitacao.getUrlImagens(), getChildFragmentManager()));
+                break;
+            case STYLE_PENDENTE:
+                if (solicitacao.getLocalCaminhoImagens() == null || solicitacao.getLocalCaminhoImagens().isEmpty())
+                    l_imagens.setVisibility(View.GONE);
+                else
+
+                    rv_imagens.setAdapter(new GaleriaAdapter(getActivity(), solicitacao.getLocalCaminhoImagens(), getChildFragmentManager()));
+                break;
+        }
         edt_descricao.setText(solicitacao.getDescricao());
         rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), solicitacao.getLocalCategorias(), false, CategoriasAdapter.STYLE_RED));
-        rv_imagens.setAdapter(new AnexosAdapter(getActivity(), solicitacao.getUrlImagens(), getChildFragmentManager(), false));
     }
 
     @BindView(R.id.rv_categorias)
@@ -87,4 +121,7 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
 
     @BindView(R.id.bt_localizacao)
     MaterialButton bt_localizacao;
+
+    @BindView(R.id.l_imagens)
+    LinearLayout l_imagens;
 }

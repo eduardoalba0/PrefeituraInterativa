@@ -87,8 +87,8 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
         edit.putString(usuario.get_ID(), usuario.getCpf());
         edit.apply();
         new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
-                .setTitleText(R.string.str_sucesso)
-                .setContentText(getResources().getString(R.string.str_cadastro_completo))
+                .setTitleText("Sucesso! ")
+                .setContentText("Cadastro completo.")
                 .setConfirmClickListener(sweetAlertDialog -> {
                     Intent intent = new Intent(ActivityCompletarCadastro.this, ActivityOverview.class);
                     ActivityOptionsCompat options = ActivityOptionsCompat.

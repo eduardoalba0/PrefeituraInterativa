@@ -6,12 +6,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
@@ -38,10 +41,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import co.mobiwise.materialintro.shape.Focus;
-import co.mobiwise.materialintro.shape.FocusGravity;
-import co.mobiwise.materialintro.shape.ShapeType;
-import co.mobiwise.materialintro.view.MaterialIntroView;
 
 public class ActivitySolicitacaoCadastrar extends FragmentActivity implements View.OnClickListener,
         StepperLayout.StepperListener {
@@ -68,16 +67,10 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         switch (view.getId()) {
             case R.id.bt_offline:
                 verificarConexao();
-                new MaterialIntroView.Builder(this)
-                        .setShape(ShapeType.RECTANGLE)
-                        .setUsageId("Info_Offline")
-                        .setInfoText("As solicitações que você cadastrar ficarão armazenadas no dispositivo até você e conectar à internet.")
-                        .enableDotAnimation(false)
-                        .enableFadeAnimation(true)
-                        .setFocusGravity(FocusGravity.CENTER)
-                        .setFocusType(Focus.NORMAL)
-                        .performClick(true)
-                        .setTarget(bt_offline)
+                Snackbar.make(stepperLayout, R.string.str_dica_modo_offline,
+                        BaseTransientBottomBar.LENGTH_LONG)
+                        .setBackgroundTint(getResources().getColor(R.color.ms_black_87_opacity))
+                        .setTextColor(getResources().getColor(R.color.ms_white))
                         .show();
                 break;
         }
@@ -109,12 +102,12 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         solicitacao.setConcluida(false);
         solicitacao.setUsuario_ID(helper.getUser().getUid());
         solicitacao.setLocalCategorias(viewModel.getListCategorias());
+        Log.e("SolicitacaoCadastrar", "ListViewlmodel: " + viewModel.getListCategorias());
         if (helper.conexaoAtivada())
             salvarOnline();
         else {
             salvarOffline();
         }
-        viewModel.removeAll();
     }
 
     private void salvarOnline() {
@@ -144,7 +137,9 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
             }
             Tasks.whenAllComplete(insertTasks).addOnSuccessListener(tasks -> {
                 dialogo.dismiss();
-                chamarActivity(ActivityOverview.class, 2);
+                viewModel.removeAll();
+                chamarActivity(ActivityOverview.class);
+                finish();
             });
         });
     }
@@ -168,12 +163,15 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         edit.putString("SolicitacoesPendentes", gson.toJson(listPendentes));
         edit.apply();
 
+        viewModel.removeAll();
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(R.string.str_atencao)
                 .setTitleText(R.string.str_solicitacao_cadastrada_offline)
                 .setConfirmText(getResources().getString(R.string.dialog_ok))
-                .setConfirmClickListener(view -> chamarActivity(ActivityOverview.class, 0))
-                .show();
+                .setConfirmClickListener(view -> {
+                    view.dismiss();
+                    chamarActivity(ActivityOverview.class);
+                }).show();
     }
     @Override
     public void onError(VerificationError verificationError) {
@@ -195,12 +193,20 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
 
     }
 
-    public <T> void chamarActivity(Class<T> activity, int page) {
+    public <T> void chamarActivity(Class<T> activity) {
         Intent intent = new Intent(ActivitySolicitacaoCadastrar.this, activity);
-        intent.putExtra("Tab", page);
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(ActivitySolicitacaoCadastrar.this, stepperLayout, "splash_transition");
         startActivity(intent, options.toBundle());
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (stepperLayout.getCurrentStepPosition() > 0)
+            stepperLayout.onBackClicked();
+        else
+            chamarActivity(ActivityOverview.class);
     }
 
     @Override

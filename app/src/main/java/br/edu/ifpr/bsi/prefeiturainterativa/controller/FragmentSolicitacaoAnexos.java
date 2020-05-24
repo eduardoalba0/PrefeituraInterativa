@@ -85,33 +85,6 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
         }
     }
 
-    @Nullable
-    @Override
-    public VerificationError verifyStep() {
-        if (viewModel.getListImagens().isEmpty() && edt_descricao.getText().toString().trim().equals(""))
-            return new VerificationError(getString(R.string.str_sem_anexos_descricao));
-        edl_descricao.setError(null);
-        solicitacao.setDescricao(edt_descricao.getText().toString());
-        solicitacao.setAnonima(sw_anonimo.isChecked());
-        viewModel.postSolicitacao(solicitacao);
-        return null;
-    }
-
-    @Override
-    public void onSelected() {
-    }
-
-
-    @Override
-    public void onError(@NonNull VerificationError error) {
-        edl_descricao.setError(error.getErrorMessage());
-        Snackbar.make(getView(), error.getErrorMessage(), BaseTransientBottomBar.LENGTH_LONG)
-                .setBackgroundTint(getResources().getColor(R.color.ms_errorColor))
-                .setTextColor(getResources().getColor(R.color.ms_white))
-                .show();
-
-    }
-
     public void initRecyclerView() {
         viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
         this.solicitacao = viewModel.getObjetoSolicitacao();
@@ -132,11 +105,41 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
                 });
     }
 
+
     @NeedsPermission({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
     public void inserirImagens() {
+        if (viewModel.getListImagens().size() >= 3) {
+            new SweetAlertDialog(getActivity(), SweetAlertDialog.ERROR_TYPE)
+                    .setTitleText(R.string.str_erro)
+                    .setContentText(getString(R.string.str_erro_limite_imagens))
+                    .show();
+            return;
+        }
         if (dialogo == null)
             dialogo = new DialogSelector(false);
         dialogo.show(getChildFragmentManager(), "Selector");
+    }
+
+    @Nullable
+    @Override
+    public VerificationError verifyStep() {
+        if (viewModel.getListImagens().isEmpty() && edt_descricao.getText().toString().trim().equals(""))
+            return new VerificationError(getString(R.string.str_sem_anexos_descricao));
+        edl_descricao.setError(null);
+        solicitacao.setDescricao(edt_descricao.getText().toString());
+        solicitacao.setAnonima(sw_anonimo.isChecked());
+        viewModel.postSolicitacao(solicitacao);
+        return null;
+    }
+
+    @Override
+    public void onError(@NonNull VerificationError error) {
+        edl_descricao.setError(error.getErrorMessage());
+        Snackbar.make(getView(), error.getErrorMessage(), BaseTransientBottomBar.LENGTH_LONG)
+                .setBackgroundTint(getResources().getColor(R.color.ms_errorColor))
+                .setTextColor(getResources().getColor(R.color.ms_white))
+                .show();
+
     }
 
     @Override
@@ -175,6 +178,10 @@ public class FragmentSolicitacaoAnexos extends Fragment implements Step, View.On
                     startActivity(intent);
                 })
                 .show();
+    }
+
+    @Override
+    public void onSelected() {
     }
 
     @BindView(R.id.rv_imagens)

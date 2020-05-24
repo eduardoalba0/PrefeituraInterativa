@@ -7,6 +7,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.Nullable;
@@ -20,15 +22,10 @@ import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import co.mobiwise.materialintro.shape.Focus;
-import co.mobiwise.materialintro.shape.FocusGravity;
-import co.mobiwise.materialintro.shape.ShapeType;
-import co.mobiwise.materialintro.view.MaterialIntroView;
 
-public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener,
-        ViewPager.OnPageChangeListener {
+public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener {
 
-    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
+    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1, STYLE_NAO_AVALIADA = 2, STYLE_PENDENTE_NAO_AVALIADA = 3;
 
     private int estilo;
 
@@ -48,16 +45,10 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
         switch (view.getId()) {
             case R.id.bt_offline:
                 verificarConexao();
-                new MaterialIntroView.Builder(this)
-                        .setShape(ShapeType.RECTANGLE)
-                        .setUsageId("Info_Offline")
-                        .setInfoText("As solicitações que você cadastrar ficarão armazenadas no dispositivo até você e conectar à internet.")
-                        .enableDotAnimation(false)
-                        .enableFadeAnimation(true)
-                        .setFocusGravity(FocusGravity.CENTER)
-                        .setFocusType(Focus.NORMAL)
-                        .performClick(true)
-                        .setTarget(bt_offline)
+                Snackbar.make(pager_solicitacao, R.string.str_dica_modo_offline,
+                        BaseTransientBottomBar.LENGTH_LONG)
+                        .setBackgroundTint(getResources().getColor(R.color.ms_black_87_opacity))
+                        .setTextColor(getResources().getColor(R.color.ms_white))
                         .show();
                 break;
         }
@@ -89,31 +80,19 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
             finish();
             return;
         }
+        if (!solicitacao.isAvaliada())
+            if (estilo == STYLE_PENDENTE)
+                estilo = STYLE_PENDENTE_NAO_AVALIADA;
+            else estilo = STYLE_NAO_AVALIADA;
+
         pager_solicitacao.setAdapter(new SolicitacaoVisualizarTabAdapter(getSupportFragmentManager(), solicitacao, estilo));
         tabs_solicitacao.setupWithViewPager(pager_solicitacao);
+
         tabs_solicitacao.getTabAt(0).setText(R.string.str_dados_solicitacao);
-        tabs_solicitacao.getTabAt(1).setText(R.string.str_tramitacao);
-        tabs_solicitacao.setEnabled(false);
-        pager_solicitacao.addOnPageChangeListener(this);
-    }
-
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        if (estilo == STYLE_PENDENTE)
-            if (position == 1)
-                pager_solicitacao.setCurrentItem(0, false);
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        if (estilo == STYLE_PENDENTE)
-            if (position == 1)
-                pager_solicitacao.setCurrentItem(0, false);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
+        if (estilo != STYLE_PENDENTE && estilo != STYLE_PENDENTE_NAO_AVALIADA)
+            tabs_solicitacao.getTabAt(1).setText(R.string.str_tramitacao);
+        if (estilo != STYLE_NAO_AVALIADA && estilo != STYLE_PENDENTE_NAO_AVALIADA)
+            tabs_solicitacao.getTabAt(2).setText(R.string.str_avaliacao);
     }
 
     public void startAnimation() {

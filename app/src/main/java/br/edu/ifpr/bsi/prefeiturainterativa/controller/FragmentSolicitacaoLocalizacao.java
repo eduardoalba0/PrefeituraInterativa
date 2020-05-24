@@ -9,9 +9,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +49,7 @@ import androidx.lifecycle.ViewModelProvider;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Localizacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -109,7 +108,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
                 .addLocationRequest(LocationRequest.create()
                         .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                         .setInterval(2000)
-                        .setFastestInterval(1000));
+                        .setFastestInterval(2000));
         LocationServices
                 .getSettingsClient(getActivity())
                 .checkLocationSettings(builder.build())
@@ -260,9 +259,8 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
     public VerificationError verifyStep() {
         if (map_marker == null || map_marker.getPosition() == null)
             return new VerificationError(getString(R.string.str_local_nao_informado));
-        solicitacao.setLatitude(map_marker.getPosition().latitude);
-        solicitacao.setLongitude(map_marker.getPosition().longitude);
-        solicitacao.setEndereco(map_marker.getTitle());
+        solicitacao.setLocalizacao(new Localizacao(map_marker.getPosition()));
+        solicitacao.getLocalizacao().setEndereco(map_marker.getTitle());
         viewModel.postSolicitacao(solicitacao);
         return null;
     }

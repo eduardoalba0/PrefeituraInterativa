@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,6 +15,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
@@ -37,14 +40,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import co.mobiwise.materialintro.shape.Focus;
-import co.mobiwise.materialintro.shape.FocusGravity;
-import co.mobiwise.materialintro.shape.ShapeType;
-import co.mobiwise.materialintro.view.MaterialIntroView;
 
 public class ActivityOverview extends FragmentActivity implements View.OnClickListener {
 
     FirebaseHelper helper;
+    private boolean onUpload = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,15 +65,10 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
                 break;
             case R.id.bt_offline:
                 verificarConexao();
-                new MaterialIntroView.Builder(this)
-                        .setShape(ShapeType.RECTANGLE)
-                        .setInfoText("As solicitações que você cadastrar ficarão armazenadas no dispositivo até você e conectar à internet.")
-                        .enableDotAnimation(false)
-                        .enableFadeAnimation(true)
-                        .setFocusGravity(FocusGravity.CENTER)
-                        .setFocusType(Focus.NORMAL)
-                        .performClick(true)
-                        .setTarget(bt_offline)
+                Snackbar.make(pager_overview, R.string.str_dica_modo_offline,
+                        BaseTransientBottomBar.LENGTH_LONG)
+                        .setBackgroundTint(getResources().getColor(R.color.ms_black_87_opacity))
+                        .setTextColor(getResources().getColor(R.color.ms_white))
                         .show();
                 break;
         }
@@ -91,6 +86,60 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         return super.onTouchEvent(event);
     }
 
+    private void uploadsPendentes() {
+        onUpload = true;
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String jsonList = preferences.getString("SolicitacoesPendentes", "");
+
+        if (jsonList.trim().equals("") || jsonList.trim().equals("[]"))
+            return;
+        SweetAlertDialog dialogo = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                .setTitleText(R.string.str_carregando_demandas)
+                .setCancelText(getString(R.string.str_cancelar));
+        dialogo.show();
+
+        Gson gson = new Gson();
+
+        List<Solicitacao> listPendentes = new ArrayList<>();
+        Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
+
+        for (Solicitacao solicitacao : listPendentes) {
+            Log.e("Inicio", "ListCategorias:" + solicitacao.getLocalCategorias());
+            List<String> imagens = new ArrayList<>();
+            List<Task<?>> uploadTasks = new ArrayList<>();
+
+            for (String imagem : solicitacao.getLocalCaminhoImagens()) {
+                Task<Uri> uploadTask = helper.carregarAnexos(Uri.parse(imagem));
+                if (uploadTask != null) {
+                    uploadTask.addOnSuccessListener(this, uri -> imagens.add(uri.toString()));
+                    uploadTasks.add(uploadTask);
+                }
+            }
+            Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
+                solicitacao.setUrlImagens(imagens);
+                List<Task<?>> insertTasks = new ArrayList<>();
+                insertTasks.add(new SolicitacaoDAO(this).inserirAtualizar(solicitacao));
+
+                for (Categoria categoria : solicitacao.getLocalCategorias()) {
+                    Categorias_Solicitacao categorias_solicitacao = new Categorias_Solicitacao();
+                    categorias_solicitacao.setSolicitacao_ID(solicitacao.get_ID());
+                    categorias_solicitacao.setCategoria_ID(categoria.get_ID());
+                    insertTasks.add(new Categorias_SolicitacaoDAO(this).inserirAtualizar(categorias_solicitacao));
+                }
+
+                Tasks.whenAllComplete(insertTasks).addOnSuccessListener(tasks -> {
+                    List<Solicitacao> aux = new ArrayList<>();
+                    Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
+                    aux.remove(solicitacao);
+                    preferences.edit().remove("SolicitacoesPendentes")
+                            .putString("SolicitacoesPendentes", gson.toJson(aux)).apply();
+                    dialogo.dismiss();
+                    onUpload = false;
+                });
+            });
+        }
+    }
+
     public void verificarConexao() {
         helper = new FirebaseHelper(this);
         if (helper.getUser() == null || !helper.getUser().isEmailVerified()) {
@@ -99,6 +148,8 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         }
         if (helper.conexaoAtivada()) {
             bt_offline.setVisibility(View.GONE);
+            if (!onUpload)
+                uploadsPendentes();
         } else bt_offline.setVisibility(View.VISIBLE);
     }
 
