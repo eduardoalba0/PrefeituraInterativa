@@ -17,6 +17,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -37,8 +39,9 @@ public class FirebaseHelper {
     private StorageReference storage;
 
     public FirebaseHelper(Activity context) {
-        if (FirebaseApp.getApps(context).isEmpty())
+        if (FirebaseApp.getApps(context).isEmpty()) {
             FirebaseApp.initializeApp(context);
+        }
         this.context = context;
         auth = FirebaseAuth.getInstance();
         messaging = FirebaseMessaging.getInstance();
@@ -50,6 +53,17 @@ public class FirebaseHelper {
                 .build());
     }
 
+    public Task<InstanceIdResult> getToken() {
+        return FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(context, task -> {
+                    if (!task.isSuccessful()) {
+                        new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                                .setTitleText(R.string.str_erro)
+                                .setContentText(context.getString(R.string.str_erro_login))
+                                .show();
+                    }
+                });
+    }
     public Task<AuthResult> logar(Usuario usuario) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
