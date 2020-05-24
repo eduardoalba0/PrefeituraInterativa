@@ -14,16 +14,14 @@ public class Solicitacao implements Serializable {
 
     private String _ID;
     private String descricao;
-    private double latitude;
-    private double longitude;
-    private String endereco;
     private boolean concluida;
+    private boolean avaliada;
     private boolean anonima;
-    private Double avaliacao_nota;
-    private String avaliacao_comentario;
+    private Avaliacao avaliacao;
     private String usuario_ID;
     private String departamento_ID;
     private List<String> urlImagens;
+    private Localizacao localizacao;
 
     @ServerTimestamp
     private Date data;
@@ -54,28 +52,12 @@ public class Solicitacao implements Serializable {
         this.descricao = descricao;
     }
 
-    public double getLatitude() {
-        return latitude;
+    public Localizacao getLocalizacao() {
+        return localizacao;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public void setLocalizacao(Localizacao localizacao) {
+        this.localizacao = localizacao;
     }
 
     public boolean isConcluida() {
@@ -102,20 +84,20 @@ public class Solicitacao implements Serializable {
         this.urlImagens = urlImagens;
     }
 
-    public Double getAvaliacao_nota() {
-        return avaliacao_nota;
+    public Avaliacao getAvaliacao() {
+        return avaliacao;
     }
 
-    public void setAvaliacao_nota(Double avaliacao_nota) {
-        this.avaliacao_nota = avaliacao_nota;
+    public void setAvaliacao(Avaliacao avaliacao) {
+        this.avaliacao = avaliacao;
     }
 
-    public String getAvaliacao_comentario() {
-        return avaliacao_comentario;
+    public boolean isAvaliada() {
+        return avaliada;
     }
 
-    public void setAvaliacao_comentario(String avaliacao_comentario) {
-        this.avaliacao_comentario = avaliacao_comentario;
+    public void setAvaliada(boolean avaliada) {
+        this.avaliada = avaliada;
     }
 
     public String getUsuario_ID() {
@@ -160,6 +142,7 @@ public class Solicitacao implements Serializable {
         this.localCategorias = localCategorias;
     }
 
+    @Exclude
     public List<String> getLocalCaminhoImagens() {
         return localCaminhoImagens;
     }
