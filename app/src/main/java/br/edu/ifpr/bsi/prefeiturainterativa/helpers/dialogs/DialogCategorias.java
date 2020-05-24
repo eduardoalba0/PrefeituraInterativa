@@ -12,6 +12,7 @@ import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,12 +79,18 @@ public class DialogCategorias extends BottomSheetDialogFragment {
         switch (style) {
             case CategoriasAdapter.STYLE_RED:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorRed));
+                bt_continuar.setIconTintResource(R.color.colorRed);
+                bt_continuar.setTextColor(getResources().getColor(R.color.colorRed));
                 break;
             case CategoriasAdapter.STYLE_BLUE:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkBlueWhite));
+                bt_continuar.setIconTintResource(R.color.colorDarkBlueWhite);
+                bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkBlueWhite));
                 break;
             case CategoriasAdapter.STYLE_GREEN:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkGreenWhite));
+                bt_continuar.setIconTintResource(R.color.colorDarkGreenWhite);
+                bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkGreenWhite));
                 break;
         }
 
@@ -93,14 +100,17 @@ public class DialogCategorias extends BottomSheetDialogFragment {
                 tv_hintCategoria.setVisibility(View.VISIBLE);
                 tv_hintCategoria.setText(R.string.str_solicitacao_tipo);
                 rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), departamento.getCategorias(), true, style));
+                bt_continuar.setOnClickListener(view -> this.dismiss());
                 break;
             case TYPE_ONLYVIEW:
+                bt_continuar.setVisibility(View.GONE);
                 tv_titulo.setText(departamento.getDescricao());
                 tv_hintCategoria.setVisibility(View.VISIBLE);
                 tv_hintCategoria.setText(R.string.str_categoria_hint);
                 rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), departamento.getCategorias(), false, style));
                 break;
             case TYPE_LIST_EDITABLE:
+                bt_continuar.setOnClickListener(view -> this.dismiss());
                 viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
                 viewModel.getCategorias().observe(getActivity(), categorias -> {
                     if (categorias.isEmpty()) {
@@ -124,5 +134,8 @@ public class DialogCategorias extends BottomSheetDialogFragment {
 
     @BindView(R.id.tv_hintCategoria)
     TextView tv_hintCategoria;
+
+    @BindView(R.id.bt_continuar)
+    MaterialButton bt_continuar;
 
 }

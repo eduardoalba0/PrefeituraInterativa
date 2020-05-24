@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.annotation.NonNull;
@@ -125,8 +126,8 @@ public class DialogViewer extends BottomSheetDialogFragment implements View.OnCl
     ImageView img_viewer;
 
     @BindView(R.id.bt_aceitar)
-    FloatingActionButton bt_aceitar;
+    MaterialButton bt_aceitar;
 
     @BindView(R.id.bt_recusar)
-    FloatingActionButton bt_recusar;
+    MaterialButton bt_recusar;
 }
