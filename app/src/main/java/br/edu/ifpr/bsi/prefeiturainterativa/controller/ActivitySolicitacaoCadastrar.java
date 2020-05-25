@@ -101,6 +101,7 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         solicitacao.setConcluida(false);
         solicitacao.setUsuario_ID(helper.getUser().getUid());
         solicitacao.setLocalCategorias(viewModel.getListCategorias());
+        solicitacao.setDepartamento_ID(viewModel.getListCategorias().get(0).getDepartamento_ID());
         if (helper.conexaoAtivada())
             salvarOnline();
         else {
