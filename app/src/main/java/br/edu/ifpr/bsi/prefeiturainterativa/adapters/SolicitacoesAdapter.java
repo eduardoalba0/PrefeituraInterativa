@@ -3,6 +3,7 @@ package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,13 @@ import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexDirection;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
+import com.google.android.material.card.MaterialCardView;
 
 import java.text.DateFormat;
 import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
@@ -79,8 +80,21 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             itemView.setOnClickListener(this);
         }
 
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context, ActivitySolicitacaoVisualizar.class);
+            intent.putExtra("Solicitacao", solicitacao);
+            intent.putExtra("Estilo", estilo);
+            context.startActivity(intent);
+        }
+
         public void setData(Solicitacao solicitacao) {
             this.solicitacao = solicitacao;
+            String solicitacaoID = PreferenceManager.getDefaultSharedPreferences(context).getString("Solicitacao", "");
+            if (solicitacaoID != null && !solicitacaoID.isEmpty())
+                if (this.solicitacao.get_ID().equals(solicitacaoID)) {
+                    card_solicitacao.setCardBackgroundColor(context.getResources().getColor(R.color.main_orange_color));
+                }
             DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, new Locale("pt", "BR"));
             switch (estilo) {
                 case STYLE_NORMAL:
@@ -102,14 +116,6 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
                     break;
             }
             initRecyclerView(solicitacao.getLocalCategorias());
-        }
-
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(context, ActivitySolicitacaoVisualizar.class);
-            intent.putExtra("Solicitacao", solicitacao);
-            intent.putExtra("Estilo", estilo);
-            context.startActivity(intent);
         }
 
         private void carregarImagens(List<String> imagens) {
@@ -139,6 +145,6 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
         RecyclerView rv_categorias;
 
         @BindView(R.id.card_solicitacao)
-        CardView card_solicitacao;
+        MaterialCardView card_solicitacao;
     }
 }

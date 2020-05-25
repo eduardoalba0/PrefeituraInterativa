@@ -12,8 +12,8 @@ import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
     public static final int STYLE_NORMAL = 0,
             STYLE_PENDENTE = 1,
-            STYLE_NAO_AVALIADA = 2,
-            STYLE_PENDENTE_NAO_AVALIADA = 3;
+            STYLE_SEM_AVALIACAO = 2,
+            STYLE_PENDENTE_SEM_AVALIACAO = 3;
 
     private Solicitacao solicitacao;
     private int estilo;
@@ -48,9 +48,9 @@ public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
     public int getCount() {
         switch (estilo) {
             case STYLE_PENDENTE:
-            case STYLE_PENDENTE_NAO_AVALIADA:
+            case STYLE_PENDENTE_SEM_AVALIACAO:
                 return 1;
-            case STYLE_NAO_AVALIADA:
+            case STYLE_SEM_AVALIACAO:
                 return 2;
             case STYLE_NORMAL:
             default:

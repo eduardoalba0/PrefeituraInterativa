@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.transition.Transition;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -32,6 +31,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.adapters.OverviewTabAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.MessagingHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
@@ -104,7 +104,6 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
 
         for (Solicitacao solicitacao : listPendentes) {
-            Log.e("Inicio", "ListCategorias:" + solicitacao.getLocalCategorias());
             List<String> imagens = new ArrayList<>();
             List<Task<?>> uploadTasks = new ArrayList<>();
 
@@ -178,6 +177,11 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
 
         if (getIntent() != null)
             trocarPagina(getIntent().getIntExtra("Tab", 0));
+
+        String categoria = PreferenceManager.getDefaultSharedPreferences(this).getString("Categoria", "");
+        if (categoria.equals(MessagingHelper.CATEGORIA_TRAMITACAO) || categoria.equals(MessagingHelper.CATEGORIA_AVALIACAO))
+            tab_overview.getTabAt(2).getOrCreateBadge().setVisible(true);
+
     }
 
     public void trocarPagina(int index) {
@@ -186,11 +190,7 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
 
     @Override
     public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
-            getSupportFragmentManager().popBackStack();
-        else {
-            finishAffinity();
-        }
+        finishAffinity();
     }
 
     @BindView(R.id.bt_foto)

@@ -7,7 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Build;
-import android.util.Log;
+import android.preference.PreferenceManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -17,7 +17,7 @@ import java.util.Map;
 
 import androidx.core.app.NotificationCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
-import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySplash;
+import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
 
 public class MessagingHelper extends FirebaseMessagingService {
     public static final String CATEGORIA_PADRAO = "Avisos",
@@ -26,7 +26,6 @@ public class MessagingHelper extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
-        Log.e("User id", FirebaseAuth.getInstance().getCurrentUser().getUid());
         if (message.getNotification() != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
 
             String channelId = getString(R.string.default_notification_client_id);
@@ -34,7 +33,6 @@ public class MessagingHelper extends FirebaseMessagingService {
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
             String categoria = CATEGORIA_PADRAO;
-            Intent intent = new Intent(this, ActivitySplash.class);
 
             if (message.getData() != null) {
                 Map<String, String> dados = message.getData();
@@ -42,12 +40,15 @@ public class MessagingHelper extends FirebaseMessagingService {
                 if (aux != null && !aux.equals("")) {
                     categoria = aux;
                     if (aux.equals(CATEGORIA_AVALIACAO) || aux.equals(CATEGORIA_TRAMITACAO)) {
-                        //TODO usar sharedpreferrences
-                        intent.putExtra("Solicitacao", dados.get("Solicitacao"));
-                        intent.putExtra("Categoria", dados.get("Categoria"));
+                        PreferenceManager.getDefaultSharedPreferences(this).edit()
+                                .putString("Categoria", dados.get("Categoria"))
+                                .putString("Solicitacao", dados.get("Solicitacao"))
+                                .apply();
                     }
                 }
             }
+
+            Intent intent = new Intent(this, ActivitySolicitacaoVisualizar.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

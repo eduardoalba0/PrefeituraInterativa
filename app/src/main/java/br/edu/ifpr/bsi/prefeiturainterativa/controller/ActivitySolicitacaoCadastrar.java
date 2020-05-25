@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -102,7 +101,6 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         solicitacao.setConcluida(false);
         solicitacao.setUsuario_ID(helper.getUser().getUid());
         solicitacao.setLocalCategorias(viewModel.getListCategorias());
-        Log.e("SolicitacaoCadastrar", "ListViewlmodel: " + viewModel.getListCategorias());
         if (helper.conexaoAtivada())
             salvarOnline();
         else {
