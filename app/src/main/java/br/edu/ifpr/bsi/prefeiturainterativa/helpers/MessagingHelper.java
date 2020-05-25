@@ -60,7 +60,7 @@ public class MessagingHelper extends FirebaseMessagingService {
 
             notificationManager.notify(((int) message.getSentTime()),
                     new NotificationCompat.Builder(this, channelId)
-                            .setSmallIcon(R.mipmap.ic_launcher_round)
+                            .setSmallIcon(R.drawable.ic_notificacao)
                             .setContentTitle(message.getNotification().getTitle())
                             .setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
                             .setStyle(new NotificationCompat.BigTextStyle().bigText(message.getNotification().getBody()))

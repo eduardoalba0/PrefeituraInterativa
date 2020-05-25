@@ -106,6 +106,7 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
 
     public void initTabLayout(Solicitacao solicitacao) {
         String categoria = PreferenceManager.getDefaultSharedPreferences(this).getString("Categoria", MessagingHelper.CATEGORIA_PADRAO);
+        String solicitacaoID = PreferenceManager.getDefaultSharedPreferences(this).getString("Solicitacao", MessagingHelper.CATEGORIA_PADRAO);
         if (!solicitacao.isConcluida())
             if (estilo == STYLE_PENDENTE)
                 estilo = STYLE_PENDENTE_SEM_AVALIACAO;
@@ -122,16 +123,17 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
             tabs_solicitacao.getTabAt(2).setText(R.string.str_avaliacao);
 
 
-        if (categoria.equals(MessagingHelper.CATEGORIA_AVALIACAO) && !solicitacao.isAvaliada())
-            tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
-
-        if (categoria.equals(MessagingHelper.CATEGORIA_TRAMITACAO)) {
-            tabs_solicitacao.getTabAt(1).getOrCreateBadge().setVisible(true);
-            if (solicitacao.isConcluida())
+        if (solicitacao.get_ID().equals(solicitacaoID)) {
+            if (categoria.equals(MessagingHelper.CATEGORIA_AVALIACAO) && !solicitacao.isAvaliada())
                 tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
-        }
 
-        pager_solicitacao.addOnPageChangeListener(this);
+            if (categoria.equals(MessagingHelper.CATEGORIA_TRAMITACAO)) {
+                tabs_solicitacao.getTabAt(1).getOrCreateBadge().setVisible(true);
+                if (solicitacao.isConcluida())
+                    tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
+            }
+            pager_solicitacao.addOnPageChangeListener(this);
+        }
     }
 
     @Override

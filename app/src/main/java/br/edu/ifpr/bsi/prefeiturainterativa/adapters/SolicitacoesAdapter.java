@@ -3,7 +3,6 @@ package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,21 +35,18 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
 
     private Activity context;
     private List<Solicitacao> solicitacoes;
-    private FragmentManager fm;
     private int estilo;
 
-    public SolicitacoesAdapter(Activity context, List<Solicitacao> solicitacoes, FragmentManager fm, int estilo) {
+    public SolicitacoesAdapter(Activity context, List<Solicitacao> solicitacoes, int estilo) {
         this.context = context;
         this.solicitacoes = solicitacoes;
-        this.fm = fm;
         this.estilo = estilo;
     }
 
-    public SolicitacoesAdapter(Activity context, List<Solicitacao> solicitacoes, FragmentManager fm) {
+    public SolicitacoesAdapter(Activity context, List<Solicitacao> solicitacoes) {
         this.context = context;
         this.solicitacoes = solicitacoes;
-        this.fm = fm;
-        this.estilo = 0;
+        this.estilo = STYLE_NORMAL;
     }
 
     @NonNull
@@ -90,11 +86,6 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
 
         public void setData(Solicitacao solicitacao) {
             this.solicitacao = solicitacao;
-            String solicitacaoID = PreferenceManager.getDefaultSharedPreferences(context).getString("Solicitacao", "");
-            if (solicitacaoID != null && !solicitacaoID.isEmpty())
-                if (this.solicitacao.get_ID().equals(solicitacaoID)) {
-                    card_solicitacao.setCardBackgroundColor(context.getResources().getColor(R.color.main_orange_color));
-                }
             DateFormat df = DateFormat.getDateInstance(DateFormat.FULL, new Locale("pt", "BR"));
             switch (estilo) {
                 case STYLE_NORMAL:

@@ -64,7 +64,7 @@ public class FragmentTabSolicitacoes extends Fragment {
                         daoCategorias.get(categoria).addOnSuccessListener(getActivity(), documentSnapshot -> {
                             categorias.add(documentSnapshot.toObject(Categoria.class));
                             solicitacao.setLocalCategorias(categorias);
-                            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), result, getChildFragmentManager()));
+                            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), result));
                         });
                     }
                 });
