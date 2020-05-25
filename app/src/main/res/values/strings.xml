@@ -54,7 +54,7 @@
     <string name="str_titulo_localizacao">Localização \n Onde ocorreu?</string>
     <string name="str_titulo_detalhes">Detalhes \n O que aconteceu?</string>
     <string name="str_titulo_categorias">Categoria \n Sobre o que se trata?</string>
-    <string name="str_carregando">Carregando</string>
+    <string name="str_carregando">Carregando…</string>
     <string name="str_cadastrando_demanda">Cadastrando Demanda…</string>
     <string name="str_erro_carregar_imagem">Falha ao carregar imagem. Consulte o suporte do sistema.</string>
     <string name="str_erro">Erro!</string>
@@ -77,7 +77,7 @@
     <string name="str_categoria_hint">Esta secretaria é responsável por:</string>
     <string name="str_dados_solicitacao">Informações</string>
     <string name="str_tramitacao">Tramitação</string>
-    <string name="str_local">Mostrar localização</string>
+    <string name="str_local">localização</string>
     <string name="str_departamentos">Secretarias</string>
     <string name="str_visualizar_demanda">Visualizar Solicitação</string>
     <string name="str_erro_limite_topicos">Em cada solicitação, você pode marcar apenas 10 tópicos.</string>
@@ -101,5 +101,19 @@
     <string name="str_nenhuma_imagem">Nenhuma imagem inserida.</string>
     <string name="str_aguardando_conexao">Aguardando Conexão</string>
     <string name="str_modo_offline">Modo Offline - Utilizando dados em cache.</string>
-    <string name="str_carregando_demandas">Enviando Solicitações pendentes...</string>
+    <string name="str_carregando_demandas">Enviando Solicitações pendentes…</string>
+    <string name="str_avaliar">Avaliar</string>
+    <string name="str_comentario_avaliacao">Comentários Gerais</string>
+    <string name="str_avaliacao_atendida">Minha demanda foi solucionada.</string>
+    <string name="str_avaliacao">Avaliação</string>
+    <string name="str_avaliacao_concluida">Avaliação efetuda. Agradecemos pela sua opinião!</string>
+    <string name="str_solicitacao_cadastrada_offline">Sua solicitação será enviada para o sistema quando você estiver conectado.</string>
+    <string name="str_atencao">Atenção!</string>
+    <string name="str_dica_modo_offline">Você poderá continuar cadastrando solicitações para enviar quando tiver internet!</string>
+    <string name="str_avaliacao_nota">Qual a sua nota para o atendimento?</string>
+    <string name="str_erro_limite_imagens">Você pode inserir no máximo três imagens.</string>
+    <string name="str_topicos">Categorias</string>
+    <string name="default_notification_client_id">fcm_default_channel</string>
+    <string name="str_autenticando">Autenticando…</string>
+    <string name="str_erro_avaliacao_vazia">Por favor, informe uma nota para o atendimento.</string>
 </resources>
