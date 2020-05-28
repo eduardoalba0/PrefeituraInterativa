@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:elevation="2dp"
         android:textColor="@color/whiteBlack"
-        android:textSize="@dimen/texto_label"
+        android:textSize="@dimen/texto_pequeno"
         android:fontFamily="@font/fredoka"
         app:checkedIcon="@drawable/ic_sucesso"
         app:chipBackgroundColor="@color/colorRed"

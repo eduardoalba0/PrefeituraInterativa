@@ -31,8 +31,8 @@ import br.edu.ifpr.bsi.prefeiturainterativa.adapters.OverviewTabAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
-import br.edu.ifpr.bsi.prefeiturainterativa.helpers.MessagingHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
@@ -178,8 +178,8 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         if (getIntent() != null)
             trocarPagina(getIntent().getIntExtra("Tab", 0));
 
-        String categoria = PreferenceManager.getDefaultSharedPreferences(this).getString("Categoria", "");
-        if (categoria.equals(MessagingHelper.CATEGORIA_TRAMITACAO) || categoria.equals(MessagingHelper.CATEGORIA_AVALIACAO))
+        String avisos = PreferenceManager.getDefaultSharedPreferences(this).getString("AvisosPendentes", "");
+        if (avisos.contains(Aviso.CATEGORIA_AVALIACAO) || avisos.contains(Aviso.CATEGORIA_TRAMITACAO))
             tab_overview.getTabAt(2).getOrCreateBadge().setVisible(true);
 
     }

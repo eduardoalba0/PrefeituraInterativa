@@ -10,14 +10,20 @@ import android.widget.ImageView;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import fcm.androidtoandroid.FirebasePush;
+import fcm.androidtoandroid.model.Notification;
 
 public class ActivitySplash extends AppCompatActivity {
 
@@ -35,6 +41,17 @@ public class ActivitySplash extends AppCompatActivity {
     }
 
     public void startAnimation() {
+        FirebasePush firebasePush = new FirebasePush("AAAA463WeYk:APA91bEG9L93sqV3JAP6p8Y0sGvX-NwcCUTKZghnjM7-CsCg_FzS0ueB8vUzqrhomTXEReWqTwr9ALNVKm7Si_DDyyuhjt_1ifpYczWqa76dLbiZNiZcf2xD9Mhop1dmIrA5LM4OLIBz");
+        try {
+            JSONObject json = new JSONObject();
+            json.put("Categoria", Aviso.CATEGORIA_TRAMITACAO);
+            json.put("Solicitacao", "6edd4d61-2cd7-40bd-b784-5d828a6fb9fb");
+            firebasePush.setNotification(new Notification("Teste Titulo", "Teste Corpo"))
+                    .setData(json)
+                    .sendToToken("eFs1yk1CTXungCOTP0oGYf:APA91bFdwcmxNlpXlicj_6sIvq2jDBlsADFeI9yRY4I9CzNq2SMa--atM3xftIHGgg9eL7-IDNDHqfqoUNqNDrszsRymPDqZSEFdcKeY49Mz3rq5OD1mnmrPQmI5TdmiRg6t-_hg1_O5");
+        } catch (JSONException ex) {
+
+        }
         Handler handler = new Handler();
         handler.postDelayed(this::verificarDados, 700);
     }

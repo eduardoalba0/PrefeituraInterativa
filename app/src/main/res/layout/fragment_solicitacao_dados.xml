@@ -37,7 +37,7 @@
                         android:gravity="center"
                         android:text="@string/str_topicos"
                         android:textColor="@color/colorRed"
-                        android:textSize="@dimen/texto_botao" />
+                        android:textSize="@dimen/texto_normal" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_categorias"
@@ -65,7 +65,7 @@
                             android:enabled="false"
                             android:inputType="none"
                             android:textColor="@color/colorDarkOrange"
-                            android:textSize="@dimen/texto_label" />
+                            android:textSize="@dimen/texto_pequeno" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,7 +88,7 @@
                     android:gravity="center"
                     android:text="@string/str_imagens"
                     android:textColor="@color/colorRed"
-                    android:textSize="@dimen/texto_botao" />
+                    android:textSize="@dimen/texto_normal" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_imagens"
@@ -127,7 +127,7 @@
                 android:gravity="center"
                 android:text="@string/str_local"
                 android:textColor="@color/ms_white"
-                android:textSize="@dimen/texto_label"
+                android:textSize="@dimen/texto_pequeno"
                 app:icon="@drawable/ic_local"
                 app:iconGravity="textEnd"
                 app:iconTint="@color/ms_white" />

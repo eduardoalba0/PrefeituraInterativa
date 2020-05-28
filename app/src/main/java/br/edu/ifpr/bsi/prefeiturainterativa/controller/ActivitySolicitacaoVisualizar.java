@@ -3,7 +3,6 @@ package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.transition.Transition;
 import android.view.MotionEvent;
 import android.view.View;
@@ -21,15 +20,14 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacaoVisualizarTabAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
-import br.edu.ifpr.bsi.prefeiturainterativa.helpers.MessagingHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener,
-        ViewPager.OnPageChangeListener {
+public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener {
 
     public static final int STYLE_NORMAL = 0,
             STYLE_PENDENTE = 1,
@@ -86,18 +84,19 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
         solicitacao = (Solicitacao) getIntent().getSerializableExtra("Solicitacao");
         estilo = getIntent().getIntExtra("Estilo", STYLE_NORMAL);
         if (solicitacao == null) {
-            String solicitacaoID = PreferenceManager.getDefaultSharedPreferences(this).getString("Solicitacao", "");
-            if (solicitacaoID != null && !solicitacaoID.isEmpty()) {
-                solicitacao = new Solicitacao();
-                solicitacao.set_ID(solicitacaoID);
-                new SolicitacaoDAO(this).get(solicitacao)
+            Aviso aviso = (Aviso) getIntent().getSerializableExtra("Aviso");
+            if (aviso != null)
+                if (aviso.getSolicitacao_ID() != null && !aviso.getSolicitacao_ID().isEmpty()) {
+                    solicitacao = new Solicitacao();
+                    solicitacao.set_ID(aviso.getSolicitacao_ID());
+                    new SolicitacaoDAO(this).get(solicitacao)
                         .addOnFailureListener(this, e -> chamarActivity(ActivityOverview.class))
                         .addOnSuccessListener(this, documentSnapshot -> {
                             solicitacao = documentSnapshot.toObject(Solicitacao.class);
-                            initTabLayout(solicitacao);
+                            initTabLayout(solicitacao, aviso);
                         });
             } else {
-                onBackPressed();
+                    chamarActivity(ActivityOverview.class);
                 finish();
             }
         } else
@@ -105,8 +104,6 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
     }
 
     public void initTabLayout(Solicitacao solicitacao) {
-        String categoria = PreferenceManager.getDefaultSharedPreferences(this).getString("Categoria", MessagingHelper.CATEGORIA_PADRAO);
-        String solicitacaoID = PreferenceManager.getDefaultSharedPreferences(this).getString("Solicitacao", MessagingHelper.CATEGORIA_PADRAO);
         if (!solicitacao.isConcluida())
             if (estilo == STYLE_PENDENTE)
                 estilo = STYLE_PENDENTE_SEM_AVALIACAO;
@@ -122,40 +119,29 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
         if (estilo != STYLE_SEM_AVALIACAO && estilo != STYLE_PENDENTE_SEM_AVALIACAO)
             tabs_solicitacao.getTabAt(2).setText(R.string.str_avaliacao);
 
+    }
 
-        if (solicitacao.get_ID().equals(solicitacaoID)) {
-            if (categoria.equals(MessagingHelper.CATEGORIA_AVALIACAO) && !solicitacao.isAvaliada())
-                tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
+    public void initTabLayout(Solicitacao solicitacao, Aviso aviso) {
+        initTabLayout(solicitacao);
+        if (aviso.getCategoria().equals(Aviso.CATEGORIA_AVALIACAO))
+            tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
 
-            if (categoria.equals(MessagingHelper.CATEGORIA_TRAMITACAO)) {
-                tabs_solicitacao.getTabAt(1).getOrCreateBadge().setVisible(true);
-                if (solicitacao.isConcluida())
-                    tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
-            }
-            pager_solicitacao.addOnPageChangeListener(this);
+        if (aviso.getCategoria().equals(Aviso.CATEGORIA_TRAMITACAO)) {
+            tabs_solicitacao.getTabAt(1).getOrCreateBadge().setVisible(true);
         }
-    }
+        pager_solicitacao.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                tabs_solicitacao.getTabAt(position).removeBadge();
+            }
 
-    @Override
-    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-        tabs_solicitacao.getTabAt(position).removeBadge();
-        PreferenceManager.getDefaultSharedPreferences(ActivitySolicitacaoVisualizar.this)
-                .edit()
-                .remove("Categoria")
-                .remove("Solicitacao")
-                .apply();
-    }
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                tabs_solicitacao.getTabAt(position).removeBadge();
+            }
+        });
 
-    @Override
-    public void onPageSelected(int position) {
-        tabs_solicitacao.getTabAt(position).removeBadge();
-        PreferenceManager.getDefaultSharedPreferences(ActivitySolicitacaoVisualizar.this)
-                .edit()
-                .remove("Categoria")
-                .remove("Solicitacao")
-                .apply();
     }
-
 
     public void startAnimation() {
         Transition t = TransitionHelper.inflateExplodeTransition(1500);
@@ -174,11 +160,6 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
     @Override
     public void onBackPressed() {
         chamarActivity(ActivityOverview.class);
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int state) {
-
     }
 
     @BindView(R.id.pager_solicitacao)

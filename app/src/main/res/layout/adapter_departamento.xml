@@ -25,6 +25,6 @@
             android:gravity="center"
             android:layout_margin="@dimen/espaco_muito_pequeno"
             android:textColor="@color/ms_white"
-            android:textSize="@dimen/texto_label" />
+            android:textSize="@dimen/texto_pequeno" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

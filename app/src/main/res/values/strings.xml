@@ -116,4 +116,8 @@
     <string name="default_notification_client_id">fcm_default_channel</string>
     <string name="str_autenticando">Autenticando…</string>
     <string name="str_erro_avaliacao_vazia">Por favor, informe uma nota para o atendimento.</string>
+    <string name="str_avisos">Avisos</string>
+    <string name="str_nenhum_aviso">Nenhum aviso pendente.</string>
+    <string name="str_solicitacoes_abertas">Solicitações Abertas</string>
+    <string name="str_solicitacoes_concluidas">Solicitacoes Concluidas</string>
 </resources>

@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="@string/str_voltar"
             android:textColor="@color/blackWhite"
-            android:textSize="@dimen/texto_botao"
+            android:textSize="@dimen/texto_normal"
             app:icon="@drawable/ic_cancelar"
             app:iconGravity="textStart"
             app:iconTint="@color/blackWhite" />
@@ -45,7 +45,7 @@
             android:layout_weight="1"
             android:text="@string/dialog_ok"
             android:textColor="@color/blackWhite"
-            android:textSize="@dimen/texto_botao"
+            android:textSize="@dimen/texto_normal"
             app:icon="@drawable/ic_sucesso"
             app:iconGravity="textStart"
             app:iconTint="@color/blackWhite" />

@@ -24,7 +24,7 @@
                 android:gravity="center"
                 android:text="@string/str_minhas_demandas"
                 android:textColor="@color/ms_white"
-                android:textSize="@dimen/texto_botao"
+                android:textSize="@dimen/texto_normal"
                 android:transitionName="splash_transition" />
         </LinearLayout>
     </LinearLayout>

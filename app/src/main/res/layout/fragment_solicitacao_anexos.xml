@@ -39,7 +39,7 @@
                         android:gravity="center"
                         android:text="@string/str_imagens"
                         android:textColor="@color/colorRed"
-                        android:textSize="@dimen/texto_botao" />
+                        android:textSize="@dimen/texto_normal" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_imagens"
@@ -64,7 +64,7 @@
                             android:gravity="center"
                             android:text="@string/str_adicionar"
                             android:textColor="@color/ms_white"
-                            android:textSize="@dimen/texto_label"
+                            android:textSize="@dimen/texto_pequeno"
                             app:icon="@drawable/ic_add"
                             app:iconGravity="textEnd"
                             app:iconTint="@color/ms_white" />
@@ -88,7 +88,7 @@
                         android:gravity="center"
                         android:text="@string/str_descricao"
                         android:textColor="@color/colorRed"
-                        android:textSize="@dimen/texto_botao" />
+                        android:textSize="@dimen/texto_normal" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/edl_descricao"
@@ -111,7 +111,7 @@
                             android:inputType="textMultiLine"
                             android:maxLength="600"
                             android:textColor="@color/colorDarkOrange"
-                            android:textSize="@dimen/texto_label" />
+                            android:textSize="@dimen/texto_pequeno" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
         </LinearLayout>
@@ -136,7 +136,7 @@
             android:padding="@dimen/espaco_muito_pequeno"
             android:text="@string/str_anonimo"
             android:textColor="@color/blackWhite"
-            android:textSize="@dimen/texto_label" />
+            android:textSize="@dimen/texto_pequeno" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/sw_anonimo"

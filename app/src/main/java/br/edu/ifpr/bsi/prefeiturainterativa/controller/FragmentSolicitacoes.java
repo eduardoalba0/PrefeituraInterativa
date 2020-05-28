@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacoesTabAdapter;
-import br.edu.ifpr.bsi.prefeiturainterativa.helpers.MessagingHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -36,13 +36,13 @@ public class FragmentSolicitacoes extends Fragment {
         tab_solicitacoes.getTabAt(0).setText(R.string.str_solicitacao_em_andamento);
         tab_solicitacoes.getTabAt(1).setText(R.string.str_solicitacao_encerrada);
 
-        String categoria = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("Categoria", "");
-        if (categoria.equals(MessagingHelper.CATEGORIA_TRAMITACAO)) {
-            tab_solicitacoes.getTabAt(0).getOrCreateBadge();
-            pager_solicitacoes.setCurrentItem(0);
-        } else if (categoria.equals(MessagingHelper.CATEGORIA_AVALIACAO)) {
+        String avisos = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("AvisosPendentes", "");
+        if (avisos.contains(Aviso.CATEGORIA_AVALIACAO)) {
             tab_solicitacoes.getTabAt(1).getOrCreateBadge();
             pager_solicitacoes.setCurrentItem(1);
+        } else if (avisos.contains(Aviso.CATEGORIA_TRAMITACAO)) {
+            tab_solicitacoes.getTabAt(0).getOrCreateBadge();
+            pager_solicitacoes.setCurrentItem(0);
         }
     }
 

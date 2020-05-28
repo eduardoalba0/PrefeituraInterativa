@@ -23,8 +23,8 @@
                 android:gravity="center"
                 android:padding="@dimen/espaco_muito_pequeno"
                 android:textAllCaps="true"
-                android:textColor="@color/ms_white"
-                android:textSize="@dimen/texto_label" />
+                android:textColor="@color/colorOrangeWhite"
+                android:textSize="@dimen/texto_pequeno" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card_solicitacao"
@@ -63,7 +63,7 @@
                             android:padding="@dimen/espaco_pequeno"
                             android:textAllCaps="false"
                             android:textColor="@color/blackWhite"
-                            android:textSize="@dimen/texto_label" />
+                            android:textSize="@dimen/texto_pequeno" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <ImageView

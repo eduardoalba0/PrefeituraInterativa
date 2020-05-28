@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:text="@string/str_departamentos"
             android:textColor="@color/ms_white"
-            android:textSize="@dimen/texto_botao" />
+            android:textSize="@dimen/texto_normal" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

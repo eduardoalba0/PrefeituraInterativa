@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredoka"
         android:gravity="center"
-        android:textSize="@dimen/texto_titulo"
+        android:textSize="@dimen/texto_muito_grande"
         android:textColor="@color/ms_white"
         android:text="@string/app_name"
         android:textStyle="bold" />

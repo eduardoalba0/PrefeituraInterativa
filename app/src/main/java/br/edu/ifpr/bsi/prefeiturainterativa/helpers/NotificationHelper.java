@@ -12,48 +12,49 @@ import android.preference.PreferenceManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.google.gson.Gson;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.List;
 
 import androidx.core.app.NotificationCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 
-public class MessagingHelper extends FirebaseMessagingService {
-    public static final String CATEGORIA_PADRAO = "Avisos",
-            CATEGORIA_AVALIACAO = "Avaliar Atendimento",
-            CATEGORIA_TRAMITACAO = "Atualizações";
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso.CATEGORIA_PADRAO;
+
+public class NotificationHelper extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage message) {
         if (message.getNotification() != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
 
+            Intent intent = new Intent(this, ActivitySolicitacaoVisualizar.class);
             String channelId = getString(R.string.default_notification_client_id);
+            String categoria = CATEGORIA_PADRAO;
+
             NotificationManager notificationManager =
                     (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-            String categoria = CATEGORIA_PADRAO;
-
             if (message.getData() != null) {
-                Map<String, String> dados = message.getData();
-                String aux = dados.get("Categoria");
-                if (aux != null && !aux.equals("")) {
-                    categoria = aux;
-                    if (aux.equals(CATEGORIA_AVALIACAO) || aux.equals(CATEGORIA_TRAMITACAO)) {
-                        PreferenceManager.getDefaultSharedPreferences(this).edit()
-                                .putString("Categoria", dados.get("Categoria"))
-                                .putString("Solicitacao", dados.get("Solicitacao"))
-                                .apply();
-                    }
-                }
+                Aviso aviso = new Aviso();
+                aviso.setTitulo(message.getNotification().getTitle());
+                aviso.setCorpo(message.getNotification().getBody());
+                aviso.setSolicitacao_ID(message.getData().get("Solicitacao"));
+                aviso.setData(new Date());
+                aviso.setCategoria(message.getData().get("Categoria"));
+                intent.putExtra("Aviso", aviso);
+                categoria = aviso.getCategoria();
+                new SharedPreferencesHelper(this).insertAviso(aviso);
             }
-
-            Intent intent = new Intent(this, ActivitySolicitacaoVisualizar.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 NotificationChannel channel = new NotificationChannel(channelId,
-                        categoria,
+                        categoria.trim().equals("") ? CATEGORIA_PADRAO : categoria,
                         NotificationManager.IMPORTANCE_DEFAULT);
                 notificationManager.createNotificationChannel(channel);
             }
@@ -62,7 +63,7 @@ public class MessagingHelper extends FirebaseMessagingService {
                     new NotificationCompat.Builder(this, channelId)
                             .setSmallIcon(R.drawable.ic_notificacao)
                             .setContentTitle(message.getNotification().getTitle())
-                            .setBadgeIconType(NotificationCompat.BADGE_ICON_LARGE)
+                            .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL)
                             .setStyle(new NotificationCompat.BigTextStyle().bigText(message.getNotification().getBody()))
                             .setColorized(true)
                             .setAutoCancel(true)

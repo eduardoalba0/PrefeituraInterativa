@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.card.MaterialCardView;
 import com.google.gson.Gson;
 
@@ -24,8 +25,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
+import br.edu.ifpr.bsi.prefeiturainterativa.adapters.AvisoAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacoesAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
@@ -63,13 +67,16 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
         getActivity().onWindowFocusChanged(b);
     }
 
-    @OnClick({R.id.bt_usuario, R.id.rv_solicitacoes})
+    @OnClick({R.id.bt_usuario, R.id.l_numSolicitacoes})
     @Override
     public void onClick(View view) {
+        ActivityOverview activity = (ActivityOverview) getActivity();
         switch (view.getId()) {
             case R.id.bt_usuario:
-                ActivityOverview activity = (ActivityOverview) getActivity();
                 activity.trocarPagina(3);
+                break;
+            case R.id.l_numSolicitacoes:
+                activity.trocarPagina(2);
                 break;
         }
     }
@@ -87,18 +94,37 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
     }
 
     private void initRecyclerView() {
-        String jsonList = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("SolicitacoesPendentes", "");
+        String jsonListPendentes = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("SolicitacoesPendentes", "");
+        String jsonListAvisos = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("AvisosPendentes", "");
         Gson gson = new Gson();
 
-        if (jsonList.trim().equals("") || jsonList.trim().equals("[]"))
+        if (jsonListPendentes.trim().equals("") || jsonListPendentes.trim().equals("[]"))
             card_pendentes.setVisibility(View.GONE);
         else {
             List<Solicitacao> listPendentes = new ArrayList<>();
-            Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
+            Collections.addAll(listPendentes, gson.fromJson(jsonListPendentes, Solicitacao[].class));
             card_pendentes.setVisibility(View.VISIBLE);
             rv_solicitacoes.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
             rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), listPendentes, SolicitacoesAdapter.STYLE_PENDENTE));
         }
+
+        if (jsonListAvisos.trim().equals("") || jsonListAvisos.trim().equals("[]"))
+            tv_nenhumAviso.setVisibility(View.VISIBLE);
+        else {
+            List<Aviso> listAvisos = new ArrayList<>();
+            Collections.addAll(listAvisos, gson.fromJson(jsonListAvisos, Aviso[].class));
+            rv_avisos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
+            rv_avisos.setAdapter(new AvisoAdapter(getActivity(), listAvisos, getChildFragmentManager()));
+            if (listAvisos.size() > 0)
+                tv_nenhumAviso.setVisibility(View.GONE);
+        }
+        new SolicitacaoDAO(getActivity()).getAllporStatus(false)
+                .addOnSuccessListener(getActivity(), queryDocumentSnapshots ->
+                        tv_numAbertas.setText(("" + (queryDocumentSnapshots.toObjects(Solicitacao.class).size()))));
+
+        new SolicitacaoDAO(getActivity()).getAllporStatus(true)
+                .addOnSuccessListener(getActivity(), queryDocumentSnapshots ->
+                        tv_numConcluidas.setText(("" + queryDocumentSnapshots.toObjects(Solicitacao.class).size())));
     }
 
     @BindView(R.id.img_usuario)
@@ -107,9 +133,24 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
     @BindView(R.id.bt_usuario)
     TextView bt_usuario;
 
+    @BindView(R.id.tv_nenhumAviso)
+    TextView tv_nenhumAviso;
+
+    @BindView(R.id.tv_numAbertas)
+    TextView tv_numAbertas;
+
+    @BindView(R.id.l_numSolicitacoes)
+    FlexboxLayout l_numSolicitacoes;
+
+    @BindView(R.id.tv_numConcluidas)
+    TextView tv_numConcluidas;
+
     @BindView(R.id.card_pendentes)
     MaterialCardView card_pendentes;
 
     @BindView(R.id.rv_solicitacoes)
     RecyclerView rv_solicitacoes;
+
+    @BindView(R.id.rv_avisos)
+    RecyclerView rv_avisos;
 }

@@ -8,10 +8,11 @@
     <dimen name="espaco_gigante">40dp</dimen>
 
     <!-- fontes-->
-    <dimen name="texto_titulo">30sp</dimen>
-    <dimen name="texto_subtitulo">25sp</dimen>
-    <dimen name="texto_label">14sp</dimen>
-    <dimen name="texto_botao">19sp</dimen>
+    <dimen name="texto_gigantesco">40sp</dimen>
+    <dimen name="texto_muito_grande">30sp</dimen>
+    <dimen name="texto_grande">25sp</dimen>
+    <dimen name="texto_normal">19sp</dimen>
+    <dimen name="texto_pequeno">14sp</dimen>
 
     <!-- Componentes -->
     <dimen name="raio_circulo_grande">50dp</dimen>

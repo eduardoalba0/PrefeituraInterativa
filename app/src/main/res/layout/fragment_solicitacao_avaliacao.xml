@@ -40,7 +40,7 @@
                         android:gravity="center"
                         android:text="@string/str_avaliacao_nota"
                         android:textColor="@color/colorRed"
-                        android:textSize="@dimen/texto_botao" />
+                        android:textSize="@dimen/texto_normal" />
 
                     <RatingBar
                         android:id="@+id/bar_avaliacao"
@@ -67,7 +67,7 @@
                             android:padding="@dimen/espaco_muito_pequeno"
                             android:text="@string/str_avaliacao_atendida"
                             android:textColor="@color/blackWhite"
-                            android:textSize="@dimen/texto_label" />
+                            android:textSize="@dimen/texto_pequeno" />
 
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/sw_solucionada"
@@ -100,7 +100,7 @@
                     android:gravity="center"
                     android:text="@string/str_comentario_avaliacao"
                     android:textColor="@color/colorRed"
-                    android:textSize="@dimen/texto_botao" />
+                    android:textSize="@dimen/texto_normal" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/edl_comentario"
@@ -125,7 +125,7 @@
                         android:inputType="textMultiLine"
                         android:maxLength="600"
                         android:textColor="@color/colorDarkOrange"
-                        android:textSize="@dimen/texto_label" />
+                        android:textSize="@dimen/texto_pequeno" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <RelativeLayout
@@ -146,7 +146,7 @@
                         android:gravity="center"
                         android:text="@string/str_avaliar"
                         android:textColor="@color/ms_white"
-                        android:textSize="@dimen/texto_label"
+                        android:textSize="@dimen/texto_pequeno"
                         android:transitionName="splash_transition"
                         app:icon="@drawable/ic_proximo"
                         app:iconGravity="textEnd"
@@ -162,7 +162,7 @@
                     android:background="@color/float_transparent"
                     android:gravity="center"
                     android:textColor="@color/colorRed"
-                    android:textSize="@dimen/texto_botao"
+                    android:textSize="@dimen/texto_normal"
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>

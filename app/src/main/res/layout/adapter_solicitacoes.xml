@@ -6,51 +6,47 @@
     android:layout_marginTop="@dimen/espaco_pequeno"
     android:orientation="vertical">
 
-    <com.google.android.material.textview.MaterialTextView
+    <TextView
         android:id="@+id/tv_data"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="@dimen/espaco_muito_pequeno"
         android:textAllCaps="true"
-        android:textColor="@color/ms_white"
-        android:textSize="@dimen/texto_label" />
+        android:textColor="@color/colorOrangeWhite"
+        android:textSize="@dimen/texto_pequeno" />
 
-    <FrameLayout
-        android:id="@+id/frame_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_solicitacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:transitionName="solicitacao_transition"
+        android:layout_marginBottom="@dimen/espaco_muito_pequeno"
+        app:cardPreventCornerOverlap="true"
+        app:cardCornerRadius="@dimen/raio_circulo_medio">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_solicitacao"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transitionName="solicitacao_transition"
-            app:cardCornerRadius="@dimen/raio_circulo_medio">
+            android:padding="@dimen/espaco_muito_pequeno">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/img_solicitacao"
+                android:layout_width="@dimen/componente_pequeno"
+                android:layout_height="@dimen/componente_pequeno"
+                android:layout_centerVertical="true"
+                android:background="@drawable/shape_circulo_vermelho"
+                android:contentDescription="@string/str_emblema"
+                android:scaleType="centerInside"
+                android:src="@mipmap/ic_maca" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_categorias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/espaco_muito_pequeno">
-
-                <ImageView
-                    android:id="@+id/img_solicitacao"
-                    android:layout_width="@dimen/componente_pequeno"
-                    android:layout_height="@dimen/componente_pequeno"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/shape_circulo_vermelho"
-                    android:contentDescription="@string/str_emblema"
-                    android:scaleType="centerInside"
-                    android:src="@mipmap/ic_maca" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_categorias"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/espaco_muito_pequeno"
-                    android:layout_toEndOf="@id/img_solicitacao" />
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </FrameLayout>
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/espaco_muito_pequeno"
+                android:layout_toEndOf="@id/img_solicitacao" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
