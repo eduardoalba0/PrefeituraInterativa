@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.CategoriasAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.GaleriaAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -109,7 +110,7 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
                 break;
         }
         edt_descricao.setText(solicitacao.getDescricao());
-        rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), solicitacao.getLocalCategorias(), false, CategoriasAdapter.STYLE_RED));
+        rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), solicitacao.getLocalCategorias(), false, Departamento.STYLE_RED));
     }
 
     @BindView(R.id.rv_categorias)

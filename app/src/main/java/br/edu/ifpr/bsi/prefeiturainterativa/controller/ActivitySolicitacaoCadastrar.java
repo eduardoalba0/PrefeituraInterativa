@@ -25,13 +25,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacaoStepAdapter;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,7 +40,6 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         StepperLayout.StepperListener {
 
     private Solicitacao solicitacao;
-    private SolicitacaoDAO solicitacaoDAO;
     private ViewModelsHelper viewModel;
     private FirebaseHelper helper;
 
@@ -51,7 +48,6 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitacao_cadastrar);
         ButterKnife.bind(this, this);
-        solicitacaoDAO = new SolicitacaoDAO(this);
         helper = new FirebaseHelper(this);
         verificarConexao();
         initStepper();
@@ -93,12 +89,18 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
     @Override
     public void onCompleted(View completeButton) {
         viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        List<String> categorias = new ArrayList<>();
+
         solicitacao = viewModel.getObjetoSolicitacao();
         solicitacao.set_ID(UUID.randomUUID().toString());
         solicitacao.setConcluida(false);
         solicitacao.setUsuario_ID(helper.getUser().getUid());
-        solicitacao.setLocalCategorias(viewModel.getListCategorias());
-        solicitacao.setDepartamento_ID(viewModel.getListCategorias().get(0).getDepartamento_ID());
+        solicitacao.setDepartamento_ID(viewModel.getListCategorias().get(0).getDepartamento().get_ID());
+
+        for (Categoria categoria : viewModel.getListCategorias())
+            categorias.add(categoria.get_ID());
+        solicitacao.setCategorias(categorias);
+
         if (helper.conexaoAtivada())
             salvarOnline();
         else {
@@ -107,12 +109,12 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
     }
 
     private void salvarOnline() {
-        SweetAlertDialog dialogo = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                .setTitleText(R.string.str_carregando)
-                .setContentText(getString(R.string.str_cadastrando_demanda));
-        dialogo.show();
         List<String> imagens = new ArrayList<>();
         List<Task<?>> uploadTasks = new ArrayList<>();
+
+        SweetAlertDialog dialogo = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        dialogo.setTitleText(R.string.str_carregando)
+                .setContentText(getString(R.string.str_cadastrando_demanda)).show();
 
         for (Uri imagem : viewModel.getListImagens()) {
             Task<Uri> uploadTask = helper.carregarAnexos(imagem);
@@ -121,32 +123,27 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
                 uploadTasks.add(uploadTask);
             }
         }
+
         Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
             solicitacao.setUrlImagens(imagens);
-            List<Task<?>> insertTasks = new ArrayList<>();
-            insertTasks.add(solicitacaoDAO.inserirAtualizar(solicitacao));
-            for (Categoria categoria : solicitacao.getLocalCategorias()) {
-                Categorias_Solicitacao categorias_solicitacao = new Categorias_Solicitacao();
-                categorias_solicitacao.setSolicitacao_ID(solicitacao.get_ID());
-                categorias_solicitacao.setCategoria_ID(categoria.get_ID());
-                insertTasks.add(new Categorias_SolicitacaoDAO(this).inserirAtualizar(categorias_solicitacao));
-            }
-            Tasks.whenAllComplete(insertTasks).addOnSuccessListener(tasks -> {
+            Task task = new SolicitacaoDAO(this).inserirAtualizar(solicitacao);
+            task.addOnSuccessListener(this, o1 -> {
                 dialogo.dismiss();
                 viewModel.removeAll();
                 chamarActivity(ActivityOverview.class);
-                finish();
             });
         });
     }
 
     private void salvarOffline() {
         SharedPreferencesHelper sharedPreferences = new SharedPreferencesHelper(this);
-
         List<String> caminhoImagens = new ArrayList<>();
+
         for (Uri uri : viewModel.getListImagens())
             caminhoImagens.add(uri.toString());
+
         solicitacao.setLocalCaminhoImagens(caminhoImagens);
+        solicitacao.setLocalCategorias(viewModel.getListCategorias());
 
         sharedPreferences.insertSolicitacao(solicitacao);
         viewModel.removeAll();
@@ -154,10 +151,7 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
                 .setTitleText(R.string.str_atencao)
                 .setTitleText(R.string.str_solicitacao_cadastrada_offline)
                 .setConfirmText(getResources().getString(R.string.dialog_ok))
-                .setConfirmClickListener(view -> {
-                    view.dismiss();
-                    chamarActivity(ActivityOverview.class);
-                }).show();
+                .setConfirmClickListener(view -> chamarActivity(ActivityOverview.class)).show();
     }
     @Override
     public void onError(VerificationError verificationError) {

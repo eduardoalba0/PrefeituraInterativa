@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -123,7 +124,7 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
             layoutManager.setFlexDirection(FlexDirection.ROW);
             layoutManager.setJustifyContent(JustifyContent.SPACE_EVENLY);
             rv_categorias.setLayoutManager(layoutManager);
-            rv_categorias.setAdapter(new CategoriasAdapter(context, categorias, false, CategoriasAdapter.STYLE_RED));
+            rv_categorias.setAdapter(new CategoriasAdapter(context, categorias, false, Departamento.STYLE_RED));
         }
 
         @BindView(R.id.img_solicitacao)

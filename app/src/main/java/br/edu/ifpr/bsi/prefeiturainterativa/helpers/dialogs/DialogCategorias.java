@@ -34,14 +34,8 @@ public class DialogCategorias extends BottomSheetDialogFragment {
     private int style;
     private int tipo;
 
-    public DialogCategorias(Departamento departamento) {
-        this.departamento = departamento;
-        this.style = CategoriasAdapter.STYLE_RED;
-        this.tipo = TYPE_EDITABLE;
-    }
-
     public DialogCategorias() {
-        this.style = CategoriasAdapter.STYLE_RED;
+        this.style = Departamento.STYLE_RED;
         this.tipo = TYPE_LIST_EDITABLE;
     }
 
@@ -77,17 +71,17 @@ public class DialogCategorias extends BottomSheetDialogFragment {
         rv_categorias.setLayoutManager(layoutManager);
 
         switch (style) {
-            case CategoriasAdapter.STYLE_RED:
+            case Departamento.STYLE_RED:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorRed));
                 bt_continuar.setIconTintResource(R.color.colorRed);
                 bt_continuar.setTextColor(getResources().getColor(R.color.colorRed));
                 break;
-            case CategoriasAdapter.STYLE_BLUE:
+            case Departamento.STYLE_BLUE:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkBlueWhite));
                 bt_continuar.setIconTintResource(R.color.colorDarkBlueWhite);
                 bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkBlueWhite));
                 break;
-            case CategoriasAdapter.STYLE_GREEN:
+            case Departamento.STYLE_GREEN:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkGreenWhite));
                 bt_continuar.setIconTintResource(R.color.colorDarkGreenWhite);
                 bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkGreenWhite));
@@ -99,7 +93,7 @@ public class DialogCategorias extends BottomSheetDialogFragment {
                 tv_titulo.setText(departamento.getDescricao());
                 tv_hintCategoria.setVisibility(View.VISIBLE);
                 tv_hintCategoria.setText(R.string.str_solicitacao_tipo);
-                rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), departamento.getCategorias(), true, style));
+                rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), departamento.getLocalCategorias(), true, style));
                 bt_continuar.setOnClickListener(view -> this.dismiss());
                 break;
             case TYPE_ONLYVIEW:
@@ -107,7 +101,7 @@ public class DialogCategorias extends BottomSheetDialogFragment {
                 tv_titulo.setText(departamento.getDescricao());
                 tv_hintCategoria.setVisibility(View.VISIBLE);
                 tv_hintCategoria.setText(R.string.str_categoria_hint);
-                rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), departamento.getCategorias(), false, style));
+                rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), departamento.getLocalCategorias(), false, style));
                 break;
             case TYPE_LIST_EDITABLE:
                 bt_continuar.setOnClickListener(view -> this.dismiss());

@@ -68,12 +68,9 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
 
     public static final int RC_LOCAL = 111;
 
-    private FirebaseHelper helper;
     private GoogleMap map_view;
     private Marker map_marker;
-    private Geocoder geocoder;
     private ViewModelsHelper viewModel;
-    private Solicitacao solicitacao;
 
     @Nullable
     @Override
@@ -81,8 +78,6 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
         View view = inflater.inflate(R.layout.fragment_solicitacao_localizacao, container, false);
         ButterKnife.bind(this, view);
         viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
-        solicitacao = viewModel.getObjetoSolicitacao();
-        helper = new FirebaseHelper(getActivity());
         initMap();
         return view;
     }
@@ -152,7 +147,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(googleMap -> {
             map_view = googleMap;
-            map_view.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+            map_view.setMapType(GoogleMap.MAP_TYPE_NORMAL);
             map_view.moveCamera(CameraUpdateFactory
                     .newLatLngZoom(new LatLng(-26.484335, -51.991754), 17f));
 
@@ -184,9 +179,9 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
         String endereco = "";
         tv_marcadorSelecionado.setText(R.string.str_marcadorSelecionado);
         bt_remover.setVisibility(View.VISIBLE);
-        if (helper.conexaoAtivada())
+        if (new FirebaseHelper(getActivity()).conexaoAtivada())
             try {
-                geocoder = new Geocoder(getActivity(), Locale.getDefault());
+                Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
                 Address address = geocoder.getFromLocation(latitude, longitude, 1)
                         .get(0);
                 if (address != null) {
@@ -259,6 +254,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
     public VerificationError verifyStep() {
         if (map_marker == null || map_marker.getPosition() == null)
             return new VerificationError(getString(R.string.str_local_nao_informado));
+        Solicitacao solicitacao = viewModel.getObjetoSolicitacao();
         solicitacao.setLocalizacao(new Localizacao(map_marker.getPosition()));
         solicitacao.getLocalizacao().setEndereco(map_marker.getTitle());
         viewModel.postSolicitacao(solicitacao);

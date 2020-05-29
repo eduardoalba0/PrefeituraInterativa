@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
@@ -59,7 +60,7 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
     }
 
     private void carregarDados() {
-        if (solicitacao.isAvaliada() || !solicitacao.isConcluida()) {
+        if (solicitacao.getAvaliacao() != null || !solicitacao.isConcluida()) {
             bar_avaliacao.setIsIndicator(true);
             tv_solucionada.setEnabled(false);
             sw_solucionada.setEnabled(false);
@@ -68,7 +69,7 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
             edl_comentario.setCounterEnabled(false);
             bt_avaliar.setEnabled(false);
         }
-        if (solicitacao.isAvaliada()) {
+        if (solicitacao.getAvaliacao() != null) {
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
             bar_avaliacao.setRating(avaliacao.getNota());
             sw_solucionada.setChecked(avaliacao.isSolucionada());
@@ -90,17 +91,15 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
         avaliacao.setNota(bar_avaliacao.getRating());
         avaliacao.setSolucionada(sw_solucionada.isChecked());
         solicitacao.setAvaliacao(avaliacao);
-        solicitacao.setAvaliada(true);
 
-        new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao)
-                .addOnCompleteListener(getActivity(), task -> dialog.dismiss())
-                .addOnSuccessListener(getActivity(), aVoid ->
-                        new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
-                                .setTitleText(R.string.str_sucesso)
-                                .setContentText(getResources().getString(R.string.str_avaliacao_concluida))
-                                .setConfirmText(getResources().getString(R.string.dialog_ok))
-                                .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityOverview.class))
-                                .show());
+        Task task = new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao);
+        task.addOnCompleteListener(getActivity(), taskFailed -> dialog.dismiss());
+        task.addOnSuccessListener(getActivity(), aVoid -> new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText(R.string.str_sucesso)
+                .setContentText(getResources().getString(R.string.str_avaliacao_concluida))
+                .setConfirmText(getResources().getString(R.string.dialog_ok))
+                .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityOverview.class))
+                .show());
     }
 
     public boolean validacao() {

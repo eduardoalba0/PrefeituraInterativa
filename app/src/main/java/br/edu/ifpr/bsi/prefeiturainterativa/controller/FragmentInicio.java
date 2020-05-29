@@ -99,7 +99,7 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
         else {
             card_pendentes.setVisibility(View.VISIBLE);
             rv_solicitacoes.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
-            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), listPendentes, SolicitacoesAdapter.STYLE_PENDENTE));
+            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), listPendentes, Solicitacao.STYLE_PENDENTE));
         }
 
         if (listAvisos.size() <= 0)

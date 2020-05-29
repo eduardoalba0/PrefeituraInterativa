@@ -21,21 +21,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.ViewHolder> {
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_BLUE;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_GREEN;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_RED;
 
-    public static final int STYLE_GREEN = 1, STYLE_BLUE = 2, STYLE_RED = 0;
+public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.ViewHolder> {
 
     private Activity context;
     private List<Categoria> categorias;
     private boolean editavel;
     private int style;
-
-    public CategoriasAdapter(Activity context, List<Categoria> categorias) {
-        this.style = 0;
-        this.editavel = true;
-        this.context = context;
-        this.categorias = categorias;
-    }
 
     public CategoriasAdapter(Activity context, List<Categoria> categorias, boolean b, int style) {
         this.style = style;
@@ -93,7 +88,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                             .setContentText(context.getString(R.string.str_erro_limite_topicos))
                             .show();
                 } else if (!viewModel.getListCategorias().isEmpty()
-                        && !viewModel.getListCategorias().get(0).getDepartamento_ID().equals(categoria.getDepartamento_ID())) {
+                        && !viewModel.getListCategorias().get(0).getDepartamento().equals(categoria.getDepartamento())) {
                     compoundButton.setChecked(false);
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(R.string.str_erro)

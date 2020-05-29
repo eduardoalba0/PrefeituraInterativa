@@ -120,4 +120,6 @@
     <string name="str_nenhum_aviso">Nenhum aviso pendente.</string>
     <string name="str_solicitacoes_abertas">Solicitações Abertas</string>
     <string name="str_solicitacoes_concluidas">Solicitacoes Concluidas</string>
+    <string name="str_usuario_desabilitado">Seu usuário foi desativado. Consulte a sua prefeitura para maiores informações.</string>
+    <string name="str_falha_login_google">Falha ao associar conta Google. Consulte o suporte do sistema.</string>
 </resources>
