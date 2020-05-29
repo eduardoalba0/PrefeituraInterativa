@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Atendimento;
@@ -26,12 +25,10 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
 
     private Activity context;
     private List<Atendimento> atendimentos;
-    private FragmentManager fm;
 
-    public TramitacaoAdapter(Activity context, List<Atendimento> atendimentos, FragmentManager fm) {
+    public TramitacaoAdapter(Activity context, List<Atendimento> atendimentos) {
         this.context = context;
         this.atendimentos = atendimentos;
-        this.fm = fm;
     }
 
     @NonNull
@@ -53,15 +50,12 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
 
     protected class ViewHolder extends RecyclerView.ViewHolder {
 
-        private Atendimento atendimento;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
         public void setData(Atendimento atendimento) {
-            this.atendimento = atendimento;
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
             tv_data.setText(df.format(atendimento.getData()));
 
