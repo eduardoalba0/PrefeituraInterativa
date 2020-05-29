@@ -95,7 +95,7 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         solicitacao.set_ID(UUID.randomUUID().toString());
         solicitacao.setConcluida(false);
         solicitacao.setUsuario_ID(helper.getUser().getUid());
-        solicitacao.setDepartamento_ID(viewModel.getListCategorias().get(0).getDepartamento().get_ID());
+        solicitacao.setDepartamento_ID(viewModel.getListCategorias().get(0).getDepartamento_ID());
 
         for (Categoria categoria : viewModel.getListCategorias())
             categorias.add(categoria.get_ID());
@@ -109,13 +109,11 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
     }
 
     private void salvarOnline() {
-        List<String> imagens = new ArrayList<>();
-        List<Task<?>> uploadTasks = new ArrayList<>();
-
         SweetAlertDialog dialogo = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         dialogo.setTitleText(R.string.str_carregando)
                 .setContentText(getString(R.string.str_cadastrando_demanda)).show();
-
+        List<String> imagens = new ArrayList<>();
+        List<Task<?>> uploadTasks = new ArrayList<>();
         for (Uri imagem : viewModel.getListImagens()) {
             Task<Uri> uploadTask = helper.carregarAnexos(imagem);
             if (uploadTask != null) {
@@ -146,12 +144,15 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         solicitacao.setLocalCategorias(viewModel.getListCategorias());
 
         sharedPreferences.insertSolicitacao(solicitacao);
-        //viewModel.removeAll();
+        viewModel.removeAll();
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(R.string.str_atencao)
                 .setTitleText(R.string.str_solicitacao_cadastrada_offline)
                 .setConfirmText(getResources().getString(R.string.dialog_ok))
-                .setConfirmClickListener(view -> chamarActivity(ActivityOverview.class)).show();
+                .setConfirmClickListener(view -> {
+                    view.dismiss();
+                    chamarActivity(ActivityOverview.class);
+                }).show();
     }
     @Override
     public void onError(VerificationError verificationError) {

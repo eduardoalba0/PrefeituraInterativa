@@ -97,7 +97,6 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         for (Solicitacao solicitacao : sharedPreferences.getSolicitaoes()) {
             List<String> imagens = new ArrayList<>();
             List<Task<?>> uploadTasks = new ArrayList<>();
-
             for (String imagem : solicitacao.getLocalCaminhoImagens()) {
                 Task<Uri> uploadTask = helper.carregarAnexos(Uri.parse(imagem));
                 if (uploadTask != null) {
@@ -109,7 +108,7 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
                 solicitacao.setUrlImagens(imagens);
                 Task task = new SolicitacaoDAO(this).inserirAtualizar(solicitacao);
                 task.addOnSuccessListener(this, aVoid -> {
-                    sharedPreferences.removeAvisos(solicitacao);
+                    sharedPreferences.removeSolicitacao(solicitacao);
                     dialogo.dismiss();
                     onUpload = false;
                 });
@@ -123,21 +122,6 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
             if (!onUpload)
                 uploadsPendentes();
         } else bt_offline.setVisibility(View.VISIBLE);
-    }
-
-
-    private <T> void chamarActivity(Class<T> activity) {
-        Intent intent = new Intent(ActivityOverview.this, activity);
-        ActivityOptionsCompat options = ActivityOptionsCompat.
-                makeSceneTransitionAnimation(ActivityOverview.this, bt_foto, "splash_transition");
-        startActivity(intent, options.toBundle());
-        finish();
-    }
-
-    private void startAnimation() {
-        Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
-        t.addListener(TransitionHelper.getCircularEnterTransitionListener(bt_foto, view_root, pager_overview));
-        getWindow().setSharedElementEnterTransition(t);
     }
 
     private void initTabLayout() {
@@ -166,6 +150,20 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
             else
                 helper.reautenticar();
         }
+    }
+
+    private <T> void chamarActivity(Class<T> activity) {
+        Intent intent = new Intent(ActivityOverview.this, activity);
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(ActivityOverview.this, bt_foto, "splash_transition");
+        startActivity(intent, options.toBundle());
+        finish();
+    }
+
+    private void startAnimation() {
+        Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
+        t.addListener(TransitionHelper.getCircularEnterTransitionListener(bt_foto, view_root, pager_overview));
+        getWindow().setSharedElementEnterTransition(t);
     }
 
     public void trocarPagina(int index) {
