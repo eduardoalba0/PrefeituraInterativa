@@ -50,8 +50,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this, this);
         startAnimation();
-        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                .setTitleText(R.string.str_autenticando);
         helper = new FirebaseHelper(this);
         validador = new Validator(this);
         validador.setValidationListener(this);
@@ -78,6 +76,8 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onValidationSucceeded() {
+        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                .setTitleText(R.string.str_autenticando);
         dialog.show();
         edl_email.setError(null);
         edl_senha.setError(null);
