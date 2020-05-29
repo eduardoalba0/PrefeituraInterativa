@@ -19,12 +19,6 @@ public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
     private Solicitacao solicitacao;
     private int estilo;
 
-    public SolicitacaoVisualizarTabAdapter(FragmentManager fm, Solicitacao solicitacao) {
-        super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        this.solicitacao = solicitacao;
-        this.estilo = STYLE_NORMAL;
-    }
-
     public SolicitacaoVisualizarTabAdapter(FragmentManager fm, Solicitacao solicitacao, int estilo) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.solicitacao = solicitacao;
@@ -36,7 +30,7 @@ public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FragmentSolicitacaoDados(solicitacao);
+                return new FragmentSolicitacaoDados(solicitacao, estilo);
             case 1:
                 return new FragmentSolicitacaoTramitacao(solicitacao);
             case 2:
