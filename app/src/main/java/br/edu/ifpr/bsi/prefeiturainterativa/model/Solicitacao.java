@@ -19,14 +19,14 @@ public class Solicitacao implements Serializable {
 
     private String _ID;
     private String descricao;
-    private boolean concluida;
-    private boolean avaliada;
-    private boolean anonima;
-    private Avaliacao avaliacao;
     private String usuario_ID;
     private String departamento_ID;
-    private List<String> urlImagens;
+    private boolean concluida;
+    private boolean anonima;
     private Localizacao localizacao;
+    private Avaliacao avaliacao;
+    private List<String> urlImagens;
+    private List<String> categorias;
 
     @ServerTimestamp
     private Date data;
@@ -97,14 +97,6 @@ public class Solicitacao implements Serializable {
         this.avaliacao = avaliacao;
     }
 
-    public boolean isAvaliada() {
-        return avaliada;
-    }
-
-    public void setAvaliada(boolean avaliada) {
-        this.avaliada = avaliada;
-    }
-
     public String getUsuario_ID() {
         return usuario_ID;
     }
@@ -127,6 +119,14 @@ public class Solicitacao implements Serializable {
 
     public void setDepartamento_ID(String departamento_ID) {
         this.departamento_ID = departamento_ID;
+    }
+
+    public List<String> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<String> categorias) {
+        this.categorias = categorias;
     }
 
     @Exclude

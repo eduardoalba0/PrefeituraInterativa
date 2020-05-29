@@ -9,7 +9,6 @@ public class Categoria implements Serializable {
 
     private String _ID;
     private String descricao;
-    private String Departamento_ID;
 
     @Exclude
     private Departamento departamento;
@@ -32,14 +31,6 @@ public class Categoria implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getDepartamento_ID() {
-        return Departamento_ID;
-    }
-
-    public void setDepartamento_ID(String departamento_ID) {
-        Departamento_ID = departamento_ID;
     }
 
     @Exclude

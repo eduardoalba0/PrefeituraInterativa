@@ -6,17 +6,20 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+
 public class Departamento implements Serializable {
 
     private String _ID;
     private String descricao;
     private String DepartamentoSuperior_ID;
+    private List<String> categorias;
 
     @Exclude
     private Departamento departamentoSuperior;
 
     @Exclude
-    private List<Categoria> categorias;
+    private List<Categoria> localCategorias;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -44,6 +47,14 @@ public class Departamento implements Serializable {
         DepartamentoSuperior_ID = departamentoSuperior_ID;
     }
 
+    public List<String> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<String> categorias) {
+        this.categorias = categorias;
+    }
+
     @Exclude
     public Departamento getDepartamentoSuperior() {
         return departamentoSuperior;
@@ -54,12 +65,12 @@ public class Departamento implements Serializable {
     }
 
     @Exclude
-    public List<Categoria> getCategorias() {
-        return categorias;
+    public List<Categoria> getLocalCategorias() {
+        return localCategorias;
     }
 
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
+    public void setLocalCategorias(List<Categoria> localCategorias) {
+        this.localCategorias = localCategorias;
     }
 
     @Override
@@ -75,6 +86,7 @@ public class Departamento implements Serializable {
         return Objects.hash(_ID);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return this.descricao;
