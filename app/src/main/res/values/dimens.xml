@@ -21,7 +21,7 @@
     <dimen name="componente_gigante">500dp</dimen>
     <dimen name="componente_grande">320dp</dimen>
     <dimen name="componente_medio">240dp</dimen>
-    <dimen name="componente_normal">130dp</dimen>
+    <dimen name="componente_normal">120dp</dimen>
     <dimen name="componente_pequeno">80dp</dimen>
     <dimen name="componente_muito_pequeno">50dp</dimen>
 </resources>
