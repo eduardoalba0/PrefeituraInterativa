@@ -38,7 +38,7 @@ import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
 public class SelectorGaleria extends Fragment {
-
+    //TODO ALINHAR ITENS NO BOTTOM
     public boolean resultadoUnico;
 
     public SelectorGaleria(boolean resultadoUnico) {
@@ -63,8 +63,8 @@ public class SelectorGaleria extends Fragment {
     @NeedsPermission({Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE})
     public void initGaleria() {
         FlexboxLayoutManager layoutManager = new FlexboxLayoutManager(getActivity());
-        layoutManager.setFlexDirection(FlexDirection.COLUMN_REVERSE);
-        layoutManager.setJustifyContent(JustifyContent.FLEX_END);
+        layoutManager.setFlexDirection(FlexDirection.COLUMN);
+        layoutManager.setJustifyContent(JustifyContent.SPACE_BETWEEN);
         rv_galeria.setLayoutManager(layoutManager);
         rv_galeria.setAdapter(new GaleriaAdapter(getActivity(), getImagens(), getChildFragmentManager(), resultadoUnico));
     }
