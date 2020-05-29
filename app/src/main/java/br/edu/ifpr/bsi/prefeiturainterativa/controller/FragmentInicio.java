@@ -2,7 +2,6 @@ package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,10 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.android.material.card.MaterialCardView;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -29,6 +25,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.adapters.AvisoAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacoesAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
@@ -94,30 +91,25 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
     }
 
     private void initRecyclerView() {
-        String jsonListPendentes = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("SolicitacoesPendentes", "");
-        String jsonListAvisos = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("AvisosPendentes", "");
-        Gson gson = new Gson();
-
-        if (jsonListPendentes.trim().equals("") || jsonListPendentes.trim().equals("[]"))
+        SharedPreferencesHelper sharedPreferences = new SharedPreferencesHelper(getActivity());
+        List<Solicitacao> listPendentes = sharedPreferences.getSolicitaoes();
+        List<Aviso> listAvisos = sharedPreferences.getAvisos();
+        if (listPendentes.size() <= 0)
             card_pendentes.setVisibility(View.GONE);
         else {
-            List<Solicitacao> listPendentes = new ArrayList<>();
-            Collections.addAll(listPendentes, gson.fromJson(jsonListPendentes, Solicitacao[].class));
             card_pendentes.setVisibility(View.VISIBLE);
             rv_solicitacoes.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
             rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), listPendentes, SolicitacoesAdapter.STYLE_PENDENTE));
         }
 
-        if (jsonListAvisos.trim().equals("") || jsonListAvisos.trim().equals("[]"))
+        if (listAvisos.size() <= 0)
             tv_nenhumAviso.setVisibility(View.VISIBLE);
         else {
-            List<Aviso> listAvisos = new ArrayList<>();
-            Collections.addAll(listAvisos, gson.fromJson(jsonListAvisos, Aviso[].class));
+            tv_nenhumAviso.setVisibility(View.GONE);
             rv_avisos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
-            rv_avisos.setAdapter(new AvisoAdapter(getActivity(), listAvisos, getChildFragmentManager()));
-            if (listAvisos.size() > 0)
-                tv_nenhumAviso.setVisibility(View.GONE);
+            rv_avisos.setAdapter(new AvisoAdapter(getActivity(), listAvisos));
         }
+
         new SolicitacaoDAO(getActivity()).getAllporStatus(false)
                 .addOnSuccessListener(getActivity(), queryDocumentSnapshots ->
                         tv_numAbertas.setText(("" + (queryDocumentSnapshots.toObjects(Solicitacao.class).size()))));

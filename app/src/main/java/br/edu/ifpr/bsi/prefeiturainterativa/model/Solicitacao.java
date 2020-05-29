@@ -12,6 +12,11 @@ import androidx.annotation.NonNull;
 
 public class Solicitacao implements Serializable {
 
+    public static final int STYLE_NORMAL = 0,
+            STYLE_PENDENTE = 1,
+            STYLE_SEM_AVALIACAO = 2,
+            STYLE_PENDENTE_SEM_AVALIACAO = 3;
+
     private String _ID;
     private String descricao;
     private boolean concluida;

@@ -29,8 +29,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTouch;
 
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_NORMAL;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE;
+
 public class FragmentSolicitacaoDados extends Fragment implements View.OnClickListener, View.OnTouchListener {
-    public static final int STYLE_NORMAL = 0, STYLE_PENDENTE = 1;
 
     private Solicitacao solicitacao;
     private int estilo;

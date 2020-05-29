@@ -2,26 +2,22 @@ package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.gson.Gson;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,12 +27,10 @@ public class AvisoAdapter extends RecyclerView.Adapter<AvisoAdapter.ViewHolder> 
 
     private Activity context;
     private List<Aviso> avisos;
-    private FragmentManager fm;
 
-    public AvisoAdapter(Activity context, List<Aviso> avisos, FragmentManager fm) {
+    public AvisoAdapter(Activity context, List<Aviso> avisos) {
         this.context = context;
         this.avisos = avisos;
-        this.fm = fm;
     }
 
     @NonNull
@@ -70,18 +64,7 @@ public class AvisoAdapter extends RecyclerView.Adapter<AvisoAdapter.ViewHolder> 
         @Override
         public void onClick(View view) {
             if (aviso != null) {
-                String jsonAvisos = PreferenceManager.getDefaultSharedPreferences(context)
-                        .getString("AvisosPendentes", "");
-                if (jsonAvisos != null && !jsonAvisos.isEmpty()) {
-                    Gson gson = new Gson();
-                    List<Aviso> avisos = new ArrayList<>();
-                    Collections.addAll(avisos, gson.fromJson(jsonAvisos, Aviso[].class));
-                    avisos.remove(aviso);
-                    PreferenceManager.getDefaultSharedPreferences(context)
-                            .edit()
-                            .putString("AvisosPendentes", gson.toJson(avisos))
-                            .apply();
-                }
+                new SharedPreferencesHelper(context).removeAvisos(aviso);
                 Intent intent = new Intent(context, ActivitySolicitacaoVisualizar.class);
                 intent.putExtra("Aviso", aviso);
                 context.startActivity(intent);

@@ -41,7 +41,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
     private Validator validador;
     private FirebaseHelper helper;
-    private UsuarioDAO dao;
     private Usuario usuario;
     private SweetAlertDialog dialog;
 
@@ -51,10 +50,11 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this, this);
         startAnimation();
+        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
+                .setTitleText(R.string.str_autenticando);
         helper = new FirebaseHelper(this);
         validador = new Validator(this);
         validador.setValidationListener(this);
-        dao = new UsuarioDAO(this);
     }
 
     @OnClick({R.id.bt_login, R.id.bt_loginGoogle, R.id.bt_recuperarSenha, R.id.bt_cadastrar})
@@ -78,8 +78,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onValidationSucceeded() {
-        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
-                .setTitleText(R.string.str_autenticando);
         dialog.show();
         edl_email.setError(null);
         edl_senha.setError(null);
@@ -87,58 +85,50 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         usuario.setEmail(edt_email.getText().toString());
         usuario.setSenha(edt_senha.getText().toString());
         Task<AuthResult> task = helper.logar(usuario);
-        if (task != null)
-            task.addOnSuccessListener(this, this)
-                    .addOnFailureListener(this, e -> dialog.dismiss());
-        else
+        if (task != null) {
+            task.addOnSuccessListener(this, this);
+            task.addOnFailureListener(this, e -> dialog.dismiss());
+        } else
             dialog.dismiss();
     }
 
     @Override
     public void onSuccess(AuthResult authResult) {
+        UsuarioDAO dao = new UsuarioDAO(this);
+        usuario = new Usuario();
         usuario.set_ID(authResult.getUser().getUid());
         if (!authResult.getUser().isEmailVerified()) {
             Task<Void> task = helper.verificarEmail();
-            if (task != null)
-                task.addOnCompleteListener(this, e -> dialog.dismiss())
-                        .addOnSuccessListener(this, aVoid ->
+            if (task != null) {
+                task.addOnCompleteListener(this, e -> dialog.dismiss());
+                task.addOnSuccessListener(this, aVoid ->
                         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                                 .setContentText(getResources().getString(R.string.str_clique_link_email))
                                 .show());
-            else dialog.dismiss();
+            } else dialog.dismiss();
             return;
         }
-
         Task<DocumentSnapshot> task = dao.get(usuario);
-        if (task != null)
-            task.addOnFailureListener(this, e -> dialog.dismiss())
-                    .addOnSuccessListener(this, documentSnapshot -> {
-                        usuario = documentSnapshot.toObject(Usuario.class);
-                        if (usuario == null || usuario.getCpf() == null || usuario.getCpf().trim().isEmpty())
-                    if (task.getResult().getMetadata().isFromCache()) {
-                        dialog.dismiss();
-                        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(R.string.str_erro)
-                                .setTitleText(getResources().getString(R.string.str_erro_internet_login))
-                                .show();
+        task.addOnFailureListener(this, e -> dialog.dismiss());
+        task.addOnSuccessListener(this, documentSnapshot -> {
+            usuario = documentSnapshot.toObject(Usuario.class);
+            if (usuario == null || usuario.getCpf() == null || usuario.getCpf().trim().isEmpty()) {
+                dialog.dismiss();
+                chamarActivity(ActivityCompletarCadastro.class);
+            } else {
+                helper.getToken().addOnSuccessListener(this, instanceIdResult -> {
+                    if (usuario.getToken() == null || !usuario.getToken().equals(instanceIdResult.getToken())) {
+                        usuario.setToken(instanceIdResult.getToken());
+                        Task taskInsert = dao.inserirAtualizar(usuario);
+                        taskInsert.addOnCompleteListener(this, e -> dialog.dismiss());
+                        taskInsert.addOnSuccessListener(this, aVoid -> chamarActivity(ActivityOverview.class));
                     } else {
                         dialog.dismiss();
-                        chamarActivity(ActivityCompletarCadastro.class);
+                        chamarActivity(ActivityOverview.class);
                     }
-                else {
-                    helper.getToken().addOnSuccessListener(this, instanceIdResult -> {
-                        if (usuario.getToken() == null || !usuario.getToken().equals(instanceIdResult.getToken())) {
-                            usuario.setToken(instanceIdResult.getToken());
-                            dao.inserirAtualizar(usuario)
-                                    .addOnCompleteListener(this, e -> dialog.dismiss())
-                                    .addOnSuccessListener(this, aVoid -> chamarActivity(ActivityOverview.class));
-                        } else {
-                            dialog.dismiss();
-                            chamarActivity(ActivityOverview.class);
-                        }
-                    });
-                }
-            });
+                });
+            }
+        });
     }
 
     @Override
@@ -161,13 +151,11 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == helper.RC_GOOGLE_LOGIN) {
             try {
-                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                GoogleSignInAccount account = task.getResult(ApiException.class);
+                GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(data)
+                        .getResult(ApiException.class);
                 Task<AuthResult> auth = helper.logarGoogle(account);
-
                 if (auth != null)
                     auth.addOnSuccessListener(this, this);
-
             } catch (ApiException ex) {
                 ex.printStackTrace();
             }
@@ -195,6 +183,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(ActivityLogin.this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());
+        finish();
     }
 
     @Email(message = "Seu e-mail está inválido.")

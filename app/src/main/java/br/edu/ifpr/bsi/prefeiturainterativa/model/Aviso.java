@@ -64,11 +64,13 @@ public class Aviso implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Aviso aviso = (Aviso) o;
-        return data.equals(aviso.data);
+        return solicitacao_ID.equals(aviso.solicitacao_ID) &&
+                categoria.equals(aviso.categoria) &&
+                data.equals(aviso.data);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(data);
+        return Objects.hash(solicitacao_ID, categoria, data);
     }
 }

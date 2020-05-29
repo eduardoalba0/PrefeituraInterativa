@@ -20,6 +20,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacaoVisualizarTabAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
@@ -27,12 +28,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener {
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_NORMAL;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE_SEM_AVALIACAO;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_SEM_AVALIACAO;
 
-    public static final int STYLE_NORMAL = 0,
-            STYLE_PENDENTE = 1,
-            STYLE_SEM_AVALIACAO = 2,
-            STYLE_PENDENTE_SEM_AVALIACAO = 3;
+public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener {
 
     private int estilo;
     private Solicitacao solicitacao;
@@ -93,17 +94,18 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
                         .addOnFailureListener(this, e -> chamarActivity(ActivityOverview.class))
                         .addOnSuccessListener(this, documentSnapshot -> {
                             solicitacao = documentSnapshot.toObject(Solicitacao.class);
-                            initTabLayout(solicitacao, aviso);
+                            initTabLayout(solicitacao);
                         });
-            } else {
+                } else {
                     chamarActivity(ActivityOverview.class);
-                finish();
+                    finish();
             }
-        } else
-            initTabLayout(solicitacao);
+        } else initTabLayout(solicitacao);
+
     }
 
     public void initTabLayout(Solicitacao solicitacao) {
+        SharedPreferencesHelper sharedPreferences = new SharedPreferencesHelper(this);
         if (!solicitacao.isConcluida())
             if (estilo == STYLE_PENDENTE)
                 estilo = STYLE_PENDENTE_SEM_AVALIACAO;
@@ -119,29 +121,28 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
         if (estilo != STYLE_SEM_AVALIACAO && estilo != STYLE_PENDENTE_SEM_AVALIACAO)
             tabs_solicitacao.getTabAt(2).setText(R.string.str_avaliacao);
 
-    }
-
-    public void initTabLayout(Solicitacao solicitacao, Aviso aviso) {
-        initTabLayout(solicitacao);
-        if (aviso.getCategoria().equals(Aviso.CATEGORIA_AVALIACAO))
+        if (sharedPreferences.categoriaEquals(solicitacao.get_ID(), Aviso.CATEGORIA_AVALIACAO))
             tabs_solicitacao.getTabAt(2).getOrCreateBadge().setVisible(true);
 
-        if (aviso.getCategoria().equals(Aviso.CATEGORIA_TRAMITACAO)) {
+        if (sharedPreferences.categoriaEquals(solicitacao.get_ID(), Aviso.CATEGORIA_TRAMITACAO))
             tabs_solicitacao.getTabAt(1).getOrCreateBadge().setVisible(true);
-        }
+
         pager_solicitacao.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 tabs_solicitacao.getTabAt(position).removeBadge();
+                sharedPreferences.removeAvisos(solicitacao);
             }
 
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 tabs_solicitacao.getTabAt(position).removeBadge();
+                sharedPreferences.removeAvisos(solicitacao);
             }
         });
 
     }
+
 
     public void startAnimation() {
         Transition t = TransitionHelper.inflateExplodeTransition(1500);

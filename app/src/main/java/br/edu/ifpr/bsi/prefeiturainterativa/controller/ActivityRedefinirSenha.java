@@ -6,7 +6,7 @@ import android.transition.Transition;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.mobsandgeeks.saripaar.ValidationError;
@@ -27,10 +27,9 @@ import butterknife.OnClick;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ActivityRedefinirSenha extends AppCompatActivity implements View.OnClickListener,
-        Validator.ValidationListener, OnSuccessListener<Void> {
+        Validator.ValidationListener {
 
     private Validator validador;
-    private FirebaseHelper helper;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +37,6 @@ public class ActivityRedefinirSenha extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_usuario_redefinir_senha);
         ButterKnife.bind(this,this);
         startAnimation();
-        helper = new FirebaseHelper(this);
         validador = new Validator(this);
         validador.setValidationListener(this);
     }
@@ -56,7 +54,10 @@ public class ActivityRedefinirSenha extends AppCompatActivity implements View.On
     @Override
     public void onValidationSucceeded() {
         edl_email.setError(null);
-        helper.redefinirSenha(edt_email.getText().toString()).addOnSuccessListener(this);
+        Task task = new FirebaseHelper(this).redefinirSenha(edt_email.getText().toString());
+        task.addOnSuccessListener(this, aVoid -> new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setContentText(getResources().getString(R.string.str_clique_link_redefinir_senha))
+                .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityLogin.class)).show());
     }
 
     @Override
@@ -71,23 +72,20 @@ public class ActivityRedefinirSenha extends AppCompatActivity implements View.On
         }
     }
 
-    @Override
-    public void onSuccess(Void tVoid) {
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setContentText(getResources().getString(R.string.str_clique_link_redefinir_senha))
-                .setConfirmClickListener(sweetAlertDialog -> {
-                    Intent intent = new Intent(ActivityRedefinirSenha.this, ActivityLogin.class);
-                    ActivityOptionsCompat options = ActivityOptionsCompat.
-                            makeSceneTransitionAnimation(this, img_app, "splash_transition");
-                    startActivity(intent, options.toBundle());
-                }).show();
-    }
-
     public void startAnimation() {
         Transition t = TransitionHelper.inflateChangeBoundsTransition(this);
         t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, l_redefinicao));
         getWindow().setSharedElementEnterTransition(t);
     }
+
+    private <T> void chamarActivity(Class<T> activity) {
+        Intent intent = new Intent(ActivityRedefinirSenha.this, activity);
+        ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(ActivityRedefinirSenha.this, img_app, "splash_transition");
+        startActivity(intent, options.toBundle());
+        finish();
+    }
+
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(ActivityRedefinirSenha.this, ActivityLogin.class);

@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
@@ -19,6 +20,7 @@ import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 import com.mobsandgeeks.saripaar.annotation.Password;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
@@ -37,12 +39,11 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class ActivityCadastro extends AppCompatActivity implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<AuthResult> {
 
-    private Validator validador;
     private FirebaseHelper helper;
-    private UsuarioDAO dao;
+    private SweetAlertDialog dialog;
+    private Validator validador;
 
     private Usuario usuario;
-    private SweetAlertDialog dialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,12 +51,8 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_cadastro);
         ButterKnife.bind(this, this);
         startAnimation();
-        helper = new FirebaseHelper(this);
         validador = new Validator(this);
         validador.setValidationListener(this);
-        dao = new UsuarioDAO(this);
-        usuario = new Usuario();
-        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
     }
 
 
@@ -71,13 +68,16 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onValidationSucceeded() {
+        dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        helper = new FirebaseHelper(this);
+        usuario = new Usuario();
+
         edl_nome.setError(null);
         edl_cpf.setError(null);
         edl_email.setError(null);
         edl_senha.setError(null);
         edl_senha_conf.setError(null);
 
-        usuario = new Usuario();
         usuario.setEmail(edt_email.getText().toString());
         usuario.setSenha(edt_senha.getText().toString());
         usuario.setNome(edt_nome.getText().toString());
@@ -85,35 +85,31 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         usuario.setTipoUsuario_ID(getResources().getString(R.string.tipo_usuario_cidadao_id));
 
         Task<AuthResult> task = helper.registrar(usuario);
-        dialog.setTitleText(R.string.str_carregando_cadastro).show();
-        if (task != null)
-            task.addOnSuccessListener(this, this)
-                    .addOnFailureListener(this, e -> {
-                        dialog.dismiss();
-                        if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
-                            edl_email.setError(this.getResources().getString(R.string.str_erro_email_cadastrado));
-                    });
+        if (task != null) {
+            dialog.setTitleText(R.string.str_carregando_cadastro).show();
+            task.addOnSuccessListener(this, this);
+            task.addOnFailureListener(this, e -> {
+                dialog.dismiss();
+                if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
+                    edl_email.setError(this.getResources().getString(R.string.str_erro_email_cadastrado));
+            });
+        }
     }
 
     @Override
     public void onSuccess(AuthResult authResult) {
         usuario.set_ID(authResult.getUser().getUid());
-
-        helper.atualizarPerfil(usuario).addOnSuccessListener(this, aVoid ->
-
-                dao.inserirAtualizar(usuario).addOnSuccessListener(this, task ->
-
-                        helper.verificarEmail().addOnSuccessListener(this, bVoid -> {
-                            dialog.dismiss();
-                            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                                    .setContentText(getResources().getString(R.string.str_clique_link_email))
-                                        .setConfirmClickListener(sweetAlertDialog -> {
-                                            Intent intent = new Intent(ActivityCadastro.this, ActivityLogin.class);
-                                            ActivityOptionsCompat options = ActivityOptionsCompat.
-                                                    makeSceneTransitionAnimation(ActivityCadastro.this, img_app, "splash_transition");
-                                            startActivity(intent, options.toBundle());
-                                        }).show();
-                        })));
+        List<Task<?>> tasks = new ArrayList<>();
+        tasks.add(helper.atualizarPerfil(usuario));
+        tasks.add(new UsuarioDAO(this).inserirAtualizar(usuario));
+        tasks.add(helper.verificarEmail());
+        Tasks.whenAllComplete(tasks).addOnSuccessListener(this, task -> {
+            dialog.dismiss();
+            new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                    .setContentText(getResources().getString(R.string.str_clique_link_email))
+                    .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityLogin.class))
+                    .show();
+        });
     }
 
     @Override
@@ -140,18 +136,22 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(ActivityCadastro.this, ActivityLogin.class);
+    public void startAnimation() {
+        Transition t = TransitionHelper.inflateChangeBoundsTransition(this, 0);
+        t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, l_cadastro));
+        getWindow().setSharedElementEnterTransition(t);
+    }
+
+    public <T> void chamarActivity(Class<T> activity) {
+        Intent intent = new Intent(ActivityCadastro.this, activity);
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(ActivityCadastro.this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());
     }
 
-    public void startAnimation() {
-        Transition t = TransitionHelper.inflateChangeBoundsTransition(this, 0);
-        t.addListener(TransitionHelper.getCircularEnterTransitionListener(img_app, view_root, l_cadastro));
-        getWindow().setSharedElementEnterTransition(t);
+    @Override
+    public void onBackPressed() {
+        chamarActivity(ActivityLogin.class);
     }
 
     @NotEmpty(message = "Campo obrigatório.", trim = true)

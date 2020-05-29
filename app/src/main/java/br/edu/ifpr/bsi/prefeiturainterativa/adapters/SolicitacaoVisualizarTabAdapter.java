@@ -9,11 +9,12 @@ import br.edu.ifpr.bsi.prefeiturainterativa.controller.FragmentSolicitacaoDados;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.FragmentSolicitacaoTramitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_NORMAL;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE_SEM_AVALIACAO;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_SEM_AVALIACAO;
+
 public class SolicitacaoVisualizarTabAdapter extends FragmentPagerAdapter {
-    public static final int STYLE_NORMAL = 0,
-            STYLE_PENDENTE = 1,
-            STYLE_SEM_AVALIACAO = 2,
-            STYLE_PENDENTE_SEM_AVALIACAO = 3;
 
     private Solicitacao solicitacao;
     private int estilo;

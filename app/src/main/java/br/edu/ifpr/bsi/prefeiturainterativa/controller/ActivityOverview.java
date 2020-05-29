@@ -1,11 +1,9 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.transition.Transition;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,10 +15,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import androidx.core.app.ActivityOptionsCompat;
@@ -31,6 +27,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.adapters.OverviewTabAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
@@ -43,17 +40,21 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class ActivityOverview extends FragmentActivity implements View.OnClickListener {
 
-    FirebaseHelper helper;
+    private FirebaseHelper helper;
     private boolean onUpload = false;
+    private SharedPreferencesHelper sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
         ButterKnife.bind(this, this);
+        sharedPreferences = new SharedPreferencesHelper(this);
+        helper = new FirebaseHelper(this);
         initTabLayout();
         startAnimation();
         verificarConexao();
+        reautenticar();
     }
 
     @OnClick({R.id.bt_foto, R.id.bt_offline})
@@ -87,23 +88,16 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
     }
 
     private void uploadsPendentes() {
-        onUpload = true;
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String jsonList = preferences.getString("SolicitacoesPendentes", "");
-
-        if (jsonList.trim().equals("") || jsonList.trim().equals("[]"))
+        if (sharedPreferences.getSolicitaoes().size() <= 0)
             return;
+        onUpload = true;
+
         SweetAlertDialog dialogo = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE)
                 .setTitleText(R.string.str_carregando_demandas)
                 .setCancelText(getString(R.string.str_cancelar));
         dialogo.show();
 
-        Gson gson = new Gson();
-
-        List<Solicitacao> listPendentes = new ArrayList<>();
-        Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
-
-        for (Solicitacao solicitacao : listPendentes) {
+        for (Solicitacao solicitacao : sharedPreferences.getSolicitaoes()) {
             List<String> imagens = new ArrayList<>();
             List<Task<?>> uploadTasks = new ArrayList<>();
 
@@ -127,11 +121,7 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
                 }
 
                 Tasks.whenAllComplete(insertTasks).addOnSuccessListener(tasks -> {
-                    List<Solicitacao> aux = new ArrayList<>();
-                    Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
-                    aux.remove(solicitacao);
-                    preferences.edit().remove("SolicitacoesPendentes")
-                            .putString("SolicitacoesPendentes", gson.toJson(aux)).apply();
+                    sharedPreferences.removeAvisos(solicitacao);
                     dialogo.dismiss();
                     onUpload = false;
                 });
@@ -139,12 +129,7 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         }
     }
 
-    public void verificarConexao() {
-        helper = new FirebaseHelper(this);
-        if (helper.getUser() == null || !helper.getUser().isEmailVerified()) {
-            chamarActivity(ActivityLogin.class);
-            return;
-        }
+    private void verificarConexao() {
         if (helper.conexaoAtivada()) {
             bt_offline.setVisibility(View.GONE);
             if (!onUpload)
@@ -178,10 +163,21 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
         if (getIntent() != null)
             trocarPagina(getIntent().getIntExtra("Tab", 0));
 
-        String avisos = PreferenceManager.getDefaultSharedPreferences(this).getString("AvisosPendentes", "");
-        if (avisos.contains(Aviso.CATEGORIA_AVALIACAO) || avisos.contains(Aviso.CATEGORIA_TRAMITACAO))
+        if (sharedPreferences.containsCategoria(Aviso.CATEGORIA_AVALIACAO)
+                || sharedPreferences.containsCategoria(Aviso.CATEGORIA_TRAMITACAO))
             tab_overview.getTabAt(2).getOrCreateBadge().setVisible(true);
 
+    }
+
+    private void reautenticar() {
+        if (helper.getUser() == null)
+            chamarActivity(ActivityLogin.class);
+        else if (helper.conexaoAtivada()) {
+            if (!helper.getUser().isEmailVerified())
+                chamarActivity(ActivityLogin.class);
+            else
+                helper.reautenticar();
+        }
     }
 
     public void trocarPagina(int index) {

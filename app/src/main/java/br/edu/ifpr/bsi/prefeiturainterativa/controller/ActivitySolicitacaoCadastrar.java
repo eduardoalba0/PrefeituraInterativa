@@ -1,11 +1,9 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,12 +12,10 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,6 +28,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacaoStepAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
@@ -144,24 +141,14 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
     }
 
     private void salvarOffline() {
-        String jsonList = PreferenceManager.getDefaultSharedPreferences(this).getString("SolicitacoesPendentes", "");
-        Gson gson = new Gson();
+        SharedPreferencesHelper sharedPreferences = new SharedPreferencesHelper(this);
 
         List<String> caminhoImagens = new ArrayList<>();
         for (Uri uri : viewModel.getListImagens())
             caminhoImagens.add(uri.toString());
-
         solicitacao.setLocalCaminhoImagens(caminhoImagens);
 
-        List<Solicitacao> listPendentes = new ArrayList<>();
-        if (!jsonList.isEmpty())
-            Collections.addAll(listPendentes, gson.fromJson(jsonList, Solicitacao[].class));
-        listPendentes.add(solicitacao);
-
-        SharedPreferences.Editor edit = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        edit.putString("SolicitacoesPendentes", gson.toJson(listPendentes));
-        edit.apply();
-
+        sharedPreferences.insertSolicitacao(solicitacao);
         viewModel.removeAll();
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(R.string.str_atencao)

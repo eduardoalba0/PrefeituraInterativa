@@ -19,7 +19,6 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -35,7 +34,6 @@ public class FirebaseHelper {
 
     private FirebaseAuth auth;
     private GoogleSignInClient signInClient;
-    private FirebaseMessaging messaging;
     private StorageReference storage;
 
     public FirebaseHelper(Activity context) {
@@ -44,7 +42,6 @@ public class FirebaseHelper {
         }
         this.context = context;
         auth = FirebaseAuth.getInstance();
-        messaging = FirebaseMessaging.getInstance();
         storage = FirebaseStorage.getInstance().getReference();
         signInClient = GoogleSignIn.getClient(context, new GoogleSignInOptions
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -64,17 +61,15 @@ public class FirebaseHelper {
                     }
                 });
     }
+
     public Task<AuthResult> logar(Usuario usuario) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_login))
                     .show();
             return null;
-        }
-
-        if (getUser() != null && !getUser().isAnonymous()) {
+        } else if (getUser() != null && !getUser().isAnonymous())
             auth.signOut();
-        }
 
         return auth.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(context, authResultTask -> {
             if (!authResultTask.isSuccessful()) {
@@ -82,29 +77,45 @@ public class FirebaseHelper {
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_dados_invalidos))
                             .show();
+                else if (authResultTask.getException().toString().contains("FirebaseAuthInvalidUserException"))
+                    new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_usuario_desabilitado))
+                            .show();
                 else
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_login))
                             .show();
+
             }
         });
 
     }
 
+    public void reautenticar() {
+        if (getUser() == null && getUser().isAnonymous())
+            return;
+        auth.getCurrentUser().reload();
+    }
+
     public Task<AuthResult> logarGoogle(GoogleSignInAccount account) {
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText(R.string.str_erro).setContentText("Você não está conectado à Internet.")
+                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_login))
                     .show();
             return null;
         }
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         return auth.signInWithCredential(credential).addOnCompleteListener(context, task -> {
-            if (!task.isSuccessful())
-                new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText(R.string.str_erro).setContentText("Falha ao associar conta Google. Consulte o suporte do sistema.")
+            if (!task.isSuccessful()) {
+                if (task.getException().toString().contains("FirebaseAuthInvalidUserException"))
+                    new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_usuario_desabilitado))
+                            .show();
+                else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_login_google))
                         .show();
+            }
         });
     }
 
@@ -116,16 +127,10 @@ public class FirebaseHelper {
             return null;
         } else
             return auth.createUserWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(context, task -> {
-                if (!task.isSuccessful()) {
-                    if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
-                        new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_email_cadastrado))
-                                .show();
-                    else
-                        new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                                .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_cadastro))
-                                .show();
-                }
+                if (!task.isSuccessful())
+                    new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
+                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_cadastro))
+                            .show();
             });
     }
     public void deslogar(){
@@ -174,9 +179,11 @@ public class FirebaseHelper {
         UserProfileChangeRequest profileUpdates;
         if (usuario.getLocalUriFoto() == null)
             profileUpdates = new UserProfileChangeRequest.Builder()
-                    .setDisplayName(usuario.getNome()).build();
+                    .setDisplayName(usuario.getNome())
+                    .build();
         else profileUpdates = new UserProfileChangeRequest.Builder()
-                .setDisplayName(usuario.getNome()).setPhotoUri(usuario.getLocalUriFoto())
+                .setDisplayName(usuario.getNome())
+                .setPhotoUri(usuario.getLocalUriFoto())
                 .build();
 
         return auth.getCurrentUser().updateProfile(profileUpdates).addOnCompleteListener(context, task -> {

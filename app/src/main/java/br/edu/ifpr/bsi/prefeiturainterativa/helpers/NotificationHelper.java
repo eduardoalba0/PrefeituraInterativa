@@ -7,18 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Build;
-import android.preference.PreferenceManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.controller.ActivitySolicitacaoVisualizar;
@@ -31,13 +27,10 @@ public class NotificationHelper extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage message) {
         if (message.getNotification() != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
-
+            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             Intent intent = new Intent(this, ActivitySolicitacaoVisualizar.class);
             String channelId = getString(R.string.default_notification_client_id);
             String categoria = CATEGORIA_PADRAO;
-
-            NotificationManager notificationManager =
-                    (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
             if (message.getData() != null) {
                 Aviso aviso = new Aviso();
@@ -71,7 +64,12 @@ public class NotificationHelper extends FirebaseMessagingService {
                             .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                             .setContentIntent(PendingIntent.getActivity(this, 0, intent,
                                     PendingIntent.FLAG_ONE_SHOT)).build());
-
         }
+    }
+
+    @Override
+    public void onNewToken(@NonNull String s) {
+        super.onNewToken(s);
+        //TODO ATUALIZAR TOKEN;
     }
 }

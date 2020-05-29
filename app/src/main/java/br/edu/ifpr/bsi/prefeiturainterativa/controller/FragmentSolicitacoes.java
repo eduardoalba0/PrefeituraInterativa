@@ -1,7 +1,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacoesTabAdapter;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,18 +30,18 @@ public class FragmentSolicitacoes extends Fragment {
     }
 
     public void initTabLayout() {
+        SharedPreferencesHelper sharedPreferences = new SharedPreferencesHelper(getActivity());
         SolicitacoesTabAdapter adapter = new SolicitacoesTabAdapter(getChildFragmentManager());
         pager_solicitacoes.setAdapter(adapter);
         tab_solicitacoes.setupWithViewPager(pager_solicitacoes);
         tab_solicitacoes.getTabAt(0).setText(R.string.str_solicitacao_em_andamento);
         tab_solicitacoes.getTabAt(1).setText(R.string.str_solicitacao_encerrada);
 
-        String avisos = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("AvisosPendentes", "");
-        if (avisos.contains(Aviso.CATEGORIA_AVALIACAO)) {
-            tab_solicitacoes.getTabAt(1).getOrCreateBadge();
+        if (sharedPreferences.containsCategoria(Aviso.CATEGORIA_AVALIACAO)) {
+            tab_solicitacoes.getTabAt(1).getOrCreateBadge().setVisible(true);
             pager_solicitacoes.setCurrentItem(1);
-        } else if (avisos.contains(Aviso.CATEGORIA_TRAMITACAO)) {
-            tab_solicitacoes.getTabAt(0).getOrCreateBadge();
+        } else if (sharedPreferences.containsCategoria(Aviso.CATEGORIA_TRAMITACAO)) {
+            tab_solicitacoes.getTabAt(0).getOrCreateBadge().setVisible(true);
             pager_solicitacoes.setCurrentItem(0);
         }
     }
