@@ -88,7 +88,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                             .setContentText(context.getString(R.string.str_erro_limite_topicos))
                             .show();
                 } else if (!viewModel.getListCategorias().isEmpty()
-                        && !viewModel.getListCategorias().get(0).getDepartamento().equals(categoria.getDepartamento())) {
+                        && !viewModel.getListCategorias().get(0).getDepartamento_ID().equals(categoria.getDepartamento_ID())) {
                     compoundButton.setChecked(false);
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(R.string.str_erro)
@@ -101,7 +101,7 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                 }
             } else {
                 if (viewModel.getListCategorias().contains(categoria)) {
-                    viewModel.removeCategoria(viewModel.getListCategorias().indexOf(categoria));
+                    viewModel.removeCategoria(categoria);
                 }
                 compoundButton.setChecked(false);
             }
