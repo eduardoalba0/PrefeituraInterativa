@@ -19,8 +19,6 @@ public class Atendimento implements Serializable {
     private Date data;
     @Exclude
     private Funcionario funcionario;
-    @Exclude
-    private Solicitacao solicitacao;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -78,14 +76,6 @@ public class Atendimento implements Serializable {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
-    }
-    @Exclude
-    public Solicitacao getSolicitacao() {
-        return solicitacao;
-    }
-
-    public void setSolicitacao(Solicitacao solicitacao) {
-        this.solicitacao = solicitacao;
     }
 
     @Override

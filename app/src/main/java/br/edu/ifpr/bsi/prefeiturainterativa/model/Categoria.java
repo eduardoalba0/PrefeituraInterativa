@@ -5,13 +5,15 @@ import com.google.firebase.firestore.Exclude;
 import java.io.Serializable;
 import java.util.Objects;
 
+import androidx.annotation.NonNull;
+
 public class Categoria implements Serializable {
 
     private String _ID;
     private String descricao;
+    private String departamento_ID;
+    private boolean habilitada;
 
-    @Exclude
-    private Departamento departamento;
     @Exclude
     private boolean selecionada;
 
@@ -33,13 +35,20 @@ public class Categoria implements Serializable {
         this.descricao = descricao;
     }
 
-    @Exclude
-    public Departamento getDepartamento() {
-        return departamento;
+    public String getDepartamento_ID() {
+        return departamento_ID;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    public void setDepartamento_ID(String departamento_ID) {
+        this.departamento_ID = departamento_ID;
+    }
+
+    public boolean isHabilitada() {
+        return habilitada;
+    }
+
+    public void setHabilitada(boolean habilitada) {
+        this.habilitada = habilitada;
     }
 
     @Exclude
@@ -64,6 +73,7 @@ public class Categoria implements Serializable {
         return Objects.hash(_ID);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return this.descricao;

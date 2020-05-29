@@ -27,9 +27,12 @@ public class Solicitacao implements Serializable {
     private Avaliacao avaliacao;
     private List<String> urlImagens;
     private List<String> categorias;
+    private List<String> atendimentos;
 
     @ServerTimestamp
     private Date data;
+    @Exclude
+    private Departamento departamento;
     @Exclude
     private Usuario usuario;
     @Exclude
@@ -37,7 +40,7 @@ public class Solicitacao implements Serializable {
     @Exclude
     private List<String> localCaminhoImagens;
     @Exclude
-    Departamento departamento;
+    private List<Atendimento> localAtendimentos;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -129,6 +132,14 @@ public class Solicitacao implements Serializable {
         this.categorias = categorias;
     }
 
+    public List<String> getAtendimentos() {
+        return atendimentos;
+    }
+
+    public void setAtendimentos(List<String> atendimentos) {
+        this.atendimentos = atendimentos;
+    }
+
     @Exclude
     public Departamento getDepartamento() {
         return departamento;
@@ -163,6 +174,14 @@ public class Solicitacao implements Serializable {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public List<Atendimento> getLocalAtendimentos() {
+        return localAtendimentos;
+    }
+
+    public void setLocalAtendimentos(List<Atendimento> localAtendimentos) {
+        this.localAtendimentos = localAtendimentos;
     }
 
     @Override
