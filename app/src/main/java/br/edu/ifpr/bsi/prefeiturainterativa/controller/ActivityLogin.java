@@ -174,8 +174,13 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     }
 
     public void logarGoogle() {
-        Intent intent = helper.getSignInClient().getSignInIntent();
-        startActivityForResult(intent, helper.RC_GOOGLE_LOGIN);
+        if (helper.conexaoAtivada()) {
+            Intent intent = helper.getSignInClient().getSignInIntent();
+            startActivityForResult(intent, helper.RC_GOOGLE_LOGIN);
+        } else new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText(R.string.str_erro)
+                .setContentText(getResources().getString(R.string.str_erro_internet_login))
+                .show();
     }
 
     public <T> void chamarActivity(Class<T> activity) {
