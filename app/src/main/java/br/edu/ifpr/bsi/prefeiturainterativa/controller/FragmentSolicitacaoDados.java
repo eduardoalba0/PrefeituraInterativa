@@ -15,6 +15,7 @@ import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.flexbox.JustifyContent;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -88,8 +89,8 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
         rv_categorias.setLayoutManager(categoriasLayoutManager);
 
         FlexboxLayoutManager imagensLayoutManager = new FlexboxLayoutManager(getActivity());
-        imagensLayoutManager.setFlexDirection(FlexDirection.COLUMN_REVERSE);
-        imagensLayoutManager.setJustifyContent(JustifyContent.FLEX_START);
+        imagensLayoutManager.setFlexDirection(FlexDirection.COLUMN);
+        imagensLayoutManager.setJustifyContent(JustifyContent.CENTER);
         rv_imagens.setLayoutManager(imagensLayoutManager);
     }
 
@@ -105,11 +106,13 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
                 if (solicitacao.getLocalCaminhoImagens() == null || solicitacao.getLocalCaminhoImagens().isEmpty())
                     l_imagens.setVisibility(View.GONE);
                 else
-
                     rv_imagens.setAdapter(new GaleriaAdapter(getActivity(), solicitacao.getLocalCaminhoImagens(), getChildFragmentManager()));
                 break;
         }
-        edt_descricao.setText(solicitacao.getDescricao());
+        if (solicitacao.getDescricao() == null || solicitacao.getDescricao().trim().equals(""))
+            edl_descricao.setVisibility(View.GONE);
+        else
+            edt_descricao.setText(solicitacao.getDescricao());
         rv_categorias.setAdapter(new CategoriasAdapter(getActivity(), solicitacao.getLocalCategorias(), false, Departamento.STYLE_RED));
     }
 
@@ -121,6 +124,9 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
 
     @BindView(R.id.edt_descricao)
     TextInputEditText edt_descricao;
+
+    @BindView(R.id.edl_descricao)
+    TextInputLayout edl_descricao;
 
     @BindView(R.id.bt_localizacao)
     MaterialButton bt_localizacao;

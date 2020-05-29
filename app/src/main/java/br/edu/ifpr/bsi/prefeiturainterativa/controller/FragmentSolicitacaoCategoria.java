@@ -7,9 +7,10 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.stepstone.stepper.Step;
 import com.stepstone.stepper.VerificationError;
 
@@ -64,7 +65,6 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     public VerificationError verifyStep() {
         if (viewModel.getListCategorias().isEmpty())
             return new VerificationError(getString(R.string.str_categoria_nao_selecionada));
-
         return null;
     }
 
@@ -84,18 +84,20 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     }
 
     public void carregarDados() {
-        List<Departamento> departamentos = new ArrayList<>();
+        CategoriaDAO dao = new CategoriaDAO(getActivity());
+        rv_departamentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
         new DepartamentoDAO(getActivity()).getAll().addOnSuccessListener(departamentosSnapshot -> {
-            for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
-                Departamento departamento = depsnapshot.toObject(Departamento.class);
-                departamento.setLocalCategorias(new ArrayList<>());
-                new CategoriaDAO(getActivity()).getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
-                    departamento.setLocalCategorias(tipossolicitacaoSnapshot.toObjects(Categoria.class));
-                    if (departamento.getLocalCategorias() != null && !departamento.getLocalCategorias().isEmpty())
+            List<Departamento> departamentos = new ArrayList<>();
+            List<Task<?>> tasks = new ArrayList<>();
+            for (Departamento departamento : departamentosSnapshot.toObjects(Departamento.class)) {
+                if (departamento.getCategorias() != null && !departamento.getCategorias().isEmpty())
+                    tasks.add(dao.getAllHabilitadas(departamento.getCategorias()).addOnSuccessListener(getActivity(), categoriaSnapshot -> {
+                        departamento.setLocalCategorias(categoriaSnapshot.toObjects(Categoria.class));
                         departamentos.add(departamento);
-                    rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager()));
-                });
+                    }));
             }
+            Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), tasks1 ->
+                    rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager())));
         });
     }
 

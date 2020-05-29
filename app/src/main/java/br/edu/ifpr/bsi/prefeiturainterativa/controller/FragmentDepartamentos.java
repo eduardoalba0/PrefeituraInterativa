@@ -5,7 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,33 +26,33 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FragmentDepartamentos extends Fragment {
-
-    private List<Departamento> departamentos;
+    //TODO MAIS CORES PARA OS DEPARTAMENTOS
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_departamentos, container, false);
         ButterKnife.bind(this, view);
-        departamentos = new ArrayList<>();
         initRecyclerView();
         return view;
     }
 
     public void initRecyclerView() {
+        CategoriaDAO dao = new CategoriaDAO(getActivity());
         rv_departamentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
-        departamentos.clear();
         new DepartamentoDAO(getActivity()).getAll().addOnSuccessListener(departamentosSnapshot -> {
-            for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
-                Departamento departamento = depsnapshot.toObject(Departamento.class);
-                departamento.setLocalCategorias(new ArrayList<>());
-                new CategoriaDAO(getActivity()).getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
-                    departamento.setLocalCategorias(tipossolicitacaoSnapshot.toObjects(Categoria.class));
-                    if (departamento.getLocalCategorias() != null && !departamento.getLocalCategorias().isEmpty())
+            List<Departamento> departamentos = new ArrayList<>();
+            List<Task<?>> tasks = new ArrayList<>();
+            for (Departamento departamento : departamentosSnapshot.toObjects(Departamento.class)) {
+                if (departamento.getCategorias() != null && !departamento.getCategorias().isEmpty()) {
+                    tasks.add(dao.getAllHabilitadas(departamento.getCategorias()).addOnSuccessListener(getActivity(), categoriaSnapshot -> {
+                        departamento.setLocalCategorias(categoriaSnapshot.toObjects(Categoria.class));
                         departamentos.add(departamento);
-                    rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager(), false));
-                });
+                    }));
+                }
             }
+            Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), tasks1 ->
+                    rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager(), false)));
         });
     }
 
