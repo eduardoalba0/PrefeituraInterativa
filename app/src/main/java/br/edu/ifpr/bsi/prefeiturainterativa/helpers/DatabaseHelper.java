@@ -15,7 +15,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class DatabaseHelper {
-
+    //TODO IMPLEMENTAR BUSCA PELO ID, COM STRING COMO PARAMETRO
     private FirebaseFirestore dataBase;
     private Activity context;
 

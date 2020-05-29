@@ -1,12 +1,14 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.dao;
 
 import android.app.Activity;
+import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.List;
 import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
@@ -45,4 +47,11 @@ public class CategoriaDAO {
     public Task<QuerySnapshot> getAllPorDepartamento(Departamento departamento){
         return helper.getQuery(reference.whereEqualTo("departamento_ID", departamento.get_ID()).orderBy("descricao"));
     }
+
+    // TODO REMOVER ONFAILLURE
+    public Task<QuerySnapshot> getAll(List<String> _IDs) {
+        return helper.getQuery(reference.whereIn("_ID", _IDs).orderBy("descricao"))
+                .addOnFailureListener(runnable -> Log.e("CategoriaDAO ", runnable.toString()+""));
+    }
+
 }

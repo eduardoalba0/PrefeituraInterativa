@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.QuerySnapshot;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -16,26 +18,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacoesAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.CategoriaDAO;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FragmentTabSolicitacoes extends Fragment {
 
-    private boolean concluidas;
-    private SolicitacaoDAO dao;
-    private CategoriaDAO daoCategorias;
-    private Categorias_SolicitacaoDAO daoMerge;
-
-    public FragmentTabSolicitacoes() {
-    }
+    //TODO CONSTRUTOR PADRÃO EM TODOS OS FRAGMENTS SEM PARÂMETRO
+    private boolean status;
 
     public FragmentTabSolicitacoes(boolean concluidas) {
-        this.concluidas = concluidas;
+        this.status = concluidas;
     }
 
     @Nullable
@@ -49,26 +44,15 @@ public class FragmentTabSolicitacoes extends Fragment {
 
 
     public void initRecyclerView() {
-        dao = new SolicitacaoDAO(getActivity());
-        daoCategorias = new CategoriaDAO(getActivity());
-        daoMerge = new Categorias_SolicitacaoDAO(getActivity());
         rv_solicitacoes.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
-        dao.getAllporStatus(concluidas).addOnSuccessListener(getActivity(), o -> {
-            List<Solicitacao> result = o.toObjects(Solicitacao.class);
-            for (Solicitacao solicitacao : result) {
-                List<Categoria> categorias = new ArrayList<>();
-                daoMerge.getAllporSolicitacao(solicitacao).addOnSuccessListener(getActivity(), queryDocumentSnapshots -> {
-                    for (Categorias_Solicitacao merge : queryDocumentSnapshots.toObjects(Categorias_Solicitacao.class)) {
-                        Categoria categoria = new Categoria();
-                        categoria.set_ID(merge.getCategoria_ID());
-                        daoCategorias.get(categoria).addOnSuccessListener(getActivity(), documentSnapshot -> {
-                            categorias.add(documentSnapshot.toObject(Categoria.class));
-                            solicitacao.setLocalCategorias(categorias);
-                            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), result));
-                        });
-                    }
-                });
+        new SolicitacaoDAO(getActivity()).getAllporStatus(status).addOnSuccessListener(getActivity(), o -> {
+            List<Solicitacao> solicitacoes = o.toObjects(Solicitacao.class);
+            for (Solicitacao solicitacao : solicitacoes) {
+                Task<QuerySnapshot> task = new CategoriaDAO(getActivity()).getAll(solicitacao.getCategorias());
+                task.addOnSuccessListener(getActivity(), categoriaSnapshot ->
+                        solicitacao.setLocalCategorias(categoriaSnapshot.toObjects(Categoria.class)));
             }
+            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), solicitacoes));
         });
     }
 

@@ -12,27 +12,27 @@ public final class R {
     public static final class attr {
         private attr() {}
 
-        public static final int matProg_barColor = 0x7f0301e1;
-        public static final int matProg_barSpinCycleTime = 0x7f0301e2;
-        public static final int matProg_barWidth = 0x7f0301e3;
-        public static final int matProg_circleRadius = 0x7f0301e4;
-        public static final int matProg_fillRadius = 0x7f0301e5;
-        public static final int matProg_linearProgress = 0x7f0301e6;
-        public static final int matProg_progressIndeterminate = 0x7f0301e7;
-        public static final int matProg_rimColor = 0x7f0301e8;
-        public static final int matProg_rimWidth = 0x7f0301e9;
-        public static final int matProg_spinSpeed = 0x7f0301ea;
+        public static final int matProg_barColor = 0x7f0401a8;
+        public static final int matProg_barSpinCycleTime = 0x7f0401a9;
+        public static final int matProg_barWidth = 0x7f0401aa;
+        public static final int matProg_circleRadius = 0x7f0401ab;
+        public static final int matProg_fillRadius = 0x7f0401ac;
+        public static final int matProg_linearProgress = 0x7f0401ad;
+        public static final int matProg_progressIndeterminate = 0x7f0401ae;
+        public static final int matProg_rimColor = 0x7f0401af;
+        public static final int matProg_rimWidth = 0x7f0401b0;
+        public static final int matProg_spinSpeed = 0x7f0401b1;
     }
     public static final class string {
         private string() {}
 
-        public static final int app_name = 0x7f10001d;
-        public static final int default_progressbar = 0x7f100038;
+        public static final int app_name = 0x7f11001d;
+        public static final int default_progressbar = 0x7f110038;
     }
     public static final class styleable {
         private styleable() {}
 
-        public static final int[] ProgressWheel = { 0x7f0301e1, 0x7f0301e2, 0x7f0301e3, 0x7f0301e4, 0x7f0301e5, 0x7f0301e6, 0x7f0301e7, 0x7f0301e8, 0x7f0301e9, 0x7f0301ea };
+        public static final int[] ProgressWheel = { 0x7f0401a8, 0x7f0401a9, 0x7f0401aa, 0x7f0401ab, 0x7f0401ac, 0x7f0401ad, 0x7f0401ae, 0x7f0401af, 0x7f0401b0, 0x7f0401b1 };
         public static final int ProgressWheel_matProg_barColor = 0;
         public static final int ProgressWheel_matProg_barSpinCycleTime = 1;
         public static final int ProgressWheel_matProg_barWidth = 2;

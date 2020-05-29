@@ -7,10 +7,12 @@ import android.transition.Transition;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.DocumentSnapshot;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
@@ -36,7 +38,6 @@ import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_SEM_A
 public class ActivitySolicitacaoVisualizar extends FragmentActivity implements View.OnClickListener {
 
     private int estilo;
-    private Solicitacao solicitacao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,7 +83,7 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
     }
 
     public void getSolicitacao() {
-        solicitacao = (Solicitacao) getIntent().getSerializableExtra("Solicitacao");
+        Solicitacao solicitacao = (Solicitacao) getIntent().getSerializableExtra("Solicitacao");
         estilo = getIntent().getIntExtra("Estilo", STYLE_NORMAL);
         if (solicitacao == null) {
             Aviso aviso = (Aviso) getIntent().getSerializableExtra("Aviso");
@@ -90,12 +91,9 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
                 if (aviso.getSolicitacao_ID() != null && !aviso.getSolicitacao_ID().isEmpty()) {
                     solicitacao = new Solicitacao();
                     solicitacao.set_ID(aviso.getSolicitacao_ID());
-                    new SolicitacaoDAO(this).get(solicitacao)
-                        .addOnFailureListener(this, e -> chamarActivity(ActivityOverview.class))
-                        .addOnSuccessListener(this, documentSnapshot -> {
-                            solicitacao = documentSnapshot.toObject(Solicitacao.class);
-                            initTabLayout(solicitacao);
-                        });
+                    Task<DocumentSnapshot> task = new SolicitacaoDAO(this).get(solicitacao);
+                    task.addOnFailureListener(this, e -> chamarActivity(ActivityOverview.class));
+                    task.addOnSuccessListener(this, documentSnapshot -> initTabLayout(documentSnapshot.toObject(Solicitacao.class)));
                 } else {
                     chamarActivity(ActivityOverview.class);
                     finish();

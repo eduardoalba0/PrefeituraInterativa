@@ -24,14 +24,11 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager.widget.ViewPager;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.OverviewTabAdapter;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.Categorias_SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Categorias_Solicitacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -110,17 +107,8 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
             }
             Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
                 solicitacao.setUrlImagens(imagens);
-                List<Task<?>> insertTasks = new ArrayList<>();
-                insertTasks.add(new SolicitacaoDAO(this).inserirAtualizar(solicitacao));
-
-                for (Categoria categoria : solicitacao.getLocalCategorias()) {
-                    Categorias_Solicitacao categorias_solicitacao = new Categorias_Solicitacao();
-                    categorias_solicitacao.setSolicitacao_ID(solicitacao.get_ID());
-                    categorias_solicitacao.setCategoria_ID(categoria.get_ID());
-                    insertTasks.add(new Categorias_SolicitacaoDAO(this).inserirAtualizar(categorias_solicitacao));
-                }
-
-                Tasks.whenAllComplete(insertTasks).addOnSuccessListener(tasks -> {
+                Task task = new SolicitacaoDAO(this).inserirAtualizar(solicitacao);
+                task.addOnSuccessListener(this, aVoid -> {
                     sharedPreferences.removeAvisos(solicitacao);
                     dialogo.dismiss();
                     onUpload = false;

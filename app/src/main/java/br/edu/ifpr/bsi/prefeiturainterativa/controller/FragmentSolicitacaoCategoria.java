@@ -36,9 +36,6 @@ import butterknife.OnClick;
 
 public class FragmentSolicitacaoCategoria extends Fragment implements Step, View.OnClickListener {
 
-    private DepartamentoDAO depDAO;
-    private CategoriaDAO categoriaDAO;
-    private List<Departamento> departamentos;
     private ViewModelsHelper viewModel;
 
     @Nullable
@@ -46,9 +43,6 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_solicitacao_categoria, container, false);
         ButterKnife.bind(this, view);
-        depDAO = new DepartamentoDAO(getActivity());
-        categoriaDAO = new CategoriaDAO(getActivity());
-        departamentos = new ArrayList<>();
         initRecyclerView();
         carregarDados();
         return view;
@@ -90,14 +84,14 @@ public class FragmentSolicitacaoCategoria extends Fragment implements Step, View
     }
 
     public void carregarDados() {
-        departamentos.clear();
-        depDAO.getAll().addOnSuccessListener(departamentosSnapshot -> {
+        List<Departamento> departamentos = new ArrayList<>();
+        new DepartamentoDAO(getActivity()).getAll().addOnSuccessListener(departamentosSnapshot -> {
             for (DocumentSnapshot depsnapshot : departamentosSnapshot) {
                 Departamento departamento = depsnapshot.toObject(Departamento.class);
-                departamento.setCategorias(new ArrayList<>());
-                categoriaDAO.getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
-                    departamento.setCategorias(tipossolicitacaoSnapshot.toObjects(Categoria.class));
-                    if (departamento.getCategorias() != null && !departamento.getCategorias().isEmpty())
+                departamento.setLocalCategorias(new ArrayList<>());
+                new CategoriaDAO(getActivity()).getAllPorDepartamento(departamento).addOnSuccessListener(tipossolicitacaoSnapshot -> {
+                    departamento.setLocalCategorias(tipossolicitacaoSnapshot.toObjects(Categoria.class));
+                    if (departamento.getLocalCategorias() != null && !departamento.getLocalCategorias().isEmpty())
                         departamentos.add(departamento);
                     rv_departamentos.setAdapter(new DepartamentosAdapter(getActivity(), departamentos, getChildFragmentManager()));
                 });

@@ -9,6 +9,7 @@ import java.util.Objects;
 import androidx.annotation.NonNull;
 
 public class Departamento implements Serializable {
+    public static final int STYLE_GREEN = 1, STYLE_BLUE = 2, STYLE_RED = 0;
 
     private String _ID;
     private String descricao;

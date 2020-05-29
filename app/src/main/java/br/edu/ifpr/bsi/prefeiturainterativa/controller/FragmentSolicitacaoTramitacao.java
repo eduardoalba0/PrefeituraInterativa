@@ -83,6 +83,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
     }
 
     private void initRecyclerView() {
+        //TODO ARRUMAR ISSO AKI
         rv_atendimentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
         new AtendimentoDAO(getActivity()).getAllBySolicitacao(solicitacao).addOnSuccessListener(getActivity(), o -> {
             List<Atendimento> result = o.toObjects(Atendimento.class);
