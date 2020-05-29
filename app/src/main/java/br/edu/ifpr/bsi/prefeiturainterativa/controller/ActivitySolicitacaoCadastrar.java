@@ -137,8 +137,8 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
 
     private void salvarOffline() {
         SharedPreferencesHelper sharedPreferences = new SharedPreferencesHelper(this);
-        List<String> caminhoImagens = new ArrayList<>();
 
+        List<String> caminhoImagens = new ArrayList<>();
         for (Uri uri : viewModel.getListImagens())
             caminhoImagens.add(uri.toString());
 
@@ -146,7 +146,7 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
         solicitacao.setLocalCategorias(viewModel.getListCategorias());
 
         sharedPreferences.insertSolicitacao(solicitacao);
-        viewModel.removeAll();
+        //viewModel.removeAll();
         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setTitleText(R.string.str_atencao)
                 .setTitleText(R.string.str_solicitacao_cadastrada_offline)

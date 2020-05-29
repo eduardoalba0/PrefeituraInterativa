@@ -14,8 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -25,6 +25,7 @@ import com.mobsandgeeks.saripaar.annotation.Email;
 import com.mobsandgeeks.saripaar.annotation.Length;
 import com.mobsandgeeks.saripaar.annotation.NotEmpty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -51,11 +52,10 @@ import permissions.dispatcher.RuntimePermissions;
 
 @RuntimePermissions
 public class FragmentPerfil extends Fragment implements View.OnClickListener,
-        Validator.ValidationListener, OnSuccessListener<Void>, Observer<Uri> {
+        Validator.ValidationListener, Observer<Uri> {
 
     private Validator validador;
     private FirebaseHelper helper;
-    private UsuarioDAO dao;
 
     private Usuario usuario;
     private SweetAlertDialog dialog;
@@ -69,11 +69,6 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         helper = new FirebaseHelper(getActivity());
         validador = new Validator(this);
         validador.setValidationListener(this);
-        dao = new UsuarioDAO(getActivity());
-        dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
-        selector = new DialogSelector(true);
-        ViewModelsHelper viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
-        viewModel.getImagem().observe(getViewLifecycleOwner(), this);
         preencherCampos();
         return view;
     }
@@ -102,11 +97,12 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
     }
 
     private void preencherCampos() {
-        usuario = new Usuario();
-        usuario.set_ID(helper.getUser().getUid());
-        Task<DocumentSnapshot> task = dao.get(usuario);
-
-        if (task != null) {
+        dialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+        selector = new DialogSelector(true);
+        ViewModelsHelper viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(ViewModelsHelper.class);
+        viewModel.getImagem().observe(getViewLifecycleOwner(), this);
+        Task<DocumentSnapshot> task = new UsuarioDAO(getActivity()).get(helper.getUser().getUid());
+        if (task != null)
             task.addOnSuccessListener(getActivity(), documentSnapshot -> {
                 usuario = documentSnapshot.toObject(Usuario.class);
                 if (usuario != null) {
@@ -123,6 +119,10 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
                     dialog.dismiss();
                 }
             });
+        else {
+            helper.deslogar();
+            Intent intent = new Intent(getActivity(), ActivityLogin.class);
+            startActivity(intent);
         }
     }
     @Override
@@ -145,23 +145,21 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         dialog.setTitleText(R.string.str_gravando_alteracoes).show();
         if (usuario.getLocalUriFoto() != null) {
             Task<Uri> upload = helper.carregarImagemUsuario(usuario.getLocalUriFoto());
-            if (upload != null)
+            if (upload != null) {
                 upload.addOnSuccessListener(getActivity(), (Uri task) -> {
-                    usuario.setLocalUriFoto(task);
-                    Task<Void> update = helper.atualizarPerfil(usuario);
-                    if (update != null)
-                        update.addOnSuccessListener(getActivity(), this);
+                    usuario.setUriFoto(task.toString());
+                    gravarAlteracoes();
                 });
-        } else {
-            Task<Void> task = helper.atualizarPerfil(usuario);
-            if (task != null)
-                task.addOnSuccessListener(getActivity(), this);
-        }
+            }
+        } else gravarAlteracoes();
     }
 
-    @Override
-    public void onSuccess(Void avoid) {
-        dao.inserirAtualizar(usuario).addOnSuccessListener(getActivity(), task -> {
+    private void gravarAlteracoes() {
+        List<Task<?>> tasks = new ArrayList<>();
+        tasks.add(helper.atualizarPerfil(usuario));
+        tasks.add(new UsuarioDAO(getActivity()).inserirAtualizar(usuario));
+
+        Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), o -> {
             dialog.dismiss();
             new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                     .setTitleText(R.string.str_sucesso)
@@ -216,11 +214,7 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
         new SweetAlertDialog(getActivity(), SweetAlertDialog.WARNING_TYPE)
                 .setContentText(getString(R.string.str_rationale))
                 .setCancelButton(R.string.str_cancelar, Dialog::dismiss)
-                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> {
-                    request.proceed();
-                    sweetAlertDialog.dismiss();
-                })
-                .show();
+                .setConfirmButton(R.string.str_confirmar, sweetAlertDialog -> request.proceed()).show();
     }
 
     @OnPermissionDenied({Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE})
@@ -237,10 +231,8 @@ public class FragmentPerfil extends Fragment implements View.OnClickListener,
                     Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
                     Uri uri = Uri.fromParts("package", getActivity().getPackageName(), null);
                     intent.setData(uri);
-                    sweetAlertDialog.dismiss();
                     startActivity(intent);
-                })
-                .show();
+                }).show();
     }
 
     @NotEmpty(message = "Campo obrigatório.", trim = true)

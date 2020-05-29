@@ -17,6 +17,7 @@ public class Usuario implements Serializable {
     private String email;
     private String tipoUsuario_ID;
     private String token;
+    private String uriFoto;
 
     @Exclude
     private Uri localUriFoto;
@@ -83,6 +84,14 @@ public class Usuario implements Serializable {
 
     public void setTipoUsuario_ID(String tipoUsuario_ID) {
         this.tipoUsuario_ID = tipoUsuario_ID;
+    }
+
+    public String getUriFoto() {
+        return uriFoto;
+    }
+
+    public void setUriFoto(String uriFoto) {
+        this.uriFoto = uriFoto;
     }
 
     @Exclude
