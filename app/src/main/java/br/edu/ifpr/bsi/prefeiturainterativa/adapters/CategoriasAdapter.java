@@ -24,6 +24,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_BLUE;
 import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_GREEN;
 import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_RED;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_YELLOW;
 
 public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.ViewHolder> {
 
@@ -69,12 +70,17 @@ public class CategoriasAdapter extends RecyclerView.Adapter<CategoriasAdapter.Vi
                 case STYLE_RED:
                     chip_solicitacao.setChipBackgroundColorResource(R.color.colorRed);
                     break;
-                case STYLE_BLUE:
-                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkBlueWhite);
+                case STYLE_YELLOW:
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorOrangeWhite);
                     break;
                 case STYLE_GREEN:
                     chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkGreenWhite);
                     break;
+                case STYLE_BLUE:
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.colorDarkBlueWhite);
+                    break;
+                default:
+                    chip_solicitacao.setChipBackgroundColorResource(R.color.blackWhite);
             }
         }
 

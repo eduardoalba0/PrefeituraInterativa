@@ -19,9 +19,13 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_BLUE;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_GREEN;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_RED;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento.STYLE_YELLOW;
+
 public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdapter.ViewHolder> {
 
-    private static final int STYLE_GREEN = 1, STYLE_BLUE = 2, STYLE_RED = 0;
     private Activity context;
     private List<Departamento> departamentos;
     private FragmentManager fm;
@@ -50,7 +54,7 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        int style = (position + 1) % 3;
+        int style = (position + 1) % 4;
         holder.setData(departamentos.get(position), style);
     }
 
@@ -85,11 +89,14 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
                 case STYLE_RED:
                 l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_vermelho));
                     break;
-                case STYLE_BLUE:
-                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_azul));
+                case STYLE_YELLOW:
+                    l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_amarelo));
                     break;
                 case STYLE_GREEN:
-                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_verde));
+                    l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_verde));
+                    break;
+                case STYLE_BLUE:
+                    l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_azul));
                     break;
             }
         }
