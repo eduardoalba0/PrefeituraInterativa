@@ -5,8 +5,6 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.location.Address;
-import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -155,7 +153,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
                 map_view.clear();
                 map_marker = map_view.addMarker(new MarkerOptions()
                         .position(latLng)
-                        .title((getEndereco(latLng.latitude, latLng.longitude)))
+                        .title("Marcador Posicionado")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
             });
 
@@ -163,7 +161,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
                 map_view.clear();
                 map_marker = map_view.addMarker(new MarkerOptions()
                         .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                        .title((getEndereco(location.getLatitude(), location.getLongitude())))
+                        .title("Marcador Posicionado")
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
             });
 
@@ -173,30 +171,6 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
             });
             FragmentSolicitacaoLocalizacaoPermissionsDispatcher.updateLocationWithPermissionCheck(this);
         });
-    }
-
-    public String getEndereco(double latitude, double longitude) {
-        String endereco = "";
-        tv_marcadorSelecionado.setText(R.string.str_marcadorSelecionado);
-        bt_remover.setVisibility(View.VISIBLE);
-        if (new FirebaseHelper(getActivity()).conexaoAtivada())
-            try {
-                Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
-                Address address = geocoder.getFromLocation(latitude, longitude, 1)
-                        .get(0);
-                if (address != null) {
-                    String rua = address.getThoroughfare();
-                    String numero = address.getSubThoroughfare();
-                    String bairro = address.getAdminArea();
-
-                    endereco = (rua == null ? "" : rua) +
-                            (numero == null ? "" : ", " + numero) +
-                            (bairro == null ? "" : ", " + bairro) + ".";
-                }
-            } catch (IOException ex) {
-
-            }
-        return endereco;
     }
 
     @Override
@@ -256,7 +230,6 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
             return new VerificationError(getString(R.string.str_local_nao_informado));
         Solicitacao solicitacao = viewModel.getObjetoSolicitacao();
         solicitacao.setLocalizacao(new Localizacao(map_marker.getPosition()));
-        solicitacao.getLocalizacao().setEndereco(map_marker.getTitle());
         viewModel.postSolicitacao(solicitacao);
         return null;
     }

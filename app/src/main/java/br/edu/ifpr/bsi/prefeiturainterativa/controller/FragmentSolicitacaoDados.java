@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -33,16 +34,13 @@ import butterknife.OnTouch;
 
 import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_NORMAL;
 import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_PENDENTE_SEM_AVALIACAO;
+import static br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao.STYLE_SEM_AVALIACAO;
 
 public class FragmentSolicitacaoDados extends Fragment implements View.OnClickListener, View.OnTouchListener {
 
     private Solicitacao solicitacao;
     private int estilo;
-
-    public FragmentSolicitacaoDados(Solicitacao solicitacao) {
-        this.solicitacao = solicitacao;
-        this.estilo = STYLE_NORMAL;
-    }
 
     public FragmentSolicitacaoDados(Solicitacao solicitacao, int estilo) {
         this.solicitacao = solicitacao;
@@ -89,7 +87,7 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
         rv_categorias.setLayoutManager(categoriasLayoutManager);
 
         FlexboxLayoutManager imagensLayoutManager = new FlexboxLayoutManager(getActivity());
-        imagensLayoutManager.setFlexDirection(FlexDirection.COLUMN);
+        imagensLayoutManager.setFlexDirection(FlexDirection.ROW);
         imagensLayoutManager.setJustifyContent(JustifyContent.CENTER);
         rv_imagens.setLayoutManager(imagensLayoutManager);
     }
@@ -97,12 +95,14 @@ public class FragmentSolicitacaoDados extends Fragment implements View.OnClickLi
     private void carregarDados() {
         switch (estilo) {
             case STYLE_NORMAL:
+            case STYLE_SEM_AVALIACAO:
                 if (solicitacao.getUrlImagens() == null || solicitacao.getUrlImagens().isEmpty())
                     l_imagens.setVisibility(View.GONE);
                 else
                     rv_imagens.setAdapter(new GaleriaAdapter(getActivity(), solicitacao.getUrlImagens(), getChildFragmentManager()));
                 break;
             case STYLE_PENDENTE:
+            case STYLE_PENDENTE_SEM_AVALIACAO:
                 if (solicitacao.getLocalCaminhoImagens() == null || solicitacao.getLocalCaminhoImagens().isEmpty())
                     l_imagens.setVisibility(View.GONE);
                 else

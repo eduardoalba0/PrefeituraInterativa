@@ -6,8 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -47,12 +49,15 @@ public class FragmentTabSolicitacoes extends Fragment {
         rv_solicitacoes.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
         new SolicitacaoDAO(getActivity()).getAllporStatus(status).addOnSuccessListener(getActivity(), o -> {
             List<Solicitacao> solicitacoes = o.toObjects(Solicitacao.class);
+            List<Task<?>> tasks = new ArrayList<>();
             for (Solicitacao solicitacao : solicitacoes) {
                 Task<QuerySnapshot> task = new CategoriaDAO(getActivity()).getAll(solicitacao.getCategorias());
                 task.addOnSuccessListener(getActivity(), categoriaSnapshot ->
                         solicitacao.setLocalCategorias(categoriaSnapshot.toObjects(Categoria.class)));
+                tasks.add(task);
             }
-            rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), solicitacoes));
+            Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), tasks1 ->
+                    rv_solicitacoes.setAdapter(new SolicitacoesAdapter(getActivity(), solicitacoes)));
         });
     }
 

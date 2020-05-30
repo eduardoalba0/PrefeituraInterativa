@@ -14,6 +14,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ActivitySplash extends AppCompatActivity {
+    //  todo arrumar todas as animações
+    // todo validar cpf
+    // todo criar construtor padrao para fragments, sem parametros que retornar para a atividade-mae
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class ActivitySplash extends AppCompatActivity {
         ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(ActivitySplash.this, img_app, "splash_transition");
         startActivity(intent, options.toBundle());
+        finish();
     }
 
     @BindView(R.id.img_app)

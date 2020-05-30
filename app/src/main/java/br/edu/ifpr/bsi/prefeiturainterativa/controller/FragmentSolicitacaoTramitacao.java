@@ -8,13 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -28,13 +29,11 @@ import br.edu.ifpr.bsi.prefeiturainterativa.adapters.TramitacaoAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.AtendimentoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.DepartamentoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.FuncionarioDAO;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Atendimento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Funcionario;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -83,30 +82,26 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
     }
 
     private void initRecyclerView() {
-        //TODO ARRUMAR ISSO AKI
         rv_atendimentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
-        new AtendimentoDAO(getActivity()).getAllBySolicitacao(solicitacao).addOnSuccessListener(getActivity(), o -> {
-            List<Atendimento> result = o.toObjects(Atendimento.class);
-            for (Atendimento atendimento : result) {
-                Funcionario funcionario = new Funcionario();
-                funcionario.set_ID(atendimento.getFuncionario_ID());
-                new FuncionarioDAO(getActivity()).get(funcionario).addOnSuccessListener(getActivity(), funcionarioSnapshot -> {
-                    Usuario usuario = new Usuario();
-                    usuario.set_ID(funcionario.get_ID());
-                    new UsuarioDAO(getActivity()).get(usuario).addOnSuccessListener(getActivity(), documentSnapshot -> {
-                        Funcionario aux = funcionarioSnapshot.toObject(Funcionario.class);
-                        aux.setUsuario(documentSnapshot.toObject(Usuario.class));
-                        atendimento.setFuncionario(aux);
-                        Departamento departamento = new Departamento();
-                        departamento.set_ID(aux.getDepartamento_ID());
-                        new DepartamentoDAO(getActivity()).get(departamento).addOnSuccessListener(getActivity(), departamentoSnapshot -> {
-                            atendimento.getFuncionario().setDepartamento(departamentoSnapshot.toObject(Departamento.class));
-                            rv_atendimentos.setAdapter(new TramitacaoAdapter(getActivity(), result, getChildFragmentManager()));
-                        });
+        if (solicitacao.getAtendimentos() != null && !solicitacao.getAtendimentos().isEmpty()) {
+            new AtendimentoDAO(getActivity()).getAll(solicitacao.getAtendimentos()).addOnSuccessListener(getActivity(), atendimentoSnapshots -> {
+                FuncionarioDAO funcionarioDAO = new FuncionarioDAO(getActivity());
+                DepartamentoDAO departamentoDAO = new DepartamentoDAO(getActivity());
+                List<Task<?>> tasks = new ArrayList<>();
+                List<Atendimento> atendimentos = atendimentoSnapshots.toObjects(Atendimento.class);
+                for (Atendimento atendimento : atendimentos) {
+                    funcionarioDAO.get(atendimento.getFuncionario_ID()).addOnSuccessListener(getActivity(), funcionarioSnapshot -> {
+                        Funcionario funcionario = funcionarioSnapshot.toObject(Funcionario.class);
+                        tasks.add(departamentoDAO.get(funcionario.getDepartamento_ID()).addOnSuccessListener(getActivity(), documentSnapshot -> {
+                            funcionario.setDepartamento(documentSnapshot.toObject(Departamento.class));
+                            atendimento.setFuncionario(funcionario);
+                        }));
                     });
-                });
-            }
-        });
+                }
+                Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), o ->
+                        rv_atendimentos.setAdapter(new TramitacaoAdapter(getActivity(), atendimentos)));
+            });
+        }
     }
 
 
