@@ -33,12 +33,6 @@ public class SolicitacaoDAO {
         return helper.inserirAtualizar(reference.document(solicitacao.get_ID()), solicitacao);
     }
 
-    public Task<Void> remover(Solicitacao solicitacao) {
-        if (solicitacao.get_ID() != null && !solicitacao.get_ID().equals(""))
-            return null;
-        return helper.remover(reference.document(solicitacao.get_ID()));
-    }
-
     public Task<DocumentSnapshot> get(Solicitacao solicitacao) {
         if (solicitacao.get_ID()  == null || solicitacao.get_ID().equals(""))
             return null;

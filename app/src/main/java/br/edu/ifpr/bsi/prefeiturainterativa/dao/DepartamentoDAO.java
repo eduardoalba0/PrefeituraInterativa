@@ -40,7 +40,11 @@ public class DepartamentoDAO {
             return null;
         return helper.get(reference.document(departamento.get_ID()));
     }
-
+    public Task<DocumentSnapshot> get(String _ID) {
+        if (_ID  == null || _ID.equals(""))
+            return null;
+        return helper.get(reference.document(_ID));
+    }
     public Task<QuerySnapshot> getAll() {
         return helper.getQuery(reference.orderBy("descricao"));
     }

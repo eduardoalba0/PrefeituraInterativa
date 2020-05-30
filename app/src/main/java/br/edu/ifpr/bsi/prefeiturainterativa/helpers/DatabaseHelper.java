@@ -15,7 +15,6 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class DatabaseHelper {
-    //TODO IMPLEMENTAR BUSCA PELO ID, COM STRING COMO PARAMETRO
     private FirebaseFirestore dataBase;
     private Activity context;
 
@@ -36,21 +35,6 @@ public class DatabaseHelper {
                 else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                         .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_inserir_db))
                         .show();
-            }
-        });
-    }
-
-    public Task<Void> remover(DocumentReference reference) {
-        return reference.delete().addOnCompleteListener(context, task -> {
-            if (!task.isSuccessful()) {
-                if (task.getException().toString().contains("FirebaseFirestoreException: PERMISSION_DENIED"))
-                    new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                            .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_db_permissao_remover))
-                            .show();
-                else new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_falha_remover_db))
-                        .show();
-
             }
         });
     }

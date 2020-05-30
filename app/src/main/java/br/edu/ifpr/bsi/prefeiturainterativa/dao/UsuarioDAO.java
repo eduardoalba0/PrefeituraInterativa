@@ -29,16 +29,16 @@ public class UsuarioDAO {
         return helper.inserirAtualizar(reference.document(usuario.get_ID()), usuario);
     }
 
-    public Task<Void> remover(Usuario usuario) {
-        if (usuario.get_ID() == null && usuario.get_ID().equals(""))
-            return null;
-        return helper.remover(reference.document(usuario.get_ID()));
-    }
-
     public Task<DocumentSnapshot> get(Usuario usuario) {
         if (usuario.get_ID() == null && usuario.get_ID().equals(""))
             return null;
         return helper.get(reference.document(usuario.get_ID()));
+    }
+
+    public Task<DocumentSnapshot> get(String _ID) {
+        if (_ID == null && _ID.equals(""))
+            return null;
+        return helper.get(reference.document(_ID));
     }
 
     public Task<QuerySnapshot> getAll() {

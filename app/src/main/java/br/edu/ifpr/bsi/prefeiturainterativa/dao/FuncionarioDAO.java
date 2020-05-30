@@ -14,7 +14,6 @@ import br.edu.ifpr.bsi.prefeiturainterativa.model.Funcionario;
 
 public class FuncionarioDAO {
 
-
     private DatabaseHelper helper;
     private CollectionReference reference;
 
@@ -29,16 +28,16 @@ public class FuncionarioDAO {
         return helper.inserirAtualizar(reference.document(funcionario.get_ID()), funcionario);
     }
 
-    public Task<Void> remover(Funcionario funcionario) {
-        if (funcionario.get_ID() != null && !funcionario.get_ID().equals(""))
-            return null;
-        return helper.remover(reference.document(funcionario.get_ID()));
-    }
-
     public Task<DocumentSnapshot> get(Funcionario funcionario) {
         if (funcionario.get_ID()  == null || funcionario.get_ID().equals(""))
             return null;
         return helper.get(reference.document(funcionario.get_ID()));
+    }
+
+    public Task<DocumentSnapshot> get(String _ID) {
+        if (_ID == null || _ID.equals(""))
+            return null;
+        return helper.get(reference.document(_ID));
     }
 
     public Task<QuerySnapshot> getAll() {

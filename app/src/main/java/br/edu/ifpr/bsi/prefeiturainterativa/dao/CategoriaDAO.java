@@ -1,7 +1,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.dao;
 
 import android.app.Activity;
-import android.util.Log;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -13,10 +12,8 @@ import java.util.UUID;
 
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.DatabaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
 
 public class CategoriaDAO {
-
 
     private DatabaseHelper helper;
     private CollectionReference reference;
@@ -32,26 +29,23 @@ public class CategoriaDAO {
         return helper.inserirAtualizar(reference.document(categoria.get_ID()), categoria);
     }
 
-    public Task<Void> remover(Categoria categoria) {
-        if (categoria.get_ID() != null && !categoria.get_ID().equals(""))
-            return null;
-        return helper.remover(reference.document(categoria.get_ID()));
-    }
-
     public Task<DocumentSnapshot> get(Categoria categoria) {
         if (categoria.get_ID() == null || categoria.get_ID().equals(""))
             return null;
         return helper.get(reference.document(categoria.get_ID()));
     }
 
-    public Task<QuerySnapshot> getAllPorDepartamento(Departamento departamento){
-        return helper.getQuery(reference.whereEqualTo("departamento_ID", departamento.get_ID()).orderBy("descricao"));
+    public Task<QuerySnapshot> getAll(List<String> _IDs) {
+        return helper.getQuery(reference
+                .orderBy("descricao")
+                .whereIn("_ID", _IDs));
     }
 
-    // TODO REMOVER ONFAILLURE
-    public Task<QuerySnapshot> getAll(List<String> _IDs) {
-        return helper.getQuery(reference.whereIn("_ID", _IDs).orderBy("descricao"))
-                .addOnFailureListener(runnable -> Log.e("CategoriaDAO ", runnable.toString()+""));
+    public Task<QuerySnapshot> getAllHabilitadas(List<String> _IDs) {
+        return helper.getQuery(reference
+                .orderBy("descricao")
+                .whereIn("_ID", _IDs)
+                .whereEqualTo("habilitada", true));
     }
 
 }
