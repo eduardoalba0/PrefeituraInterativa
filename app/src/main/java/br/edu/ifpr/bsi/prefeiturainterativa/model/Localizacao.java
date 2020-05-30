@@ -8,7 +8,6 @@ public class Localizacao implements Serializable {
 
     private double latitude;
     private double longitude;
-    private String endereco;
 
     public Localizacao() {
     }
@@ -37,13 +36,5 @@ public class Localizacao implements Serializable {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
     }
 }
