@@ -76,15 +76,20 @@ public class DialogCategorias extends BottomSheetDialogFragment {
                 bt_continuar.setIconTintResource(R.color.colorRed);
                 bt_continuar.setTextColor(getResources().getColor(R.color.colorRed));
                 break;
-            case Departamento.STYLE_BLUE:
-                tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkBlueWhite));
-                bt_continuar.setIconTintResource(R.color.colorDarkBlueWhite);
-                bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkBlueWhite));
+            case Departamento.STYLE_YELLOW:
+                tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorOrangeWhite));
+                bt_continuar.setIconTintResource(R.color.colorOrangeWhite);
+                bt_continuar.setTextColor(getResources().getColor(R.color.colorOrangeWhite));
                 break;
             case Departamento.STYLE_GREEN:
                 tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkGreenWhite));
                 bt_continuar.setIconTintResource(R.color.colorDarkGreenWhite);
                 bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkGreenWhite));
+                break;
+            case Departamento.STYLE_BLUE:
+                tv_hintCategoria.setTextColor(getContext().getResources().getColor(R.color.colorDarkBlueWhite));
+                bt_continuar.setIconTintResource(R.color.colorDarkBlueWhite);
+                bt_continuar.setTextColor(getResources().getColor(R.color.colorDarkBlueWhite));
                 break;
         }
 

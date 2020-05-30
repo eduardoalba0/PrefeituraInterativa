@@ -7,7 +7,7 @@
     android:layout_marginStart="@dimen/espaco_muito_pequeno"
     android:layout_marginEnd="@dimen/espaco_muito_pequeno"
     app:cardBackgroundColor="@color/float_transparent"
-    app:cardCornerRadius="@dimen/espaco_gigante">
+    app:cardCornerRadius="@dimen/raio_circulo_medio">
 
     <RelativeLayout
         android:id="@+id/l_gradient"
