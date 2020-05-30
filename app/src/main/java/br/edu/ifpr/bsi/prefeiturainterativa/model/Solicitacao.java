@@ -4,6 +4,7 @@ import com.google.firebase.firestore.Exclude;
 import com.google.firebase.firestore.ServerTimestamp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -43,6 +44,13 @@ public class Solicitacao implements Serializable {
     private List<Atendimento> localAtendimentos;
 
 //---------------------- Encapsulamento ----------------------
+
+
+    public Solicitacao() {
+        urlImagens = new ArrayList<>();
+        categorias = new ArrayList<>();
+        atendimentos = new ArrayList<>();
+    }
 
     public String get_ID() {
         return _ID;
@@ -176,6 +184,7 @@ public class Solicitacao implements Serializable {
         this.usuario = usuario;
     }
 
+    @Exclude
     public List<Atendimento> getLocalAtendimentos() {
         return localAtendimentos;
     }
