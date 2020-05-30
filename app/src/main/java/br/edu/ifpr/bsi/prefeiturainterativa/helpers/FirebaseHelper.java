@@ -133,9 +133,11 @@ public class FirebaseHelper {
                             .show();
             });
     }
+
     public void deslogar(){
         auth.signOut();
     }
+
     public Task<Void> verificarEmail() {
         if (getUser().isEmailVerified())
             return null;
@@ -203,7 +205,7 @@ public class FirebaseHelper {
             return null;
         }
 
-        StorageReference upload = storage.child("Usuarios").child(getUser().getUid()).child(System.currentTimeMillis() + "_.jpg");
+        StorageReference upload = storage.child("Usuarios").child(getUser().getUid()).child(getUser().getUid() + "_.jpg");
 
         return upload.putFile(file).continueWithTask(task -> {
             if (!task.isSuccessful()) throw task.getException();
