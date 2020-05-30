@@ -28,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
+import br.edu.ifpr.bsi.prefeiturainterativa.helpers.CpfValidatorHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
@@ -68,6 +69,10 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onValidationSucceeded() {
+        if (!CpfValidatorHelper.validar(edt_cpf.getText().toString())) {
+            edl_cpf.setError("Seu CPF está inválido.");
+            return;
+        }
         dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         helper = new FirebaseHelper(this);
         usuario = new Usuario();
