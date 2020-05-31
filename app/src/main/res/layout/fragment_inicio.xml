@@ -20,15 +20,13 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="3dp">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/img_usuario"
                     android:layout_width="@dimen/componente_muito_pequeno"
                     android:layout_height="@dimen/componente_muito_pequeno"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="10dp"
                     android:background="@drawable/shape_circulo_branco"
                     android:contentDescription="@string/str_perfil"
                     android:src="@drawable/ic_usuario" />

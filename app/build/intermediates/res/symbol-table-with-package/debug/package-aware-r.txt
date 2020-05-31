@@ -993,6 +993,7 @@ color colorOrange
 color colorOrangeWhite
 color colorPink
 color colorRed
+color colorYellow
 color color_alizarin
 color color_amethyst
 color color_asbestos
@@ -1829,6 +1830,7 @@ drawable shape_cursor
 drawable shape_dialog
 drawable shape_gradient_branco
 drawable shape_gradient_vermelho
+drawable shape_quadrado_arr_amarelo
 drawable shape_quadrado_arr_azul
 drawable shape_quadrado_arr_branco
 drawable shape_quadrado_arr_verde
@@ -2688,6 +2690,7 @@ string str_nenhuma_imagem
 string str_never_ask_gps
 string str_never_ask_imagens
 string str_nome
+string str_ola
 string str_ou
 string str_perfil
 string str_perfil_atualizado

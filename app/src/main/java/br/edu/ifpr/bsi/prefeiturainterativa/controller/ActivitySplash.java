@@ -14,9 +14,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ActivitySplash extends AppCompatActivity {
-    //  todo arrumar todas as animações
-    // todo validar cpf
+    // todo arrumar todas as animações
     // todo criar construtor padrao para fragments, sem parametros que retornar para a atividade-mae
+    // todo turorial
+    // todo verificar libs inutilizadas
+    // todo testar tramitação
+    // todo testar avaliação
+    // todo testar validador CPF
+    // todo configurar dimens.xml para multiplas dimensões
+    // todo implementar método "Add", para gerar Ids automaticamente
+    // todo BOTÃO DE AVALIAR QUANDO A SOLICITAÇÃO FOR CONCLUIDA
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

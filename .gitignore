@@ -1,6 +1,5 @@
 *.iml
-.gradle/*
-/.gradle/*
+.gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -8,3 +7,4 @@
 /app/build/*
 /captures
 .externalNativeBuild
+*/.lock

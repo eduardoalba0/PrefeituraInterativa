@@ -29,12 +29,6 @@ public class DepartamentoDAO {
         return helper.inserirAtualizar(reference.document(departamento.get_ID()), departamento);
     }
 
-    public Task<Void> remover(Departamento departamento) {
-        if (departamento.get_ID() != null && !departamento.get_ID().equals(""))
-            return null;
-        return helper.remover(reference.document(departamento.get_ID()));
-    }
-
     public Task<DocumentSnapshot> get(Departamento departamento) {
         if (departamento.get_ID()  == null || departamento.get_ID().equals(""))
             return null;

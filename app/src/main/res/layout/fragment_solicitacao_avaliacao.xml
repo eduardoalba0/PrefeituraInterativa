@@ -113,8 +113,6 @@
                     app:boxStrokeColor="@color/colorRed"
                     app:counterEnabled="true"
                     app:counterMaxLength="600"
-                    app:endIconMode="clear_text"
-                    app:endIconTint="@color/colorRed"
                     app:errorEnabled="true"
                     app:hintTextColor="@color/colorRed">
 

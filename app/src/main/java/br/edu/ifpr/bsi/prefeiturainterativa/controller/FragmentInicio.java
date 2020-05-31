@@ -81,7 +81,8 @@ public class FragmentInicio extends Fragment implements View.OnClickListener, Vi
     private void preencherCampos() {
         Usuario usuario = new Usuario();
         usuario.set_ID(helper.getUser().getUid());
-        bt_usuario.setText(helper.getUser().getDisplayName());
+        bt_usuario.setText((getResources().getString(R.string.str_ola) + " " +
+                helper.getUser().getDisplayName()));
         if (helper.getUser().getPhotoUrl() != null)
             Glide.with(this)
                     .load(helper.getUser().getPhotoUrl())

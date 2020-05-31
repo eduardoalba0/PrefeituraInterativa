@@ -1,6 +1,7 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,18 +57,20 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
         }
 
         public void setData(Atendimento atendimento) {
+            Log.e("Adapter", "Set Data");
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
             tv_data.setText(df.format(atendimento.getData()));
 
-            if (atendimento.getResposta().trim().isEmpty())
+            if (atendimento.getResposta() == null || atendimento.getResposta().trim().isEmpty())
                 card_resposta.setVisibility(View.GONE);
             else {
+                card_resposta.setVisibility(View.VISIBLE);
                 edt_descricao.setText(atendimento.getResposta());
                 edl_autor.setHelperText(atendimento.getFuncionario().getDepartamento().getDescricao());
-                edl_autor.setHint(atendimento.getFuncionario().getUsuario().getNome());
+                edl_autor.setHint(atendimento.getFuncionario().getNome());
             }
 
-            if (atendimento.getAcao().trim().isEmpty())
+            if (atendimento.getAcao() == null || atendimento.getAcao().trim().isEmpty())
                 tv_acao.setVisibility(View.GONE);
             else {
                 tv_acao.setVisibility(View.VISIBLE);

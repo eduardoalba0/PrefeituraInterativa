@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -28,7 +27,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.TramitacaoAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.AtendimentoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.DepartamentoDAO;
-import br.edu.ifpr.bsi.prefeiturainterativa.dao.FuncionarioDAO;
+import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Atendimento;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
@@ -38,7 +37,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FragmentSolicitacaoTramitacao extends Fragment {
-
     private Solicitacao solicitacao;
 
     public FragmentSolicitacaoTramitacao(Solicitacao solicitacao) {
@@ -85,21 +83,22 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
         rv_atendimentos.setLayoutManager(new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false));
         if (solicitacao.getAtendimentos() != null && !solicitacao.getAtendimentos().isEmpty()) {
             new AtendimentoDAO(getActivity()).getAll(solicitacao.getAtendimentos()).addOnSuccessListener(getActivity(), atendimentoSnapshots -> {
-                FuncionarioDAO funcionarioDAO = new FuncionarioDAO(getActivity());
+                UsuarioDAO usuarioDAO = new UsuarioDAO(getActivity());
                 DepartamentoDAO departamentoDAO = new DepartamentoDAO(getActivity());
                 List<Task<?>> tasks = new ArrayList<>();
-                List<Atendimento> atendimentos = atendimentoSnapshots.toObjects(Atendimento.class);
-                for (Atendimento atendimento : atendimentos) {
-                    funcionarioDAO.get(atendimento.getFuncionario_ID()).addOnSuccessListener(getActivity(), funcionarioSnapshot -> {
+                List<Atendimento> atendimentos = new ArrayList<>();
+                for (Atendimento atendimento : atendimentoSnapshots.toObjects(Atendimento.class)) {
+                    usuarioDAO.get(atendimento.getFuncionario_ID()).addOnSuccessListener(getActivity(), funcionarioSnapshot -> {
                         Funcionario funcionario = funcionarioSnapshot.toObject(Funcionario.class);
-                        tasks.add(departamentoDAO.get(funcionario.getDepartamento_ID()).addOnSuccessListener(getActivity(), documentSnapshot -> {
-                            funcionario.setDepartamento(documentSnapshot.toObject(Departamento.class));
+                        tasks.add(departamentoDAO.get(funcionario.getDepartamento_ID()).addOnSuccessListener(getActivity(), departamentoSnapshot -> {
+                            funcionario.setDepartamento(departamentoSnapshot.toObject(Departamento.class));
                             atendimento.setFuncionario(funcionario);
+                            atendimentos.add(atendimento);
+                            rv_atendimentos.setAdapter(new TramitacaoAdapter(getActivity(), atendimentos));
                         }));
                     });
                 }
-                Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), o ->
-                        rv_atendimentos.setAdapter(new TramitacaoAdapter(getActivity(), atendimentos)));
+                //Tasks.whenAllComplete(tasks).addOnSuccessListener(getActivity(), o ->);
             });
         }
     }

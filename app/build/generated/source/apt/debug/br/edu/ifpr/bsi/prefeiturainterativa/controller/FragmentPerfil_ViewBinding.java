@@ -19,13 +19,13 @@ import java.lang.Override;
 public class FragmentPerfil_ViewBinding implements Unbinder {
   private FragmentPerfil target;
 
-  private View view7f0900e2;
+  private View view7f0a00cd;
 
-  private View view7f090067;
+  private View view7f0a005d;
 
-  private View view7f090065;
+  private View view7f0a005b;
 
-  private View view7f09005a;
+  private View view7f0a004f;
 
   @UiThread
   public FragmentPerfil_ViewBinding(final FragmentPerfil target, View source) {
@@ -37,7 +37,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.edt_email = Utils.findRequiredViewAsType(source, R.id.edt_email, "field 'edt_email'", TextInputEditText.class);
     view = Utils.findRequiredView(source, R.id.img_usuario, "field 'img_usuario' and method 'onClick'");
     target.img_usuario = Utils.castView(view, R.id.img_usuario, "field 'img_usuario'", ImageView.class);
-    view7f0900e2 = view;
+    view7f0a00cd = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -47,7 +47,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.tv_usuario = Utils.findRequiredViewAsType(source, R.id.tv_usuario, "field 'tv_usuario'", TextView.class);
     view = Utils.findRequiredView(source, R.id.bt_sair, "field 'bt_sair' and method 'onClick'");
     target.bt_sair = Utils.castView(view, R.id.bt_sair, "field 'bt_sair'", Button.class);
-    view7f090067 = view;
+    view7f0a005d = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -56,7 +56,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_redefinir, "field 'bt_redefinir' and method 'onClick'");
     target.bt_redefinir = Utils.castView(view, R.id.bt_redefinir, "field 'bt_redefinir'", Button.class);
-    view7f090065 = view;
+    view7f0a005b = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -65,7 +65,7 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     });
     view = Utils.findRequiredView(source, R.id.bt_atualizar, "field 'bt_atualizar' and method 'onClick'");
     target.bt_atualizar = Utils.castView(view, R.id.bt_atualizar, "field 'bt_atualizar'", Button.class);
-    view7f09005a = view;
+    view7f0a004f = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -100,13 +100,13 @@ public class FragmentPerfil_ViewBinding implements Unbinder {
     target.edl_cpf = null;
     target.edl_email = null;
 
-    view7f0900e2.setOnClickListener(null);
-    view7f0900e2 = null;
-    view7f090067.setOnClickListener(null);
-    view7f090067 = null;
-    view7f090065.setOnClickListener(null);
-    view7f090065 = null;
-    view7f09005a.setOnClickListener(null);
-    view7f09005a = null;
+    view7f0a00cd.setOnClickListener(null);
+    view7f0a00cd = null;
+    view7f0a005d.setOnClickListener(null);
+    view7f0a005d = null;
+    view7f0a005b.setOnClickListener(null);
+    view7f0a005b = null;
+    view7f0a004f.setOnClickListener(null);
+    view7f0a004f = null;
   }
 }

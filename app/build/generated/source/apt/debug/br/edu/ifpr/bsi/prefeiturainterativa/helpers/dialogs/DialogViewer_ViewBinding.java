@@ -9,16 +9,16 @@ import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import butterknife.Unbinder;
 import butterknife.internal.DebouncingOnClickListener;
 import butterknife.internal.Utils;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.button.MaterialButton;
 import java.lang.IllegalStateException;
 import java.lang.Override;
 
 public class DialogViewer_ViewBinding implements Unbinder {
   private DialogViewer target;
 
-  private View view7f090059;
+  private View view7f0a004d;
 
-  private View view7f090066;
+  private View view7f0a005a;
 
   @UiThread
   public DialogViewer_ViewBinding(final DialogViewer target, View source) {
@@ -27,8 +27,8 @@ public class DialogViewer_ViewBinding implements Unbinder {
     View view;
     target.img_viewer = Utils.findRequiredViewAsType(source, R.id.img_viewer, "field 'img_viewer'", ImageView.class);
     view = Utils.findRequiredView(source, R.id.bt_aceitar, "field 'bt_aceitar' and method 'onClick'");
-    target.bt_aceitar = Utils.castView(view, R.id.bt_aceitar, "field 'bt_aceitar'", FloatingActionButton.class);
-    view7f090059 = view;
+    target.bt_aceitar = Utils.castView(view, R.id.bt_aceitar, "field 'bt_aceitar'", MaterialButton.class);
+    view7f0a004d = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -36,8 +36,8 @@ public class DialogViewer_ViewBinding implements Unbinder {
       }
     });
     view = Utils.findRequiredView(source, R.id.bt_recusar, "field 'bt_recusar' and method 'onClick'");
-    target.bt_recusar = Utils.castView(view, R.id.bt_recusar, "field 'bt_recusar'", FloatingActionButton.class);
-    view7f090066 = view;
+    target.bt_recusar = Utils.castView(view, R.id.bt_recusar, "field 'bt_recusar'", MaterialButton.class);
+    view7f0a005a = view;
     view.setOnClickListener(new DebouncingOnClickListener() {
       @Override
       public void doClick(View p0) {
@@ -57,9 +57,9 @@ public class DialogViewer_ViewBinding implements Unbinder {
     target.bt_aceitar = null;
     target.bt_recusar = null;
 
-    view7f090059.setOnClickListener(null);
-    view7f090059 = null;
-    view7f090066.setOnClickListener(null);
-    view7f090066 = null;
+    view7f0a004d.setOnClickListener(null);
+    view7f0a004d = null;
+    view7f0a005a.setOnClickListener(null);
+    view7f0a005a = null;
   }
 }
