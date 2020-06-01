@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "977874090377",
+    "firebase_url": "https://prefeiturainterativa.firebaseio.com",
+    "project_id": "prefeiturainterativa",
+    "storage_bucket": "prefeiturainterativa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977874090377:android:dc15f404670a07ce468958",
+        "android_client_info": {
+          "package_name": "br.edu.ifpr.bsi.prefeiturainterativa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977874090377-b1ql9jmted8qfvr5ub4cc7pdcjqemfro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.edu.ifpr.bsi.prefeiturainterativa",
+            "certificate_hash": "c56566a85a9e943c7810eed4774b5491a06c3220"
+          }
+        },
+        {
+          "client_id": "977874090377-uimphtcjgmbdv1o7gubla24a6h11apc3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-L21dPnQl-VgVPVHqznHUpD-kR8h8asY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977874090377-uimphtcjgmbdv1o7gubla24a6h11apc3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

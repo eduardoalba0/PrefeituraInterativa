@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:transitionName="base_transition">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/espaco_muito_pequeno">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/raio_circulo_medio">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/img_usuario"
+                    android:layout_width="@dimen/componente_muito_pequeno"
+                    android:layout_height="@dimen/componente_muito_pequeno"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_circulo_branco"
+                    android:contentDescription="@string/str_perfil"
+                    android:src="@drawable/ic_usuario" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_usuario"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/espaco_pequeno"
+                    android:layout_toEndOf="@id/img_usuario"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorDarkOrange"
+                    android:textSize="@dimen/texto_pequeno"
+                    app:icon="@drawable/ic_proximo"
+                    app:iconGravity="end"
+                    app:iconSize="30dp"
+                    app:iconTint="@color/colorDarkOrange"
+                    app:textAllCaps="false" />
+            </RelativeLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/l_numSolicitacoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_pequeno"
+            app:flexDirection="row"
+            app:justifyContent="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_numAbertas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_zero"
+                    android:textColor="@color/ms_white"
+                    android:textSize="@dimen/texto_gigantesco" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_solicitacoes_abertas"
+                    android:textColor="@color/ms_white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_numConcluidas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_zero"
+                    android:textColor="@color/ms_white"
+                    android:textSize="@dimen/texto_gigantesco" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_solicitacoes_concluidas"
+                    android:textColor="@color/ms_white" />
+            </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_pequeno"
+            app:cardCornerRadius="@dimen/raio_circulo_medio"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_avisos"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/texto_normal" />
+
+                <TextView
+                    android:id="@+id/tv_nenhumAviso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_nenhum_aviso"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorOrangeWhite"
+                    android:textSize="@dimen/texto_pequeno" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_avisos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_pendentes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/espaco_pequeno"
+            app:cardCornerRadius="@dimen/raio_circulo_medio"
+            app:cardPreventCornerOverlap="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno"
+                    android:text="@string/str_aguardando_conexao"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorRed"
+                    android:textSize="@dimen/texto_normal" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_solicitacoes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/espaco_muito_pequeno" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>
