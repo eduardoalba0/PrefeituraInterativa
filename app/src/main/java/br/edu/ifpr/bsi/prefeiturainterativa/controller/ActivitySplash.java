@@ -23,7 +23,9 @@ public class ActivitySplash extends AppCompatActivity {
     // todo testar validador CPF
     // todo configurar dimens.xml para multiplas dimensões
     // todo implementar método "Add", para gerar Ids automaticamente
-    // todo BOTÃO DE AVALIAR QUANDO A SOLICITAÇÃO FOR CONCLUIDA
+    // todo botão de avaliar quando a solicitação está concluida
+    // todo implementar animação de carregamento nos recyclerviews
+    // todo arrumar espaço excessivo no Adapter Tramitação
 
 
     @Override

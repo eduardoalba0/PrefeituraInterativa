@@ -70,7 +70,7 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
     @Override
     public void onValidationSucceeded() {
         if (!CpfValidatorHelper.validar(edt_cpf.getText().toString())) {
-            edl_cpf.setError("Seu CPF está inválido.");
+            edl_cpf.setError(getString(R.string.str_cpf_invalido));
             return;
         }
         dialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
@@ -87,7 +87,7 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         usuario.setSenha(edt_senha.getText().toString());
         usuario.setNome(edt_nome.getText().toString());
         usuario.setCpf(edt_cpf.getText().toString());
-        usuario.setTipoUsuario_ID(getResources().getString(R.string.tipo_usuario_cidadao_id));
+        usuario.setTipoUsuario_ID(getResources().getString(R.string.str_tipo_usuario_cidadao_id));
 
         Task<AuthResult> task = helper.registrar(usuario);
         if (task != null) {

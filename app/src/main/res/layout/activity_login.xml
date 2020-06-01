@@ -84,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
-                android:hint="@string/hint_senha"
+                android:hint="@string/str_hint_senha"
                 app:boxStrokeColor="@color/colorDarkOrange"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/colorDarkOrange"
@@ -92,7 +92,7 @@
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
                 app:hintTextColor="@color/colorDarkOrange"
-                app:startIconContentDescription="@string/hint_senha"
+                app:startIconContentDescription="@string/str_hint_senha"
                 app:startIconDrawable="@drawable/ic_senha"
                 app:startIconTint="@color/colorDarkOrange">
 

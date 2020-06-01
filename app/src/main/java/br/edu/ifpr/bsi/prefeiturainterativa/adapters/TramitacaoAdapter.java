@@ -1,7 +1,6 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.adapters;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,7 +56,6 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
         }
 
         public void setData(Atendimento atendimento) {
-            Log.e("Adapter", "Set Data");
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
             tv_data.setText(df.format(atendimento.getData()));
 

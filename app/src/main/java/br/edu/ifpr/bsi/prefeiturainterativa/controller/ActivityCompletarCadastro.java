@@ -78,7 +78,7 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
     @Override
     public void onValidationSucceeded() {
         if (!CpfValidatorHelper.validar(edt_cpf.getText().toString())) {
-            edl_cpf.setError("Seu CPF está inválido.");
+            edl_cpf.setError(getString(R.string.str_cpf_invalido));
             return;
         }
 
@@ -115,7 +115,7 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
         usuario.set_ID(helper.getUser().getUid());
         usuario.setNome(helper.getUser().getDisplayName());
         usuario.setEmail(helper.getUser().getEmail());
-        usuario.setTipoUsuario_ID(getResources().getString(R.string.tipo_usuario_cidadao_id));
+        usuario.setTipoUsuario_ID(getResources().getString(R.string.str_tipo_usuario_cidadao_id));
         usuario.setUriFoto(helper.getUser().getPhotoUrl().toString());
         tv_usuario.setText(usuario.getNome());
         if (helper.getUser().getPhotoUrl() != null)

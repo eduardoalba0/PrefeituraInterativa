@@ -26,7 +26,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FragmentDepartamentos extends Fragment {
-    //TODO MAIS CORES PARA OS DEPARTAMENTOS
 
     @Nullable
     @Override

@@ -68,7 +68,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
         }
 
         if (solicitacao.isAnonima())
-            edl_autor.setHint(helper.getUser().getDisplayName() + "(Anônimo)");
+            edl_autor.setHint(helper.getUser().getDisplayName() + getString(R.string.str_nome_anonimo));
         else
             edl_autor.setHint(helper.getUser().getDisplayName());
 

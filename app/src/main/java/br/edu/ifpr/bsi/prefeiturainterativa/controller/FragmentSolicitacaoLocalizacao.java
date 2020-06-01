@@ -153,7 +153,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
                 map_view.clear();
                 map_marker = map_view.addMarker(new MarkerOptions()
                         .position(latLng)
-                        .title("Marcador Posicionado")
+                        .title(getString(R.string.str_marcador_posicionado))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
             });
 
@@ -161,7 +161,7 @@ public class FragmentSolicitacaoLocalizacao extends Fragment implements Step, Vi
                 map_view.clear();
                 map_marker = map_view.addMarker(new MarkerOptions()
                         .position(new LatLng(location.getLatitude(), location.getLongitude()))
-                        .title("Marcador Posicionado")
+                        .title(getString(R.string.str_marcador_posicionado))
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE)));
             });
 

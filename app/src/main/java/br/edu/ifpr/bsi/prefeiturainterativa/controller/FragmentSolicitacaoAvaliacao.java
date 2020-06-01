@@ -75,7 +75,7 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
             sw_solucionada.setChecked(avaliacao.isSolucionada());
             edt_comentario.setText(avaliacao.getComentario());
             tv_data.setVisibility(View.VISIBLE);
-            tv_data.setText(("Avaliação cadastrada em :\n" + df.format(avaliacao.getData())));
+            tv_data.setText((getString(R.string.str_avaliacao_cadastrada) + df.format(avaliacao.getData())));
         }
     }
 

@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name" translatable="true">Prefeitura Interativa</string>
-    <string name="tipo_usuario_cidadao_id" templateMergeStrategy="preserve" translatable="false">6b395be8-a7c1-4971-8dc0-afa04be63a00</string>
+    <string name="str_tipo_usuario_cidadao_id" templateMergeStrategy="preserve" translatable="false">6b395be8-a7c1-4971-8dc0-afa04be63a00</string>
     <string name="str_emblema" translatable="true">Emblema do aplicativo em formato de maçã</string>
-    <string name="hint_senha" translatable="true">INSIRA SUA SENHA</string>
+    <string name="str_hint_senha" translatable="true">INSIRA SUA SENHA</string>
     <string name="str_esqueceu_senha" translatable="true">Esqueci minha senha</string>
     <string name="str_vamos_comecar" translatable="true">Vamos começar…</string>
     <string name="str_entrar" translatable="true">Entrar</string>
     <string name="str_cadastrar" translatable="true">Cadastre-se aqui</string>
-    <string name="title_activity_maps" translatable="true">Map</string>
     <string name="str_conta_google" translatable="true">Entre com o Google</string>
     <string name="str_nome" translatable="true">NOME COMPLETO</string>
     <string name="str_senha_confirm" translatable="true">CONFIRME SUA SENHA</string>
@@ -28,7 +27,7 @@
     <string name="str_camera">Câmera</string>
     <string name="str_galeria">Galeria</string>
     <string name="str_sair">Sair</string>
-    <string name="Inicio">str_inicio</string>
+    <string name="str_inicio">inicio</string>
     <string name="str_descricao">Descrição</string>
     <string name="str_cadastrar_demanda">Nova Demanda</string>
     <string name="str_imagens">Imagens</string>
@@ -123,4 +122,8 @@
     <string name="str_usuario_desabilitado">Seu usuário foi desativado. Consulte a sua prefeitura para maiores informações.</string>
     <string name="str_falha_login_google">Falha ao associar conta Google. Consulte o suporte do sistema.</string>
     <string name="str_ola">Olá, </string>
+    <string name="str_nome_anonimo">(Anônimo)</string>
+    <string name="str_cpf_invalido">Seu CPF está inválido.</string>
+    <string name="str_avaliacao_cadastrada">Avaliação cadastrada em :</string>
+    <string name="str_marcador_posicionado">Marcador Posicionado</string>
 </resources>
