@@ -79,11 +79,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <View
+    <RelativeLayout
         android:id="@+id/l_footer"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/componente_muito_pequeno"
+        android:layout_height="@dimen/componente_pequeno"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/shape_quadrado_irregular_branco" />
+        android:background="@drawable/shape_quadrado_irregular_branco"
+        android:paddingStart="@dimen/espaco_medio"
+        android:paddingEnd="@dimen/espaco_medio">
 
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/espaco_muito_pequeno"
+            android:background="@drawable/shape_quadrado_arr_vermelho"
+            android:paddingStart="@dimen/espaco_pequeno"
+            android:paddingEnd="@dimen/espaco_pequeno">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_avaliar"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/str_avaliar"
+                android:textColor="@color/ms_white"
+                android:textSize="@dimen/texto_pequeno"
+                app:icon="@drawable/ic_avaliar"
+                app:iconGravity="textEnd"
+                app:iconTint="@color/ms_white" />
+        </RelativeLayout>
+    </RelativeLayout>
 </RelativeLayout>

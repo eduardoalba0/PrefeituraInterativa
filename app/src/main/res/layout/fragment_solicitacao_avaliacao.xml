@@ -146,7 +146,7 @@
                         android:textColor="@color/ms_white"
                         android:textSize="@dimen/texto_pequeno"
                         android:transitionName="splash_transition"
-                        app:icon="@drawable/ic_proximo"
+                        app:icon="@drawable/ic_avaliar"
                         app:iconGravity="textEnd"
                         app:iconTint="@color/ms_white" />
                 </RelativeLayout>
