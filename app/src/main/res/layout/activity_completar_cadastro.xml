@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/view_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".controller.ActivityCompletarCadastro">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/shape_irregular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/componente_grande"
+            android:elevation="2dp"
+            android:background="@drawable/shape_quadrado_irregular_vermelho" />
+
+        <LinearLayout
+            android:id="@+id/l_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/componente_grande"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/img_app"
+                android:layout_width="@dimen/componente_normal"
+                android:layout_height="@dimen/componente_normal"
+                android:contentDescription="@string/str_emblema"
+                android:scaleType="fitCenter"
+                android:src="@mipmap/ic_maca"
+                android:background="@drawable/shape_circulo_branco"
+                android:transitionName="splash_transition" />
+
+            <TextView
+                android:id="@+id/tv_usuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_pequeno"
+                android:textColor="@color/ms_white"
+                android:gravity="center"
+                android:textSize="@dimen/texto_grande" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bt_sair"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/espaco_muito_pequeno"
+                android:paddingStart="@dimen/espaco_medio"
+                android:paddingEnd="@dimen/espaco_medio"
+                android:text="@string/str_sair"
+                android:textColor="@color/ms_white"
+                android:textSize="@dimen/texto_normal"
+                app:icon="@drawable/ic_sair"
+                app:iconGravity="end"
+                app:iconTint="@color/ms_white" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l_completar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/componente_grande">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/espaco_medio"
+                android:text="@string/str_completar_cadastro"
+                android:textAllCaps="true"
+                android:textColor="@color/colorRed"
+                android:textSize="@dimen/texto_normal"
+                android:textStyle="normal" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edl_cpf"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_muito_pequeno"
+                android:hint="@string/str_cpf"
+                app:boxBackgroundColor="@color/white"
+                app:boxStrokeColor="@color/colorDarkOrange"
+                app:counterEnabled="true"
+                app:counterMaxLength="11"
+                app:counterTextColor="@color/colorRed"
+                app:endIconMode="clear_text"
+                app:endIconTint="@color/colorDarkOrange"
+                app:errorEnabled="true"
+                app:hintAnimationEnabled="true"
+                app:hintEnabled="true"
+                app:hintTextColor="@color/colorDarkOrange"
+                app:startIconContentDescription="@string/str_cpf"
+                app:startIconDrawable="@drawable/ic_cpf"
+                app:startIconTint="@color/colorDarkOrange">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_cpf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:maxLength="11"
+                    android:textAllCaps="true"
+                    android:textColor="@color/colorDarkOrange"
+                    android:textSize="@dimen/texto_pequeno" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/espaco_grande"
+                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:elevation="5dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bt_cadastrar"
+                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/str_continuar"
+                    android:textSize="@dimen/texto_normal"
+                    android:textColor="@color/ms_white"
+                    app:icon="@drawable/ic_proximo"
+                    app:iconGravity="textEnd"
+                    app:iconTint="@color/ms_white" />
+            </RelativeLayout>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
