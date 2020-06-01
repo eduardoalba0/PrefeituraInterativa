@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -77,6 +78,10 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
                 .placeholder(R.drawable.ic_usuario)
                 .circleCrop()
                 .into(img_usuario);
+        if (solicitacao.isConcluida() && (solicitacao.getAvaliacao() == null || solicitacao.getAvaliacao().getData() == null)){
+            bt_avaliar.setVisibility(View.VISIBLE);
+        } else
+            bt_avaliar.setVisibility(View.GONE);
     }
 
     private void initRecyclerView() {
@@ -121,4 +126,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
 
     @BindView(R.id.card_solicitacao)
     MaterialCardView card_solicitacao;
+
+    @BindView(R.id.bt_avaliar)
+    MaterialButton bt_avaliar;
 }
