@@ -1,0 +1,39 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
+        <item name="colorPrimary">@color/colorOrange</item>
+        <item name="colorPrimaryDark">@color/colorDarkOrange</item>
+        <item name="colorSecondary">@color/colorRed</item>
+        <item name="colorSecondaryVariant">@color/colorPink</item>
+        <item name="android:textColor">@color/blackWhite</item>
+        <item name="android:fontFamily">@font/fredoka</item>
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowBackground">@drawable/shape_gradient_vermelho</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="bottomSheetDialogTheme">@style/MyBottomSheetDialogTheme</item>
+    </style>
+
+    <style name="MyBottomSheetDialogTheme" parent="Theme.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/MyAppModalStyle</item>
+    </style>
+
+    <style name="MyAppModalStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/shape_dialog</item>
+    </style>
+
+    <style name="MyStepperLayoutTheme" parent="MSDefaultStepperLayoutTheme">
+        <item name="ms_tabsContainerStyle">@style/MyStepTabsContainerStyle</item>
+        <item name="ms_stepperType">tabs</item>
+        <item name="ms_stepTabTitleStyle">@style/AppTheme</item>
+        <item name="ms_stepTabSubtitleStyle">@style/AppTheme</item>
+    </style>
+
+    <style name="MyStepTabsContainerStyle" parent="MSStepTabsContainer">
+        <item name="android:background">@color/white</item>
+        <item name="android:elevation">0dp</item>
+    </style>
+
+</resources>

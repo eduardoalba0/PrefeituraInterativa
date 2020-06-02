@@ -11,7 +11,7 @@ settings.gradle
 /app/debug/*
 /app/.settings/*
 /app/.classpath
-/app/src/*
+/app/src/debug/*
 *.json
 /captures
 .externalNativeBuild

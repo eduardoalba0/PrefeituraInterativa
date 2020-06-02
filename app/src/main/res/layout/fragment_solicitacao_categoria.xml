@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_departamentos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/l_footer"
+        android:background="@color/white" />
+
+    <RelativeLayout
+        android:id="@+id/l_footer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/componente_muito_pequeno"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/shape_quadrado_irregular_branco"
+        android:paddingStart="@dimen/espaco_medio"
+        android:paddingEnd="@dimen/espaco_medio">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/tv_numeroTopicos"
+            android:gravity="start"
+            android:layout_marginStart="@dimen/espaco_pequeno"
+            android:padding="@dimen/espaco_muito_pequeno"
+            android:text="@string/str_topicos_selecionados"
+            android:textColor="@color/blackWhite"
+            android:textSize="@dimen/texto_pequeno" />
+
+        <TextView
+            android:id="@+id/tv_numeroTopicos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/espaco_pequeno"
+            android:padding="@dimen/espaco_muito_pequeno"
+            android:text="@string/str_zero"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/texto_pequeno" />
+    </RelativeLayout>
+</RelativeLayout>

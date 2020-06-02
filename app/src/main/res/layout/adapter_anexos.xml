@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/espaco_muito_pequeno"
+    app:cardCornerRadius="@dimen/raio_circulo_medio">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="5dp">
+
+        <ImageView
+            android:id="@+id/img_anexo"
+            android:layout_width="@dimen/componente_pequeno"
+            android:layout_height="@dimen/componente_pequeno"
+            android:layout_alignParentStart="true"
+            android:layout_margin="@dimen/espaco_pequeno"
+            android:scaleType="centerCrop"
+            android:textColor="@color/white"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/bt_remover"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/img_anexo"
+            android:text="@string/str_remover"
+            android:textColor="@color/colorRed"
+            android:textSize="@dimen/texto_pequeno"
+            app:icon="@drawable/ic_remover"
+            app:iconGravity="textEnd"
+            app:iconSize="40dp"
+            app:iconTint="@color/colorRed" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
