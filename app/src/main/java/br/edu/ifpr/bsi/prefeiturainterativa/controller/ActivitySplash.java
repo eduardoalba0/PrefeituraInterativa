@@ -14,6 +14,10 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ActivitySplash extends AppCompatActivity {
+    // todo arrumar erro no login
+    // todo arrumar erro da foto do perfil que não carrega
+    // todo arrumar erro dos avisos não aparecerem
+    // todo arrumar erro da localização não marcada
     // todo arrumar todas as animações
     // todo criar construtor padrao para fragments, sem parametros que retornar para a atividade-mae
     // todo turorial
@@ -26,7 +30,9 @@ public class ActivitySplash extends AppCompatActivity {
     // todo botão de avaliar quando a solicitação está concluida
     // todo implementar animação de carregamento nos recyclerviews
     // todo arrumar espaço excessivo no Adapter Tramitação
-
+    // todo implementar modalBottomSheetDialog para mostrar a resposta completa, data, autor e detalhes da tramitação (atendimento)
+    // todo melhorar regras do Cloud firestore
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
