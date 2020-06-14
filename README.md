@@ -50,6 +50,7 @@
 * Interação com o usuário
  > - [ ] Animações
  > - [x] Interfaces com Material Design
+ > - [ ] Modo Noturno
  > - [x] Notificações sobre as demandas
  > - [ ] Showcase
  > - [ ] Tutorial
