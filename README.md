@@ -58,6 +58,9 @@
 
  * Consultas
   > - [x] Avisos Recebidos
+  > - [x] Categorias Cadastradas
+  > - [x] Departamentos cadastrados
+  > - [x] Dados cadastrais
   > - [x] Demandas cadastradas
   > - [x] Tratamitação das demandas
 
