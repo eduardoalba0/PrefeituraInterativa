@@ -1,5 +1,5 @@
 
-# Prefeitura Interativa Web  
+# Prefeitura Interativa  
 
 > Sistema de Apoio a Decisão para orientar a gestão de políticas públicas no município de Palmas PR
 
