@@ -156,7 +156,7 @@
                 app:boxBackgroundColor="@color/white"
                 app:boxStrokeColor="@color/colorDarkOrange"
                 app:counterEnabled="true"
-                app:counterMaxLength="10"
+                app:counterMaxLength="11"
                 app:counterTextColor="@color/colorRed"
                 app:endIconMode="password_toggle"
                 app:endIconTint="@color/colorDarkOrange"
@@ -173,7 +173,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:maxLength="10"
+                    android:maxLength="11"
                     android:textColor="@color/colorDarkOrange"
                     android:textSize="@dimen/texto_pequeno" />
             </com.google.android.material.textfield.TextInputLayout>
