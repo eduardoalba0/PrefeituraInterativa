@@ -86,8 +86,8 @@ public class ActivityCompletarCadastro extends AppCompatActivity implements View
         usuario.setCpf(edt_cpf.getText().toString());
         helper.getToken().addOnSuccessListener(this, instanceIdResult -> {
             usuario.setToken(instanceIdResult.getToken());
-            Task task = new UsuarioDAO(this).inserirAtualizar(usuario);
-            task.addOnSuccessListener(this, aVoid -> {
+            new UsuarioDAO(this).inserirAtualizar(usuario)
+            .addOnSuccessListener(this, aVoid -> {
                 concluido = true;
                 new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
                         .setTitleText(R.string.str_sucesso)

@@ -124,8 +124,8 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
 
         Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
             solicitacao.setUrlImagens(imagens);
-            Task task = new SolicitacaoDAO(this).inserirAtualizar(solicitacao);
-            task.addOnSuccessListener(this, o1 -> {
+            new SolicitacaoDAO(this).inserirAtualizar(solicitacao)
+            .addOnSuccessListener(this, o1 -> {
                 dialogo.dismiss();
                 viewModel.removeAll();
                 chamarActivity(ActivityOverview.class);

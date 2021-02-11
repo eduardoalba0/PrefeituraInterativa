@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.Uri;
+import android.util.Log;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -73,6 +74,7 @@ public class FirebaseHelper {
 
         return auth.signInWithEmailAndPassword(usuario.getEmail(), usuario.getSenha()).addOnCompleteListener(context, authResultTask -> {
             if (!authResultTask.isSuccessful()) {
+                Log.e("ERRO", authResultTask.getException().toString());
                 if (authResultTask.getException().toString().contains("FirebaseAuthInvalidCredentialsException"))
                     new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                             .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_dados_invalidos))
@@ -98,6 +100,8 @@ public class FirebaseHelper {
     }
 
     public Task<AuthResult> logarGoogle(GoogleSignInAccount account) {
+
+
         if (!conexaoAtivada()) {
             new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
                     .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_login))

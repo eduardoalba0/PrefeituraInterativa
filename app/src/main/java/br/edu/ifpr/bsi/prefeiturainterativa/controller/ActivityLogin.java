@@ -1,10 +1,13 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -16,6 +19,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.gson.Gson;
 import com.mobsandgeeks.saripaar.ValidationError;
 import com.mobsandgeeks.saripaar.Validator;
 import com.mobsandgeeks.saripaar.annotation.Email;
@@ -39,6 +43,32 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class ActivityLogin extends AppCompatActivity implements View.OnClickListener,
         Validator.ValidationListener, OnSuccessListener<AuthResult> {
 
+    @Email(message = "Seu e-mail está inválido.")
+    @BindView(R.id.edt_email)
+    TextInputEditText edt_email;
+    @Password(min = 6, message = "Sua senha precisa ter no mínimo 6 caracteres.")
+    @BindView(R.id.edt_senha)
+    TextInputEditText edt_senha;
+    @BindView(R.id.edl_email)
+    TextInputLayout edl_email;
+    @BindView(R.id.edl_senha)
+    TextInputLayout edl_senha;
+    @BindView(R.id.bt_login)
+    Button bt_login;
+    @BindView(R.id.bt_loginGoogle)
+    MaterialButton bt_loginGoogle;
+    @BindView(R.id.bt_recuperarSenha)
+    MaterialButton bt_recuperarSenha;
+    @BindView(R.id.bt_cadastrar)
+    MaterialButton bt_cadastrar;
+    @BindView(R.id.view_root)
+    View view_root;
+    @BindView(R.id.img_app)
+    View img_app;
+    @BindView(R.id.l_login)
+    View l_login;
+    @BindView(R.id.l_footer)
+    View l_footer;
     private Validator validador;
     private FirebaseHelper helper;
     private Usuario usuario;
@@ -57,6 +87,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         validador.setValidationListener(this);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @OnClick({R.id.bt_login, R.id.bt_loginGoogle, R.id.bt_recuperarSenha, R.id.bt_cadastrar})
     @Override
     public void onClick(View view) {
@@ -86,8 +117,8 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         usuario.setSenha(edt_senha.getText().toString());
         Task<AuthResult> task = helper.logar(usuario);
         if (task != null) {
-            task.addOnSuccessListener(this, this);
-            task.addOnFailureListener(this, e -> dialog.dismiss());
+            task.addOnSuccessListener(this, this)
+            .addOnFailureListener(this, e -> dialog.dismiss());
         } else
             dialog.dismiss();
     }
@@ -100,17 +131,17 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         if (!authResult.getUser().isEmailVerified()) {
             Task<Void> task = helper.verificarEmail();
             if (task != null) {
-                task.addOnCompleteListener(this, e -> dialog.dismiss());
-                task.addOnSuccessListener(this, aVoid ->
+                task.addOnCompleteListener(this, e -> dialog.dismiss())
+                .addOnSuccessListener(this, aVoid ->
                         new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                                 .setContentText(getResources().getString(R.string.str_clique_link_email))
                                 .show());
             } else dialog.dismiss();
             return;
         }
-        Task<DocumentSnapshot> task = dao.get(usuario);
-        task.addOnFailureListener(this, e -> dialog.dismiss());
-        task.addOnSuccessListener(this, documentSnapshot -> {
+        dao.get(usuario)
+            .addOnFailureListener(this, e -> dialog.dismiss())
+            .addOnSuccessListener(this, documentSnapshot -> {
             usuario = documentSnapshot.toObject(Usuario.class);
             if (usuario == null || usuario.getCpf() == null || usuario.getCpf().trim().isEmpty()) {
                 dialog.dismiss();
@@ -131,6 +162,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onValidationFailed(List<ValidationError> errors) {
         for (ValidationError error : errors) {
@@ -154,7 +186,6 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
                 GoogleSignInAccount account = GoogleSignIn.getSignedInAccountFromIntent(data)
                         .getResult(ApiException.class);
                 Task<AuthResult> auth = helper.logarGoogle(account);
-                if (auth != null)
                     auth.addOnSuccessListener(this, this);
             } catch (ApiException ex) {
                 ex.printStackTrace();
@@ -190,42 +221,4 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         startActivity(intent, options.toBundle());
         finish();
     }
-
-    @Email(message = "Seu e-mail está inválido.")
-    @BindView(R.id.edt_email)
-    TextInputEditText edt_email;
-
-    @Password(min = 6, message = "Sua senha precisa ter no mínimo 6 caracteres.")
-    @BindView(R.id.edt_senha)
-    TextInputEditText edt_senha;
-
-    @BindView(R.id.edl_email)
-    TextInputLayout edl_email;
-
-    @BindView(R.id.edl_senha)
-    TextInputLayout edl_senha;
-
-    @BindView(R.id.bt_login)
-    Button bt_login;
-
-    @BindView(R.id.bt_loginGoogle)
-    MaterialButton bt_loginGoogle;
-
-    @BindView(R.id.bt_recuperarSenha)
-    MaterialButton bt_recuperarSenha;
-
-    @BindView(R.id.bt_cadastrar)
-    MaterialButton bt_cadastrar;
-
-    @BindView(R.id.view_root)
-    View view_root;
-
-    @BindView(R.id.img_app)
-    View img_app;
-
-    @BindView(R.id.l_login)
-    View l_login;
-
-    @BindView(R.id.l_footer)
-    View l_footer;
 }

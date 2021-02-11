@@ -92,8 +92,8 @@ public class ActivityCadastro extends AppCompatActivity implements View.OnClickL
         Task<AuthResult> task = helper.registrar(usuario);
         if (task != null) {
             dialog.setTitleText(R.string.str_carregando_cadastro).show();
-            task.addOnSuccessListener(this, this);
-            task.addOnFailureListener(this, e -> {
+            task.addOnSuccessListener(this, this)
+            .addOnFailureListener(this, e -> {
                 dialog.dismiss();
                 if (task.getException().toString().contains("FirebaseAuthUserCollisionException"))
                     edl_email.setError(this.getResources().getString(R.string.str_erro_email_cadastrado));

@@ -1,11 +1,13 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
@@ -95,7 +97,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
                 for (Atendimento atendimento : atendimentoSnapshots.toObjects(Atendimento.class)) {
                     usuarioDAO.get(atendimento.getFuncionario_ID()).addOnSuccessListener(getActivity(), funcionarioSnapshot -> {
                         Funcionario funcionario = funcionarioSnapshot.toObject(Funcionario.class);
-                        tasks.add(departamentoDAO.get(funcionario.getDepartamento_ID()).addOnSuccessListener(getActivity(), departamentoSnapshot -> {
+                        tasks.add(departamentoDAO.get(atendimento.getDepartamento_ID()).addOnSuccessListener(getActivity(), departamentoSnapshot -> {
                             funcionario.setDepartamento(departamentoSnapshot.toObject(Departamento.class));
                             atendimento.setFuncionario(funcionario);
                             atendimentos.add(atendimento);

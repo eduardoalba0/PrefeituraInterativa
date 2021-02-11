@@ -14,11 +14,14 @@ public class Atendimento implements Serializable {
     private String acao;
     private String funcionario_ID;
     private String solicitacao_ID;
+    private String departamento_ID;
 
     @ServerTimestamp
     private Date data;
     @Exclude
     private Funcionario funcionario;
+    @Exclude
+    private Departamento departamento;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -76,6 +79,22 @@ public class Atendimento implements Serializable {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
+    }
+
+    public String getDepartamento_ID() {
+        return departamento_ID;
+    }
+
+    public void setDepartamento_ID(String departamento_ID) {
+        this.departamento_ID = departamento_ID;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
     }
 
     @Override

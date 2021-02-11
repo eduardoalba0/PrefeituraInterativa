@@ -91,9 +91,9 @@ public class ActivitySolicitacaoVisualizar extends FragmentActivity implements V
                 if (aviso.getSolicitacao_ID() != null && !aviso.getSolicitacao_ID().isEmpty()) {
                     solicitacao = new Solicitacao();
                     solicitacao.set_ID(aviso.getSolicitacao_ID());
-                    Task<DocumentSnapshot> task = new SolicitacaoDAO(this).get(solicitacao);
-                    task.addOnFailureListener(this, e -> chamarActivity(ActivityOverview.class));
-                    task.addOnSuccessListener(this, documentSnapshot -> initTabLayout(documentSnapshot.toObject(Solicitacao.class)));
+                    new SolicitacaoDAO(this).get(solicitacao)
+                    .addOnFailureListener(this, e -> chamarActivity(ActivityOverview.class))
+                    .addOnSuccessListener(this, documentSnapshot -> initTabLayout(documentSnapshot.toObject(Solicitacao.class)));
                 } else {
                     chamarActivity(ActivityOverview.class);
                     finish();

@@ -106,8 +106,8 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
             }
             Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
                 solicitacao.setUrlImagens(imagens);
-                Task task = new SolicitacaoDAO(this).inserirAtualizar(solicitacao);
-                task.addOnSuccessListener(this, aVoid -> {
+                new SolicitacaoDAO(this).inserirAtualizar(solicitacao)
+                .addOnSuccessListener(this, aVoid -> {
                     sharedPreferences.removeSolicitacao(solicitacao);
                     dialogo.dismiss();
                     onUpload = false;

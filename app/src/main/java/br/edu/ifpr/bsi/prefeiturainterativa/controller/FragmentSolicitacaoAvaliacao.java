@@ -92,9 +92,9 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
         avaliacao.setSolucionada(sw_solucionada.isChecked());
         solicitacao.setAvaliacao(avaliacao);
 
-        Task task = new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao);
-        task.addOnCompleteListener(getActivity(), taskFailed -> dialog.dismiss());
-        task.addOnSuccessListener(getActivity(), aVoid -> new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
+        new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao)
+        .addOnCompleteListener(getActivity(), taskFailed -> dialog.dismiss())
+        .addOnSuccessListener(getActivity(), aVoid -> new SweetAlertDialog(getActivity(), SweetAlertDialog.SUCCESS_TYPE)
                 .setTitleText(R.string.str_sucesso)
                 .setContentText(getResources().getString(R.string.str_avaliacao_concluida))
                 .setConfirmText(getResources().getString(R.string.dialog_ok))

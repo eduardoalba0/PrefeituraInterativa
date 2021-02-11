@@ -54,8 +54,8 @@ public class ActivityRedefinirSenha extends AppCompatActivity implements View.On
     @Override
     public void onValidationSucceeded() {
         edl_email.setError(null);
-        Task task = new FirebaseHelper(this).redefinirSenha(edt_email.getText().toString());
-        task.addOnSuccessListener(this, aVoid -> new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+        new FirebaseHelper(this).redefinirSenha(edt_email.getText().toString())
+        .addOnSuccessListener(this, aVoid -> new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                 .setContentText(getResources().getString(R.string.str_clique_link_redefinir_senha))
                 .setConfirmClickListener(sweetAlertDialog -> chamarActivity(ActivityLogin.class)).show());
     }
