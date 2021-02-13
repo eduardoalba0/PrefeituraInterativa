@@ -50,12 +50,12 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:text="@string/str_remover"
-            android:textColor="@color/colorRed"
+            android:textColor="?attr/colorSecondary"
             android:textSize="@dimen/texto_pequeno"
             android:visibility="gone"
             app:icon="@drawable/ic_remover"
             app:iconGravity="textEnd"
             app:iconSize="30dp"
-            app:iconTint="@color/colorRed" />
+            app:iconTint="?attr/colorSecondary" />
     </RelativeLayout>
 </RelativeLayout>

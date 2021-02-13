@@ -214,7 +214,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_medio"
-                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:background="@drawable/shape_quadrado_arr_azul"
                 android:elevation="5dp">
 
                 <com.google.android.material.button.MaterialButton

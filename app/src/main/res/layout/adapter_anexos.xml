@@ -31,11 +31,11 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/img_anexo"
             android:text="@string/str_remover"
-            android:textColor="@color/colorRed"
+            android:textColor="?attr/colorSecondary"
             android:textSize="@dimen/texto_pequeno"
             app:icon="@drawable/ic_remover"
             app:iconGravity="textEnd"
             app:iconSize="40dp"
-            app:iconTint="@color/colorRed" />
+            app:iconTint="?attr/colorSecondary" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

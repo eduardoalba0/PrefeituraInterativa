@@ -13,7 +13,7 @@
         android:gravity="center"
         android:padding="@dimen/espaco_muito_pequeno"
         android:textAllCaps="true"
-        android:textColor="@color/colorOrangeWhite"
+        android:textColor="@color/colorPurpleWhite"
         android:textSize="@dimen/texto_pequeno" />
 
     <com.google.android.material.card.MaterialCardView
@@ -35,7 +35,7 @@
                 android:layout_width="@dimen/componente_pequeno"
                 android:layout_height="@dimen/componente_pequeno"
                 android:layout_centerVertical="true"
-                android:background="@drawable/shape_circulo_vermelho"
+                android:background="@drawable/shape_circulo_primary"
                 android:contentDescription="@string/str_emblema"
                 android:scaleType="centerInside"
                 android:src="@mipmap/ic_maca" />

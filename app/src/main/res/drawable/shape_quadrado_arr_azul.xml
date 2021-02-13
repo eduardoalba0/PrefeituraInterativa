@@ -5,7 +5,7 @@
             <gradient
                 android:angle="45"
                 android:endColor="@color/colorBlue"
-                android:startColor="@color/colorDarkBlue" />
+                android:startColor="@color/colorPurple" />
             <corners android:radius="@dimen/raio_circulo_medio" />
         </shape>
     </item>

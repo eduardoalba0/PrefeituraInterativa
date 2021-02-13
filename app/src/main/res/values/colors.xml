@@ -9,8 +9,11 @@
     <color name="colorDarkGreen">#00695C</color>
     <color name="colorDarkGreenWhite">#00695C</color>
     <color name="colorBlue">#0091EA</color>
-    <color name="colorDarkBlue">#6200EA</color>
-    <color name="colorDarkBlueWhite">#6200EA</color>
+    <color name="colorDarkBlue">#1A237E</color>
+    <color name="colorDarkBlueWhite">#1A237E</color>
+    <color name="colorPurple">#6200EA</color>
+    <color name="colorDarkPurple">#4A148C</color>
+    <color name="colorPurpleWhite">#4A148C</color>
     <color name="colorPink">#F50057</color>
     <color name="white">#FFFFFF</color>
     <color name="whiteFA">#FAFAFA</color>

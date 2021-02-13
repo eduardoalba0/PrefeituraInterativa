@@ -11,7 +11,7 @@
         android:layout_alignTop="@id/pager_anexos"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/espaco_muito_pequeno"
-        android:background="@drawable/shape_quadrado_arr_vermelho"
+        android:background="@drawable/shape_quadrado_arr_azul"
         android:elevation="5dp"
         android:paddingStart="@dimen/espaco_pequeno"
         android:paddingEnd="@dimen/espaco_pequeno">

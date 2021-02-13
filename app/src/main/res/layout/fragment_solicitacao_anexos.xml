@@ -38,7 +38,7 @@
                         android:background="@color/float_transparent"
                         android:gravity="center"
                         android:text="@string/str_imagens"
-                        android:textColor="@color/colorRed"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="@dimen/texto_normal" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -51,7 +51,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:layout_margin="@dimen/espaco_muito_pequeno"
-                        android:background="@drawable/shape_quadrado_arr_vermelho"
+                        android:background="@drawable/shape_quadrado_arr_azul"
                         android:paddingStart="@dimen/espaco_pequeno"
                         android:paddingEnd="@dimen/espaco_pequeno">
 
@@ -87,7 +87,7 @@
                         android:background="@color/float_transparent"
                         android:gravity="center"
                         android:text="@string/str_descricao"
-                        android:textColor="@color/colorRed"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="@dimen/texto_normal" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -98,11 +98,11 @@
                         android:layout_margin="@dimen/espaco_muito_pequeno"
                         android:elevation="0dp"
                         app:boxBackgroundColor="@color/float_transparent"
-                        app:boxStrokeColor="@color/colorRed"
+                        app:boxStrokeColor="?attr/colorSecondary"
                         app:counterEnabled="true"
                         app:counterMaxLength="600"
                         app:errorEnabled="true"
-                        app:hintTextColor="@color/colorRed">
+                        app:hintTextColor="?attr/colorSecondary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_descricao"
@@ -110,7 +110,7 @@
                             android:layout_height="match_parent"
                             android:inputType="textMultiLine"
                             android:maxLength="600"
-                            android:textColor="@color/colorDarkOrange"
+                            android:textColor="?attr/colorPrimaryDark"
                             android:textSize="@dimen/texto_pequeno" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
@@ -145,7 +145,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:checked="false"
-            app:thumbTint="@color/colorRed"
+            app:thumbTint="?attr/colorSecondary"
             app:trackTint="@color/color_states_switch" />
     </RelativeLayout>
 </RelativeLayout>

@@ -39,7 +39,7 @@
                         android:background="@color/float_transparent"
                         android:gravity="center"
                         android:text="@string/str_avaliacao_nota"
-                        android:textColor="@color/colorRed"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="@dimen/texto_normal" />
 
                     <RatingBar
@@ -48,7 +48,7 @@
                         android:layout_height="wrap_content"
                         android:numStars="5"
                         android:paddingTop="@dimen/espaco_medio"
-                        android:progressTint="@color/colorOrangeWhite"
+                        android:progressTint="@color/colorPurpleWhite"
                         android:stepSize="0.5" />
 
                     <RelativeLayout
@@ -78,7 +78,7 @@
                             android:layout_margin="@dimen/espaco_muito_pequeno"
                             android:checked="true"
                             app:showText="false"
-                            app:thumbTint="@color/colorRed"
+                            app:thumbTint="?attr/colorSecondary"
                             app:trackTint="@color/color_states_switch" />
                     </RelativeLayout>
                 </LinearLayout>
@@ -99,7 +99,7 @@
                     android:background="@color/float_transparent"
                     android:gravity="center"
                     android:text="@string/str_comentario_avaliacao"
-                    android:textColor="@color/colorRed"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/texto_normal" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -110,11 +110,11 @@
                     android:layout_margin="@dimen/espaco_muito_pequeno"
                     android:elevation="0dp"
                     app:boxBackgroundColor="@color/float_transparent"
-                    app:boxStrokeColor="@color/colorRed"
+                    app:boxStrokeColor="?attr/colorSecondary"
                     app:counterEnabled="true"
                     app:counterMaxLength="600"
                     app:errorEnabled="true"
-                    app:hintTextColor="@color/colorRed">
+                    app:hintTextColor="?attr/colorSecondary">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_comentario"
@@ -122,7 +122,7 @@
                         android:layout_height="match_parent"
                         android:inputType="textMultiLine"
                         android:maxLength="600"
-                        android:textColor="@color/colorDarkOrange"
+                        android:textColor="?attr/colorPrimaryDark"
                         android:textSize="@dimen/texto_pequeno" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_margin="@dimen/espaco_muito_pequeno"
-                    android:background="@drawable/shape_quadrado_arr_vermelho"
+                    android:background="@drawable/shape_quadrado_arr_azul"
                     android:paddingStart="@dimen/espaco_pequeno"
                     android:paddingEnd="@dimen/espaco_pequeno">
 
@@ -159,7 +159,7 @@
                     android:layout_marginBottom="@dimen/espaco_muito_pequeno"
                     android:background="@color/float_transparent"
                     android:gravity="center"
-                    android:textColor="@color/colorRed"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/texto_normal"
                     android:visibility="gone" />
             </LinearLayout>

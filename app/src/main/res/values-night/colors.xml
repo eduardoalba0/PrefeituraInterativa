@@ -11,6 +11,9 @@
     <color name="colorBlue">#181515</color>
     <color name="colorDarkBlue">#181818</color>
     <color name="colorDarkBlueWhite">#FFFFFF</color>
+    <color name="colorPurple">#181515</color>
+    <color name="colorDarkPurple">#181818</color>
+    <color name="colorPurpleWhite">#FFFFFF</color>
     <color name="colorPink">#181818</color>
     <color name="white">#292929</color>
     <color name="whiteFA">#181515</color>

@@ -87,7 +87,7 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
             tv_departamento.setText(departamento.getDescricao());
             switch (style) {
                 case STYLE_RED:
-                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_vermelho));
+                l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_azul));
                     break;
                 case STYLE_YELLOW:
                     l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_amarelo));
@@ -96,7 +96,7 @@ public class DepartamentosAdapter extends RecyclerView.Adapter<DepartamentosAdap
                     l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_verde));
                     break;
                 case STYLE_BLUE:
-                    l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_azul));
+                    l_gradient.setBackground(context.getDrawable(R.drawable.shape_quadrado_arr_vermelho));
                     break;
             }
         }

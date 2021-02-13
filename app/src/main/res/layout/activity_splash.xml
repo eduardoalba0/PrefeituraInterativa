@@ -18,7 +18,7 @@
         android:contentDescription="@string/str_emblema"
         android:elevation="5dp"
         android:src="@mipmap/ic_maca"
-        android:tint="@color/colorRed"
+        android:tint="?attr/colorSecondary"
         android:transitionName="splash_transition"/>
 
     <TextView
@@ -26,7 +26,6 @@
         android:layout_width="match_parent"
         android:elevation="5dp"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/fredoka"
         android:gravity="center"
         android:textSize="@dimen/texto_muito_grande"
         android:textColor="@color/ms_white"

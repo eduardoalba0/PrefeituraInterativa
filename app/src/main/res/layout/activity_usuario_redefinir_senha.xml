@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:paddingTop="25dp"
     android:paddingBottom="50dp"
-    android:background="@drawable/shape_gradient_vermelho"
+    android:background="@drawable/shape_gradient_primary"
     tools:context=".controller.ActivityRedefinirSenha">
 
     <ImageView
@@ -21,7 +21,7 @@
         android:contentDescription="@string/str_emblema"
         android:elevation="5dp"
         android:src="@mipmap/ic_maca"
-        android:tint="@color/colorRed"
+        android:tint="?attr/colorSecondary"
         android:transitionName="splash_transition" />
 
     <LinearLayout
@@ -42,7 +42,7 @@
             android:gravity="center"
             android:text="@string/str_esqueceu_senha"
             android:textAllCaps="true"
-            android:textColor="@color/colorRed"
+            android:textColor="?attr/colorSecondary"
             android:textSize="@dimen/texto_grande"
             android:textStyle="normal" />
 
@@ -54,17 +54,17 @@
             android:layout_margin="@dimen/espaco_muito_pequeno"
             android:hint="@string/str_email"
             app:boxBackgroundColor="@color/white"
-            app:boxStrokeColor="@color/colorDarkOrange"
+            app:boxStrokeColor="?attr/colorPrimaryDark"
             app:counterMaxLength="40"
             app:endIconMode="clear_text"
-            app:endIconTint="@color/colorDarkOrange"
+            app:endIconTint="?attr/colorPrimaryDark"
             app:errorEnabled="true"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
-            app:hintTextColor="@color/colorDarkOrange"
+            app:hintTextColor="?attr/colorPrimaryDark"
             app:startIconContentDescription="@string/str_email"
             app:startIconDrawable="@drawable/ic_email"
-            app:startIconTint="@color/colorDarkOrange">
+            app:startIconTint="?attr/colorPrimaryDark">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_email"
@@ -72,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
                 android:maxLength="40"
-                android:textColor="@color/colorDarkOrange"
+                android:textColor="?attr/colorPrimaryDark"
                 android:textSize="@dimen/texto_pequeno" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,7 +80,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/espaco_grande"
-            android:background="@drawable/shape_quadrado_arr_vermelho"
+            android:background="@drawable/shape_quadrado_arr_azul"
             android:elevation="5dp">
 
             <com.google.android.material.button.MaterialButton

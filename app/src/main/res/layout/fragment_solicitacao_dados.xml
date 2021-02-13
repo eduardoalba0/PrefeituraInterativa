@@ -36,7 +36,7 @@
                         android:background="@color/float_transparent"
                         android:gravity="center"
                         android:text="@string/str_topicos"
-                        android:textColor="@color/colorRed"
+                        android:textColor="?attr/colorSecondary"
                         android:textSize="@dimen/texto_normal" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -54,9 +54,9 @@
                         android:elevation="0dp"
                         android:hint="@string/str_descricao"
                         app:boxBackgroundColor="@color/float_transparent"
-                        app:boxStrokeColor="@color/colorRed"
+                        app:boxStrokeColor="?attr/colorSecondary"
                         app:hintEnabled="true"
-                        app:hintTextColor="@color/colorRed">
+                        app:hintTextColor="?attr/colorSecondary">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edt_descricao"
@@ -64,7 +64,7 @@
                             android:layout_height="match_parent"
                             android:enabled="false"
                             android:inputType="none"
-                            android:textColor="@color/colorDarkOrange"
+                            android:textColor="?attr/colorPrimaryDark"
                             android:textSize="@dimen/texto_pequeno" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -87,7 +87,7 @@
                     android:background="@color/float_transparent"
                     android:gravity="center"
                     android:text="@string/str_imagens"
-                    android:textColor="@color/colorRed"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/texto_normal" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -114,7 +114,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:background="@drawable/shape_quadrado_arr_vermelho"
+            android:background="@drawable/shape_quadrado_arr_azul"
             android:paddingStart="@dimen/espaco_pequeno"
             android:paddingEnd="@dimen/espaco_pequeno">
 

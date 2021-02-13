@@ -22,7 +22,7 @@
         android:gravity="center"
         android:padding="@dimen/espaco_muito_pequeno"
         android:text="@string/str_solicitacao_tipo"
-        android:textColor="@color/colorRed"
+        android:textColor="?attr/colorSecondary"
         android:textSize="@dimen/texto_pequeno" />
 
     <View
@@ -62,12 +62,12 @@
             android:paddingStart="@dimen/espaco_medio"
             android:paddingEnd="@dimen/espaco_medio"
             android:text="@string/dialog_ok"
-            android:textColor="@color/colorRed"
+            android:textColor="?attr/colorSecondary"
             android:textSize="@dimen/texto_normal"
             android:visibility="visible"
             app:icon="@drawable/ic_proximo"
             app:iconGravity="textEnd"
-            app:iconTint="@color/colorRed" />
+            app:iconTint="?attr/colorSecondary" />
 
     </LinearLayout>
 </LinearLayout>

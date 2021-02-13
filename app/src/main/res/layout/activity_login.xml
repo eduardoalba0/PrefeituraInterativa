@@ -23,7 +23,7 @@
             android:contentDescription="@string/str_emblema"
             android:elevation="5dp"
             android:src="@mipmap/ic_maca"
-            android:tint="@color/colorRed"
+            android:tint="?attr/colorSecondary"
             android:transitionName="splash_transition" />
 
         <LinearLayout
@@ -45,7 +45,7 @@
                 android:gravity="center"
                 android:text="@string/str_vamos_comecar"
                 android:textAllCaps="true"
-                android:textColor="@color/colorRed"
+                android:textColor="?attr/colorSecondary"
                 android:textSize="@dimen/texto_grande"
                 android:textStyle="normal" />
 
@@ -56,16 +56,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_email"
-                app:boxStrokeColor="@color/colorDarkOrange"
+                app:boxStrokeColor="?attr/colorPrimaryDark"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/colorDarkOrange"
+                app:endIconTint="?attr/colorPrimaryDark"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorDarkOrange"
+                app:hintTextColor="?attr/colorPrimaryDark"
                 app:startIconContentDescription="@string/str_email"
                 app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/colorDarkOrange">
+                app:startIconTint="?attr/colorPrimaryDark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_email"
@@ -73,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textEmailAddress"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorDarkOrange"
+                    android:textColor="?attr/colorPrimaryDark"
                     android:textSize="@dimen/texto_pequeno" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -85,16 +85,16 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 android:hint="@string/str_hint_senha"
-                app:boxStrokeColor="@color/colorDarkOrange"
+                app:boxStrokeColor="?attr/colorPrimaryDark"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/colorDarkOrange"
+                app:endIconTint="?attr/colorPrimaryDark"
                 app:errorEnabled="true"
                 app:hintAnimationEnabled="true"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorDarkOrange"
+                app:hintTextColor="?attr/colorPrimaryDark"
                 app:startIconContentDescription="@string/str_hint_senha"
                 app:startIconDrawable="@drawable/ic_senha"
-                app:startIconTint="@color/colorDarkOrange">
+                app:startIconTint="?attr/colorPrimaryDark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_senha"
@@ -102,7 +102,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorDarkOrange"
+                    android:textColor="?attr/colorPrimaryDark"
                     android:textSize="@dimen/texto_pequeno" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -114,17 +114,17 @@
                 android:layout_marginEnd="@dimen/espaco_muito_pequeno"
                 android:backgroundTint="@color/white"
                 android:text="@string/str_esqueceu_senha"
-                android:textColor="@color/colorRed"
+                android:textColor="?attr/colorSecondary"
                 android:textSize="@dimen/texto_pequeno"
                 app:icon="@drawable/ic_senha"
                 app:iconGravity="start"
-                app:iconTint="@color/colorPink" />
+                app:iconTint="?attr/colorSecondaryVariant" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_pequeno"
-                android:background="@drawable/shape_quadrado_arr_vermelho"
+                android:background="@drawable/shape_quadrado_arr_azul"
                 android:elevation="5dp">
 
                 <com.google.android.material.button.MaterialButton
@@ -151,12 +151,12 @@
                 android:layout_margin="@dimen/espaco_pequeno"
                 android:text="@string/str_cadastrar"
                 android:textAllCaps="true"
-                android:textColor="@color/colorOrangeWhite"
+                android:textColor="@color/colorPurpleWhite"
                 android:textSize="@dimen/texto_pequeno"
                 android:textStyle="bold"
                 app:icon="@drawable/ic_usuario"
                 app:iconGravity="start"
-                app:iconTint="@color/colorOrange" />
+                app:iconTint="?attr/colorPrimary" />
         </LinearLayout>
 
         <LinearLayout
@@ -178,7 +178,7 @@
                 android:padding="@dimen/espaco_pequeno"
                 android:text="@string/str_conta_google"
                 android:textAllCaps="true"
-                android:textColor="@color/colorDarkOrange"
+                android:textColor="?attr/colorPrimaryDark"
                 android:textSize="@dimen/texto_pequeno"
                 android:transitionName="base_transition"
                 app:cornerRadius="@dimen/raio_circulo_medio"

@@ -41,12 +41,12 @@
                     android:layout_marginStart="@dimen/espaco_pequeno"
                     android:layout_toEndOf="@id/img_usuario"
                     android:gravity="center_vertical"
-                    android:textColor="@color/colorDarkOrange"
+                    android:textColor="?attr/colorPrimaryDark"
                     android:textSize="@dimen/texto_pequeno"
                     app:icon="@drawable/ic_proximo"
                     app:iconGravity="end"
                     app:iconSize="30dp"
-                    app:iconTint="@color/colorDarkOrange"
+                    app:iconTint="?attr/colorPrimaryDark"
                     app:textAllCaps="false" />
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -125,7 +125,7 @@
                     android:padding="@dimen/espaco_muito_pequeno"
                     android:text="@string/str_avisos"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorRed"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/texto_normal" />
 
                 <TextView
@@ -136,7 +136,7 @@
                     android:padding="@dimen/espaco_muito_pequeno"
                     android:text="@string/str_nenhum_aviso"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorOrangeWhite"
+                    android:textColor="@color/colorPurpleWhite"
                     android:textSize="@dimen/texto_pequeno" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -167,7 +167,7 @@
                     android:padding="@dimen/espaco_muito_pequeno"
                     android:text="@string/str_aguardando_conexao"
                     android:textAllCaps="true"
-                    android:textColor="@color/colorRed"
+                    android:textColor="?attr/colorSecondary"
                     android:textSize="@dimen/texto_normal" />
 
                 <androidx.recyclerview.widget.RecyclerView

@@ -121,7 +121,7 @@
     <string name="str_solicitacoes_concluidas">Solicitacoes Concluidas</string>
     <string name="str_usuario_desabilitado">Seu usuário foi desativado. Consulte a sua prefeitura para maiores informações.</string>
     <string name="str_falha_login_google">Falha ao associar conta Google. Consulte o suporte do sistema.</string>
-    <string name="str_ola">Olá, </string>
+    <string name="str_ola">Bem vindo, </string>
     <string name="str_nome_anonimo">(Anônimo)</string>
     <string name="str_cpf_invalido">Seu CPF está inválido.</string>
     <string name="str_avaliacao_cadastrada">Avaliação cadastrada em :</string>

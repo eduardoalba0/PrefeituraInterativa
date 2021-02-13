@@ -1,13 +1,12 @@
 <resources>
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
-        <item name="colorPrimary">@color/colorOrange</item>
-        <item name="colorPrimaryDark">@color/colorDarkOrange</item>
-        <item name="colorSecondary">@color/colorRed</item>
-        <item name="colorSecondaryVariant">@color/colorPink</item>
+        <item name="colorPrimary">@color/colorBlue</item>
+        <item name="colorPrimaryDark">@color/colorDarkBlue</item>
+        <item name="colorSecondary">@color/colorPurple</item>
+        <item name="colorSecondaryVariant">@color/colorDarkPurple</item>
         <item name="android:textColor">@color/blackWhite</item>
-        <item name="android:fontFamily">@font/fredoka</item>
         <item name="android:windowContentTransitions">true</item>
-        <item name="android:windowBackground">@drawable/shape_gradient_vermelho</item>
+        <item name="android:windowBackground">@drawable/shape_gradient_primary</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>

@@ -18,7 +18,7 @@
             android:gravity="center"
             android:padding="@dimen/espaco_muito_pequeno"
             android:textAllCaps="true"
-            android:textColor="@color/colorOrangeWhite"
+            android:textColor="@color/colorPurpleWhite"
             android:textSize="@dimen/texto_pequeno" />
 
         <com.google.android.material.card.MaterialCardView
@@ -44,7 +44,7 @@
                     app:boxBackgroundMode="outline"
                     app:boxStrokeColor="@color/float_transparent"
                     app:hintEnabled="true"
-                    app:hintTextColor="@color/colorDarkOrange">
+                    app:hintTextColor="?attr/colorPrimaryDark">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edt_acao"
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_margin="@dimen/espaco_muito_pequeno"
-            android:background="@drawable/shape_quadrado_arr_vermelho"
+            android:background="@drawable/shape_quadrado_arr_azul"
             android:paddingStart="@dimen/espaco_pequeno"
             android:paddingEnd="@dimen/espaco_pequeno">
 

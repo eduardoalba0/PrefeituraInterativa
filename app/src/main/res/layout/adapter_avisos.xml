@@ -25,11 +25,11 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/espaco_muito_pequeno"
                 app:boxBackgroundColor="@color/float_transparent"
-                app:boxStrokeColor="@color/colorDarkOrange"
+                app:boxStrokeColor="?attr/colorPrimaryDark"
                 app:helperTextEnabled="true"
-                app:helperTextTextColor="@color/colorDarkOrange"
+                app:helperTextTextColor="?attr/colorPrimaryDark"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/colorDarkOrange">
+                app:hintTextColor="?attr/colorPrimaryDark">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edt_corpo"
