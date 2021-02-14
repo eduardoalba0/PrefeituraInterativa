@@ -19,7 +19,7 @@ public class Atendimento implements Serializable {
     @ServerTimestamp
     private Date data;
     @Exclude
-    private Funcionario funcionario;
+    private Usuario funcionario;
     @Exclude
     private Departamento departamento;
 
@@ -73,11 +73,11 @@ public class Atendimento implements Serializable {
         this.data = data;
     }
     @Exclude
-    public Funcionario getFuncionario() {
+    public Usuario getFuncionario() {
         return funcionario;
     }
 
-    public void setFuncionario(Funcionario funcionario) {
+    public void setFuncionario(Usuario funcionario) {
         this.funcionario = funcionario;
     }
 

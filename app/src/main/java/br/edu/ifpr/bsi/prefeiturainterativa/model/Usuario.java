@@ -18,8 +18,8 @@ public class Usuario implements Serializable {
     private String tipoUsuario_ID;
     private String token;
     private String uriFoto;
-	private String motivoDesabilitacao;
-	private boolean habilitado;
+    private boolean habilitado;
+    private DadosFuncionais dadosFuncionais;
 
     @Exclude
     private Uri localUriFoto;
@@ -104,22 +104,22 @@ public class Usuario implements Serializable {
     public void setTipoUsuario(TipoUsuario tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
     }
-    
-	public String getMotivoDesabilitacao() {
-		return motivoDesabilitacao;
-	}
 
-	public void setMotivoDesabilitacao(String motivoDesabilitacao) {
-		this.motivoDesabilitacao = motivoDesabilitacao;
-	}
+    public DadosFuncionais getDadosFuncionais() {
+        return dadosFuncionais;
+    }
 
-	public boolean isHabilitado() {
-		return habilitado;
-	}
+    public void setDadosFuncionais(DadosFuncionais dadosFuncionais) {
+        this.dadosFuncionais = dadosFuncionais;
+    }
 
-	public void setHabilitado(boolean habilitado) {
-		this.habilitado = habilitado;
-	}
+    public boolean isHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(boolean habilitado) {
+        this.habilitado = habilitado;
+    }
 
     public String getToken() {
         return token;

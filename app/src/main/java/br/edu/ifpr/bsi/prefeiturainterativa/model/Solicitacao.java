@@ -22,6 +22,7 @@ public class Solicitacao implements Serializable {
     private String descricao;
     private String usuario_ID;
     private String departamento_ID;
+    private String funcionarioConclusao_ID;
     private boolean concluida;
     private boolean anonima;
     private Localizacao localizacao;
@@ -29,13 +30,16 @@ public class Solicitacao implements Serializable {
     private List<String> urlImagens;
     private List<String> categorias;
     private List<String> atendimentos;
+    private Date dataConclusao;
 
     @ServerTimestamp
-    private Date data;
+    private Date dataAbertura;
     @Exclude
     private Departamento departamento;
     @Exclude
     private Usuario usuario;
+    @Exclude
+	private Usuario localFuncionarioConclusao;
     @Exclude
     private List<Categoria> localCategorias;
     @Exclude
@@ -116,12 +120,28 @@ public class Solicitacao implements Serializable {
         this.usuario_ID = usuario_ID;
     }
 
-    public Date getData() {
-        return data;
+	public String getFuncionarioConclusao_ID() {
+		return funcionarioConclusao_ID;
+	}
+
+	public void setFuncionarioConclusao_ID(String funcionarioConclusao_ID) {
+		this.funcionarioConclusao_ID = funcionarioConclusao_ID;
+	}
+
+    public Date getDataAbertura() {
+        return dataAbertura;
     }
 
-    public void setData(Date data) {
-        this.data = data;
+    public void setDataAbertura(Date dataAbertura) {
+        this.dataAbertura = dataAbertura;
+    }
+
+    public Date getDataConclusao() {
+        return dataConclusao;
+    }
+
+    public void setDataConclusao(Date dataConclusao) {
+        this.dataConclusao = dataConclusao;
     }
 
     public String getDepartamento_ID() {
@@ -184,6 +204,15 @@ public class Solicitacao implements Serializable {
         this.usuario = usuario;
     }
 
+    @Exclude
+	public Usuario getLocalFuncionarioConclusao() {
+		return localFuncionarioConclusao;
+	}
+
+	public void setLocalFuncionarioConclusao(Usuario funcionarioConclusao) {
+		this.localFuncionarioConclusao = funcionarioConclusao;
+	}
+    
     @Exclude
     public List<Atendimento> getLocalAtendimentos() {
         return localAtendimentos;

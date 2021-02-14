@@ -2,7 +2,10 @@ package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
 import com.google.firebase.firestore.Exclude;
 
-public class Funcionario extends Usuario {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class DadosFuncionais implements Serializable {
 
     private String matricula;
     private String cargo;
@@ -42,7 +45,10 @@ public class Funcionario extends Usuario {
         return departamento;
     }
 
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    public void setDepartamento(Departamento localDepartamento) {
+        if (localDepartamento != null && localDepartamento.get_ID() != null)
+            this.setDepartamento_ID(localDepartamento.get_ID());
+        this.departamento = localDepartamento;
     }
+
 }

@@ -48,7 +48,7 @@ public class SolicitacaoDAO {
         return helper.getQuery(reference
                 .whereEqualTo("concluida", concluida)
                 .whereEqualTo("usuario_ID", new FirebaseHelper(context).getUser().getUid())
-                .orderBy("data", Query.Direction.DESCENDING));
+                .orderBy("dataAbertura", Query.Direction.DESCENDING));
     }
 
 }

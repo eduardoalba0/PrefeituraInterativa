@@ -1,7 +1,5 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.model;
 
-import com.google.firebase.firestore.DocumentId;
-
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -9,6 +7,8 @@ public class TipoUsuario implements Serializable {
 
     private String _ID;
     private String descricao;
+    private boolean personalizado;
+    private boolean funcionario;
 
 //---------------------- Encapsulamento ----------------------
 
@@ -26,6 +26,22 @@ public class TipoUsuario implements Serializable {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public boolean isPersonalizado() {
+        return personalizado;
+    }
+
+    public void setPersonalizado(boolean personalizado) {
+        this.personalizado = personalizado;
+    }
+
+    public boolean isFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(boolean funcionario) {
+        this.funcionario = funcionario;
     }
 
     @Override

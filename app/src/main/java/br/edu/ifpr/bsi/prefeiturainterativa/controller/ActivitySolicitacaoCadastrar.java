@@ -1,9 +1,12 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -12,17 +15,21 @@ import com.google.android.gms.tasks.Tasks;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.stepstone.stepper.StepperLayout;
 import com.stepstone.stepper.VerificationError;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
+
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.SolicitacaoStepAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.SolicitacaoDAO;
@@ -30,6 +37,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.ViewModelsHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Categoria;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Localizacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -42,6 +50,7 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
     private Solicitacao solicitacao;
     private ViewModelsHelper viewModel;
     private FirebaseHelper helper;
+    private List enderecos;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -121,15 +130,24 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
                 uploadTasks.add(uploadTask);
             }
         }
-
+        Localizacao localizacao = solicitacao.getLocalizacao();
+        try {
+            Geocoder geocoder = new Geocoder(ActivitySolicitacaoCadastrar.this, Locale.getDefault());
+            List<Address> enderecos = geocoder.getFromLocation(localizacao.getLatitude(), localizacao.getLongitude(), 1);
+            localizacao.setBairro(enderecos.get(0).getSubLocality());
+        } catch (Exception ex) {
+            localizacao.setBairro("");
+        } finally {
+            solicitacao.setLocalizacao(localizacao);
+        }
         Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
             solicitacao.setUrlImagens(imagens);
             new SolicitacaoDAO(this).inserirAtualizar(solicitacao)
-            .addOnSuccessListener(this, o1 -> {
-                dialogo.dismiss();
-                viewModel.removeAll();
-                chamarActivity(ActivityOverview.class);
-            });
+                    .addOnSuccessListener(this, o1 -> {
+                        dialogo.dismiss();
+                        viewModel.removeAll();
+                        chamarActivity(ActivityOverview.class);
+                    });
         });
     }
 
@@ -154,6 +172,7 @@ public class ActivitySolicitacaoCadastrar extends FragmentActivity implements Vi
                     chamarActivity(ActivityOverview.class);
                 }).show();
     }
+
     @Override
     public void onError(VerificationError verificationError) {
         new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)

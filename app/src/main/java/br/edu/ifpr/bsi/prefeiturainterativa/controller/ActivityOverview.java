@@ -1,6 +1,8 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +20,7 @@ import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.FragmentActivity;
@@ -29,6 +32,7 @@ import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.SharedPreferencesHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.TransitionHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Aviso;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Localizacao;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -104,6 +108,17 @@ public class ActivityOverview extends FragmentActivity implements View.OnClickLi
                     uploadTasks.add(uploadTask);
                 }
             }
+            Localizacao localizacao = solicitacao.getLocalizacao();
+            try {
+                Geocoder geocoder = new Geocoder(ActivityOverview.this, Locale.getDefault());
+                List<Address> enderecos = geocoder.getFromLocation(localizacao.getLatitude(), localizacao.getLongitude(), 1);
+                localizacao.setBairro(enderecos.get(0).getSubLocality());
+            } catch (Exception ex) {
+                localizacao.setBairro("");
+            } finally {
+                solicitacao.setLocalizacao(localizacao);
+            }
+
             Tasks.whenAllComplete(uploadTasks).addOnSuccessListener(this, o -> {
                 solicitacao.setUrlImagens(imagens);
                 new SolicitacaoDAO(this).inserirAtualizar(solicitacao)

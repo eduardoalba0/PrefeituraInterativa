@@ -1,13 +1,11 @@
 package br.edu.ifpr.bsi.prefeiturainterativa.controller;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +24,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import br.edu.ifpr.bsi.prefeiturainterativa.R;
 import br.edu.ifpr.bsi.prefeiturainterativa.adapters.TramitacaoAdapter;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.AtendimentoDAO;
@@ -33,9 +32,10 @@ import br.edu.ifpr.bsi.prefeiturainterativa.dao.DepartamentoDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.dao.UsuarioDAO;
 import br.edu.ifpr.bsi.prefeiturainterativa.helpers.FirebaseHelper;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Atendimento;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.DadosFuncionais;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Departamento;
-import br.edu.ifpr.bsi.prefeiturainterativa.model.Funcionario;
 import br.edu.ifpr.bsi.prefeiturainterativa.model.Solicitacao;
+import br.edu.ifpr.bsi.prefeiturainterativa.model.Usuario;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -58,7 +58,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
 
     private void preencherCampos() {
         FirebaseHelper helper = new FirebaseHelper(getActivity());
-        if (solicitacao.getData() == null) {
+        if (solicitacao.getDataAbertura() == null) {
             card_solicitacao.setVisibility(View.GONE);
             tv_data.setVisibility(View.GONE);
             return;
@@ -66,7 +66,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
             card_solicitacao.setVisibility(View.VISIBLE);
             tv_data.setVisibility(View.VISIBLE);
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT, new Locale("pt", "BR"));
-            tv_data.setText(df.format(solicitacao.getData()));
+            tv_data.setText(df.format(solicitacao.getDataAbertura()));
         }
 
         if (solicitacao.isAnonima())
@@ -80,7 +80,7 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
                 .placeholder(R.drawable.ic_usuario)
                 .circleCrop()
                 .into(img_usuario);
-        if (solicitacao.isConcluida() && (solicitacao.getAvaliacao() == null || solicitacao.getAvaliacao().getData() == null)){
+        if (solicitacao.isConcluida() && (solicitacao.getAvaliacao() == null || solicitacao.getAvaliacao().getData() == null)) {
             bt_avaliar.setVisibility(View.VISIBLE);
         } else
             bt_avaliar.setVisibility(View.GONE);
@@ -96,9 +96,12 @@ public class FragmentSolicitacaoTramitacao extends Fragment {
                 List<Atendimento> atendimentos = new ArrayList<>();
                 for (Atendimento atendimento : atendimentoSnapshots.toObjects(Atendimento.class)) {
                     usuarioDAO.get(atendimento.getFuncionario_ID()).addOnSuccessListener(getActivity(), funcionarioSnapshot -> {
-                        Funcionario funcionario = funcionarioSnapshot.toObject(Funcionario.class);
+                        Usuario funcionario = funcionarioSnapshot.toObject(Usuario.class);
                         tasks.add(departamentoDAO.get(atendimento.getDepartamento_ID()).addOnSuccessListener(getActivity(), departamentoSnapshot -> {
-                            funcionario.setDepartamento(departamentoSnapshot.toObject(Departamento.class));
+                            DadosFuncionais dados = funcionario.getDadosFuncionais();
+                            if (dados == null)
+                                dados = new DadosFuncionais();
+                            dados.setDepartamento(departamentoSnapshot.toObject(Departamento.class));
                             atendimento.setFuncionario(funcionario);
                             atendimentos.add(atendimento);
                             rv_atendimentos.setAdapter(new TramitacaoAdapter(getActivity(), atendimentos));

@@ -8,6 +8,7 @@ public class Localizacao implements Serializable {
 
     private double latitude;
     private double longitude;
+    private String bairro;
 
     public Localizacao() {
     }
@@ -36,5 +37,13 @@ public class Localizacao implements Serializable {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 }

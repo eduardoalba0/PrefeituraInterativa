@@ -64,7 +64,7 @@ public class TramitacaoAdapter extends RecyclerView.Adapter<TramitacaoAdapter.Vi
             else {
                 card_resposta.setVisibility(View.VISIBLE);
                 edt_descricao.setText(atendimento.getResposta());
-                edl_autor.setHelperText(atendimento.getFuncionario().getDepartamento().getDescricao());
+                edl_autor.setHelperText(atendimento.getFuncionario().getDadosFuncionais().getDepartamento().getDescricao());
                 edl_autor.setHint(atendimento.getFuncionario().getNome());
             }
 

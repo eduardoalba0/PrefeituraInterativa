@@ -92,12 +92,12 @@ public class SolicitacoesAdapter extends RecyclerView.Adapter<SolicitacoesAdapte
                 case STYLE_NORMAL:
                     carregarImagens(solicitacao.getUrlImagens());
                     tv_data.setVisibility(View.VISIBLE);
-                    tv_data.setText(df.format(solicitacao.getData()));
+                    tv_data.setText(df.format(solicitacao.getDataAbertura()));
                     if (solicitacoes.size() > 1) {
                         int index = solicitacoes.indexOf(solicitacao) - 1;
                         if (index >= 0) {
                             Solicitacao aux = solicitacoes.get(index);
-                            if (df.format(aux.getData()).equals(df.format(solicitacao.getData())))
+                            if (df.format(aux.getDataAbertura()).equals(df.format(solicitacao.getDataAbertura())))
                                 tv_data.setVisibility(View.GONE);
                         }
                     }
