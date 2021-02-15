@@ -19,6 +19,7 @@ public class Usuario implements Serializable {
     private String token;
     private String uriFoto;
     private boolean habilitado;
+    private boolean staged;
     private DadosFuncionais dadosFuncionais;
 
     @Exclude
@@ -69,6 +70,14 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isStaged() {
+        return staged;
+    }
+
+    public void setStaged(boolean staged) {
+        this.staged = staged;
     }
 
     @Exclude

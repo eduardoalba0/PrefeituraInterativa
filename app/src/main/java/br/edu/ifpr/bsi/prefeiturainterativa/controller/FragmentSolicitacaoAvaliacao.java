@@ -90,6 +90,7 @@ public class FragmentSolicitacaoAvaliacao extends Fragment implements View.OnCli
         avaliacao.setComentario(edt_comentario.getText().toString());
         avaliacao.setNota(bar_avaliacao.getRating());
         avaliacao.setSolucionada(sw_solucionada.isChecked());
+        solicitacao.setStaged(false);
         solicitacao.setAvaliacao(avaliacao);
 
         new SolicitacaoDAO(getActivity()).inserirAtualizar(solicitacao)

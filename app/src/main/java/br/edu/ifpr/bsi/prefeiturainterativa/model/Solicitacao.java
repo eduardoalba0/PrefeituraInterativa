@@ -25,6 +25,7 @@ public class Solicitacao implements Serializable {
     private String funcionarioConclusao_ID;
     private boolean concluida;
     private boolean anonima;
+    private boolean staged;
     private Localizacao localizacao;
     private Avaliacao avaliacao;
     private List<String> urlImagens;
@@ -39,7 +40,7 @@ public class Solicitacao implements Serializable {
     @Exclude
     private Usuario usuario;
     @Exclude
-	private Usuario localFuncionarioConclusao;
+    private Usuario localFuncionarioConclusao;
     @Exclude
     private List<Categoria> localCategorias;
     @Exclude
@@ -120,13 +121,21 @@ public class Solicitacao implements Serializable {
         this.usuario_ID = usuario_ID;
     }
 
-	public String getFuncionarioConclusao_ID() {
-		return funcionarioConclusao_ID;
-	}
+    public String getFuncionarioConclusao_ID() {
+        return funcionarioConclusao_ID;
+    }
 
-	public void setFuncionarioConclusao_ID(String funcionarioConclusao_ID) {
-		this.funcionarioConclusao_ID = funcionarioConclusao_ID;
-	}
+    public void setFuncionarioConclusao_ID(String funcionarioConclusao_ID) {
+        this.funcionarioConclusao_ID = funcionarioConclusao_ID;
+    }
+
+    public boolean isStaged() {
+        return staged;
+    }
+
+    public void setStaged(boolean staged) {
+        this.staged = staged;
+    }
 
     public Date getDataAbertura() {
         return dataAbertura;
@@ -205,14 +214,14 @@ public class Solicitacao implements Serializable {
     }
 
     @Exclude
-	public Usuario getLocalFuncionarioConclusao() {
-		return localFuncionarioConclusao;
-	}
+    public Usuario getLocalFuncionarioConclusao() {
+        return localFuncionarioConclusao;
+    }
 
-	public void setLocalFuncionarioConclusao(Usuario funcionarioConclusao) {
-		this.localFuncionarioConclusao = funcionarioConclusao;
-	}
-    
+    public void setLocalFuncionarioConclusao(Usuario funcionarioConclusao) {
+        this.localFuncionarioConclusao = funcionarioConclusao;
+    }
+
     @Exclude
     public List<Atendimento> getLocalAtendimentos() {
         return localAtendimentos;

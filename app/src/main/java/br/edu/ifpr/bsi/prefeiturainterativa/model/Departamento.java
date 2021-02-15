@@ -15,6 +15,7 @@ public class Departamento implements Serializable {
     private String descricao;
     private String DepartamentoSuperior_ID;
     private boolean habilitado;
+    private boolean staged;
     private List<String> categorias;
 
     @Exclude
@@ -47,6 +48,14 @@ public class Departamento implements Serializable {
 
     public void setDepartamentoSuperior_ID(String departamentoSuperior_ID) {
         DepartamentoSuperior_ID = departamentoSuperior_ID;
+    }
+
+    public boolean isStaged() {
+        return staged;
+    }
+
+    public void setStaged(boolean staged) {
+        this.staged = staged;
     }
 
     public List<String> getCategorias() {
