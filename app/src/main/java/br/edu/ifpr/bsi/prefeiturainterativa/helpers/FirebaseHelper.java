@@ -202,23 +202,11 @@ public class FirebaseHelper {
     }
 
     public Task<Uri> carregarImagemUsuario(Uri file) {
-        if (!conexaoAtivada()) {
-            new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_internet_carregar_imagem))
-                    .show();
-            return null;
-        }
-
         StorageReference upload = storage.child("Usuarios").child(getUser().getUid()).child(getUser().getUid() + "_.jpg");
 
         return upload.putFile(file).continueWithTask(task -> {
             if (!task.isSuccessful()) throw task.getException();
             return upload.getDownloadUrl();
-        }).addOnCompleteListener(context, task -> {
-            if (!task.isSuccessful())
-                new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_carregar_imagem))
-                        .show();
         });
     }
 
@@ -227,11 +215,6 @@ public class FirebaseHelper {
         return upload.putFile(uri).continueWithTask(task -> {
             if (!task.isSuccessful()) throw task.getException();
             return upload.getDownloadUrl();
-        }).addOnCompleteListener(context, task -> {
-            if (!task.isSuccessful())
-                new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText(R.string.str_erro).setContentText(context.getString(R.string.str_erro_carregar_imagem))
-                        .show();
         });
     }
 
